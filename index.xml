@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>uio Study Blog</title>
+        <title>UIO Study Blog</title>
         <link>https://thesimpleengineer.github.io/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Jun 2023 14:24:11 &#43;0800</lastBuildDate>
