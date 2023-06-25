@@ -1,18 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Milky板板の博客</title>
-        <link>https://example.com/posts/</link>
-        <description>All Posts | Milky板板の博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Jun 2020 14:24:11 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Hexo开发与Git学习</title>
-    <link>https://example.com/hexohexo%E5%BC%80%E5%8F%91%E4%B8%8Egit%E5%AD%A6%E4%B9%A0/</link>
-    <pubDate>Thu, 18 Jun 2020 14:24:11 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://example.com/hexohexo%E5%BC%80%E5%8F%91%E4%B8%8Egit%E5%AD%A6%E4%B9%A0/</guid>
-    <description><![CDATA[GIT学习与运用 设置姓名和邮箱地址 git config --global user.name &quot;Firstname Lastname&quot; git config --global user.email &quot;your_email@example.com&quot; less ~/.gitconfig #查看设置好的用户配置，更改信息可直接修改文件  mac系统下查看和生成ssh key https://www.jianshu.com/p/32b0f8f9ca8e
-1.check 是否存在~/.ssh/id_rsa与~/.ssh/id_rsa.pub文件 2.不存在的时候生成ssh -keygen -t rsa -C&quot;your_email&quot; # strout： Generating public/private rsa key pair. Enter file in which to save the key (/Users/zhaohuanan/.ssh/id_rsa): # 默认会输出到这个文件夹 /Users/zhaohuanan/.ssh/id_rsa already exists. Overwrite (y/n)? # 我这里覆盖一下，我也没设置密码 # stdout Your identification has been saved in /Users/zhaohuanan/.ssh/id_rsa. Your public key has been saved in /Users/zhaohuanan/.ssh/id_rsa.pub. The key fingerprint is: SHA256:kVZgG0pDKf1DD50nbkZPAmvJXQnH12CS0/rDjjbOJMM hermanzhaozzzz@gmail.]]></description>
-</item>
-<item>
+        <title>Experiment - Tag - Milky板板の博客</title>
+        <link>https://example.com/tags/experiment/</link>
+        <description>Experiment - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Jun 2020 14:24:11 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/experiment/" rel="self" type="application/rss+xml" /><item>
     <title>M3系列文章概览</title>
     <link>https://example.com/my-first-post/</link>
     <pubDate>Thu, 18 Jun 2020 14:24:11 &#43;0800</pubDate>
