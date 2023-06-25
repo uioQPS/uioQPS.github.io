@@ -14,10 +14,10 @@
 </item>
 <item>
     <title>M3系列文章概览</title>
-    <link>https://example.com/my-first-post/</link>
+    <link>https://example.com/m3%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E6%A6%82%E8%A7%88/</link>
     <pubDate>Thu, 18 Jun 2020 14:24:11 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/my-first-post/</guid>
+    <guid>https://example.com/m3%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E6%A6%82%E8%A7%88/</guid>
     <description><![CDATA[M3R的结构特征/功能作用/G蛋白偶联特异性的决定    Receptor 药用靶标 G protein     M1 神经系统疾病（如阿尔茨海默病和精神分裂症）/学习、记忆和认知 Gq/11   M2 调节人体心率和许多中枢神经系统功能 Gi/o   M3 激活后受体磷酸化，募集b抑制蛋白能力受损 / 糖耐量受损伴随着M3受体介导的胰岛胰岛素释放降低 Gq/11   M4 神经系统疾病（如阿尔茨海默病和精神分裂症） /学习、记忆和认知 Gi/o    SAR, structure–activity relationship (Q)SAR 也是模型或数学关系（通常是统计相关性），它将与结构相关的特性与另一个感兴趣的特性或活动的存在或不存在或效力相关联。(Q)SAR最基本的数学形式是：
 活性 = f（物理化学或结构特性）  SARs 模型的开发需要三个组件：
   为一组化学品（即因变量）提供活性（通常通过实验测量）的数据集。这组化学品通常由一些选择标准定义。因变量通常是可监测活性。
