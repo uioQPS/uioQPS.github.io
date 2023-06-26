@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Milky板板の博客</title>
+    <link>https://example.com/about/</link>
+    <description>Recent content in Abouts on Milky板板の博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 18 Jun 2020 14:24:11 +0800</lastBuildDate><atom:link href="https://example.com/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://example.com/about/about/</link>
+      <pubDate>Thu, 18 Jun 2020 14:24:11 +0800</pubDate>
+      
+      <guid>https://example.com/about/about/</guid>
+      <description>这里是关于界面。</description>
+    </item>
+    
+  </channel>
+</rss>
