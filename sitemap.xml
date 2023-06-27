@@ -2,6 +2,9 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://example.com/</loc><lastmod>2023-06-28T01:15:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/posts/</loc><lastmod>2023-06-28T01:15:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A01/</loc><lastmod>2023-06-28T01:15:46&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/about/</loc><lastmod>2023-06-27T22:07:05&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/categories/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/categories/documentation/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -10,8 +13,6 @@
             <loc>https://example.com/tags/hexo/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/hexohexo%E5%BC%80%E5%8F%91%E4%B8%8Egit%E5%AD%A6%E4%B9%A0/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/m3%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E6%A6%82%E8%A7%88/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://example.com/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://example.com/posts/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/receptor/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/categories/structure-biology/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://example.com/tags/</loc><lastmod>2020-06-18T14:24:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

@@ -38,17 +38,20 @@ cat一下上面这个.pub文件，复制内容，打开这个链接的网页上�
     Warning: Permanently added 'github.com,13.229.188.59' (RSA) to the list of known hosts.
     Hi hermanzhaozzzz! You've successfully authenticated, but GitHub does not provide shell access.
 ## GitHub中创建仓库
+```
     git clone http://github/common.git
     # 这里要求输入github上设置的公开秘钥的密码。认证成功后， 仓库便会被 clone 至仓库名后的目录中。将想要公开的代码提交至这个仓库再 push 到 GitHub 的仓库中，代码便会被公开。
+```
 ## git一些基本操作的深入学习
 ### git init
 初始化仓库以便对Git进行版本管理
-
+```
      mkdir git-tutorial
      cd git-tutorial
      git init
     初始化的空仓库 .git目录存储着管理当前目录内容所需的仓库数据。在git中将这个目录的内容称为“附属于该仓库的工作树”。
     文件的编辑等操作在工作树中进行，然后记录到仓库中，以此管理文件的历史快照。如果想将文件恢复到原先的状态，可以从仓库中调取之前的快照，在工作树中打开。开发者可以通过这种方式获取以往的文件。
+```
 ### git add
     git add README.md #将文件加入暂存区，git发生了变化，显示在changes to be committed中了。
     git status
