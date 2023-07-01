@@ -3,16 +3,26 @@
         <title>Milky板板の博客</title>
         <link>https://example.com/</link>
         <description>Milky板板</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 28 Jun 2023 01:15:46 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Jul 2023 09:59:10 &#43;0800</lastBuildDate>
             <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>前端学习2</title>
+    <link>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A02/</link>
+    <pubDate>Sat, 01 Jul 2023 09:59:10 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A02/</guid>
+    <description><![CDATA[单选框
+1 2 3 4 5 6  &lt;input id=&#34;t1&#34; type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;1&#34; /&gt;1 &lt;input id=&#34;t2&#34; type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;2&#34; /&gt;2 &lt;input id=&#34;t3&#34; type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;3&#34; checked /&gt;3 &lt;input id=&#34;t4&#34; type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;4&#34; /&gt;4 &lt;input id=&#34;t5&#34; type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;5&#34; /&gt;5 &lt;input id=&#34;t6&#34; type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;6&#34; /&gt;6   输入框
+1 2 3  &lt;input name=&#34;user_id&#34; value=&#34;005&#34; type=&#34;text&#34; /&gt; &lt;textarea name=&#34;content&#34; maxlength=&#34;10&#34; placeholder=&#34;please write content...&#34; required&gt; &lt;/textarea&gt;   下拉框
+1 2 3 4 5 6  &lt;select name=&#34;country&#34; &gt; &lt;option value=&#34;China&#34;&gt;China&lt;/option&gt; &lt;option value=&#34;UK&#34;&gt;UK&lt;/option&gt; &lt;option value=&#34;Japan&#34;&gt;Japan&lt;/option&gt; &lt;option value=&#34;USA&#34;&gt;USA&lt;/option&gt; &lt;/select&gt;   submit按钮]]></description>
+</item>
+<item>
     <title>前端学习1</title>
     <link>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A01/</link>
     <pubDate>Wed, 28 Jun 2023 01:15:46 &#43;0800</pubDate>
     <author>Milky</author>
     <guid>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A01/</guid>
-    <description><![CDATA[前端学习 HTML标签（1） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  &lt;a&gt;&lt;/a&gt; 属性： href 链接页面 target 打开空页面 &lt;img&gt;&lt;/img&gt; 属性： src 图片路径 width height alt 找不到时显示的文字 style=&#34;display: block; margin: 0px auto;&#34; 居中图片 &lt;div&gt;&lt;/div&gt; 属性：块级元素 style=&#34;background: aquamarine;color: blue;width: 800px;margin: 50px auto 100px auto&#34; 背景色/字体颜色/定位（上右下左） &lt;span&gt;&lt;/span&gt; 属性：不能单独占据一行 &lt;br/&gt; 换行   表单
-1 2 3 4  &lt;form&gt;&lt;/form&gt; 方法：默认get，会显示参数到网址 Name：&lt;input type=&#34;text&#34; name=&#34;attr1&#34;/&gt; 输入框 &lt;input type=&#34;submit&#34; name=&#34;Submit-btn&#34; value=&#34;submit&#34;/&gt; 按钮键value赋值   ]]></description>
+    <description><![CDATA[前端学习 HTML标签（1） 块级元素 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  &lt;a&gt;&lt;/a&gt; 属性： href 链接页面 target 打开空页面 &lt;img&gt;&lt;/img&gt; 属性： src 图片路径 width height alt 找不到时显示的文字 style=&#34;display: block; margin: 0px auto;&#34; 居中图片 &lt;div&gt;&lt;/div&gt; 属性：块级元素 style=&#34;background: aquamarine;color: blue;width: 800px;margin: 50px auto 100px auto&#34; 背景色/字体颜色/定位（上右下左） &lt;span&gt;&lt;/span&gt; 属性：不能单独占据一行 &lt;br/&gt; 换行   表单 1 2 3 4  &lt;form&gt;&lt;/form&gt; 方法：默认get，会显示参数到网址 Name：&lt;input type=&#34;text&#34; name=&#34;attr1&#34;/&gt; 输入框 &lt;input type=&#34;submit&#34; name=&#34;Submit-btn&#34; value=&#34;submit&#34;/&gt; 按钮键value赋值   ]]></description>
 </item>
 <item>
     <title>Hexo开发与Git学习</title>

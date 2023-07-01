@@ -1,8 +1,8 @@
 # 前端学习1
 
 ## 前端学习  HTML标签（1）
-
-```
+### 块级元素
+```html
 <a></a>
 属性：
 href 链接页面
@@ -21,9 +21,9 @@ style="background: aquamarine;color: blue;width: 800px;margin: 50px auto 100px a
 属性：不能单独占据一行
 <br/> 换行
 ```
-表单
+### 表单
 
-```
+```html
 <form></form>
 方法：默认get，会显示参数到网址
 Name：<input type="text" name="attr1"/> 输入框
