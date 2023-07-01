@@ -10,6 +10,16 @@
 <input id="t5" type="radio" name="gender" value="5" />5
 <input id="t6" type="radio" name="gender" value="6" />6
 ```
+多选框
+```html
+<select name="country" multiple>
+	<option value="China">China</option>
+	<option value="UK">UK</option>
+	<option value="Japan">Japan</option>
+	<option value="USA">USA</option>
+
+</select>
+```
 输入框
 ```html
 <input name="user_id" value="005" type="text"  />
@@ -58,3 +68,9 @@ submit按钮
 	<li>yus</li>
 </ul>
 ```
+nodeType 属性以数字形式返回指定节点的节点类型。
+
+如果节点是元素节点，则 nodeType 属性将返回 1。
+如果节点是属性节点，则 nodeType 属性将返回 2。
+如果节点是文本节点，则 nodeType 属性将返回 3。
+如果节点是注释节点，则 nodeType 属性将返回 8。

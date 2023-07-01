@@ -29,4 +29,8 @@ style="background: aquamarine;color: blue;width: 800px;margin: 50px auto 100px a
 Name：<input type="text" name="attr1"/> 输入框
       <input type="submit" name="Submit-btn" value="submit"/> 按钮键value赋值
 ```
-
+复习题目
+- 1 div有什么特点 和span img a元素有什么区别?
+- 2 想做一个div自动居中要怎么做，原理是什么?
+- 3 如何做一个表单，表单的post提交如何设置?
+- 4 a标记想打开一个新的窗体要如何设置
