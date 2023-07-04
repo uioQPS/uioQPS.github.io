@@ -34,7 +34,7 @@
 		} //有空格
 ``` 
 border-box 
-![](前端学习4/Box-Sizing.png)
+![](https://api1.planflow.dev/wp-content/uploads/2021/09/Box-Sizing.png)
 
 content-box
 
