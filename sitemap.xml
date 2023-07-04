@@ -2,13 +2,15 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://example.com/categories/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/categories/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/tags/js/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/posts/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/tags/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/categories/website/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/%E4%B8%80%E4%B8%AA%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E7%9A%84js%E4%BB%A3%E7%A0%81/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://example.com/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/</loc><lastmod>2023-07-03T21:50:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/tags/html/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://example.com/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://example.com/posts/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://example.com/tags/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://example.com/categories/website/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://example.com/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A04/</loc><lastmod>2023-07-01T11:54:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A03/</loc><lastmod>2023-07-01T11:40:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A02/</loc><lastmod>2023-07-01T09:59:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>

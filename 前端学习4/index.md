@@ -32,4 +32,9 @@
 			background: red;
 			border-radius: 10px;
 		} //有空格
-```
+``` 
+border-box 
+![](前端学习4/Box-Sizing.png)
+
+content-box
+
