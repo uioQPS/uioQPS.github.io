@@ -2,6 +2,9 @@
 
 ## 前端学习  HTML标签（1）
 ### 块级元素
+- padding 占据空间有background
+- margin 无背景色
+
 ```html
 <a></a>
 属性：
