@@ -3,7 +3,16 @@
         <title>HTML - Tag - Milky板板の博客</title>
         <link>https://example.com/tags/html/</link>
         <description>HTML - Tag - Milky板板の博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 27 Jul 2023 21:38:11 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/html/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 Jul 2023 10:39:49 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/html/" rel="self" type="application/rss+xml" /><item>
+    <title>前端问题清单</title>
+    <link>https://example.com/%E5%89%8D%E7%AB%AF%E9%97%AE%E9%A2%98%E6%B8%85%E5%8D%95/</link>
+    <pubDate>Fri, 28 Jul 2023 10:39:49 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://example.com/%E5%89%8D%E7%AB%AF%E9%97%AE%E9%A2%98%E6%B8%85%E5%8D%95/</guid>
+    <description><![CDATA[布局相关  margin-top:5px 上边距 a标签的文字居中？ a标签如果是内联元素，内联元素在一个块级元素内部怎么垂直居中：改变父元素行高line-height写成和父元素的高度一样，它内部的内联元素垂直方向上就剧中了。 z-index 在z轴上的层级，数大的排在数小的上面,页面上有很多绝对定位的窗口，都可能互相覆盖，谁在上面，谁在下面，就靠z-index排序.
+z-index的排序是根据父级走。relative absolute fixed都可以用z-index，默认的static静态定位不能用z-index，static不涉及元素重叠。 &lt;ul&gt;和&lt;li&gt; 可以用来写目录&lt;ul&gt;相当于一个列表,&lt;li&gt;指定样式。  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  .submenu_container, .menu_wrapper { padding: 0px; margin: 0px; cursor: pointer; } .menu { float: left; position: relative; width: 20%; height: 64px; line-height: 64px; margin: 0px; padding: 0px; list-style: none; color: #eee; text-align: center; }   样式相关  https://icons.mydrivers.com/2020/www/icon_2020.png 这种图标怎么找到定位？ 怎么实现下拉菜单？ Abstract   js]]></description>
+</item>
+<item>
     <title>父元素塌陷问题</title>
     <link>https://example.com/%E7%88%B6%E5%85%83%E7%B4%A0%E5%A1%8C%E9%99%B7%E9%97%AE%E9%A2%98/</link>
     <pubDate>Thu, 27 Jul 2023 21:38:11 &#43;0800</pubDate>
