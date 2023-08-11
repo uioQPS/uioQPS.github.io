@@ -3,9 +3,29 @@
         <title>Milky板板の博客</title>
         <link>https://example.com/</link>
         <description>Milky板板</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 28 Jul 2023 10:39:49 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</lastBuildDate>
             <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>JS的作用域和构造函数</title>
+    <link>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
+    <pubDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</guid>
+    <description><![CDATA[作用域 顶级作用域 &gt; test内部执行期间作用域 &gt; 返回的新函数对象执行期间的作用域(abcd)
+1 2 3 4 5 6 7 8 9 10 11 12 13  var abc = 1234; // 顶级作用域 function test(){ // test内部执行期间作用域 var t1 = &#34;11111111111111&#34;; var abcd = &#34;hello world&#34;; return function (){ // 返回的新函数对象执行期间的作用域 console.log(abcd); console.log(t1); }; }   ]]></description>
+</item>
+<item>
+    <title>JS的变量和变量提升</title>
+    <link>https://example.com/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+    <pubDate>Fri, 11 Aug 2023 10:24:17 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://example.com/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+    <description><![CDATA[JavaScript 简介   JavaScript是一种运行在浏览器中的解释型的编程语言。在Web世界里，只有JavaScript能跨平台、跨浏览器驱动网页，与用户交互。
+  JavaScript代码放到&lt;head&gt;中
+  1 2 3 4 5  &lt;head&gt; &lt;script&gt; alert(&#39;Hello, world&#39;); &lt;/script&gt; &lt;/head&gt;   JavaScript可以对DOM树进行增查删改的操作，对doument对象，方法进行操作。  1  .getElementbyId()   嵌入式JS  1  &lt;button onclick=&#34; JS code&#34;&gt;&lt;/button&gt;   完成事件绑定
+变量  js里面变量声明规则，变量只能以_或者英文字母开头，后面可以包括数字英文下划线 javascript 里面对象描述是{开头}结尾的，然后是一堆一堆的key value值 key值如果不带引号就按变量声明规则规则处理，如果带引号，只要是合法字符串就可以  1 2 3 4 5 6 7 8 9 10 11 12  var a = { aaa: 1234, 12_34_555_1: &#34;qqqq&#34;, &#34;aaa-+bbb&#34;: &#34;qqqqq&#34;, bbb: &#34;wwwww&#34;, eee: function() { console.]]></description>
+</item>
+<item>
     <title>前端问题清单</title>
     <link>https://example.com/%E5%89%8D%E7%AB%AF%E9%97%AE%E9%A2%98%E6%B8%85%E5%8D%95/</link>
     <pubDate>Fri, 28 Jul 2023 10:39:49 &#43;0800</pubDate>
@@ -83,19 +103,6 @@ z-index的排序是根据父级走。relative absolute fixed都可以用z-index�
     <guid>https://example.com/hexohexo%E5%BC%80%E5%8F%91%E4%B8%8Egit%E5%AD%A6%E4%B9%A0/</guid>
     <description><![CDATA[GIT学习与运用 设置姓名和邮箱地址 git config --global user.name &quot;Firstname Lastname&quot; git config --global user.email &quot;your_email@example.com&quot; less ~/.gitconfig #查看设置好的用户配置，更改信息可直接修改文件  mac系统下查看和生成ssh key https://www.jianshu.com/p/32b0f8f9ca8e
 1.check 是否存在~/.ssh/id_rsa与~/.ssh/id_rsa.pub文件 2.不存在的时候生成ssh -keygen -t rsa -C&quot;your_email&quot; # strout： Generating public/private rsa key pair. Enter file in which to save the key (/Users/zhaohuanan/.ssh/id_rsa): # 默认会输出到这个文件夹 /Users/zhaohuanan/.ssh/id_rsa already exists. Overwrite (y/n)? # 我这里覆盖一下，我也没设置密码 # stdout Your identification has been saved in /Users/zhaohuanan/.ssh/id_rsa. Your public key has been saved in /Users/zhaohuanan/.ssh/id_rsa.pub. The key fingerprint is: SHA256:kVZgG0pDKf1DD50nbkZPAmvJXQnH12CS0/rDjjbOJMM hermanzhaozzzz@gmail.]]></description>
-</item>
-<item>
-    <title>M3系列文章概览</title>
-    <link>https://example.com/m3%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E6%A6%82%E8%A7%88/</link>
-    <pubDate>Thu, 18 Jun 2020 14:24:11 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://example.com/m3%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E6%A6%82%E8%A7%88/</guid>
-    <description><![CDATA[M3R的结构特征/功能作用/G蛋白偶联特异性的决定    Receptor 药用靶标 G protein     M1 神经系统疾病（如阿尔茨海默病和精神分裂症）/学习、记忆和认知 Gq/11   M2 调节人体心率和许多中枢神经系统功能 Gi/o   M3 激活后受体磷酸化，募集b抑制蛋白能力受损 / 糖耐量受损伴随着M3受体介导的胰岛胰岛素释放降低 Gq/11   M4 神经系统疾病（如阿尔茨海默病和精神分裂症） /学习、记忆和认知 Gi/o    SAR, structure–activity relationship (Q)SAR 也是模型或数学关系（通常是统计相关性），它将与结构相关的特性与另一个感兴趣的特性或活动的存在或不存在或效力相关联。(Q)SAR最基本的数学形式是：
-活性 = f（物理化学或结构特性）  SARs 模型的开发需要三个组件：
-  为一组化学品（即因变量）提供活性（通常通过实验测量）的数据集。这组化学品通常由一些选择标准定义。因变量通常是可监测活性。
-  同一组化学品的结构标准或与结构相关的特性数据集（即自变量）。自变量通常是结构属性。
-  关联这两个数据数组的方法（通常是统计分析方法）。将结构与活动联系起来的方法范围从简单的线性回归，到更复杂的方法（例如偏最小二乘分析），再到最复杂的机器学习技术（例如神经网络）。
-  2018- Structure-guided development of selective M3 muscarinic acetylcholine receptor antagonists 比较M2R和M3R的正构结合位点 M3R的Tiotropium会识别非保守残基亮氨酸，M2R的QNB识别非保守残基苯丙氨酸。compound c的docking pose表明一个扩大的向上环可以越过M2R的非保守苯丙氨酸。]]></description>
 </item>
 </channel>
 </rss>

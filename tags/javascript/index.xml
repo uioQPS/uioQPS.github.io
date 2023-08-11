@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>JavaScript - Tag - Milky板板の博客</title>
+        <link>https://example.com/tags/javascript/</link>
+        <description>JavaScript - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+    <title>JS的作用域和构造函数</title>
+    <link>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
+    <pubDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</guid>
+    <description><![CDATA[作用域 顶级作用域 &gt; test内部执行期间作用域 &gt; 返回的新函数对象执行期间的作用域(abcd)
+1 2 3 4 5 6 7 8 9 10 11 12 13  var abc = 1234; // 顶级作用域 function test(){ // test内部执行期间作用域 var t1 = &#34;11111111111111&#34;; var abcd = &#34;hello world&#34;; return function (){ // 返回的新函数对象执行期间的作用域 console.log(abcd); console.log(t1); }; }   ]]></description>
+</item>
+<item>
+    <title>JS的变量和变量提升</title>
+    <link>https://example.com/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+    <pubDate>Fri, 11 Aug 2023 10:24:17 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://example.com/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+    <description><![CDATA[JavaScript 简介   JavaScript是一种运行在浏览器中的解释型的编程语言。在Web世界里，只有JavaScript能跨平台、跨浏览器驱动网页，与用户交互。
+  JavaScript代码放到&lt;head&gt;中
+  1 2 3 4 5  &lt;head&gt; &lt;script&gt; alert(&#39;Hello, world&#39;); &lt;/script&gt; &lt;/head&gt;   JavaScript可以对DOM树进行增查删改的操作，对doument对象，方法进行操作。  1  .getElementbyId()   嵌入式JS  1  &lt;button onclick=&#34; JS code&#34;&gt;&lt;/button&gt;   完成事件绑定
+变量  js里面变量声明规则，变量只能以_或者英文字母开头，后面可以包括数字英文下划线 javascript 里面对象描述是{开头}结尾的，然后是一堆一堆的key value值 key值如果不带引号就按变量声明规则规则处理，如果带引号，只要是合法字符串就可以  1 2 3 4 5 6 7 8 9 10 11 12  var a = { aaa: 1234, 12_34_555_1: &#34;qqqq&#34;, &#34;aaa-+bbb&#34;: &#34;qqqqq&#34;, bbb: &#34;wwwww&#34;, eee: function() { console.]]></description>
+</item>
+</channel>
+</rss>
