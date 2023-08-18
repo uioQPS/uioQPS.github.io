@@ -3,14 +3,46 @@
         <title>All Posts - Milky板板の博客</title>
         <link>https://example.com/posts/</link>
         <description>All Posts | Milky板板の博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 18 Aug 2023 12:52:57 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>JS对象和方法</title>
+    <link>https://example.com/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Fri, 18 Aug 2023 12:52:57 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://example.com/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[对象
+document
+方法
+getElementById()
+变量
+var userInfo = document.getElementById(&ldquo;userInfo&rdquo;)
+函数
+function addrow(){}
+事件绑定
+td4.innerHTML = &ldquo;删除&rdquo;
+a标签绑定了按钮事件
+A example var row = document.createElement(&ldquo;tr&rdquo;);
+var td1 = document.createElement(&ldquo;td&rdquo;);
+row.appendChild(td1);
+tr类型能增加td类型的子元素
+ 申明一个变量；通过一个找/新建id的方法
+var userInfo = document.getElementById(&ldquo;userInfo&rdquo;);
+var row = document.createElement(&ldquo;tr&rdquo;); 给变量赋值；通过获取id/变量名的值
+td_unitprice.innerHTML= $(&ldquo;productunitprice&rdquo;).value; 把变量加入父级
+row.appendChild(td_id);  表的结构 table有不同的tag：tbody；
+tbody属于数组，类似于tr；
+tr标签的对象有appendchild的方法增加td元素。
+$(&ldquo;orderinfo&rdquo;).getElementsByTagName(&ldquo;tbody&rdquo;)[0].appendChild(row[a]);
+绑定事件 1 2 3  myButton.onclick = function(){ $(&#34;orderinfo&#34;).getElementsByTagName(&#34;tbody&#34;)[0].removeChild(row); };   ]]></description>
+</item>
+<item>
     <title>JS的作用域和构造函数</title>
     <link>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
     <pubDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</pubDate>
     <author>Milky</author>
     <guid>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</guid>
     <description><![CDATA[作用域 顶级作用域 &gt; test内部执行期间作用域 &gt; 返回的新函数对象执行期间的作用域(abcd)
-1 2 3 4 5 6 7 8 9 10 11 12 13  var abc = 1234; // 顶级作用域 function test(){ // test内部执行期间作用域 var t1 = &#34;11111111111111&#34;; var abcd = &#34;hello world&#34;; return function (){ // 返回的新函数对象执行期间的作用域 console.log(abcd); console.log(t1); }; }   ]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13  var abc = 1234; // 顶级作用域 function test(){ // test内部执行期间作用域 var t1 = &#34;11111111111111&#34;; var abcd = &#34;hello world&#34;; return function (){ // 返回的新函数对象执行期间的作用域 console.log(abcd); console.log(t1); }; }   闭包 指定函数的作用域以及函数与其周围状态（变量、函数等）之间的关系。 闭包是指一个函数可以访问其声明时的词法作用域，即使在它被调用的时候，它的外部作用域已经不再存在。
+Abstract  封装数据和行为： 通过闭包，可以创建私有变量和函数，只有内部函数能够访问，从而实现数据的封装和隐藏。 模块化编程： 闭包可以帮助创建独立的模块，避免全局命名冲突，同时允许公开只需要暴露的接口。 回调函数和事件处理程序： 在异步编程中，闭包可以用来保存状态和数据，确保在回调函数中访问正确的数据。 实现函数工厂： 通过闭包，可以动态生成具有不同初始值或行为的函数。   ]]></description>
 </item>
 <item>
     <title>JS的变量和变量提升</title>
@@ -92,15 +124,6 @@ z-index的排序是根据父级走。relative absolute fixed都可以用z-index�
     <author>Milky</author>
     <guid>https://example.com/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A01/</guid>
     <description><![CDATA[前端学习 HTML标签（1） 块级元素  padding 占据空间有background margin 无背景色  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  &lt;a&gt;&lt;/a&gt; 属性： href 链接页面 target 打开空页面 &lt;img&gt;&lt;/img&gt; 属性： src 图片路径 width height alt 找不到时显示的文字 style=&#34;display: block; margin: 0px auto;&#34; 居中图片 &lt;div&gt;&lt;/div&gt; 属性：块级元素 style=&#34;background: aquamarine;color: blue;width: 800px;margin: 50px auto 100px auto&#34; 背景色/字体颜色/定位（上右下左） &lt;span&gt;&lt;/span&gt; 属性：不能单独占据一行 &lt;br/&gt; 换行   表单 1 2 3 4  &lt;form&gt;&lt;/form&gt; 方法：默认get，会显示参数到网址 Name：&lt;input type=&#34;text&#34; name=&#34;attr1&#34;/&gt; 输入框 &lt;input type=&#34;submit&#34; name=&#34;Submit-btn&#34; value=&#34;submit&#34;/&gt; 按钮键value赋值   复习题目]]></description>
-</item>
-<item>
-    <title>Hexo开发与Git学习</title>
-    <link>https://example.com/hexohexo%E5%BC%80%E5%8F%91%E4%B8%8Egit%E5%AD%A6%E4%B9%A0/</link>
-    <pubDate>Thu, 18 Jun 2020 14:24:11 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://example.com/hexohexo%E5%BC%80%E5%8F%91%E4%B8%8Egit%E5%AD%A6%E4%B9%A0/</guid>
-    <description><![CDATA[GIT学习与运用 设置姓名和邮箱地址 git config --global user.name &quot;Firstname Lastname&quot; git config --global user.email &quot;your_email@example.com&quot; less ~/.gitconfig #查看设置好的用户配置，更改信息可直接修改文件  mac系统下查看和生成ssh key https://www.jianshu.com/p/32b0f8f9ca8e
-1.check 是否存在~/.ssh/id_rsa与~/.ssh/id_rsa.pub文件 2.不存在的时候生成ssh -keygen -t rsa -C&quot;your_email&quot; # strout： Generating public/private rsa key pair. Enter file in which to save the key (/Users/zhaohuanan/.ssh/id_rsa): # 默认会输出到这个文件夹 /Users/zhaohuanan/.ssh/id_rsa already exists. Overwrite (y/n)? # 我这里覆盖一下，我也没设置密码 # stdout Your identification has been saved in /Users/zhaohuanan/.ssh/id_rsa. Your public key has been saved in /Users/zhaohuanan/.ssh/id_rsa.pub. The key fingerprint is: SHA256:kVZgG0pDKf1DD50nbkZPAmvJXQnH12CS0/rDjjbOJMM hermanzhaozzzz@gmail.]]></description>
 </item>
 </channel>
 </rss>

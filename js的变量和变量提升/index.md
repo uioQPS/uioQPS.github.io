@@ -42,13 +42,13 @@ a.eee();
 4. 函数调用的时候，函数执行上下文对象this看函数.前面的对象就是this的值
 
 {{< admonition abstract >}}
-**变量涵盖范围**
-函数
-对象
-布尔值 true false
-字符串
-数字 isNaN（）不是数字就是true
-{{< /admonition >}}
+**变量涵盖范围**    
+函数    
+对象    
+布尔值 true false    
+字符串    
+数字 isNaN（）不是数字就是true    
+{{< /admonition >}}   
 
 
 
