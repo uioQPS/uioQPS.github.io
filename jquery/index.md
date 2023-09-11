@@ -6,7 +6,8 @@
 jquery 是一个轻量化的JavaScript代码库，支持多种浏览器，主要特性为支持CSS3的全部选择器，方便选取各种元素，以及对于元素进行css样式定义，以及获取计算的样式
 {{< /admonition >}}
 
-###  $("</div>") $("#productprice")     
+###  选择和创建元素
+$("</div>") $("#productprice")     
 选择(tag)和创建(</>)元素，产出的是类数组的DOM集合
 创建多个标签
 ### jquery对象和DOM元素对象
