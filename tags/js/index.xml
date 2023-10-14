@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>JS - Tag - Milky板板の博客</title>
-        <link>https://example.com/tags/js/</link>
+        <link>https://uioqps.github.io/tags/js/</link>
         <description>JS - Tag - Milky板板の博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 Jul 2023 21:50:51 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/js/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 Jul 2023 21:50:51 &#43;0800</lastBuildDate><atom:link href="https://uioqps.github.io/tags/js/" rel="self" type="application/rss+xml" /><item>
     <title>一个俄罗斯方块的js代码</title>
-    <link>https://example.com/%E4%B8%80%E4%B8%AA%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E7%9A%84js%E4%BB%A3%E7%A0%81/</link>
+    <link>https://uioqps.github.io/%E4%B8%80%E4%B8%AA%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E7%9A%84js%E4%BB%A3%E7%A0%81/</link>
     <pubDate>Mon, 03 Jul 2023 21:50:51 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/%E4%B8%80%E4%B8%AA%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E7%9A%84js%E4%BB%A3%E7%A0%81/</guid>
+    <guid>https://uioqps.github.io/%E4%B8%80%E4%B8%AA%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E7%9A%84js%E4%BB%A3%E7%A0%81/</guid>
     <description><![CDATA[定义initGame函数 初始化stack的二维数组 根据键盘判断左右移动方向 设置pause变量 调用游戏开始函数
 定义endGame函数 timer
 定义runGame函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  if (!currentBlock) { if (stack[3][9]) { endGame(); return; } currentBlock = [4, 10]; redraw(); return; } if (canMove(currentBlock)) { moveDown(currentBlock); } else { stack[currentBlock[0] - 1][currentBlock[1] - 1] = true; currentBlock = null; } checkClear(); redraw();   定义canMove函数 1 2 3 4 5 6 7 8 9 10 11 12  var can; var max; for (var i = 0; i &lt; stack[currentBlock[0] - 1].]]></description>

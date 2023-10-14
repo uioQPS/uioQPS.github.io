@@ -1,28 +1,27 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>JavaScript - Tag - Milky板板の博客</title>
-        <link>https://example.com/tags/javascript/</link>
+        <link>https://uioqps.github.io/tags/javascript/</link>
         <description>JavaScript - Tag - Milky板板の博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 11 Sep 2023 00:12:16 &#43;0800</lastBuildDate><atom:link href="https://example.com/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 11 Sep 2023 00:12:16 &#43;0800</lastBuildDate><atom:link href="https://uioqps.github.io/tags/javascript/" rel="self" type="application/rss+xml" /><item>
     <title>Jquery</title>
-    <link>https://example.com/jquery/</link>
+    <link>https://uioqps.github.io/jquery/</link>
     <pubDate>Mon, 11 Sep 2023 00:12:16 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/jquery/</guid>
-    <description><![CDATA[Abstract  jquery 是一个轻量化的JavaScript代码库，支持多种浏览器，主要特性为支持CSS3的全部选择器，方便选取各种元素，以及对于元素进行css样式定义，以及获取计算的样式   选择和创建元素 $(&quot;&quot;) $(&quot;#productprice&quot;) 选择(tag)和创建(&lt;/&gt;)元素，产出的是类数组的DOM集合 创建多个标签
-jquery对象和DOM元素对象 jquery对象是一个类数组对象，取第一个[0]是对应的DOM元素  1 2 3  a=createTableNaive() b=$(a) b[0]=a   append方法 a.appendChild(c) 返回是对象 a.append(c) 返回的是数组对象可以继续加
+    <guid>https://uioqps.github.io/jquery/</guid>
+    <description><![CDATA[Abstract  jquery 是一个轻量化的JavaScript代码库，支持多种浏览器，主要特性为支持CSS3的全部选择器，方便选取各种元素，以及对于元素进行css样式定义，以及获取计算的样式   选择和创建元素 1 2 3  $(&#34;&lt;\/div&gt;&#34;) $(&#34;#productprice&#34;) 选择(tag)和创建(&lt;/&gt;)元素，产出的是类数组的DOM集合 创建多个标签   jquery对象和DOM元素对象 jquery对象是一个类数组对象，取第一个[0]是对应的DOM元素
+1 2 3  a=createTableNaive() b=$(a) b[0]=a   append方法 a.appendChild(c) 返回是对象 a.append(c) 返回的是数组对象可以继续加
 元素有父元素parentNode removeChild
 父元素.append(子元素) appendTo是 子元素.appendTo(父元素) jQuery有一个方法设计规则，就是基本上所有的操作方法都是返回的是左边执行的this对象，但是find chileren方法除外，因为find children方法是在父元素向下寻找子元素集合的方法。
 区别于js js中：var item_item=$(&ldquo;item&rdquo;).value 只能选择id，而不能选择td 通过id取到输入框input，才有value属性；td对象没有value值
-事件处理函数 有一个参数，参数是事件对象，这个事件对象里面有很多信息，比如那个键盘按键被按下，鼠标点击事件触发的位置，以及currentTarget就是处理当前事件的当前对象，target是说引发当前事件的根源对象 // preventDefault会屏蔽事件的默认行为，比如a标签的点击事件，preventDefault会不让标签进行跳转 // stopPropagation 会屏蔽事件的继续传播，不论是在捕获阶段还是在冒泡阶段，都会停止后面的事件传播。但是停止事件传播并不代表屏蔽默认行为。 // mouseover 鼠标移上去 mousemove 鼠标在元素上移动 mouseout 鼠标移出 // click 是单击事件 dblclick是双击事件，但实际上也会先触发两次click单击事件以后，再触发一次双击事件dblclick // mousedown mouseup
-getComputedStyle方法 window.getComputedStyle是获取DOM元素计算后的全部样式信息对象，也是一个类数组对象，数组的内容是所有的样式属性 // 里面的所有的属性名称必须是animation-delay这样比如 // a = window.getComputedStyle(document.getElementById(&rsquo;test1&rsquo;)); console.]]></description>
+事件处理函数 1 2 3 4 5 6  有一个参数，参数是事件对象，这个事件对象里面有很多信息，比如那个键盘按键被按下，鼠标点击事件触发的位置，以及currentTarget就是处理当前事件的当前对象，target是说引发当前事件的根源对象 // preventDefault会屏蔽事件的默认行为，比如a标签的点击事件，preventDefault会不让标签进行跳转 // stopPropagation 会屏蔽事件的继续传播，不论是在捕获阶段还是在冒泡阶段，都会停止后面的事件传播。但是停止事件传播并不代表屏蔽默认行为。 // mouseover 鼠标移上去 mousemove 鼠标在元素上移动 mouseout 鼠标移出 // click 是单击事件 dblclick是双击事件，但实际上也会先触发两次click单击事件以后，再触发一次双击事件dblclick // mousedown mouseup   getComputedStyle方法 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  window.]]></description>
 </item>
 <item>
     <title>JavaScript6实战</title>
-    <link>https://example.com/javascript6%E5%AE%9E%E6%88%98/</link>
+    <link>https://uioqps.github.io/javascript6%E5%AE%9E%E6%88%98/</link>
     <pubDate>Mon, 11 Sep 2023 00:11:22 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/javascript6%E5%AE%9E%E6%88%98/</guid>
+    <guid>https://uioqps.github.io/javascript6%E5%AE%9E%E6%88%98/</guid>
     <description><![CDATA[浏览器里面的JavaScript分为主要两部分，一部分是JavaScript的核心编程，就是基础语法，函数，string boolean number 关系表达式，运算表达式等 另外一部分是DOM编程，就是宿主对象上面的编程，在网页开发里面，就是对于document对象的编程 DOM document object model CSS里面有选择器和样式表，构成了网页的样式，结合html和css生成了网页页面，通过javascript给页面元素加上了响应逻辑，可以动态的修改页面。  querySelectorAll方法 var collection = document.querySelectorAll(&quot;#orderinfo tbody .rowAmount&quot;); // document下面的querySelectorAll是说按照css的选择器进行选定dom元素的一个方法
 appendChild方法 td_control.appendChild(btn); //[].push 像后面追加 对应的还有prepend就是[].unshift向前追加
 Array slice reverse push pop shift unshift //数组有这些方法 //console.log(a.slice(0)); //console.log(Array.prototype.slice.call(a, 0));
@@ -31,18 +30,18 @@ Array slice reverse push pop shift unshift //数组有这些方法 //console.log
 </item>
 <item>
     <title>闭包函数</title>
-    <link>https://example.com/%E9%97%AD%E5%8C%85%E5%87%BD%E6%95%B0/</link>
+    <link>https://uioqps.github.io/%E9%97%AD%E5%8C%85%E5%87%BD%E6%95%B0/</link>
     <pubDate>Mon, 11 Sep 2023 00:10:55 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/%E9%97%AD%E5%8C%85%E5%87%BD%E6%95%B0/</guid>
+    <guid>https://uioqps.github.io/%E9%97%AD%E5%8C%85%E5%87%BD%E6%95%B0/</guid>
     <description><![CDATA[闭包函数怎么写（函数内部的函数） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  document.addEventListener(&#34;mouseup&#34;, mouseUpHandler); return { cancel: function(){ elem.removeEventListener(&#34;mousedown&#34;, mouseDownHandler); document.removeEventListener(&#34;mousemove&#34;, mouseMoveHandler); document.removeEventListener(&#34;mouseup&#34;, mouseUpHandler); } }; btn.onclick = function(){ $(&#34;orderinfo&#34;).getElementsByTagName(&#34;tbody&#34;)[0].removeChild(row); }; return{ getsum:function(){ return amount; } }   闭包函数怎么调用 1 2 3 4 5 6 7 8 9 10 11 12 13  var draggables = {}; function enableDrag(id){ if (!draggables[id]) { draggables[id] = dragInit($(id)); } } function disableDrag(id) { if (!]]></description>
 </item>
 <item>
     <title>JS对象和方法</title>
-    <link>https://example.com/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</link>
+    <link>https://uioqps.github.io/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</link>
     <pubDate>Fri, 18 Aug 2023 12:52:57 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</guid>
+    <guid>https://uioqps.github.io/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</guid>
     <description><![CDATA[对象
 document
 方法
@@ -70,20 +69,20 @@ $(&ldquo;orderinfo&rdquo;).getElementsByTagName(&ldquo;tbody&rdquo;)[0].appendCh
 </item>
 <item>
     <title>JS的作用域和构造函数</title>
-    <link>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
+    <link>https://uioqps.github.io/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
     <pubDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</guid>
+    <guid>https://uioqps.github.io/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</guid>
     <description><![CDATA[作用域 顶级作用域 &gt; test内部执行期间作用域 &gt; 返回的新函数对象执行期间的作用域(abcd)
 1 2 3 4 5 6 7 8 9 10 11 12 13  var abc = 1234; // 顶级作用域 function test(){ // test内部执行期间作用域 var t1 = &#34;11111111111111&#34;; var abcd = &#34;hello world&#34;; return function (){ // 返回的新函数对象执行期间的作用域 console.log(abcd); console.log(t1); }; }   闭包 指定函数的作用域以及函数与其周围状态（变量、函数等）之间的关系。 闭包是指一个函数可以访问其声明时的词法作用域，即使在它被调用的时候，它的外部作用域已经不再存在。
 Abstract  封装数据和行为： 通过闭包，可以创建私有变量和函数，只有内部函数能够访问，从而实现数据的封装和隐藏。 模块化编程： 闭包可以帮助创建独立的模块，避免全局命名冲突，同时允许公开只需要暴露的接口。 回调函数和事件处理程序： 在异步编程中，闭包可以用来保存状态和数据，确保在回调函数中访问正确的数据。 实现函数工厂： 通过闭包，可以动态生成具有不同初始值或行为的函数。   ]]></description>
 </item>
 <item>
     <title>JS的变量和变量提升</title>
-    <link>https://example.com/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+    <link>https://uioqps.github.io/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
     <pubDate>Fri, 11 Aug 2023 10:24:17 &#43;0800</pubDate>
     <author>Milky</author>
-    <guid>https://example.com/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+    <guid>https://uioqps.github.io/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
     <description><![CDATA[JavaScript 简介   JavaScript是一种运行在浏览器中的解释型的编程语言。在Web世界里，只有JavaScript能跨平台、跨浏览器驱动网页，与用户交互。
   JavaScript代码放到&lt;head&gt;中
   1 2 3 4 5  &lt;head&gt; &lt;script&gt; alert(&#39;Hello, world&#39;); &lt;/script&gt; &lt;/head&gt;   JavaScript可以对DOM树进行增查删改的操作，对doument对象，方法进行操作。  1  .getElementbyId()   嵌入式JS  1  &lt;button onclick=&#34; JS code&#34;&gt;&lt;/button&gt;   完成事件绑定
