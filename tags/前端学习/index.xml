@@ -3,7 +3,23 @@
         <title>前端学习 - Tag - Milky板板の博客</title>
         <link>https://uioqps.github.io/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/</link>
         <description>前端学习 - Tag - Milky板板の博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 11 Sep 2023 00:12:16 &#43;0800</lastBuildDate><atom:link href="https://uioqps.github.io/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 03 Dec 2023 22:55:28 &#43;0800</lastBuildDate><atom:link href="https://uioqps.github.io/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" rel="self" type="application/rss+xml" /><item>
+    <title>Vue</title>
+    <link>https://uioqps.github.io/vue/</link>
+    <pubDate>Sun, 03 Dec 2023 22:55:28 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/vue/</guid>
+    <description><![CDATA[Vue 数据的双向绑定  数据层（Model）：应用的数据及业务逻辑 视图层（View）：应用的展示效果，各类UI组件 业务逻辑层（ViewModel）：框架封装的核心，它负责将数据与视图关联起来
+数据变化后更新视图 视图变化后更新数据 MVVM这里的控制层的核心功能便是 “数据双向绑定”  Vue指令 v-if  跟在某一个标签后 后面的变量为true，这个元素就存在，否则消失  1 2  &lt;span v-if=&#34;seen&#34;&gt;Now you see me&lt;/span&gt; &lt;button @click=&#34;toggle&#34;&gt;切换显示与隐藏&lt;/button&gt;   toggle是需要在methods里指定的方法名称
+toggle:function(){this.seen=!this.seen}
+改变变量的方法
+v-bind v-bind把某个数据属性的值绑定到相应的DOM属性上去，非事件属性
+1  &lt;span v-bind:title=&#34;message&#34;&gt;鼠标放上去有message变量显示&lt;/span&gt;   v-on绑定的是事件属性
+v-on 1  &lt;button v-on:click=&#34;reverse&#34;&gt;reverse&lt;/button&gt;   reverse是method中指定的方法
+v-for 数组循环，可以进行数组对应的输出
+1 2 3  &lt;li v-for=&#34;todo in todos&#34;&gt; {{ todo.text }}} &lt;/li&gt;   data需要指定todo的字典数组 todos:[{text: &rsquo;learn Vue&rsquo;},{text:&lsquo;hello Vue&rsquo;},{}]]]></description>
+</item>
+<item>
     <title>Jquery</title>
     <link>https://uioqps.github.io/jquery/</link>
     <pubDate>Mon, 11 Sep 2023 00:12:16 &#43;0800</pubDate>
@@ -121,15 +137,6 @@ z-index的排序是根据父级走。relative absolute fixed都可以用z-index�
     <description><![CDATA[定义initGame函数 初始化stack的二维数组 根据键盘判断左右移动方向 设置pause变量 调用游戏开始函数
 定义endGame函数 timer
 定义runGame函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  if (!currentBlock) { if (stack[3][9]) { endGame(); return; } currentBlock = [4, 10]; redraw(); return; } if (canMove(currentBlock)) { moveDown(currentBlock); } else { stack[currentBlock[0] - 1][currentBlock[1] - 1] = true; currentBlock = null; } checkClear(); redraw();   定义canMove函数 1 2 3 4 5 6 7 8 9 10 11 12  var can; var max; for (var i = 0; i &lt; stack[currentBlock[0] - 1].]]></description>
-</item>
-<item>
-    <title>前端学习4</title>
-    <link>https://uioqps.github.io/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A04/</link>
-    <pubDate>Sat, 01 Jul 2023 11:54:03 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://uioqps.github.io/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A04/</guid>
-    <description><![CDATA[浮动布局
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  .aaa { width: 400px; height: 100px; border: 1px solid red; font-size: 32px; text-align: center; line-height: 100px; } // 行高100px 字体居中 .b1 { width: 20px; height: 20px; background: red; display: inline-block; } .www2 .ooo { vertical-align: bottom; line-height: 1; float: left; height: 50px; background: red; border-radius: 10px; } //没有空格 .]]></description>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Vue - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/vue/</link>
+        <description>Vue - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 03 Dec 2023 22:55:28 &#43;0800</lastBuildDate><atom:link href="https://uioqps.github.io/tags/vue/" rel="self" type="application/rss+xml" /><item>
+    <title>Vue</title>
+    <link>https://uioqps.github.io/vue/</link>
+    <pubDate>Sun, 03 Dec 2023 22:55:28 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/vue/</guid>
+    <description><![CDATA[Vue 数据的双向绑定  数据层（Model）：应用的数据及业务逻辑 视图层（View）：应用的展示效果，各类UI组件 业务逻辑层（ViewModel）：框架封装的核心，它负责将数据与视图关联起来
+数据变化后更新视图 视图变化后更新数据 MVVM这里的控制层的核心功能便是 “数据双向绑定”  Vue指令 v-if  跟在某一个标签后 后面的变量为true，这个元素就存在，否则消失  1 2  &lt;span v-if=&#34;seen&#34;&gt;Now you see me&lt;/span&gt; &lt;button @click=&#34;toggle&#34;&gt;切换显示与隐藏&lt;/button&gt;   toggle是需要在methods里指定的方法名称
+toggle:function(){this.seen=!this.seen}
+改变变量的方法
+v-bind v-bind把某个数据属性的值绑定到相应的DOM属性上去，非事件属性
+1  &lt;span v-bind:title=&#34;message&#34;&gt;鼠标放上去有message变量显示&lt;/span&gt;   v-on绑定的是事件属性
+v-on 1  &lt;button v-on:click=&#34;reverse&#34;&gt;reverse&lt;/button&gt;   reverse是method中指定的方法
+v-for 数组循环，可以进行数组对应的输出
+1 2 3  &lt;li v-for=&#34;todo in todos&#34;&gt; {{ todo.text }}} &lt;/li&gt;   data需要指定todo的字典数组 todos:[{text: &rsquo;learn Vue&rsquo;},{text:&lsquo;hello Vue&rsquo;},{}]]]></description>
+</item>
+</channel>
+</rss>
