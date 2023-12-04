@@ -56,6 +56,7 @@ div的id指定的是`<script>`中`new`的Vue
 1. 面试官推荐 https://vue3js.cn/interview/vue/structure.html
 2. 实现数据绑定的做法：发布者-订阅者模式（backbone.js）
 ![](Vue/1.jpg)
+![](https://ask.qcloudimg.com/http-save/yehe-3850389/a26a1dfe24db3cdb31eec527cfa1d358.png)
 
    
 
