@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>EGFR - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/egfr/</link>
+        <description>EGFR - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 20 Feb 2020 19:42:18 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/egfr/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-41</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-41/</link>
+    <pubDate>Thu, 20 Feb 2020 19:42:18 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-41/</guid>
+    <description><![CDATA[探究为何一个TNBC对gefitinib过于敏感  A Targetable EGFR-Dependent Tumor-Initiating Program in Breast Cancer  背景知识  epidermalgrowth factor receptor (EGFR) EGFR inhibition by gefitinib triple-negative breast cancer (TNBC) patient-derived xenografts (PDXs) Deep single-cell RNAsequencing of 3,500 cells  实验设计 作者制作了一批TNBCs (15/18)的PDX模型，然后用这些模型来测试其对 EGFR inhibitor gefitinib 敏感情况。前人报道该药物在TNBC病人里面有效率是38.7%，与他们的实验想符合(6/18), 但是其中有一个人的反映比较特殊，就是 GCRC1735， 一个70岁的老奶奶，该药物治疗效果出奇的好。实验表明是正中靶点，降低了pEGFR，同时下调了pERK通路，激活了凋亡通路。基因检测表明该老奶奶有一个 pathogenic BRCA1 mutation (p.C1225Sfs) 和a somatic TP53 alteration (p.R249T) ，而EGFR基因上面既没有突变也没有拷贝数变异，EGFR 这个通路相关的基因也没有太大的异常，没办法解释该病人为何会对gefitinib如此敏感，值得探究。
+单细胞转录组测序 因为bulk测序无法解决问题
+To understand functional properties associated with heterogeneous EGFR expression in an unbiased manner, single cell RNA-seq was performed on freshly dissociated cells from the PDX (3,483 cells, with an average of 40,564 unique molecular identifiers (UMIs) and 5,146 genes detected per cell)]]></description>
+</item>
+</channel>
+</rss>

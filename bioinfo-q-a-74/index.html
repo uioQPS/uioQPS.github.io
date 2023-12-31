@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-74 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-74" />
+<meta property="og:description" content="病毒载体的构建什么区别 目的基因不能直接整合到大多数真核细胞，常用的手段是将目的基因包装成病毒来感染细胞，从而得到表达满足实验需求。
+病毒的种类 病毒有很多种，常见的有慢病毒和腺病毒
+慢病毒 原理 慢病毒（Lentivirus）是逆转录病毒的一种。构建的siRNA / miRNA慢病毒载体，与化学合成的siRNA 和基于瞬时表达载体构建的普通 siRNA 载体相比，一方面可以扩增替代瞬时表达载体使用，另一方面，Lentivirus-siRNA克隆经过慢病毒包装系统包装后，可用于感染依靠传统转染试剂难于转染的细胞系如原代细胞、悬浮细胞和处于非分裂状态的细胞，并且在感染后可以整合到受感染细胞的基因组，进行长时间的稳定表达。
+特点 1 2 3 4 5  1）直接包装成为假病毒颗粒，对分裂和非分裂细胞均有感染作用，适合 RNAi 研究和体内实验中难于转染的细胞 (比如神经元细胞、干细胞或其它原代细胞)。 2）可以通过简单方式，在短时间内获得稳定表达特定基因的多种细胞株。 3）可用于基因敲除、基因治疗和转基因动物研究。 4）无需任何转染试剂，操作简便。 5）可以根据客户需要制备多种标记。   慢病毒包装简要流程： 1 2 3 4 5 6  1）含有目的基因的慢病毒 RNAi 干扰载体的构建和质粒纯化提取。 2）慢病毒载体，包装系统共转染病毒包装细胞293T等。 3）培养 48hrs - 72hrs 左右，收集含有病毒的上清培养液。 4）病毒的纯化和浓缩。 5）分装、- 80 ℃保存。 6）滴度测定目的基因检定，并出具检测报告。   腺病毒 原理 腺病毒(Adenovirus，Ad)是一种无包膜的线状双链DNA病毒，其复制不依赖于宿主细胞的分裂。有近50个血清型，大多数Ad载体都是基于血清型2和5，通过转基因的方式取代E1和E3基因，降低病毒的复制能力。这些重组病毒仅在高水平表达E1和E3基因的细胞中复制，因此是一种适用于治疗的高效控制系统。
+特点 1 2 3 4 5  1）几乎可以感染所有类型的细胞 2）可以获得复制缺陷型 (E1 和 E3 缺失) 的腺病毒 3）病毒滴度高，产生病毒经过浓缩后可以达到 1012 PFU/mL，能有效的进行增殖。 4）腺病毒载体感染宿主的范围比较广，制备容易，操作简单." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-74/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-23T21:15:58+00:00" />
+<meta property="article:modified_time" content="2020-02-23T21:15:58+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-74"/>
+<meta name="twitter:description" content="病毒载体的构建什么区别 目的基因不能直接整合到大多数真核细胞，常用的手段是将目的基因包装成病毒来感染细胞，从而得到表达满足实验需求。
+病毒的种类 病毒有很多种，常见的有慢病毒和腺病毒
+慢病毒 原理 慢病毒（Lentivirus）是逆转录病毒的一种。构建的siRNA / miRNA慢病毒载体，与化学合成的siRNA 和基于瞬时表达载体构建的普通 siRNA 载体相比，一方面可以扩增替代瞬时表达载体使用，另一方面，Lentivirus-siRNA克隆经过慢病毒包装系统包装后，可用于感染依靠传统转染试剂难于转染的细胞系如原代细胞、悬浮细胞和处于非分裂状态的细胞，并且在感染后可以整合到受感染细胞的基因组，进行长时间的稳定表达。
+特点 1 2 3 4 5  1）直接包装成为假病毒颗粒，对分裂和非分裂细胞均有感染作用，适合 RNAi 研究和体内实验中难于转染的细胞 (比如神经元细胞、干细胞或其它原代细胞)。 2）可以通过简单方式，在短时间内获得稳定表达特定基因的多种细胞株。 3）可用于基因敲除、基因治疗和转基因动物研究。 4）无需任何转染试剂，操作简便。 5）可以根据客户需要制备多种标记。   慢病毒包装简要流程： 1 2 3 4 5 6  1）含有目的基因的慢病毒 RNAi 干扰载体的构建和质粒纯化提取。 2）慢病毒载体，包装系统共转染病毒包装细胞293T等。 3）培养 48hrs - 72hrs 左右，收集含有病毒的上清培养液。 4）病毒的纯化和浓缩。 5）分装、- 80 ℃保存。 6）滴度测定目的基因检定，并出具检测报告。   腺病毒 原理 腺病毒(Adenovirus，Ad)是一种无包膜的线状双链DNA病毒，其复制不依赖于宿主细胞的分裂。有近50个血清型，大多数Ad载体都是基于血清型2和5，通过转基因的方式取代E1和E3基因，降低病毒的复制能力。这些重组病毒仅在高水平表达E1和E3基因的细胞中复制，因此是一种适用于治疗的高效控制系统。
+特点 1 2 3 4 5  1）几乎可以感染所有类型的细胞 2）可以获得复制缺陷型 (E1 和 E3 缺失) 的腺病毒 3）病毒滴度高，产生病毒经过浓缩后可以达到 1012 PFU/mL，能有效的进行增殖。 4）腺病毒载体感染宿主的范围比较广，制备容易，操作简单."/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-74/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-73/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-75/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-74",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-74\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, lentivirus, AAV","wordcount":  272 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-74\/","datePublished": "2020-02-23T21:15:58+00:00","dateModified": "2020-02-23T21:15:58+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-74</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-23">2020-02-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;272 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/bioinfo-q-a-74/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-74">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#病毒载体的构建什么区别">病毒载体的构建什么区别</a>
+      <ul>
+        <li><a href="#病毒的种类">病毒的种类</a>
+          <ul>
+            <li><a href="#慢病毒">慢病毒</a>
+              <ul>
+                <li><a href="#原理">原理</a></li>
+                <li><a href="#特点">特点</a></li>
+                <li><a href="#慢病毒包装简要流程">慢病毒包装简要流程：</a></li>
+              </ul>
+            </li>
+            <li><a href="#腺病毒">腺病毒</a>
+              <ul>
+                <li><a href="#原理-1">原理</a></li>
+                <li><a href="#特点-1">特点</a></li>
+                <li><a href="#腺病毒包装简要流程">腺病毒包装简要流程</a></li>
+              </ul>
+            </li>
+            <li><a href="#慢病毒和腺病毒的比较">慢病毒和腺病毒的比较</a></li>
+          </ul>
+        </li>
+        <li><a href="#构建目的基因到载体">构建目的基因到载体</a>
+          <ul>
+            <li><a href="#构建手段">构建手段</a></li>
+            <li><a href="#质粒载体">质粒载体</a>
+              <ul>
+                <li><a href="#概念">概念</a></li>
+                <li><a href="#特征">特征</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#质粒dna在大肠杆菌里转化">质粒DNA在大肠杆菌里转化</a>
+          <ul>
+            <li><a href="#大肠杆菌感受态细胞的制备">大肠杆菌感受态细胞的制备</a></li>
+            <li><a href="#质粒dna的转化">质粒DNA的转化</a></li>
+            <li><a href="#质粒提取步骤">质粒提取步骤</a></li>
+          </ul>
+        </li>
+        <li><a href="#质粒dna和其他包装质粒共转染293t细胞产生病毒即病毒包装">质粒DNA和其他包装质粒共转染293T细胞产生病毒（即病毒包装）</a>
+          <ul>
+            <li><a href="#名词解释">名词解释</a></li>
+            <li><a href="#共转染的操作步骤">共转染的操作步骤</a></li>
+            <li><a href="#病毒包装的原理">病毒包装的原理</a></li>
+          </ul>
+        </li>
+        <li><a href="#慢病毒感染细胞">慢病毒感染细胞</a>
+          <ul>
+            <li><a href="#荧光显微镜的操作流程">荧光显微镜的操作流程</a></li>
+            <li><a href="#注意事项内容">注意事项内容</a></li>
+          </ul>
+        </li>
+        <li><a href="#感染后的细胞检测方法">感染后的细胞检测方法</a>
+          <ul>
+            <li><a href="#荧光初步检测">荧光初步检测</a></li>
+            <li><a href="#rna的提取及rt-pcr检测">RNA的提取及RT-PCR检测</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="病毒载体的构建什么区别">病毒载体的构建什么区别</h2>
+<p>目的基因不能直接整合到大多数真核细胞，常用的手段是将目的基因包装成病毒来感染细胞，从而得到表达满足实验需求。</p>
+<h3 id="病毒的种类">病毒的种类</h3>
+<p>病毒有很多种，常见的有慢病毒和腺病毒</p>
+<h4 id="慢病毒">慢病毒</h4>
+<h5 id="原理">原理</h5>
+<p>慢病毒（Lentivirus）是逆转录病毒的一种。构建的siRNA / miRNA慢病毒载体，与化学合成的siRNA 和基于瞬时表达载体构建的普通 siRNA 载体相比，一方面可以扩增替代瞬时表达载体使用，另一方面，Lentivirus-siRNA克隆经过慢病毒包装系统包装后，可用于感染依靠传统转染试剂难于转染的细胞系如原代细胞、悬浮细胞和处于非分裂状态的细胞，并且在感染后可以整合到受感染细胞的基因组，进行长时间的稳定表达。</p>
+<h5 id="特点">特点</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）直接包装成为假病毒颗粒，对分裂和非分裂细胞均有感染作用，适合 RNAi 研究和体内实验中难于转染的细胞 (比如神经元细胞、干细胞或其它原代细胞)。
+</span></span><span class="line"><span class="cl">2）可以通过简单方式，在短时间内获得稳定表达特定基因的多种细胞株。
+</span></span><span class="line"><span class="cl">3）可用于基因敲除、基因治疗和转基因动物研究。
+</span></span><span class="line"><span class="cl">4）无需任何转染试剂，操作简便。
+</span></span><span class="line"><span class="cl">5）可以根据客户需要制备多种标记。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="慢病毒包装简要流程">慢病毒包装简要流程：</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）含有目的基因的慢病毒 RNAi 干扰载体的构建和质粒纯化提取。
+</span></span><span class="line"><span class="cl">2）慢病毒载体，包装系统共转染病毒包装细胞293T等。
+</span></span><span class="line"><span class="cl">3）培养 48hrs - 72hrs 左右，收集含有病毒的上清培养液。
+</span></span><span class="line"><span class="cl">4）病毒的纯化和浓缩。
+</span></span><span class="line"><span class="cl">5）分装、- 80 ℃保存。
+</span></span><span class="line"><span class="cl">6）滴度测定目的基因检定，并出具检测报告。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="腺病毒">腺病毒</h4>
+<h5 id="原理-1">原理</h5>
+<p>腺病毒(Adenovirus，Ad)是一种无包膜的线状双链DNA病毒，其复制不依赖于宿主细胞的分裂。有近50个血清型，大多数Ad载体都是基于血清型2和5，通过转基因的方式取代E1和E3基因，降低病毒的复制能力。这些重组病毒仅在高水平表达E1和E3基因的细胞中复制，因此是一种适用于治疗的高效控制系统。</p>
+<h5 id="特点-1">特点</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）几乎可以感染所有类型的细胞
+</span></span><span class="line"><span class="cl">2）可以获得复制缺陷型 (E1 和 E3 缺失) 的腺病毒
+</span></span><span class="line"><span class="cl">3）病毒滴度高，产生病毒经过浓缩后可以达到 1012 PFU/mL，能有效的进行增殖。
+</span></span><span class="line"><span class="cl">4）腺病毒载体感染宿主的范围比较广，制备容易，操作简单.
+</span></span><span class="line"><span class="cl">5）感染细胞时，不整合到染色体中，不存在激活致癌基因或插入突变等危险，生物安全性高。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="腺病毒包装简要流程">腺病毒包装简要流程</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）构建表达 siRNA/miRNA 的腺病毒载体
+</span></span><span class="line"><span class="cl">2）采用 PacI 消化纯化的质粒。
+</span></span><span class="line"><span class="cl">3）消化好的腺病毒表达载体转染 293A 细胞，收获细胞以制备病毒粗提液。
+</span></span><span class="line"><span class="cl">4）将病毒粗提液感染 293A 细胞以扩增病毒。
+</span></span><span class="line"><span class="cl">5）分装，-80℃保存。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="慢病毒和腺病毒的比较">慢病毒和腺病毒的比较</h4>
+<p>慢病毒载体系统和腺病毒载体系统比较</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>病毒表达系统慢病毒表达系统（Lentivirus）</th>
+<th>腺病毒表达系统（Adenovirus）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>病毒基因组</td>
+<td>RNA病毒</td>
+<td>双链DNA病毒</td>
+</tr>
+<tr>
+<td>复制</td>
+<td>自主复制</td>
+<td>自主复制</td>
+</tr>
+<tr>
+<td>是否整合</td>
+<td>病毒基因组整合于宿主基因组，长时间、稳定表达外源基因</td>
+<td>病毒基因组游离于宿主基因组外，瞬时表达外源基因</td>
+</tr>
+<tr>
+<td>感染细胞类型</td>
+<td>感染分裂和不分裂细胞，适用于难转染的</td>
+<td>原代细胞（如神经细胞）及体内实验感染分裂和不分裂细胞</td>
+</tr>
+<tr>
+<td>表达风度</td>
+<td>中水平表达</td>
+<td>高水平表达</td>
+</tr>
+<tr>
+<td>表达时间</td>
+<td>慢（1-3天）</td>
+<td>快（1-2天）</td>
+</tr>
+<tr>
+<td>滴度滴度</td>
+<td>最高可达10*8pfU/ml</td>
+<td>滴度最高可达10*11pfU/ml</td>
+</tr>
+<tr>
+<td>克隆容量</td>
+<td>可插入不超过8kb的外源片段，滴度随插入片段长度增加而降低</td>
+<td>可插入高达8kb的外源片段，滴度随插入片段长度增加而降低</td>
+</tr>
+<tr>
+<td>免疫原性</td>
+<td>低免疫原性</td>
+<td>高免疫原性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="构建目的基因到载体">构建目的基因到载体</h3>
+<h4 id="构建手段">构建手段</h4>
+<p>一般是根据原始质粒信息确定克隆方案，有以下两种手段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）如果原始质粒与载体有匹配酶切位点，采用相应的内切酶切下相应片段，回收并连接到载体，酶切，并测序鉴定
+</span></span><span class="line"><span class="cl">2）如果没有匹配的酶切位点，则设计带有特殊接头的引物进行PCR扩增，得到目的片段，采用相应的内切酶切下相应片段，回收并连接到穿梭载体，酶切，并测序鉴定
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="质粒载体">质粒载体</h4>
+<h5 id="概念">概念</h5>
+<p>能够进行自主复制的环状DNA双链结构，包括真核生物的细胞器（主要指线粒体和叶绿体）中和细菌细胞拟核区以外的环状脱氧核糖核酸(DNA)分子</p>
+<h5 id="特征">特征</h5>
+<p>质粒上常有抗生素的抗性基因，例如，四环素抗性基因或卡那霉素抗性基因等。有些质粒称为附加体(episome)，这类质粒能够整合进真菌的染色体，也能从整合位置上切离下来成为游离于染色体外的DNA分子。质粒在宿主细胞体内外都可复制。通过个些特性，人们可以把一些目的DNA片断构建在质粒中，通过转化入大肠杆菌中，利用选择培养基来筛选从而不断的复制，来得到目的产物。</p>
+<h3 id="质粒dna在大肠杆菌里转化">质粒DNA在大肠杆菌里转化</h3>
+<p>连接上目的基因的质粒转化大肠杆菌是为了让目的基因在大肠杆菌里扩增，然后提取质粒，以下是质粒DNA在大肠杆菌里转化的三步骤。</p>
+<h4 id="大肠杆菌感受态细胞的制备">大肠杆菌感受态细胞的制备</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）从大肠杆菌平板上挑取一个单菌落于3mlLB培养基的试管中，37℃振荡培养过夜。
+</span></span><span class="line"><span class="cl">2）取0.4ml菌液转接到40mlLB液体培养基中，37℃振荡培养2~3h
+</span></span><span class="line"><span class="cl">3）菌液转移到50ml离心管中，冰上放置10min
+</span></span><span class="line"><span class="cl">4）4℃离心10min（4000r/min）
+</span></span><span class="line"><span class="cl">5）倒出培养液，将管口倒置以便培养液流尽
+</span></span><span class="line"><span class="cl">6）用冰浴的0.1mol/L氯化钙10ml悬浮细胞沉淀，立即冰浴30min
+</span></span><span class="line"><span class="cl">7）4℃离心10min（4000r/min）
+</span></span><span class="line"><span class="cl">8）倒出上清液，用冰浴的0.1mol/L氯化钙2ml悬浮细胞（冰上放置）
+</span></span><span class="line"><span class="cl">9）分装细胞，200ul一份，4℃保存
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="质粒dna的转化">质粒DNA的转化</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）取200ul新鲜制备的感受态细胞，加入质粒DNA2ul混匀，冰浴30min
+</span></span><span class="line"><span class="cl">2）离心管放到42℃保温90s
+</span></span><span class="line"><span class="cl">3）冰浴2min
+</span></span><span class="line"><span class="cl">4）每管加800ulLB液体培养基，37℃培养1h（150r/min）
+</span></span><span class="line"><span class="cl">5）取适当体积（100ul）的复苏细胞，涂布在选择性培养基上，正置30min
+</span></span><span class="line"><span class="cl">6）倒置平皿37℃，12~16h，出现菌落
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="质粒提取步骤">质粒提取步骤</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）取1~4ml在LB培养基中培养过夜的菌液，12000转离心1min，弃上清
+</span></span><span class="line"><span class="cl">2）加250ul溶液Ⅰ/RNaseA（溶液Ⅰ为细胞悬浮液）混合液，漩涡剧烈振荡直至菌体完全重新悬浮，室温静置1-2min。
+</span></span><span class="line"><span class="cl">3）加入250ul溶液Ⅱ（细胞裂解液），轻柔的反复颠倒混匀5-6次。室温放置1-2min，使菌体充分裂解，直至形成澄清的裂解溶液。
+</span></span><span class="line"><span class="cl">4）加入350ul溶液Ⅲ（中和液），立刻轻柔地反复颠倒混匀5-6次，此时会出现白色絮状沉淀。
+</span></span><span class="line"><span class="cl">5）12000室温离心10min，收集上清。
+</span></span><span class="line"><span class="cl">6）将上清置于DNA纯化柱中，静置1-2min。
+</span></span><span class="line"><span class="cl">7）12000转离心1min，弃滤液。
+</span></span><span class="line"><span class="cl">8）加入500ul溶液PB（洗涤液）12000转离心1min，弃滤液，目的是将硅胶膜上吸附的蛋白、盐等杂质洗脱，以获得高质量质粒DNA。
+</span></span><span class="line"><span class="cl">9）加入500ul溶液W（去盐液），12000转离心1min，弃滤液，重复一次。
+</span></span><span class="line"><span class="cl">10）12000转离心3min，以彻底去除纯化柱中残留的液体。
+</span></span><span class="line"><span class="cl">11）将DNA纯化柱置于新的离心管中，悬浮滴加50-100ul溶液Eluent（为无菌的双蒸水，PH为8.0-8.5），室温放置2min。
+</span></span><span class="line"><span class="cl">12）12000转离心1min，此时管底即为高纯度的质粒DNA，质粒于-20℃保存。
+</span></span><span class="line"><span class="cl">质粒提取步骤：吸取液体培养基于1.5ml离心管中12000转离心1min，弃上清，吸取培养基重复离心弃上清离心，留取少量菌液作为菌种保存，可直接置于-20℃——加250ulBufferS1悬浮细菌，悬浮均匀——加250ulBufferS2温和充分的上下翻转4-6次混合均匀，使菌体裂解——加350ulBufferS3温和上下翻转12000离心10min——取上清液转移到专用的制备管（2ml）12000转离心1min，弃滤液——加500ulBufferW112000转离心1min，弃滤液——加500ulBufferW212000转离心1min，弃滤液，重复一遍——将制备管置回2ml离心管12000转离心1min——将制备管移入新的1.5ml离心管中，加60~80ulEluent或离子水，室温1min12000转离心1min——移去制备管，将有质粒的离心管于4℃或是-20℃保存
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="质粒dna和其他包装质粒共转染293t细胞产生病毒即病毒包装">质粒DNA和其他包装质粒共转染293T细胞产生病毒（即病毒包装）</h3>
+<h4 id="名词解释">名词解释</h4>
+<ul>
+<li>293T细胞是由293细胞派生, 表达SV40大T抗原的人肾上皮细胞系, 被广泛应用于瞬时转染以过表达各种目标蛋白, 或是用以包装病毒。</li>
+<li>脂质体：某些细胞质中的天然脂质小体，可作为生物膜，用于捕获外源性物质后更有效地运送到靶细胞，经同细胞融合而释放。</li>
+</ul>
+<h4 id="共转染的操作步骤">共转染的操作步骤</h4>
+<p>第一天：用无抗生素DMEM+10%FBS铺板293FT细胞，2ml/孔。确保第二天细胞密度达到80%-90%融合度 <br>
+第二天：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 500ul 无血清培养基稀释2ug 表达质粒+1.5ug psPAX2+1.5ug pMD2.G
+</span></span><span class="line"><span class="cl">2. 500ul 无血清培养基稀释15ul 脂质体2000
+</span></span><span class="line"><span class="cl">3. 5min后，将DNA溶液和脂质体溶液混合，室温静止20min
+</span></span><span class="line"><span class="cl">4. 从6孔板中吸出1ml无血清培养基，然后滴加入1ml质粒和脂质体混合物。
+</span></span><span class="line"><span class="cl">5. 6-10h后，移除含有DNA-脂质体复合物的培养基，代之以正常培养液DMED+10%FB（从此刻开始算时间）。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第三天：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.转染24h后，荧光显微镜下观察，转染效率应达到70%以上
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第四天：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.转染后48和72h分别收获含病毒的上清。
+</span></span><span class="line"><span class="cl">2.3000 rpm 离心20min，0.45um滤膜过滤，去除细胞沉淀。
+</span></span><span class="line"><span class="cl">3.12000转离心浓缩细胞、分装-80°C贮存。
+</span></span><span class="line"><span class="cl">4.滴度测定目的基因检定，并出具检测报告。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="病毒包装的原理">病毒包装的原理</h4>
+<p>质粒DNA为能转录出慢病毒遗传物质（RNA），但不能翻译出慢病毒的外壳及蛋白成分的载体质粒，其同时连有目的基因和报告基因，psPAX2为能表达慢病毒外壳的质粒，其表达产物可通过粘附机制更易穿过细胞膜， pMD2.G为慢病毒的膜蛋白质粒，通过 lipofectamine2000进行三质粒共转到靶细胞基因组中，宿主基因组在表达时，随宿主基因转录出的目的基因RNA与psPAX2、pMD2.G基因翻译出的蛋白组装为慢病毒。</p>
+<p>在上述程序中提及的“第四天”收集病毒。在第五天再用该病毒感染靶细胞，病毒进入细胞后，其遗传物质RNA反转录出DNA，该基因再整合到靶细胞的基因组中，完成转染过程，因为质粒DNA只能转录出病毒RNA和表达目的基因却不能表达出病毒的外壳和膜蛋白成分，因此其不能像普通的病毒一样在宿主细胞能反复增殖，故对宿主细胞是无害的并且高效的将目的基因转然到靶细胞基因组中。</p>
+<h3 id="慢病毒感染细胞">慢病毒感染细胞</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1）铺板：将对数生长期的细胞消化重悬后，按1*105/L密度接种于12孔板，生长过夜
+</span></span><span class="line"><span class="cl">2）感染：将70-80%铺满12孔板中的培养液吸除，换新鲜的培养液，同时加入PBS浓度梯度稀释的病毒液，混合均匀后即可放入孵箱培养。
+</span></span><span class="line"><span class="cl">3) 24h左右可换液，48小时即可看荧光，具体根据细胞状态来看。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="荧光显微镜的操作流程">荧光显微镜的操作流程</h4>
+<p>打开荧光器（30min内不能关闭，否则影响显微镜寿命），细胞培养板置于载物台，调节物镜和光圈，先用自然光观察视野内细胞，再关闭光，开启荧光通道，观察荧光强度，判定感染率。图片取样前可以调节曝光时间，增益值和彩色度使荧光照片最完美。（针对leica）</p>
+<h4 id="注意事项内容">注意事项内容</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.病毒浓度要适宜，太少的话细胞被感染的也少，但是病毒浓度太大，对细胞有伤害。
+</span></span><span class="line"><span class="cl">2.感染病毒时培养基量少，以保证病毒的浓度，在培养10h左右可根据培养基颜色加培养基。
+</span></span><span class="line"><span class="cl">3.在不明确细胞感染复数情况下，可进行浓度梯度感染，计算细胞感染复数。
+</span></span><span class="line"><span class="cl">4.在加病毒后一般24h左右可换液，48小时即可看荧光，具体时间根据细胞状态来看。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="感染后的细胞检测方法">感染后的细胞检测方法</h3>
+<h4 id="荧光初步检测">荧光初步检测</h4>
+<p>若有荧光，则表示病毒感染成功，但并不能确定目的基因是否整合到细胞中，待进一步检测，荧光有强弱之分，与病毒加入的量有关。</p>
+<h4 id="rna的提取及rt-pcr检测">RNA的提取及RT-PCR检测</h4>
+<ul>
+<li>原理</li>
+</ul>
+<p>因为真核细胞DNA含有很多非编码区，真核生物的DNA转录成为RNA之后，经过剪切和拼接，去掉这些非编码区，才能形成真正的mRNA，，是否表达真核生物的基因并表达相应的蛋白，只能通过提取其mRNA并RT-PCR这条途径来测定</p>
+<ul>
+<li>RNA提取步骤</li>
+</ul>
+<p>加1mlTrizol，吹打后移至1.5ml无菌的离心管中；加100ul氯仿剧烈振荡30s混匀，12000转15min，可看到明显分层；取上层透明液体至新的1.5ml离心管中，加等体积的异丙醇，混匀静置10min，12000转离心10min，弃上清，加1ml70%乙醇，12000转，离心10min，弃上清，风干剩余液体，最后加DEPC-水溶解RNA，电泳，粗步判定RNA纯度。</p>
+<ul>
+<li>RT-PCR步骤：</li>
+</ul>
+<p>RT是一个逆转录的过程，用前一天提取好的总RNA，在加入引物，模版和酶，并在PCR仪的温度设置下，RNA可逆转录为cDNA。
+PCR是cDNA在模版，引物，酶的作用下进行复制成双链DNA。（具体步骤省略）
+6.3蛋白提取及Western检测</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-74/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-74/" data-title="【bioinfo】-Q&amp;A-74" data-hashtags="AQ100,lentivirus,AAV"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-74/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-74/" data-title="【bioinfo】-Q&amp;A-74"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-74/" data-title="【bioinfo】-Q&amp;A-74"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-74/" data-title="【bioinfo】-Q&amp;A-74"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/lentivirus/">lentivirus</a>,&nbsp;<a href="/tags/aav/">AAV</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-73/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-73"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-73</a>
+            <a href="/bioinfo-q-a-75/" class="next" rel="next" title="【bioinfo】-Q&amp;A-75">【bioinfo】-Q&A-75<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

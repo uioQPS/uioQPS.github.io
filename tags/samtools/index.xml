@@ -1,0 +1,45 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>samtools - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/samtools/</link>
+        <description>samtools - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Feb 2020 15:32:59 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/samtools/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-28</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-28/</link>
+    <pubDate>Tue, 18 Feb 2020 15:32:59 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-28/</guid>
+    <description><![CDATA[第28题 如何使用samtools tview在命令行下对BAM文件进行可视化？ Hello 大家好！ 我们又见面了！
+今天我们来讨论一下，怎么在命令行模式下对BAM文件进行快速地比对信息，也就算是命令行模式下的一种可视化了，虽然这种可视化没啥图形~
+当然，如果你把BAM文件使用本地的工具也可以进行非常好的可是吧，比如使用IGV Tools。这个IGV Tools是一个我们最常用的可视化工具，我们在以后会进行详细地讨论，今天就只聊一聊命令行里这个的这个小工具—— samtools tview
+1. 一些基本概念 其实，我们之前已经在第22题提醒过大家使用samtools tview这个工具了。它可以sort好的BAM文件进行可视化，并提供随机访问功能。
+测试文件
+1 2  # SAM测试文件的baidu盘下载地址 链接：https://pan.baidu.com/s/15gVVYPRu3VbF_uKbJUUGrA 密码：2drn   什么叫随机访问呢？
+简单来说就是访问染色体任何1个位置的比对情况，速度差不多，而不受染色体先后顺序的影响。比如，我们比对时染色体是chr1，chr2，chr3…按顺序排列的，如果按顺序访问chr3的数据，就必须先读chr1，chr2的数据；而一点我们对BAM文件进行了sort，同时建立了BAM文件的index，那么就可以直接访问chr3的数据。
+BAM文件怎么排序及建立index？
+这个也很容易，使用samtools sort就好！我们在第22题的时候已经为大家简单介绍了。
+大家需要注意，samtools sort是可以按reads的名称或reads的mapping结果进行排序的，我们这里一定要注意，需要按照mapping的结果进行排序，也就是mapping到染色体5’端的reads在前，靠3’端的reads在后。
+在sort完以后，需要使用smtools index进行建立index，BAM index的名字为BAM文件名后加.bai
+1 2 3 4 5 6  # 对SAM文件转换成BAM文件 samtools view -hb ./test.sam &gt; test.bam # 对BAM文件按mapping结果进行排序 samtools sort -O BAM -T test_sort.bam.temp -o test_sort.bam test.bam # 对BAM文件建立index samtools index test_sort.bam test_sort.bam.bai   2.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-22</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-22/</link>
+    <pubDate>Tue, 18 Feb 2020 15:32:08 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-22/</guid>
+    <description><![CDATA[第22题 都有了SAM文件，为什么还需要BAM文件？ Hello 大家好！
+前面的若干问题，我们一直在围绕着SAM文件的记录格式做了详细地讨论，我相信大家通过我们的问题，跟随我们学习的思路已经掌握了SAM文件作为标准的比对格式的合理性以及相关特点。
+1. 背景介绍和数据下载 SAM文件不但记录了reads详细的mapping信息，还记录了reads的原始信息，内容很是全面。这样很好，但也存在很多问题：
+ 比如我的原始FASTQ文件是100G，那么我的SAM文件一定是大于100G的，也就是占用了更多空间； mapping的结果是没有排序，无论是按reads 的 name排序还是按在基因组上的位置排序，都没有。所以默认的SAM输出文件是乱序的，处理很不方便； mapping的结果不能进行随机访问，什么是随机访问呢？举个例子就是说对于一个SAM文件我不能快速地访问比如chr1 10000 - 200000 这个区域的所有reads 的mapping情况。  基于以上这3个问题，BAM文件就出现了，并且完美解决了上面3个问题。为了方便我们今天的展示和说明，我为大家准备了1个很小的SAM文件，大约只有4MB，请大家下载下来并完成我们的相关问题。
+1 2  # SAM测试文件的baidu盘下载地址 链接：https://pan.baidu.com/s/15gVVYPRu3VbF_uKbJUUGrA 密码：2drn   同时，我们今天要使用的工具是Linux下的samtools，请没有Linux的老铁去安装Linux（我们马上就会有教程出来）；请没有安装samtools软件的老铁使用conda安装需要软件，教程可以移步(用Anaconda快速搭建生物信息学分析平台)
+2. 思路讲解 BAM文件是SAM文件的一种压缩格式，也是最常用的一种比对结果的压缩格式。它一般可以将SAM文件压缩到只有原来的20~30%大小，并且使用非常方便。
+同时，对于BAM文件，我们一般还会进行排序，根据不同的需要，我们排序的方法一般有2种：第1种是按照mapping到的参考基因组的坐标上下游顺序来排序，是samtools的默认排序方法；第2种是按照reads name进行排序，需要增加一个-n参数。
+对于一个已经排序好的BAM文件，我们通常会建立索引文件，后缀名一般是在BAM文件名的后面多个“.bai“。有了BAM以及索引文件的出现，我们就可以随机访问任意一段染色体区域的BAM文件。
+3. 提出问题 那么我们今天的问题也很简单，就是使用samtools工具对我们的测试数据test.sam文件进行操作。具体要求如下：
+1. 使用samtools view 命令查看test.sam的header，请记录各条染色体的长度；同时告知这个test.sam文件是使用哪种mapping软件进行mapping的？
+1  看header中的@PG ID，显示使用的mapping软件是bowtie2，header中显示各条染⾊体的长度如下图:   2. 使用samtools view命令将test.sam文件转换成test.bam文件，并保留header区域，写出命令并记录test.sam，test.bam的文件大小。
+1 2 3 4  使用的命令如下:( -b:输出文件为bam格式; -h,输出中包含header信息) samtools view -b -h test.sam &gt; test.bam 结果显示test.sam⽂件大小是3.9M，而test.bam文件则是660K，bam⽂文件会小很多;   3.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>bismark - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/bismark/</link>
+        <description>bismark - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Feb 2020 21:40:50 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/bismark/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-66</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-66/</link>
+    <pubDate>Sat, 22 Feb 2020 21:40:50 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-66/</guid>
+    <description><![CDATA[bismark 识别甲基化位点-比对篇 bismark 软件根据序列的比对情况就可以识别甲基化位点，首先需要对基因组建立索引，建好索引之后，就可以开始比对了。
+我用的软件自带的单端测序的数据集进行测试， 命令如下
+1  bismark hg19_bismark_db/ test_data.fastq -o test   第一个参数为bismark_genome_preparation命令构建的基因组索引所在的目录，第二个参数为需要比对的序列， -o参数指定输出的目录
+bismark的参数很多，通常情况下，采用默认参数就好。其他参数全部默认的情况下：bismark 比对的过程分为以下几步：
+1 . 将输入序列进行C-&gt;T的转换 软件在运行过程中的log信息如下：
+1 2 3 4  Input file is in FastQ format Writing a C -&gt; T converted version of the input file test_data.fastq to test_data.fastq_C_to_T.fastq Created C -&gt; T converted version of the FastQ file test_data.fastq (10000 sequences in total) Input file is test_data.fastq_C_to_T.fastq (FastQ)   2 .]]></description>
+</item>
+</channel>
+</rss>

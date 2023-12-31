@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>HCC - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/hcc/</link>
+        <description>HCC - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Feb 2020 22:03:06 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/hcc/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-59</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-59/</link>
+    <pubDate>Fri, 21 Feb 2020 22:03:06 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-59/</guid>
+    <description><![CDATA[肝癌复发的CpG甲基化信号特征 杂志是 JOURNAL OF CLINICAL ONCOLOGY 影响因子26.303 ， 文章是 CpG Methylation Signature Predicts Recurrence in Early-Stage Hepatocellular Carcinoma: Results From a Multicenter Study
+1 2  LASSO, Least Absolute Shrinkage and Selector Operation; SVM-RFE, Support Vector Machine-Recursive Feature Elimination;   前面我们讲解了一篇2013年多组学数据探索乳腺癌细胞系药物敏感性使用的也是两个机器学习算法，不过是LS-SVM和RF，但是也有借鉴意义。
+课题设计 自己的450K甲基化芯片数据上传到了：GSE75041
+本项目共纳入 576 patients with Early-stage hepatocellular carcinoma (E-HCC) ，其中
+ 66 tumor samples were analyzed using the Illumina Methylation 450k Beadchip. internal cohort (n = 141) and two external cohorts (n = 191 and n =104).]]></description>
+</item>
+</channel>
+</rss>

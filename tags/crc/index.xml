@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>CRC - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/crc/</link>
+        <description>CRC - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 20 Feb 2020 19:42:50 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/crc/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-50</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-50/</link>
+    <pubDate>Thu, 20 Feb 2020 19:42:50 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-50/</guid>
+    <description><![CDATA[单细胞转录组探索CRC病人的一致性  Reference component analysis of single-cell transcriptomes elucidates cellular heterogeneity in human colorectal tumors. Nat Genet 2017 May;49(5):708-718. PMID: 28319088
+ 单细胞转录组，使用的是GPL11154Illumina HiSeq 2000 (Homo sapiens) ，数据都上传到了：GSE81861 ；BioProject：PRJNA323703；SRA：ERP016958
+既有病人的单细胞转录组数据，同时也有细胞系的数据做验证。
+ 1,591 single cells from 11 colorectal cancer patients，包括 969肿瘤部位细胞以及 622 癌旁细胞。严格过滤后只剩下：375 tumor cells and 215 normal mucosa cells -630 single cells from 7 cell lines，过滤后剩下561个 83 A549 cells, 65 H1437 cells, 55 HCT116 cells, 23 IMR90 cells, 96 K562 cells, 134 GM12878 cells (38 from batch 1, 96 from batch 2) 174 H1 cells (96 from batch 1, 78 from batch 2).]]></description>
+</item>
+</channel>
+</rss>

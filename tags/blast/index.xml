@@ -1,0 +1,57 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>blast - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/blast/</link>
+        <description>blast - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 17 Feb 2020 14:37:47 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/blast/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-15</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-15/</link>
+    <pubDate>Mon, 17 Feb 2020 14:37:47 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-15/</guid>
+    <description><![CDATA[第15题 知道了BLAST，可是你知道BLAT吗？ Hello大家好！ 我们又见面了！又是新的一周，又是元气满满的一天！
+今天我们讨论讨论低通量比对的最后一次问题，来为大家介绍一下BLAT。
+可能看到BLAT这个名字，你可能会懵逼，不是BLAST吗？怎么少了个S？？？我们来为大家解释一下这个问题。
+BLAST = Basic Local Alignment Search Tool；
+BLAT = BLAST-like alignment tool；
+从名字上，我们可以知道结论，BLAST是为了寻找1条SeqA的相似序列。一般输入的是1条FASTA序列，使用的参考序列是所有常见生物，包括微生物在内的非冗余数据库。特点是可以找到所有已知序列生物的相似序列。
+优点是全，缺点是有的时候输出冗余。
+比如，有时我只需要在某一种我想要的物种的基因组上进行快速的序列定位，结果BLAST却把所有的相似序列都找出来了。从时间上，还有从输出的冗余程度来说，这都不是最优解。所以BLAT工具应运而生！
+BLAT的功能，简单来说就是我有1条序列SeqA，我想知道SeqA在某一种基因组中的定位（比如human genome）的工具。
+在线的BLAT工具地址是Human BLAT Search；
+或者可以通过打开UCSC genome browser &ndash;&gt; tools &ndash;&gt; BLAT的方式打开；
+在UCSC genome browser中打开BLAT,点开BLAT以后的页面如下：
+第1行是你要选择的基因组的参数，比如我们这里常用的就是人的参考基因组hg19版本。
+下面的白框可以用来输入序列，用标准的FASTA格式就行。之后点submit就大功告成！
+我们今天的问题比较具体，也是我实际分析数据的时候遇到的1个问题。
+假设，我们有1个小RNA的测序结果，这些RNA的平均长度小于200bp；我们在比对到小RNA的序列库的候，发现有一个非常奇怪的现象。有2条miRNA的序列mapping到了非常多的reads数目，但是剩下的1800种miRNA总共才mapping到了10000条reads.
+1 2 3  &gt; 具体数目如下： hsa-mir-7641-2	2000000 hsa-mir-7641-1	50000   通过miRBase检索，我们得到序列如下：
+1 2 3 4  &gt;hsa-mir-7641-2 GUUUGAUCUCGGAAGCUAAGCAGGGUCGGGCCUGGUUAGUACUUGGAUGGGAG &gt;&gt;hsa-mir-7641-1 UCUCGUUUGAUCUCGGAAGCUAAGCAGGGUUGGGCCUGGUUAGUACUUGGAUGGGAAACUU   请尝试使用BLAT，Pairwise alignment等工具探索并解释原因。
+双序列比对（Pairwise alignment）请使用下面的工具：
+EMBOSS Water &lt; Pairwise Sequence Alignment &lt; EMBL-EBI]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-14</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-14/</link>
+    <pubDate>Mon, 17 Feb 2020 14:37:43 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-14/</guid>
+    <description><![CDATA[第14题 你应该知道的BLAST Hello,大家好！
+从第13问开始，我们开启了序列比对之旅。
+之前的第13题本质上是为了让大家学习双序列比对（pairwise alignment），接下来，我们不会去讲多序列比对（multiple alignment）的算法问题，因为多序列比对的不同算法各种各样，但很多时候的思路都是把多序列比对，分解成若干个双序列比对的问题，然后再进行最后的结果整合。所以，我们把pairwise alignment的原理与算法搞定了，就已经很OK了~
+今天我们带大家思考1个问题，就是为什么要开发BLAST算法？
+我们在第13问中学习到的是pairwise alignment的两种算法，全局比对算法与局部比对算法，无论哪种算法，得到的都是2条序列比对的最优解，当然某些时候最优解有可能有多个。那所有的序列比对问题是不是都可以用这种算法来解决了呢？ 我们来算这么1笔账。
+图1 常用的搜索核酸库里面大约有47M条序列
+假设我有1条序列 SeqA = 100bp（这个不是很长哟~），我想找到这条序列的相似序列。目前已知的非冗余核酸序列库，序列有47193206条，按平均长度在0.1Mbp左右。如果我们想要找到SeqA的相似序列，使用局部比对算法，那么至少就需要100bp × 0.1Mbp × 47193206条 次比较运算等于471930 × 10^9，现在服务器最快的CPU，单核心1秒可以大约运行3×10^9次，假设我们的服务器有20个核心，那么 ——
+完成任务大约需要的时间 = 471930 × 10^9 ÷ 3 × 10^9 ÷ 20 = 7860秒 大约是130分钟；
+如果我们的SeqA = 1000bp（这个也不是很长哟~ ）那么时间就变成了1300分钟；
+我们就为了找个相似性，就要花2个小时？这个肯定不划算吧？ 所以，有了这个需求以后，一帮大佬就搞出个优化算法叫BLAST（Basic Local Alignment Search Tool）把上面这个任务的运行时间缩短到了1分钟以内。
+我们今天的问题，也是请大家去观看北京大学-生物信息学导论里面的视频：
+生物信息学：导论与方法(北京大学) - BLAST
+在看完视频以后，请大家回答问题：
+1. BLAST提高搜索速度的核心算法的名称是什么？
+1  启发式算法   ​2. BLAST结果中 P-value 与 E-value分别是什么意思？P-value可以大于1吗？E-value可以大于1吗？
+1 2 3 4 5 6  在BLAST结果中每一条匹配序列都会有匹配的score值和E值; S值表示两序列的相似度，分值越高表明它们之间相似的程度越大; E值是可靠性的评价，它表明在随机的情况下出现这种相似度的序列的条数。 -------------------- S值越大越好，最大是100%; E值越小越好，注意E值有可能大于1!]]></description>
+</item>
+</channel>
+</rss>

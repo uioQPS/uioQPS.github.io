@@ -1,0 +1,108 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>FastQC - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/fastqc/</link>
+        <description>FastQC - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Feb 2020 15:17:13 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/fastqc/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-「11」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-11/</link>
+    <pubDate>Sun, 16 Feb 2020 15:17:13 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-11/</guid>
+    <description><![CDATA[第11题 使用cutadapt去除adapter Hello大家好！我们又见面了！
+通过前面的生物信息学10个基础问题，我相信大家对测序的基本原理，FASTA与FASTQ格式以及FastQC的质控报告都有了一个清楚的认识。那么接下来，我们就要进一步学习，学习如何把原始的FASTQ测序结果一步一步的准备成可以用来比对（mapping）的质控过后的FASTQ。
+我们知道，测序结果中可能会有若干条序列存在adapter的信息，而adapter的信息一般是不在基因组上存在的。所以，在比对之前如果不把adapter去干净，我相信你会得到1个非常非常低的mapping rate。
+img
+图1 RNA-Seq建库的结果，如果不去adapter接下来根本比对不上！
+通常情况下，**我们都是使用cutadapt这个软件进行adapter（接头）序列的去除。cutadapt这个软件不但支持单端序列，还支持双端序列的切除，同时还支持gz格式的自动压缩与解压缩。**1个常用的切除命令类似：
+1 2 3 4 5 6 7 8  # 在linux 命令行模式下 cutadapt -a ADAPTER_FWD -A ADAPTER_REV -o out.1.fastq -p out.2.fastq reads.1.fastq reads.2.fastq # -a是第1个文件的adapter序列 # -A是第2个文件的adapter序列 # -o是第1个输出文件 # -p是第2个输出文件 # reads.1.fastq 是第1个输入文件，也就是双端测序中的read-1 # reads.2.fastq 是第2个输入文件，也就是双端测序中的read-2   那么我们今天需要思考的问题，与切除adapter的具体内容有关。
+1. cutadapt中-a/-A 参数与-g/-G参数分别代表什么意思？Illumina测序过程中，一般不会用到哪个参数？
+1 2 3 4 5 6 7  -a 后⾯面跟⼀一段核苷酸序列列，代表单端测序中3&#39;端需要去掉的adapter; -A 代表双端测序中，read2的3&#39;端需要去掉的adapter; 注意:如果是双端测序数据，-a针对read1起作⽤用; -g 后⾯面也分别是⼀一段核苷酸序列列，代表单端测序中5&#39;端adapter序列列; -G 的⽤用法可以类⽐比-a/-A，是针对reads2的5&#39;端的adapter; 通常情况下，Illumina测序过程中5&#39;端不不会测出adapter序列列，所以-G/-g⼀一般不不会被⽤用到。   2.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「10」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-10/</link>
+    <pubDate>Sun, 16 Feb 2020 15:17:09 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-10/</guid>
+    <description><![CDATA[第10题 读懂FastQC报告之adapter与kmer Hello大家好！
+我们又见面了！今天是我们的FastQC中最后1次提问啦！今天，我们要聊得是adapter与kmer的问题。
+我们在第5题 测序建库的adapter 的时候讨论过adapter的问题，我们知道adapter的最主要的作用是为了能够与flowcell连接，方便进行桥式PCR。那么我们的fastq文件中到底含不含adapter呢？FastQC报告就能告诉我们。
+同时呢，我们今天还会讨论kmer的问题，相关的报告FastQC也会输出出来。
+Part I adapter部分
+img
+图 1-1 1个正常的adapter报告
+img
+图 1-2 1个RNA-Seq的adapter报告
+Part II kmer部分
+img
+图 2-1 正常的RNA-Seq建库kmer统计
+img
+图 2-2 加入random barcode的RNA-Seq建库kmer统计
+img
+图 2-3 kmer的统计显著性分析
+关于adapter的问题： 1. Illumina的通用adapter序列是什么？图1-1与图1-2中的各种不同颜色的图例是什么意思？
+1 2 3 4 5 6 7 8 9 10  Illumina Paired End Adapters(cannot be used for multiplexing) Top adapter 5&#39; ACACTCTTTCCCTACACGACGCTCTTCCGATC*T 3&#39; Bottom adapter 5&#39; P-GATCGGAAGAGCGGTTCAGCAGGAATGCCGAG 3&#39; **来源** http://bioinformatics.cvr.ac.uk/blog/illumina-adapter-and-primer-sequences/ 不同颜色的图例代表不同的测序通用的adapter； 如果在当时fastqc分析的时候-a选项没有内容，则默认使用图例中的通用adapter序列进行统计。   2.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「9」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-9/</link>
+    <pubDate>Sun, 16 Feb 2020 15:17:06 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-9/</guid>
+    <description><![CDATA[第9题 读懂FastQC报告中的duplicate问题 Hello大家好！
+我们又见面了！本周我们预计会把前10个问题提出来，结束我们的测序原理与FastQC部分。
+今天我们来详细聊聊duplicate问题。
+duplicate的产生主要是因为Illumina建库的过程中，一般会需要使用PCR来帮助扩增插入序列的浓度。
+在扩增的过程中，如果PCR扩增轮数过大，就会出现duplicate的问题，即产生一模一样的若干条序列。
+FastQC中“Sequence Duplication Levels”图是用来刻画duplicate情况的。
+img图1 duplicate结果图
+那么我们今天的问题如下：
+1. 图1中的横坐标是什么意思，纵坐标是什么意思？
+横坐标代表序列重复水平，纵坐标代表重复水平序列占所有序列的百分比
+2. 图1中的红线和蓝线分别代表什么意思？
+红线：代表去duplicate之后序列理论重复性分布（服从possion distribution或者binomial distribution）情况
+蓝线：代表全部的序列重复性分布情况
+3. 图1中的duplicate是全部序列的duplicate的情况吗？还是随机筛选了一部分？为什么要这样做？
+是选择的每一个文件里面前100, 000条序列作为样本进行的计算，因为样本本身很大，前100, 000已经能够代表样本的重复性。
+4. 如果让你写程序，判断1个fastq文件中duplicate的比例，你的大概思路是什么？
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  # Python风格的伪代码 # 第1步，对序列进行排序 sort the FASTQ file by the sequence, and names as sorted_file; # 第2步，对排序的序列统计是否为duplicate total_num = 1 duplication_num = 0 reads_1 = sorted_file.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「8」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-8/</link>
+    <pubDate>Sun, 16 Feb 2020 15:17:02 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-8/</guid>
+    <description><![CDATA[第8题 读懂FastQC报告 Part III Hello 大家好！ 我们又见面了！
+最近总搞FastQC报告的研读，是不是都看烦了？没关系，我们再搞最后2次，就进入下一个主题啦！昨天的问题中，我们告诉大家FastQC的报告中最重要的几张图都在下面用红框框出来了。今天我们来研读2张图。
+img
+第1张图是：Per sequence GC content
+img
+图1-1 human 全基因组测序FastQC 结果图
+img
+图1-2 human 全基因组测序FastQC 结果图
+第2张图是：Sequence Length Distribution
+img
+图2-1 刚下机以后的fastq数据进行FastQC 结果图
+相关的问题与思考：
+1. 图1-1 与 图1-2 中的横坐标是什么意思？ 纵坐标是什么意思？
+横轴是0-100%；纵轴是拥有相对GC含量的序列所对应的数量
+2. 图1-1中是human全基因组测序，结合昨天的问题，那么peak的中间大约应该在多少？
+上一次的问题中GC总体比例大约在42%左右，所以如果这是human全基因组测序，那么peak在横坐标对应42的位置比较好
+3. 图1-2与图1-1有哪些显著的不同？造成这些不同的原因有可能是什么？遇到这个问题，我们通常应该做些什么？
+图1-1有一个peak，并且与热力学理论值（蓝线）基本吻合 图1-2有两个peak，并且其中一个peak与蓝线相差很多，当红色的线出现双峰，基本上是混入了其他物种的DNA序列
+遇到这个问题，首先进行mapping，统计有多大比例reads map到了目标参考基因组上，如果比例非常低说明污染严重，数据不可用
+如果大部分reads都map成功，剩余一部分可以通过blast检查是混入了哪些污染物，过滤掉这些reads就可以，不影响后续的分析
+4. 图2-1的横坐标是什么意思？纵坐标是什么意思？
+横坐标代表序列长度，纵坐标代表长度为某一bp的序列所对应的数量
+5. 图2-1是刚下机的fastq数据进行FastQC 结果图，有什么特点？为什么会出现这样的结果？如果对刚下机的fastq数据进行cut adapter，图2-1还会是这样的结果吗？为什么？
+测序仪成功下机的数据都是整齐的一定长度的序列，比如最常用的illumina X Ten 是双端150bp；
+测序过程当中产生的不足150bp的序列在下机时已经被过滤掉了；
+如果进行cut adapter，序列的长度将不一致，因为reads中包含信息的insert的长度并不完全一致，150bp的测序长度是否已经包含了adapter的序列是未知的，因此cut adapter之后的reads长度不同
+（这里应该说的是3’ adapter）
+能力扩展题： 请想办法，计算Human genome 19（hg19）每一条染色体的GC含量。
+1 2 3 4 5 6 7 8 9  # 思路1 - UCSC或者Emble下载Human genome 19（hg19）染色体序列； - 直接把下载的序列使用FASTQQC检测序列“质量” - report中Sequence content across all bases会显示GC结果 # 思路2 - UCSC或Emble下载Human genome 19（hg19）染色体序列； - 写Python程序一次读取序列内容； - 统计每一条染色体的GC含量； - 具体的代码及方法可以参考知乎Live   ]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>SNV - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/snv/</link>
+        <description>SNV - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Feb 2020 22:03:10 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/snv/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-60</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-60/</link>
+    <pubDate>Fri, 21 Feb 2020 22:03:10 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-60/</guid>
+    <description><![CDATA[扫描探索基因全部区域SNV的功能影响 探索BRCA1基因全部可能的突变的功能 Accurate classification of BRCA1 variants with saturation genome editing 字面意思是探索了BRCA1基因上面的全部可能的突变位点的生物学意义，但事实上只是探索了96.5% of all possible single-nucleotide variants (SNVs) in 13 exons that encode functionally critical domains of BRCA1. 具体数目如下：
+不过这个方法的确是很大的创新，只不过工作量太大，如果想真正的全基因组全部位点都探索一遍。
+背景知识 BRCA1基因 BRCA1是一种人体肿瘤抑制基因，BRCA1失去功能的突变与易患早发型乳腺癌和卵巢癌有关。虽然已发现的BRCA1基因变异有数千种，但许多都被列为“意义未明的变异”，给患癌风险评估带来了巨大挑战。
+variants of uncertain significance (VUS) 基因突变源于细胞分裂，但是并不是所有的变异都与疾病有关，它们被分成“良性”、“可能良性”“不确定重要性的变异”、“可能致病”和“致病性的”。
+意义不明确的突变（即VUS），包括基因与以及发表的DNA基因有着不同序列的基因，并且既不能归入有害突变的类别、也不能归入无害突变的类别。
+VUS报告解读的难点首先就是VUS非常难以分类。这是因为：
+1 2  首先，是目前并无一致的报告内容和格式：有的报告了变异但是并无解释、有的使用了局部地区的指南。 其次，是我们需要更多的证据来帮助我们确定某些突变确实是与癌症相关的。   目前有2种实验方案来评价一个VUS，但是都太低效。
+细胞系HAP1 特殊的细胞系HAP1。在这种细胞系里，一旦BRCA1蛋白失去其应有的功能，细胞就会死亡。 基于此，美国华盛顿大学的Jay Shendure及同事运用基因组编辑技术，对BRCA1基因功能至关重要的13个外显子上的近4000种单核苷酸变异 的功能进行了评估，并在2000万个人类单倍体 HAP1 细胞中进行了后续细胞存活率测定 。
+saturation genome editing (SGE) 他们每次在2000万个细胞内，对一整段外显子进行基因编辑。随后，研究人员们先让这些细胞生长11天，再做后续的分析。如果由于某个特定突变导致BRCA1失去其功能，相应的细胞就会死亡，后续分析中也就更难找到这种特定突变的存在。
+RNA score Function score 作者的计算结果提供登记后的下载：https://sge.gs.washington.edu/BRCA1/ 计算方法如下：
+1 2 3  we first calculated the log2ratio of the frequency of a SNV on day 11 to its frequency in the plasmid library.]]></description>
+</item>
+</channel>
+</rss>

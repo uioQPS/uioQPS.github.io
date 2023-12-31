@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>PCR - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/pcr/</link>
+        <description>PCR - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Feb 2020 21:15:53 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/pcr/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-73</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-73/</link>
+    <pubDate>Sun, 23 Feb 2020 21:15:53 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-73/</guid>
+    <description><![CDATA[qPT-PCR原理是什么 RT-qPCR由普通PCR技术发展而来，它是在传统PCR反应体系中加入荧光化学物质（荧光染料或者荧光探针），根据各自不同的发光机制实时检测PCR退火、延伸过程中荧光信号变化来计算PCR每个循环中产物的变化量，目前最常见的方法为荧光染料法和探针法。
+荧光染料法 一些荧光染料如SYBR Green Ⅰ，PicoGreen，BEBO等，它们本身不发光，但结合于dsDNA的小沟后会发出荧光。所以当PCR反应刚开始时机器并不能检测到荧光信号，当反应进行到退火-延伸（二步法）或者延伸阶段（三步法），此时双链打开，在DNA聚合酶的作用下新链合成，荧光分子就结合于dsDNA的小沟中并发出荧光，随着PCR循环数的增加越来越多的染料与dsDNA结合，荧光信号也不断的增强。以SYBR Green Ⅰ为例。
+探针法 Taqman探针是最为常用的一种水解探针，在探针的5’端存在一个荧光基团，通常为FAM，探针本身则为一段与目的基因互补的序列，在探针的3’端有一个荧光猝灭基团，根据荧光共振能量转移原理(Förster resonance energy transfer， FRET)，当报告荧光基团（供体荧光分子）和猝灭荧光基团（受体荧光分子）激发光谱重叠且距离很近时（7-10nm），供体分子的激发可以诱发受体分子发荧光，而自身荧光减弱。所以PCR反应开始，探针游离于体系中完整存在时，报告荧光基团并不会发出荧光，当退火时，引物和探针结合于模板，在延伸阶段，聚合酶不断的合成新链，由于DNA聚合酶具有5’-3’核酸外切酶活性，到达探针时，DNA聚合酶就会将探针从模板上水解下来，报告荧光基团和猝灭荧光基团分开，释放荧光信号。由于探针和模板存在一对一的关系，所以在试验的精度和灵敏度上，探针法都要优于染料法。
+Fig 1 qRT-PCR原理
+引物设计 原则：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  引物应用核酸系列保守区内设计并具有特异性。最好用cDNA序列，mRNA序列也可，如果没有则找出DNA序列的cds区域设计。 做荧光定量产物长度80-150bp最好，最长是300bp，引物长度一般在17-25碱基之间,上下游引物不能相差太大。 G+C含量在40%~60%之间，45-55％最佳。 TM值在58-62度之间。 尽量避免引物二聚体和自二聚体，（不要出现超过4对连续互补的碱基）发卡结构，如果不可避免，使ΔG&lt;4.5kJ/mol* 如果不能确保反转录过程中gDNA已经除干净，最好设计出夸内含子的引物* 3′端不可修饰，而且要避开AT,GC rich的区域，避开T/C,A/G连续结构（2-3个） 引物与非特异性扩增序列的同源性最好小于70％或者有8个互补碱基同源。   1 2 3 4  数据库： CottonFGD search by keywords 引物设计： IDT-qPCR primer design   lncRNA引物设计 lncRNA： 和mRNA的步骤一致。
+miRNA： 茎环法原理：由于miRNA全部为23nt左右的短序列，无法进行直接PCR检测，所以使用了茎环序列这个工具，茎环序列是一段50nt左右单链DNA，可以自身形成发卡结构，3’末端可以设计成与miRNA部分片段互补的序列，那么在反转录时就可以将目的miRNA连接到茎环序列上，那么总长度就达到70bp，就符合qPCR确定的扩增产物的长度。加尾法miRNA引物设计。
+扩增特异性检测 Online blast database：CottonFGD blast by sequence similarity Local blast：参照用Blast+做本地blast，linux和macos可以直接建立本地数据库，win10系统需要安装ubuntu bash后也可以做。本地blast数据库建立及本地blast；win10开启ubuntu bash。 Notice：陆地棉海岛棉为四倍体作物，所以blast结果往往会是两个或多个匹配，以往经验以NAU的cds作为database进行blast很可能找到两个只有几个SNP差异的同源基因，通常通过引物设计是分不开这两个同源基因的，所以就将他们当做同一个来做，如果有明显的indel，通常把引物设计在indel上，但这样就可能导致引物的二级结构的自由能变高，导致扩增效率的下降，但这是不可避免的。]]></description>
+</item>
+</channel>
+</rss>

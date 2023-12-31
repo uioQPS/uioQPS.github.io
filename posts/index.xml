@@ -4,6 +4,83 @@
         <link>https://uioqps.github.io/posts/</link>
         <description>All Posts | Milky板板の博客</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 03 Dec 2023 22:55:28 &#43;0800</lastBuildDate><atom:link href="https://uioqps.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Structural insights into differences in G protein activation by family A and family B GPCRs</title>
+    <link>https://uioqps.github.io/classa-and-classb/</link>
+    <pubDate>Sat, 19 Mar 2022 13:13:12 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/classa-and-classb/</guid>
+    <description><![CDATA[A class和B class的GPCRs如何不同样激活G蛋白
+heterotrimeric guanine nucleotide–binding protein (G protein) 异源三聚体鸟苷酸结合蛋白
+GPCR激活hallmark： outward movement of the cytoplasmic end of transmembrane domain 6 (TM6)，opens up an intracellular cavity to accommodate the Gα subunit 在细胞质的TM6跨膜区会向外扩展，打开了一个细胞内的空腔来容纳Ga亚基。
+A/B GPCRs的差别：
+In family B GPCRs, TM6 shows a disruption of the helical fold and the formation of a sharp kink. This differs from the gradual bending in TM6 observed in family A GPCRs. Class B的TM6会有螺旋折叠的破坏和尖锐扭结的形成(需要更多的能量)，而class A的TM6仅仅只是逐渐弯曲。
+Class B的GPCR缺少class A有的保守的结构motif，conserved structural motifs and conformational switches.]]></description>
+</item>
+<item>
+    <title>GTPase-activating proteins (GAP) accelerate the GTP hydrolysis mediated by GTPases</title>
+    <link>https://uioqps.github.io/gtp-turnover-assay/</link>
+    <pubDate>Sat, 19 Mar 2022 13:13:12 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/gtp-turnover-assay/</guid>
+    <description><![CDATA[GTP酶激活蛋白加速GTP水解。 The GTPase cycle
+G蛋白激活需要结合上GTP。GPCR激活表现出GEF活性就是一个消耗GTP的过程。 在这个过程中加入ADP，会使没有被消耗的GTP转化为ATP。这是两个竞争性结合游离磷酸的过程。然后通过将ATP的信号转换为荧光信号进行检测。 也就是说，GTP消耗的越多，剩下的ATP就越少，检测的荧光越弱，说明GPCR的活性更高。
+GEFs help in loading of GDP-bound inactive GTPases(G protein) with GTP. The GEF buffer contains higher amounts of free Mg2+, and as a consequence, the nucleotide loading is catalyzed solely by GEFs.
+可以检测Intrinsic GTPase 、GAP-Stimulated GTPase、GAP Activity 、GEF Activity.
+GTPase/GAP Buffer: To perform a GAP activity assay, be sure to include the cognate GTPase.要进行 GAP 活性测定，请务必包含同源 GTPase。
+GEF Buffer: To perform a GEF activity assay, be sure to include the cognate GTPase and GAP.]]></description>
+</item>
+<item>
+    <title>M3 Muscarinic Acetylcholine Receptors Overview</title>
+    <link>https://uioqps.github.io/m3-muscarinic-acetylcholine-receptors-overview/</link>
+    <pubDate>Sat, 12 Mar 2022 12:00:36 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/m3-muscarinic-acetylcholine-receptors-overview/</guid>
+    <description><![CDATA[M3系列文章概览
+   M3R的结构特征/功能作用/G蛋白偶联特异性的决定       Receptor 药用靶标 G protein     M1 神经系统疾病（如阿尔茨海默病和精神分裂症）/学习、记忆和认知 Gq/11   M2 调节人体心率和许多中枢神经系统功能 Gi/o   M3 激活后受体磷酸化，募集b抑制蛋白能力受损 / 糖耐量受损伴随着M3受体介导的胰岛胰岛素释放降低 Gq/11   M4 神经系统疾病（如阿尔茨海默病和精神分裂症） /学习、记忆和认知 Gi/o    inverse agonist, tiotropium
+Positive allosteric modulators/正变构调节剂 (PAM)
+SAR, structure–activity relationship
+(Q)SAR 也是模型或数学关系（通常是统计相关性），它将与结构相关的特性与另一个感兴趣的特性或活动的存在或不存在或效力相关联。(Q)SAR最基本的数学形式是：
+活性 = f（物理化学或结构特性）  SARs 模型的开发需要三个组件：
+  为一组化学品（即因变量）提供活性（通常通过实验测量）的数据集。这组化学品通常由一些选择标准定义。因变量通常是可监测活性。
+  同一组化学品的结构标准或与结构相关的特性数据集（即自变量）。自变量通常是结构属性。
+  关联这两个数据数组的方法（通常是统计分析方法）。将结构与活动联系起来的方法范围从简单的线性回归，到更复杂的方法（例如偏最小二乘分析），再到最复杂的机器学习技术（例如神经网络）。]]></description>
+</item>
+<item>
+    <title>M3-muscarinic receptor promotes insulin release via receptor phosphorylation/arrestin-dependent activation of protein kinase D1</title>
+    <link>https://uioqps.github.io/m3-help-insulin/</link>
+    <pubDate>Sat, 19 Mar 2022 13:13:12 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/m3-help-insulin/</guid>
+    <description><![CDATA[PKD1（protein kinase C-like serine/threonine kinase）  胰岛上表达的M3-毒蕈碱受体通过受体磷酸化/抑制蛋白依赖性信号传导调节葡萄糖稳态。这个过程以蛋白激酶D1的激活为中心，该激酶在β-抑制蛋白募集到磷酸化的M3-毒蕈碱受体的下游起作用。
+M3-毒蕈碱受体在激动剂占据后被一系列蛋白激酶快速磷酸化，这些蛋白激酶包括 GPCR 激酶 (GRK) 家族成员，以及酪蛋白激酶 1α 和蛋白激酶 CK2 。
+受体磷酸化会调节 glucose-dependent insulin release from pancreatic islets, a response that is known to be augmented by para-sympathetic pathways （副交感神经通路）acting on M3-muscarinic receptors expressed on pancreatic β-cells。
+Characterization of a Phosphorylation-Deficient Mutant M3-Muscarinic Receptor. 通过同位素[32P]orthophosphate检测磷酸化，发现磷酸化缺陷小鼠b-arrestin降低，但是不影响Gq响应Ca2+增加。
+乙酰甲胆碱刺激的 [3H] 肌醇磷酸形成在M3敲除的小鼠中完全不存在。M3R-KI (Knock In)小鼠胰岛的乙酰甲胆碱刺激产生与野生型胰岛观察到的相似的反应.
+M3-Muscarinic Receptor Phosphorylation Regulates Insulin Release from Isolated Pancreatic Islets. M3受体的磷酸化调控胰岛的胰岛素释放。
+Disrupted Coupling of the M3-Muscarinic Receptor to PKD1 Underlies the Deficiency in Insulin Release in M3R-KI Mice.]]></description>
+</item>
+<item>
+    <title>b-arrestin overview</title>
+    <link>https://uioqps.github.io/barr/</link>
+    <pubDate>Sat, 19 Mar 2022 13:13:12 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/barr/</guid>
+    <description><![CDATA[Abbreviations
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  cAMP cyclic adenosine monophosphate GPCRs G protein-coupled receptors GRK G protein-coupled receptor kinase ICL intracellular loop Nb32 nanobody 32 Nb35 nanobody 35 TM transmembrane helix V2R vasopressin receptor type 2 V2T V2R tail β2AR β2 adrenergic receptor βarr beta-arrestin   2017- Muscarinic receptor regulates extracellular signal regulated kinase by two modes of arrestin binding 毒蕈碱乙酰胆碱受体通过两种arrestin结合的方式调节细胞外信号调节激酶 Arrestin既可以在GPCR蛋白激酶磷酸化后触发脱敏和内吞作用，也可以招募和调节细胞外信号调节激酶（ERK）级联的活性。]]></description>
+</item>
+<item>
+    <title>sdAb panning</title>
+    <link>https://uioqps.github.io/functional-sdab-panning/</link>
+    <pubDate>Tue, 26 Apr 2022 13:13:12 &#43;0800</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/functional-sdab-panning/</guid>
+    <description><![CDATA[高通量筛选G蛋白偶联受体的功能性抗体 combining glycosylphosphatidylinositol-anchored antibody cell display with β-arrestin recruitment-based cell sorting and screening.将糖基磷脂酰肌醇锚定抗体细胞展示与基于 β-arrestin 募集的细胞分选和筛选相结合。
+抗体基因型与表型；GPI 和 GPCR 在脂筏中的共定位促进了 GPI 锚定抗体与 GPCR 靶点的相互作用
+免疫抗体库中鉴定出一组针对人类 apelin 受体的抗体拮抗剂和抗体激动剂来验证该方法。 相比之下，噬菌体展示仅从相同的库中获得了中性结合剂和抗体拮抗剂
+1 2 3 4 5  sdAb GPI-anchored sdAb library (1 × 108 cells） apelin 13: 100nM 激动剂 460nm 530nm代表 产物/substrate：越低越好   1、APJ PathHunter assay 阳性clone的可溶性sdAbs有抑制剂活性
+2、PathHunter β-arrestin reporter assay 不适合筛选表面抗体的细胞文库，洗完之后没有fluorescent substrate for the reporter enzyme nor the product resides in the cells]]></description>
+</item>
+<item>
     <title>Vue</title>
     <link>https://uioqps.github.io/vue/</link>
     <pubDate>Sun, 03 Dec 2023 22:55:28 &#43;0800</pubDate>
@@ -51,92 +128,6 @@ Array slice reverse push pop shift unshift //数组有这些方法 //console.log
     <author>Milky</author>
     <guid>https://uioqps.github.io/%E9%97%AD%E5%8C%85%E5%87%BD%E6%95%B0/</guid>
     <description><![CDATA[闭包函数怎么写（函数内部的函数） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  document.addEventListener(&#34;mouseup&#34;, mouseUpHandler); return { cancel: function(){ elem.removeEventListener(&#34;mousedown&#34;, mouseDownHandler); document.removeEventListener(&#34;mousemove&#34;, mouseMoveHandler); document.removeEventListener(&#34;mouseup&#34;, mouseUpHandler); } }; btn.onclick = function(){ $(&#34;orderinfo&#34;).getElementsByTagName(&#34;tbody&#34;)[0].removeChild(row); }; return{ getsum:function(){ return amount; } }   闭包函数怎么调用 1 2 3 4 5 6 7 8 9 10 11 12 13  var draggables = {}; function enableDrag(id){ if (!draggables[id]) { draggables[id] = dragInit($(id)); } } function disableDrag(id) { if (!]]></description>
-</item>
-<item>
-    <title>JS对象和方法</title>
-    <link>https://uioqps.github.io/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</link>
-    <pubDate>Fri, 18 Aug 2023 12:52:57 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://uioqps.github.io/js%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/</guid>
-    <description><![CDATA[对象
-document
-方法
-getElementById()
-变量
-var userInfo = document.getElementById(&ldquo;userInfo&rdquo;)
-函数
-function addrow(){}
-事件绑定
-td4.innerHTML = &ldquo;删除&rdquo;
-a标签绑定了按钮事件
-A example var row = document.createElement(&ldquo;tr&rdquo;);
-var td1 = document.createElement(&ldquo;td&rdquo;);
-row.appendChild(td1);
-tr类型能增加td类型的子元素
- 申明一个变量；通过一个找/新建id的方法
-var userInfo = document.getElementById(&ldquo;userInfo&rdquo;);
-var row = document.createElement(&ldquo;tr&rdquo;); 给变量赋值；通过获取id/变量名的值
-td_unitprice.innerHTML= $(&ldquo;productunitprice&rdquo;).value; 把变量加入父级
-row.appendChild(td_id);  表的结构 table有不同的tag：tbody；
-tbody属于数组，类似于tr；
-tr标签的对象有appendchild的方法增加td元素。
-$(&ldquo;orderinfo&rdquo;).getElementsByTagName(&ldquo;tbody&rdquo;)[0].appendChild(row[a]);
-绑定事件 1 2 3  myButton.onclick = function(){ $(&#34;orderinfo&#34;).getElementsByTagName(&#34;tbody&#34;)[0].removeChild(row); };   ]]></description>
-</item>
-<item>
-    <title>JS的作用域和构造函数</title>
-    <link>https://uioqps.github.io/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
-    <pubDate>Fri, 11 Aug 2023 10:26:28 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://uioqps.github.io/js%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</guid>
-    <description><![CDATA[作用域 顶级作用域 &gt; test内部执行期间作用域 &gt; 返回的新函数对象执行期间的作用域(abcd)
-1 2 3 4 5 6 7 8 9 10 11 12 13  var abc = 1234; // 顶级作用域 function test(){ // test内部执行期间作用域 var t1 = &#34;11111111111111&#34;; var abcd = &#34;hello world&#34;; return function (){ // 返回的新函数对象执行期间的作用域 console.log(abcd); console.log(t1); }; }   闭包 指定函数的作用域以及函数与其周围状态（变量、函数等）之间的关系。 闭包是指一个函数可以访问其声明时的词法作用域，即使在它被调用的时候，它的外部作用域已经不再存在。
-Abstract  封装数据和行为： 通过闭包，可以创建私有变量和函数，只有内部函数能够访问，从而实现数据的封装和隐藏。 模块化编程： 闭包可以帮助创建独立的模块，避免全局命名冲突，同时允许公开只需要暴露的接口。 回调函数和事件处理程序： 在异步编程中，闭包可以用来保存状态和数据，确保在回调函数中访问正确的数据。 实现函数工厂： 通过闭包，可以动态生成具有不同初始值或行为的函数。   ]]></description>
-</item>
-<item>
-    <title>JS的变量和变量提升</title>
-    <link>https://uioqps.github.io/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
-    <pubDate>Fri, 11 Aug 2023 10:24:17 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://uioqps.github.io/js%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
-    <description><![CDATA[JavaScript 简介   JavaScript是一种运行在浏览器中的解释型的编程语言。在Web世界里，只有JavaScript能跨平台、跨浏览器驱动网页，与用户交互。
-  JavaScript代码放到&lt;head&gt;中
-  1 2 3 4 5  &lt;head&gt; &lt;script&gt; alert(&#39;Hello, world&#39;); &lt;/script&gt; &lt;/head&gt;   JavaScript可以对DOM树进行增查删改的操作，对doument对象，方法进行操作。  1  .getElementbyId()   嵌入式JS  1  &lt;button onclick=&#34; JS code&#34;&gt;&lt;/button&gt;   完成事件绑定
-变量  js里面变量声明规则，变量只能以_或者英文字母开头，后面可以包括数字英文下划线 javascript 里面对象描述是{开头}结尾的，然后是一堆一堆的key value值 key值如果不带引号就按变量声明规则规则处理，如果带引号，只要是合法字符串就可以  1 2 3 4 5 6 7 8 9 10 11 12  var a = { aaa: 1234, 12_34_555_1: &#34;qqqq&#34;, &#34;aaa-+bbb&#34;: &#34;qqqqq&#34;, bbb: &#34;wwwww&#34;, eee: function() { console.]]></description>
-</item>
-<item>
-    <title>前端问题清单</title>
-    <link>https://uioqps.github.io/%E5%89%8D%E7%AB%AF%E9%97%AE%E9%A2%98%E6%B8%85%E5%8D%95/</link>
-    <pubDate>Fri, 28 Jul 2023 10:39:49 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://uioqps.github.io/%E5%89%8D%E7%AB%AF%E9%97%AE%E9%A2%98%E6%B8%85%E5%8D%95/</guid>
-    <description><![CDATA[布局相关  margin-top:5px 上边距 a标签的文字居中？ a标签如果是内联元素，内联元素在一个块级元素内部怎么垂直居中：改变父元素行高line-height写成和父元素的高度一样，它内部的内联元素垂直方向上就剧中了。 z-index 在z轴上的层级，数大的排在数小的上面,页面上有很多绝对定位的窗口，都可能互相覆盖，谁在上面，谁在下面，就靠z-index排序.
-z-index的排序是根据父级走。relative absolute fixed都可以用z-index，默认的static静态定位不能用z-index，static不涉及元素重叠。 &lt;ul&gt;和&lt;li&gt; 可以用来写目录&lt;ul&gt;相当于一个列表,&lt;li&gt;指定样式。  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  .submenu_container, .menu_wrapper { padding: 0px; margin: 0px; cursor: pointer; } .menu { float: left; position: relative; width: 20%; height: 64px; line-height: 64px; margin: 0px; padding: 0px; list-style: none; color: #eee; text-align: center; }   样式相关  https://icons.mydrivers.com/2020/www/icon_2020.png 这种图标怎么找到定位？ 怎么实现下拉菜单？ Abstract   js]]></description>
-</item>
-<item>
-    <title>父元素塌陷问题</title>
-    <link>https://uioqps.github.io/%E7%88%B6%E5%85%83%E7%B4%A0%E5%A1%8C%E9%99%B7%E9%97%AE%E9%A2%98/</link>
-    <pubDate>Thu, 27 Jul 2023 21:38:11 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://uioqps.github.io/%E7%88%B6%E5%85%83%E7%B4%A0%E5%A1%8C%E9%99%B7%E9%97%AE%E9%A2%98/</guid>
-    <description><![CDATA[float导致的父元素高度塌陷 在文档流中，当父元素的高度设置为自适应的时候（height：auto），此时父元素的高度默认会被子元素撑开。但是当为我们子元素设置浮动（float）以后，子元素就会完全脱离文档流，导致子元素无法撑开父元素高度的情况出现。
-流式布局 一种等比例缩放布局方式，在CSS代码中使用百分比来设置宽度，也称百分比自适应的布局。 可以保证当前屏幕分辨率发生改变的时候，页面中的元素大小也可以跟着改变，所以流式布局是移动端开发常用的一种布局。
-浮动布局 元素的水平方向浮动，意味着元素只能左右移动而不能上下移动。
-一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。
-浮动元素之后的元素将围绕它。
-浮动元素之前的元素将不会受到影响。
-如果图像是右浮动，下面的文本流将环绕在它左边：
- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118  &lt;!]]></description>
-</item>
-<item>
-    <title>一个俄罗斯方块的js代码</title>
-    <link>https://uioqps.github.io/%E4%B8%80%E4%B8%AA%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E7%9A%84js%E4%BB%A3%E7%A0%81/</link>
-    <pubDate>Mon, 03 Jul 2023 21:50:51 &#43;0800</pubDate>
-    <author>Milky</author>
-    <guid>https://uioqps.github.io/%E4%B8%80%E4%B8%AA%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E7%9A%84js%E4%BB%A3%E7%A0%81/</guid>
-    <description><![CDATA[定义initGame函数 初始化stack的二维数组 根据键盘判断左右移动方向 设置pause变量 调用游戏开始函数
-定义endGame函数 timer
-定义runGame函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  if (!currentBlock) { if (stack[3][9]) { endGame(); return; } currentBlock = [4, 10]; redraw(); return; } if (canMove(currentBlock)) { moveDown(currentBlock); } else { stack[currentBlock[0] - 1][currentBlock[1] - 1] = true; currentBlock = null; } checkClear(); redraw();   定义canMove函数 1 2 3 4 5 6 7 8 9 10 11 12  var can; var max; for (var i = 0; i &lt; stack[currentBlock[0] - 1].]]></description>
 </item>
 </channel>
 </rss>

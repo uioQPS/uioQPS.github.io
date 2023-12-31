@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ncg - Category - Milky板板の博客</title>
+        <link>https://uioqps.github.io/categories/ncg/</link>
+        <description>ncg - Category - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Feb 2020 21:01:52 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/categories/ncg/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-86</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-86/</link>
+    <pubDate>Mon, 24 Feb 2020 21:01:52 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-86/</guid>
+    <description><![CDATA[组蛋白修饰通过促成相分离来调节染色质区室化 基因组被封闭在一个膜结合的细胞器中，即细胞核，以便更好地控制遗传信息流。在细胞核内，基因组被进一步调控形成很多区室或区域，这些区室或区域在调节基因表达时起重要作用。从它们的一些特征判断，这些动态实体区室类似于无膜细胞器。许多在染色质区室化中起作用的蛋白质具有LLPS的固有能力。这些包括之前关于植物中ADCP1的研究，其他还有HP1α，HP1a，CBX2。基于这些观察结果，有人已经提出染色质区室化是通过LLPS形成的。但是之前的研究都无法解释为什么无法自身或与DNA发生相分离的HP1β和HP1γ是如何行使类似的功能，以及组成型异染色质的形成是否受到人缘的三种HP1蛋白通过形成多价复合体与其识别的H3K9me3通过LLPS调节。
+李丕龙和李海涛课题组合作证明在试管中，H3K9me3修饰与识别其修饰的HP1染色质结构域Chromodomain(CD)的多价态相互作用可导致异染色质的形成。作者使用了两种多价HP1-CD复合体（SUV39H1/HP1, TRIM28/HP1）以及人源细胞核提取物重点染色质片段（NE）、体外重组具有H3K9me3修饰的核小体串（NA）作为实验体系。几条证据表明这些液滴的形成是由于LLPS介导形成的。由此产生的液滴让人联想到异染色质的动态行为，以及对生化调节和突变表型的反应。作者得出结论，多价H3K9me3/CD相互作用驱动形成的LLPS是细胞中异染色质形成的关键作用力。综上所述，提出了组蛋白标记通过促进LLPS来调节染色体区室化的一般机制。
+核小体串上的H3K9me3与HP1复合体的CD的多价相互作用介导的液-液相分离促进异染色质区室的形成]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>duplicate - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/duplicate/</link>
+        <description>duplicate - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Feb 2020 15:17:06 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/duplicate/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-「9」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-9/</link>
+    <pubDate>Sun, 16 Feb 2020 15:17:06 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-9/</guid>
+    <description><![CDATA[第9题 读懂FastQC报告中的duplicate问题 Hello大家好！
+我们又见面了！本周我们预计会把前10个问题提出来，结束我们的测序原理与FastQC部分。
+今天我们来详细聊聊duplicate问题。
+duplicate的产生主要是因为Illumina建库的过程中，一般会需要使用PCR来帮助扩增插入序列的浓度。
+在扩增的过程中，如果PCR扩增轮数过大，就会出现duplicate的问题，即产生一模一样的若干条序列。
+FastQC中“Sequence Duplication Levels”图是用来刻画duplicate情况的。
+img图1 duplicate结果图
+那么我们今天的问题如下：
+1. 图1中的横坐标是什么意思，纵坐标是什么意思？
+横坐标代表序列重复水平，纵坐标代表重复水平序列占所有序列的百分比
+2. 图1中的红线和蓝线分别代表什么意思？
+红线：代表去duplicate之后序列理论重复性分布（服从possion distribution或者binomial distribution）情况
+蓝线：代表全部的序列重复性分布情况
+3. 图1中的duplicate是全部序列的duplicate的情况吗？还是随机筛选了一部分？为什么要这样做？
+是选择的每一个文件里面前100, 000条序列作为样本进行的计算，因为样本本身很大，前100, 000已经能够代表样本的重复性。
+4. 如果让你写程序，判断1个fastq文件中duplicate的比例，你的大概思路是什么？
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  # Python风格的伪代码 # 第1步，对序列进行排序 sort the FASTQ file by the sequence, and names as sorted_file; # 第2步，对排序的序列统计是否为duplicate total_num = 1 duplication_num = 0 reads_1 = sorted_file.]]></description>
+</item>
+</channel>
+</rss>

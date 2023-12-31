@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>PDAC - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/pdac/</link>
+        <description>PDAC - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Feb 2020 22:02:41 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/pdac/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-52</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-52/</link>
+    <pubDate>Fri, 21 Feb 2020 22:02:41 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-52/</guid>
+    <description><![CDATA[PDAC-organoids 胰腺癌的类器官可以辅佐治疗决策 PDAC背景知识 胰腺癌生长快而且转移率高，是一种非常致命的恶性疾病。2016年美国癌症协会的数据显示，胰腺癌患者的5年生存率在7-8%之间。虽然手术可以根治这种疾病，但胰腺癌在确诊时只有10–20%是可切除的，其它患者只能接受化疗。
+2月8日在Nature Communications上发表的GWAS研究纳入了21,536人，发现位于人类染色体1（位置1p36.33）、7（位置7p12）、8（位置8q21.11）、17（位置17q12）和18（位置18q21.32）上的新鉴定的遗传变异可增加胰腺癌风险。这些基因组中每个拷贝的存在都会增加胰腺癌风险15％-25％。
+关于胰腺癌发生的缘起假说目前主要集中在两个学说，一个是最早由肿瘤遗传学传奇人物Alfred G Knudson提出的肿瘤的“二次打击学说”，其后由诸多胰腺癌研究领域的科学家完善并确定提出的“Kras-CDKN2A-P53-SMAD4”成次序改变和逐步积累的描述胰腺肿瘤由PanINs发展至PDAC的学说体系。自此，古老的基于病理形态的学科体系与新型的基于基因分子生物分型的学科体系变得不再各自孤立：近20年间的系列研究在胰腺癌中比较有代表性地强调了胰腺癌病理形态改变和分子生物学改变的平行相关性。而2017年的一项来自dana farber和哈弗医学院的最新研究更是在356例胰腺癌样本中较为全面和完整地的探索四个关键驱动基因改变与胰腺癌预后的相关性（四大驱动基因中，KRAS和CDKN2A与临床预后紧密相关；与此同时，驱动基因的突变个数越多，预后越差）
+TCGA数据分析PDAC分成两个大类：
+ The Basal-like, Squamous or Quasi-mesenchymal, subtype identifies PDAC patients with poor prognosis and is characterized by basal markers such as cytokeratins. The Classical or Pancreatic Progenitor subtype is characterized by differentiated ductal markers and identifies patients with a better prognosis.  实验设计 本研究是从PDAC病人的肿瘤部分取样做3D培养：
+总共是138个病人，里面取了 159个样品，包括 primary tumors (hT) metastases (hM)
+ 78 个样本是specimens were isolated from surgical resections 60 个样本是fine needle biopsies of primary or metastatic lesions (hF) 20个样本是 metastatic disease following rapid autopsies 1个样本是a video-assisted thoracoscopic surgical (VATS) resection of a lung metastasis.]]></description>
+</item>
+</channel>
+</rss>

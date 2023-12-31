@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>phase separation - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/phase-separation/</link>
+        <description>phase separation - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Feb 2020 21:01:52 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/phase-separation/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-86</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-86/</link>
+    <pubDate>Mon, 24 Feb 2020 21:01:52 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-86/</guid>
+    <description><![CDATA[组蛋白修饰通过促成相分离来调节染色质区室化 基因组被封闭在一个膜结合的细胞器中，即细胞核，以便更好地控制遗传信息流。在细胞核内，基因组被进一步调控形成很多区室或区域，这些区室或区域在调节基因表达时起重要作用。从它们的一些特征判断，这些动态实体区室类似于无膜细胞器。许多在染色质区室化中起作用的蛋白质具有LLPS的固有能力。这些包括之前关于植物中ADCP1的研究，其他还有HP1α，HP1a，CBX2。基于这些观察结果，有人已经提出染色质区室化是通过LLPS形成的。但是之前的研究都无法解释为什么无法自身或与DNA发生相分离的HP1β和HP1γ是如何行使类似的功能，以及组成型异染色质的形成是否受到人缘的三种HP1蛋白通过形成多价复合体与其识别的H3K9me3通过LLPS调节。
+李丕龙和李海涛课题组合作证明在试管中，H3K9me3修饰与识别其修饰的HP1染色质结构域Chromodomain(CD)的多价态相互作用可导致异染色质的形成。作者使用了两种多价HP1-CD复合体（SUV39H1/HP1, TRIM28/HP1）以及人源细胞核提取物重点染色质片段（NE）、体外重组具有H3K9me3修饰的核小体串（NA）作为实验体系。几条证据表明这些液滴的形成是由于LLPS介导形成的。由此产生的液滴让人联想到异染色质的动态行为，以及对生化调节和突变表型的反应。作者得出结论，多价H3K9me3/CD相互作用驱动形成的LLPS是细胞中异染色质形成的关键作用力。综上所述，提出了组蛋白标记通过促进LLPS来调节染色体区室化的一般机制。
+核小体串上的H3K9me3与HP1复合体的CD的多价相互作用介导的液-液相分离促进异染色质区室的形成]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-71</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-71/</link>
+    <pubDate>Sun, 23 Feb 2020 21:15:43 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-71/</guid>
+    <description><![CDATA[相分离是什么？ 描述的是一种细胞里不同成分间相互碰撞、融合形成液滴，从而使一些成分被包裹在液滴内，一些成分被阻隔在液滴外的现象，类似于水油相混，或者可以想象成下雨天伞上的雨滴逐渐滴落的过程。这种现象在液体之间是常见的，但是，2009年，Brangwynne和Hyman关于线虫P颗粒的研究，发现P颗粒（一种蛋白质）并非像我们通常认为的是一种固体，而是像液滴一样，相互碰撞融合，剧烈摇晃后会分散成很小的液滴，而后又很快地融合形成大液滴。之后科学家发现细胞内的许多无膜细胞器——核仁、Cajal bodies、stress granules、miRISC，及突触的细胞骨架——都是特定的蛋白质/RNA的相变。
+细胞内的相分离： 人们认为细胞内成分能够通过“相分离”的方式相互分开，实现多种生物学功能。“相分离”一旦发生异常，就可能造成疾病。
+ 蛋白质或RNA分子间的物理作用力可以使他们相互分开或聚集。一旦分子达到一定浓度，他们就会发生相分离，相似的成分聚集在一起加速生物学反应（有点类似于相似相容），或者隔离无关的分子。 细胞膜上的信号传递 在神经细胞中，细胞间的信号传递时蛋白质能够在连接处的聚集和相分离是保证细胞间信号传递正常进行所必需的。 DNA折叠包装 在细胞核中，相分离帮助压缩折叠不使用的DNA并抑制其活性。一些可能与转录相关的蛋白被阻隔在外。 液滴成为障碍 在肌萎缩性脊髓侧索硬化症中，分离成液滴的蛋白质会逐渐凝结，变硬，形成有害的固体物质。   2. 发展历史、现状和趋势 德克萨斯大学西南医学院的结构生物学家 Michael Rosen 和生物化学家Steven McKnight在实验的试管中发现RNA和蛋白质分子间存在较弱的作用力，彼此相互靠近，形成液滴类的物质。加拿大多伦多儿童医院的结构生物学家Julie Forman-Kay团队发现，一种可能影响精子功能的蛋白质在人体细胞内形成液滴。已有多项研究发现动物蛋白质存在相分离现象。
+2018年的现状
+不完全统计（需要补充），2018年CNS上已发表十几篇文章。
+ 其中3月份Nature上发表了一篇文章介绍了相分离领域的发展历史和研究进展（https://www.nature.com/articles/d41586-018-03070-2）。 4月份，Cell上一次性发表了4篇文章还有一篇评论文章，介绍了对称或非对称精氨酸二甲基化做为翻译后修饰和核转运蛋白做为分子伴侣抑制FUS蛋白等RNA结合蛋白（RBP）的相关的“相变”（FUS全称为Fused in sarcoma，是一种渐动人症ALS中关键致病蛋白，也是一种RNA结合蛋白）。   DOI:https://doi.org/10.1016/j.cell.2018.03.056 DOI:https://doi.org/10.1016/j.cell.2018.03.003 DOI:https://doi.org/10.1016/j.cell.2018.03.002 DOI:https://doi.org/10.1016/j.cell.2018.03.004
+  6月份，Cell上发表了一篇综述，详细地介绍了相分离的概念，在无膜器官的形成、信号转导、细胞骨架、超分子组装等生物过程中扮演的功能。  1  DOI: https://doi.org/10.1016/j.tcb.2018.02.004    7月份Sience上发表了3篇文章和1篇评论介绍了相分离与转录调控。  1 2 3 4  DOI: http://dx.doi.org/10.1126/science.aar3958 DOI: http://dx.doi.org/10.1126/science.aar2555 DOI: 10.1126/science.aar4199 DOI: 10.1126/science.aau4795    12月份Cell上又发表了一篇文章介绍了转录因子通过液-液相分离激活基因表达实现其功能。  1  https://doi.]]></description>
+</item>
+</channel>
+</rss>

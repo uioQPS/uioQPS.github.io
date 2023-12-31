@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-23 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-23" />
+<meta property="og:description" content="第23题 转录组的比对与基因组的比对有何不同？ Hello大家好！我们今天又见面了！
+我们通过前期的22个问题，从数据的简单质控，到测序数据的mapping，再到mapping后的SAM文件都有了一个比较清楚的认识。那么说了半天的mapping问题，一直都是在以DNA进行举例，RNA的比对我们都还没有谈。那么今天我们就来简单谈谈RNA序列的mapping，尤其是真核生物的RNA序列比对。
+1. RNA与DNA结构的不同 一般来说，DNA的mapping比较容易，因为DNA在基因上是连续的，直接回贴到基因组就可以找到相应的定位。
+就比如我们常用的Whole Genome Sequence（WGS）即全基因组测序；
+或者是我们所说的ChIP-Seq即染色体免疫共沉淀测序都是直接对DNA进行建库测序，其测序结果都是FASTQ文件，直接用bowtie2，bwa比对到基因组就可以拿到标准的SAM文件。
+但是RNA就不一样了，真核生物的RNA需要经过复杂的加工过程。在细胞中RNA层面的调控至少可以分成2个大的阶段
+  co-transcription（转录的同时）
+  post-transcription（转录以后）
+  其中的调控机制也有很多。
+对我们mapping影响最大的因素是：真核生物转录出来的初步的mRNA都是带有intron（内含子）的，随后都需要在co-transcription（转录的同时） 或post-transcription（转录以后）阶段通过：
+  alternative splicing（可变剪切）剪切掉intron；
+  polyA尾巴；
+  加5’的帽子结构。
+  这3个步骤，将不成熟的mRNA变为最终成熟的mRNA再转运出核，行使功能。
+图1 通过可变剪切同1个基因可以形成多种蛋白（https://en.wikipedia.org/wiki/Alternative_splicing）
+而我们在进行RNA-Seq建库的时候，一般情况下都是使用oligo dT针对带polyA尾巴的成熟mRNA进行富集，然后再进行反转录获得cDNA，之后再使用cDNA进行建库测序。所以，我们最终得到的测序结果是与成熟mRNA序列保持一致的，只包含了exon的序列。
+而exon在基因中间是有intron分割的，因此在回贴回基因组的时候，回遇到跨越intron的reads回贴。所以这个问题不能使用原来针对DNA的mapping策略进行mapping。
+2. RNA比对的常用软件 目前大家最常用的转录组比对软件有下面几个：
+ tophat2，应用最广泛的比对软件，但是速度很慢，已经基本被淘汰了，大约需要4~5G内存就能运行； hisat2，tophat2的原班人马搞得新一代转录组比对软件，比对速度大大提高，我强烈推荐，大约需要4~5G内存就能运行； STAR，非常适合于大量数据的并行计算，速度非常快，对于同时有参考基因组和参考转录组的物种，比对的准确率很高，不过index很大，至少需要30G以上内存才能运行。  3. 提出问题 问题1： 如果你有一套标准的polyA捕获得到的RNA-Seq测序数据，对reads进行了前处理工作与质量控制工作，但是你的比对策略为：先尝试mapping，把能mapping到基因组上的reads都先mapping；然后把不能进行mapping的reads进行一定规则的拆分，再进行第二轮mapping，从而解决跨intron区域的问题（以上为tophat的mapping策略）。请问，这样mapping的最大问题是什么？（提示，需要知道一些假基因的概念！）
+1 2 3  先解释一下假基因，假基因（Pseudogenes）是指一类染色体上的基因片段。假基因的序列通常与对应的基因相似，但至少是丧失了一部分功能，基因不能表达或其编码的蛋白质没有功能； 这种基因在基因组上的分布非常普遍，那么在假基因普遍存在的情况下上述比对策略就会受到假基因的干扰，会有很多基因比对到假基因上   问题2： 在human中，是不是所有的蛋白基因（protein coding gene）都含有intron？
+1  并不是，SRY基因是人体Y染色体上的一段基因，该基因是决定男性睾丸发育的主要基因，存在于Y染色体的短臂末端上，该基因只有一个exon   问题3： 在human中，是不是所有的蛋白基因的成熟mRNA都有polyA尾巴？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-23/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-18T15:32:16+00:00" />
+<meta property="article:modified_time" content="2020-02-18T15:32:16+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-23"/>
+<meta name="twitter:description" content="第23题 转录组的比对与基因组的比对有何不同？ Hello大家好！我们今天又见面了！
+我们通过前期的22个问题，从数据的简单质控，到测序数据的mapping，再到mapping后的SAM文件都有了一个比较清楚的认识。那么说了半天的mapping问题，一直都是在以DNA进行举例，RNA的比对我们都还没有谈。那么今天我们就来简单谈谈RNA序列的mapping，尤其是真核生物的RNA序列比对。
+1. RNA与DNA结构的不同 一般来说，DNA的mapping比较容易，因为DNA在基因上是连续的，直接回贴到基因组就可以找到相应的定位。
+就比如我们常用的Whole Genome Sequence（WGS）即全基因组测序；
+或者是我们所说的ChIP-Seq即染色体免疫共沉淀测序都是直接对DNA进行建库测序，其测序结果都是FASTQ文件，直接用bowtie2，bwa比对到基因组就可以拿到标准的SAM文件。
+但是RNA就不一样了，真核生物的RNA需要经过复杂的加工过程。在细胞中RNA层面的调控至少可以分成2个大的阶段
+  co-transcription（转录的同时）
+  post-transcription（转录以后）
+  其中的调控机制也有很多。
+对我们mapping影响最大的因素是：真核生物转录出来的初步的mRNA都是带有intron（内含子）的，随后都需要在co-transcription（转录的同时） 或post-transcription（转录以后）阶段通过：
+  alternative splicing（可变剪切）剪切掉intron；
+  polyA尾巴；
+  加5’的帽子结构。
+  这3个步骤，将不成熟的mRNA变为最终成熟的mRNA再转运出核，行使功能。
+图1 通过可变剪切同1个基因可以形成多种蛋白（https://en.wikipedia.org/wiki/Alternative_splicing）
+而我们在进行RNA-Seq建库的时候，一般情况下都是使用oligo dT针对带polyA尾巴的成熟mRNA进行富集，然后再进行反转录获得cDNA，之后再使用cDNA进行建库测序。所以，我们最终得到的测序结果是与成熟mRNA序列保持一致的，只包含了exon的序列。
+而exon在基因中间是有intron分割的，因此在回贴回基因组的时候，回遇到跨越intron的reads回贴。所以这个问题不能使用原来针对DNA的mapping策略进行mapping。
+2. RNA比对的常用软件 目前大家最常用的转录组比对软件有下面几个：
+ tophat2，应用最广泛的比对软件，但是速度很慢，已经基本被淘汰了，大约需要4~5G内存就能运行； hisat2，tophat2的原班人马搞得新一代转录组比对软件，比对速度大大提高，我强烈推荐，大约需要4~5G内存就能运行； STAR，非常适合于大量数据的并行计算，速度非常快，对于同时有参考基因组和参考转录组的物种，比对的准确率很高，不过index很大，至少需要30G以上内存才能运行。  3. 提出问题 问题1： 如果你有一套标准的polyA捕获得到的RNA-Seq测序数据，对reads进行了前处理工作与质量控制工作，但是你的比对策略为：先尝试mapping，把能mapping到基因组上的reads都先mapping；然后把不能进行mapping的reads进行一定规则的拆分，再进行第二轮mapping，从而解决跨intron区域的问题（以上为tophat的mapping策略）。请问，这样mapping的最大问题是什么？（提示，需要知道一些假基因的概念！）
+1 2 3  先解释一下假基因，假基因（Pseudogenes）是指一类染色体上的基因片段。假基因的序列通常与对应的基因相似，但至少是丧失了一部分功能，基因不能表达或其编码的蛋白质没有功能； 这种基因在基因组上的分布非常普遍，那么在假基因普遍存在的情况下上述比对策略就会受到假基因的干扰，会有很多基因比对到假基因上   问题2： 在human中，是不是所有的蛋白基因（protein coding gene）都含有intron？
+1  并不是，SRY基因是人体Y染色体上的一段基因，该基因是决定男性睾丸发育的主要基因，存在于Y染色体的短臂末端上，该基因只有一个exon   问题3： 在human中，是不是所有的蛋白基因的成熟mRNA都有polyA尾巴？"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-23/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-22/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-24/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-23",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-23\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, mapping","wordcount":  51 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-23\/","datePublished": "2020-02-18T15:32:16+00:00","dateModified": "2020-02-18T15:32:16+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-23</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-18">2020-02-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;51 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-23/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-23">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第23题-转录组的比对与基因组的比对有何不同">第23题 转录组的比对与基因组的比对有何不同？</a>
+      <ul>
+        <li><a href="#1-rna与dna结构的不同">1. RNA与DNA结构的不同</a></li>
+        <li><a href="#2-rna比对的常用软件">2. RNA比对的常用软件</a></li>
+        <li><a href="#3-提出问题">3. 提出问题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="第23题-转录组的比对与基因组的比对有何不同">第23题 转录组的比对与基因组的比对有何不同？</h2>
+<p>Hello大家好！我们今天又见面了！</p>
+<p>我们通过前期的22个问题，从数据的简单质控，到测序数据的mapping，再到mapping后的SAM文件都有了一个比较清楚的认识。那么说了半天的mapping问题，一直都是在以DNA进行举例，RNA的比对我们都还没有谈。那么今天我们就来简单谈谈RNA序列的mapping，尤其是真核生物的RNA序列比对。</p>
+<h3 id="1-rna与dna结构的不同">1. RNA与DNA结构的不同</h3>
+<p>一般来说，DNA的mapping比较容易，因为DNA在基因上是连续的，直接回贴到基因组就可以找到相应的定位。</p>
+<p>就比如我们常用的<strong>Whole Genome Sequence（WGS）即全基因组测序</strong>；</p>
+<p>或者是我们所说的<strong>ChIP-Seq即染色体免疫共沉淀测序</strong>都是直接对DNA进行建库测序，其测序结果都是FASTQ文件，直接用<strong>bowtie2，bwa比对到基因组就可以拿到标准的SAM文件</strong>。</p>
+<p>但是RNA就不一样了，真核生物的RNA需要经过复杂的加工过程。在细胞中RNA层面的调控至少可以分成2个大的阶段</p>
+<ul>
+<li>
+<p>co-transcription（转录的同时）</p>
+</li>
+<li>
+<p>post-transcription（转录以后）</p>
+</li>
+</ul>
+<p>其中的调控机制也有很多。</p>
+<p>对我们mapping影响最大的因素是：<strong>真核生物转录出来的初步的mRNA都是带有intron（内含子）的</strong>，随后都需要在co-transcription（转录的同时） 或post-transcription（转录以后）阶段通过：</p>
+<ol>
+<li>
+<p>alternative splicing（可变剪切）剪切掉intron；</p>
+</li>
+<li>
+<p>polyA尾巴；</p>
+</li>
+<li>
+<p>加5’的帽子结构。</p>
+</li>
+</ol>
+<p>这3个步骤，将不成熟的mRNA变为最终成熟的mRNA再转运出核，行使功能。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="1.jpg"
+        data-srcset="1.jpg, 1.jpg 1.5x, 1.jpg 2x"
+        data-sizes="auto"
+        alt="1.jpg"
+        title="1.jpg" />
+图1 通过可变剪切同1个基因可以形成多种蛋白（https://en.wikipedia.org/wiki/Alternative_splicing）</p>
+<p>而我们在进行RNA-Seq建库的时候，一般情况下都是使用<strong>oligo dT针对带polyA尾巴的成熟mRNA进行富集，然后再进行反转录获得cDNA，之后再使用cDNA进行建库测序</strong>。所以，我们最终得到的测序结果是与成熟mRNA序列保持一致的，只包含了<strong>exon的序列</strong>。</p>
+<p>而exon在基因中间是有intron分割的，因此在<strong>回贴回基因组的时候，回遇到跨越intron的reads回贴</strong>。所以这个问题不能使用原来针对DNA的mapping策略进行mapping。</p>
+<h3 id="2-rna比对的常用软件">2. RNA比对的常用软件</h3>
+<p>目前大家最常用的转录组比对软件有下面几个：</p>
+<ol>
+<li>tophat2，应用最广泛的比对软件，但是速度很慢，已经基本被淘汰了，大约需要4~5G内存就能运行；</li>
+<li>hisat2，tophat2的原班人马搞得新一代转录组比对软件，<strong>比对速度大大提高，我强烈推荐，大约需要4~5G内存就能运行；</strong></li>
+<li>STAR，非常适合于<strong>大量数据的并行计算，速度非常快，对于同时有参考基因组和参考转录组的物种，比对的准确率很高，不过index很大，至少需要30G以上内存才能运行。</strong></li>
+</ol>
+<h3 id="3-提出问题">3. 提出问题</h3>
+<p><strong>问题1：</strong>
+如果你有一套标准的polyA捕获得到的RNA-Seq测序数据，对reads进行了前处理工作与质量控制工作，但是你的比对策略为：先尝试mapping，把能mapping到基因组上的reads都先mapping；然后把不能进行mapping的reads进行一定规则的拆分，再进行第二轮mapping，从而解决跨intron区域的问题（以上为tophat的mapping策略）。请问，这样mapping的最大问题是什么？（提示，需要知道一些假基因的概念！）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">先解释一下假基因，假基因（Pseudogenes）是指一类染色体上的基因片段。假基因的序列通常与对应的基因相似，但至少是丧失了一部分功能，基因不能表达或其编码的蛋白质没有功能；
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">这种基因在基因组上的分布非常普遍，那么在假基因普遍存在的情况下上述比对策略就会受到假基因的干扰，会有很多基因比对到假基因上
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>问题2：
+在human中，是不是所有的蛋白基因（protein coding gene）都含有intron？</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">并不是，SRY基因是人体Y染色体上的一段基因，该基因是决定男性睾丸发育的主要基因，存在于Y染色体的短臂末端上，该基因只有一个exon
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="2.png"
+        data-srcset="2.png, 2.png 1.5x, 2.png 2x"
+        data-sizes="auto"
+        alt="2.png"
+        title="2.png" /></p>
+<p><strong>问题3：
+在human中，是不是所有的蛋白基因的成熟mRNA都有polyA尾巴？</strong></p>
+<p>并不是，组蛋白mRNA末端就没有polyA尾巴</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-23/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-23/" data-title="【bioinfo】-Q&amp;A-23" data-hashtags="AQ100,mapping"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-23/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-23/" data-title="【bioinfo】-Q&amp;A-23"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-23/" data-title="【bioinfo】-Q&amp;A-23"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-23/" data-title="【bioinfo】-Q&amp;A-23"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/mapping/">mapping</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-22/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-22"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-22</a>
+            <a href="/bioinfo-q-a-24/" class="next" rel="next" title="【bioinfo】-Q&amp;A-24">【bioinfo】-Q&A-24<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

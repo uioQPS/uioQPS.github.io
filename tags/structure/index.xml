@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>structure - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/structure/</link>
+        <description>structure - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Feb 2020 21:01:37 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/structure/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-82</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-82/</link>
+    <pubDate>Mon, 24 Feb 2020 21:01:37 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-82/</guid>
+    <description><![CDATA[高性能磁标签：溶液与细胞内蛋白质三维结构测定、动态变化与作用研究的生物顺磁共振  Site-specific tagging of proteins with paramagnetic ions for determination of protein structures in solution and in cells
+ 在Acc. Chem. Res.上总结了近10年生物体系的磁标签与蛋白质定点标记方法的发展，及其应用于生物磁共振（核磁共振和电子自旋共振）测定蛋白质三维结构、动态变化与细胞内行为。 如何获取顺磁信息 蛋白质的三维结构、动态变化与相互作用是化学生物学和结构生物学研究中的重要内容，如何在细胞内环境下发展高分辨率方法阐述大分子作用机制与功能关系是迄需解决的重要问题。核磁共振和电子自旋共振分辨从原子核和电子层次上提供大分子的细微结构信息，发展高效的生物磁共振技术是了解细胞内环境下大分子运动机制的重要手段之一。核磁共振中的顺磁效应早期应用于复杂有机分子的谱学分析，随后逐渐应用到结构生物学和化学生物学研究领域中。核磁共振常用的顺磁效应有顺磁弛豫增强（paramagnetic relaxation enhancement, PRE）、赝接触位移（pseudocontact shift, PCS）和残余偶极耦合（residual dipolar coupling, RDC），这些信息都是研究生物大分子的重要结构约束条件。由于大部分生物大分子中不包含顺磁中心，因此获取顺磁信息需要对蛋白质进行定点修饰。核磁共振能提供原子分辨的蛋白质结构与作用信息，应用于生物磁共振研究的蛋白质定点修饰反应需要严格控制修饰的化学反应选择性和特异性并且同时保持蛋白质稳定的三维结构与活性。最近发展的双电子自旋共振（DEER）在测定大分子间作用过程中的距离变化，特别是细胞内行为，为精细大分子作用机制提供了重要研究手段，而DEER测定的关键是依靠高性能的顺磁标记物或顺磁探针；核磁共振中的顺磁效应同样依靠高性能的顺磁标签。因此发展温和、高产率的蛋白质定点顺磁标记方法是目前生物顺磁共振研究的重要内容。
+蛋白质定点顺磁标记中探针质量评价与顺磁效应分析 作者首先讨论了生物体系中通常应用到的顺磁性物质，论述并评价了自由基、过渡金属离子和稀土离子的适用性并提出稀土离子应用到细胞内生物磁共振（包括NMR和EPR）研究中的优越性，这是由于多数稀土三价阳离子的氧化还原稳定性、化学性质的类似性和多样的磁各向异性。随后根据多年的研究经验，作者系统论述了发展高质量顺磁探针应考虑的一些重要因素如金属螯合探针结合顺磁中心的稳定性、刚性、静电荷和疏水性以及探针与蛋白连接的稳定性和刚性，并系统论述了三种PRE、RDC和PCS之间的关系（图2）。由于顺磁效应的高灵敏性，作者特别强调了生物核磁中利用顺磁效应作为结构和动力学判据研究生物大分子体系该注意的一般问题。 通过蛋白质定点顺磁标记测定溶液中不稳定、低含量酶催化中间体的三维结构方法。
+通过PCS测定活细胞内蛋白质三维结构 已建立的位点特异性标记方法和新开发的顺磁探针的基础上，作者从真实的酶催化反应体系、活细胞和细胞内等几个事例说明了顺磁标记蛋白质在生物体系中的具体应用。1）作者通过定点顺磁标记方法以PCS为结构约束条件测定了真实反应体系中低含量（&lt; 30 μM）、不稳定（半衰期 &lt; 3 h） 酶催化中间体的三维结构（图3）。2）作者实现了以PCS为主要结构约束条件测定活细胞内蛋白质三维结构，该工作说明稳定顺磁标记探针在细胞内研究生物大分子结构与作用的实用性并提出PCS是细胞内蛋白质结构与动态分析的重要性结构约束条件（图4）。 由于顺磁核磁和电子自旋共振都借助于顺磁物质的特性，该课题组提出以生物核磁优化顺磁探针并应用到双电子自旋共振（DEER）测定中。作者证实生物核磁优化的刚性顺磁探针可以通过DEER测量获得高分辨的窄距离信息（图5）。该课题组通过发展高性能顺磁探针并成功应用到细胞内蛋白质的DEER测量中。 NMR研究中的刚性顺磁探针应用于EPR DEER测量中的高分辨距离信息
+虽然已有多种顺磁探针报道，但是由于生物体系的复杂性，单一顺磁探针并不能简单适用于众多生物体系，作者建议应用多种顺磁探针并比较顺磁效应。
+作者阐述了顺磁共振包括NMR和EPR在研究生物大分子体系的高度互补性并在原位条件下以原子分辨率水平研究生物大分子中的优势，并提出发展生物相容性定点标记蛋白质的挑战与机遇。]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-81</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-81/</link>
+    <pubDate>Mon, 24 Feb 2020 21:01:31 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-81/</guid>
+    <description><![CDATA[molecular replacement是什么？ 分子置换（MR）是一种定相方法，它使用与晶体中的成分相关或同源的已知结构形式的先验信息。 由于MR不需要其他实验程序或数据，并且可以简化模型的构建，因此，当有合适的搜索模型时，MR通常是确定结构的首选方法。
+Steps in structure solution with molecular replacement Model selection 合适的模型的结构通常是通过同源性搜索找到的（例如对于合理的近亲使用NCBI Blast或对于更远的亲属使用HHpred），并且可以通过与靶序列的序列同一性来表征。
+使用分子替代品的主要限制是需要适当相似的搜索模型。 尽管没有确切的规则，但是序列同一性和MR成功之间的关系大致如下：
+1 2 3 4 5  Better than 40% identity: usually easy, unless large conformational changes are involved. 30-40%: MR usually possible, but sometimes more difficult. 20-30%: MR usually difficult if at all possible, careful model search and preparation required. Less than 20%: MR unlikely to work, but MR-Rosetta can help in marginal cases.]]></description>
+</item>
+</channel>
+</rss>

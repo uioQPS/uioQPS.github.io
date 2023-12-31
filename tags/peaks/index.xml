@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>peaks - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/peaks/</link>
+        <description>peaks - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Feb 2020 21:40:59 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/peaks/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-67</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-67/</link>
+    <pubDate>Sat, 22 Feb 2020 21:40:59 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-67/</guid>
+    <description><![CDATA[鉴定可重复的Peaks ATAC-Seq/ChIP-Seq通常需要2个会更多的生物学重复（十分珍贵或者稀有样本除外，但必须做至少2次技术重复）。理论上重复样本的peaks应该有高度的一致性，实际情况并不完全与预期一致。如何评价重复样本的重复性的好坏？如何得到一致性的peaks?这里介绍两种方法：
+ 用Bedtools进行简单的overlap合并重复样本 IDR（Irreproducibility Discovery Rate）的方法获得高重复性的peaks  1. Overlapping peaks using bedtools 如何得到两个重复样本间一致性的peaks? 一种简单粗暴的方法就是用bedtools计算peaks的overlaps。
+用法：
+1 2 3 4 5  bedtools intersect [OPTIONS] -a &lt;bed/gff/vcf/bam&gt; -b &lt;bed/gff/vcf/bam&gt; -a: 参数后加重复样本1（A） -b：参数后加重复样本2（B），也可以加多个样本   其他常用参数解释和图解如下：
+1 2 3 4 5  -wo：Write the original A and B entries plus the number of base pairs of overlap between the two features. -wa：Write the original entry in A for each overlap. -v：Only report those entries in A that have no overlaps with B   如果只有-a和-b参数，返回的是相对于A的overlaps。加上参数-wo返回A和B原始的记录加上overlap的记录。参数-wa返回每个overlap中A的原始记录。]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>API - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/api/</link>
+        <description>API - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Feb 2020 21:40:42 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/api/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-65</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-65/</link>
+    <pubDate>Sat, 22 Feb 2020 21:40:42 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-65/</guid>
+    <description><![CDATA[数据库网站 API 知多少 API API 这个词在大多数人看来可能和 CNS 差不多，前者天天听说就是用不上，后者天天读就是发不了。
+不过，通过今天的一个简短介绍，今后 API 这个东西你就用上了，因为在文章最后我将会展示一个最最基础且高频的 API 使用示例。
+所谓 API(Application Programming Interface) 就是应用程序接口。这个应用程序可以类比于手机和电脑，这个接口就类似于数据线，如果我们想用数据线把东西在两个设备之前传输，就需要两者可以接受彼此的传输协议。
+对一个应用程序来说，如果你想快速的和它交换数据，也需要采用应用程序可以识别的规则。对于一些成熟的应用程序和网站来说，通常都会提供自己的一套API供开发者友好的使用，一方面可以大大扩展应用程序的生态环境，另一方面也可以避免暴力的爬虫。
+我们通过下图的「印象笔记 API」为例，如果你使用过印象笔记（Evernote）的话，会发现大量第三方应用都可以支持绑定印象笔记账户进行各种创建笔记推送笔记等操作。这里不是印象笔记去适配第三方应用，而是它提供了一个完善的 API，可以供其他开发者来使用。
+REST API API 之后还有一个概念是 REST API。 REST(Representational State Transfer) 的中文翻译一般是「表现层状态转化」（这也太抽象了吧），这个架构是 Roy Thomas Fielding 在2000年的毕业论文里提到的，他同时还是HTTP协议（1.0版和1.1版）的主要设计者、Apache服务器软件的作者之一、Apache基金会的第一任主席。
+关于究竟什么是「表现层状态转化」这里就跳过了，因为不跳过你也不会看（我也解释不清楚）。只需要了解，符合 REST 设计风格的 Web API 称为 RESTful API，有如下几个要点：
+ 资源地址：URI，比如：http://example.com/resources。 传输的资源：Web服务接受与返回的互联网媒体类型，比如JSON，XML，YAML等。 对资源的操作：Web服务在该资源上所支持的一系列请求方法，比如：POST，GET，PUT 或 DELETE。  常用数据库 API NCBI NCBI 是啥就不介绍了，如果太多的功能没用过 PubMed 应该怎么也用过。在 NCBI 的开发文档中，有一个部分专门是讲 API 的。
+NCBI 提供的 API 如下图所示，如果需要可以去看看。 EMBL-EBI EMBL-EBI 来自于欧洲，里面有很多很多数据库都是我们日常会使用的，只是你可以还不知道它们和 EBI 有关系的，例如存放了大量基因组及相关数据的 Ensembl ，包括大量蛋白序列和功能信息的数据库 UniPort，当然还有还有不逊色与 pubmed 的文献数据库 Europe PMC。]]></description>
+</item>
+</channel>
+</rss>

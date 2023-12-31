@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-50 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-50" />
+<meta property="og:description" content="单细胞转录组探索CRC病人的一致性  Reference component analysis of single-cell transcriptomes elucidates cellular heterogeneity in human colorectal tumors. Nat Genet 2017 May;49(5):708-718. PMID: 28319088
+ 单细胞转录组，使用的是GPL11154Illumina HiSeq 2000 (Homo sapiens) ，数据都上传到了：GSE81861 ；BioProject：PRJNA323703；SRA：ERP016958
+既有病人的单细胞转录组数据，同时也有细胞系的数据做验证。
+ 1,591 single cells from 11 colorectal cancer patients，包括 969肿瘤部位细胞以及 622 癌旁细胞。严格过滤后只剩下：375 tumor cells and 215 normal mucosa cells -630 single cells from 7 cell lines，过滤后剩下561个 83 A549 cells, 65 H1437 cells, 55 HCT116 cells, 23 IMR90 cells, 96 K562 cells, 134 GM12878 cells (38 from batch 1, 96 from batch 2) 174 H1 cells (96 from batch 1, 78 from batch 2)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-50/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-20T19:42:50+00:00" />
+<meta property="article:modified_time" content="2020-02-20T19:42:50+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-50"/>
+<meta name="twitter:description" content="单细胞转录组探索CRC病人的一致性  Reference component analysis of single-cell transcriptomes elucidates cellular heterogeneity in human colorectal tumors. Nat Genet 2017 May;49(5):708-718. PMID: 28319088
+ 单细胞转录组，使用的是GPL11154Illumina HiSeq 2000 (Homo sapiens) ，数据都上传到了：GSE81861 ；BioProject：PRJNA323703；SRA：ERP016958
+既有病人的单细胞转录组数据，同时也有细胞系的数据做验证。
+ 1,591 single cells from 11 colorectal cancer patients，包括 969肿瘤部位细胞以及 622 癌旁细胞。严格过滤后只剩下：375 tumor cells and 215 normal mucosa cells -630 single cells from 7 cell lines，过滤后剩下561个 83 A549 cells, 65 H1437 cells, 55 HCT116 cells, 23 IMR90 cells, 96 K562 cells, 134 GM12878 cells (38 from batch 1, 96 from batch 2) 174 H1 cells (96 from batch 1, 78 from batch 2)."/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-50/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-49/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-51/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-50",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-50\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, CRC, sc","wordcount":  311 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-50\/","datePublished": "2020-02-20T19:42:50+00:00","dateModified": "2020-02-20T19:42:50+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-50</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/cg/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>cg</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-20">2020-02-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;311 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/bioinfo-q-a-50/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-50">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#单细胞转录组探索crc病人的一致性">单细胞转录组探索CRC病人的一致性</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#背景知识">背景知识</a></li>
+            <li><a href="#根据细胞系单细胞表达数据探索算法">根据细胞系单细胞表达数据探索算法</a></li>
+            <li><a href="#单细胞过滤策略">单细胞过滤策略</a></li>
+            <li><a href="#rca算法细节">RCA算法细节</a></li>
+            <li><a href="#需要了解一些细胞类型的-known-markers">需要了解一些细胞类型的 known markers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="单细胞转录组探索crc病人的一致性">单细胞转录组探索CRC病人的一致性</h2>
+<blockquote>
+<p>Reference component analysis of single-cell transcriptomes elucidates cellular heterogeneity in human colorectal tumors. Nat Genet 2017 May;49(5):708-718. PMID: 28319088</p>
+</blockquote>
+<p>单细胞转录组，使用的是GPL11154Illumina HiSeq 2000 (Homo sapiens) ，数据都上传到了：GSE81861 ；BioProject：PRJNA323703；SRA：ERP016958</p>
+<p>既有病人的单细胞转录组数据，同时也有细胞系的数据做验证。</p>
+<ul>
+<li>1,591 single cells from 11 colorectal cancer patients，包括 969肿瘤部位细胞以及 622 癌旁细胞。严格过滤后只剩下：375 tumor cells and 215 normal mucosa cells
+-630 single cells from 7 cell lines，过滤后剩下561个
+83 A549 cells,
+65 H1437 cells,
+55 HCT116 cells,
+23 IMR90 cells,
+96 K562 cells,
+134 GM12878 cells (38 from batch 1, 96 from batch 2)
+174 H1 cells (96 from batch 1, 78 from batch 2).</li>
+</ul>
+<p>上游测序数据没有必要重新下载分析了，可以直接使用作者上传的表达矩阵：</p>
+<p>Supplementary fileSizeDownloadFile type/resourceGSE81861_CRC_NM_all_cells_COUNT.csv.gz3.2 Mb(ftp)(http)CSVGSE81861_CRC_NM_all_cells_FPKM.csv.gz4.7 Mb(ftp)(http)CSVGSE81861_CRC_NM_epithelial_cells_COUNT.csv.gz2.5 Mb(ftp)(http)CSVGSE81861_CRC_NM_epithelial_cells_FPKM.csv.gz4.0 Mb(ftp)(http)CSVGSE81861_CRC_tumor_all_cells_COUNT.csv.gz4.3 Mb(ftp)(http)CSVGSE81861_CRC_tumor_all_cells_FPKM.csv.gz7.9 Mb(ftp)(http)CSVGSE81861_CRC_tumor_epithelial_cells_COUNT.csv.gz3.6 Mb(ftp)(http)CSVGSE81861_CRC_tumor_epithelial_cells_FPKM.csv.gz6.5 Mb(ftp)(http)CSVGSE81861_Cell_Line_COUNT.csv.gz13.1 Mb(ftp)(http)CSVGSE81861_Cell_Line_FPKM.csv.gz28.9 Mb(ftp)(http)CSVGSE81861_GEO_EGA_ID_match.csv.gz14.4 Kb(ftp)(http)CSV</p>
+<p>作者认为全文最重要的是开发了一个挖掘细胞类型的算法：reference component analysis (RCA) 优于其它现有的算法。可以把cancer-associated fibroblasts (CAFs)继续分成两个类别。对比的算法包括：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hierarchical clustering using all expressed genes (All-HC)
+</span></span><span class="line"><span class="cl">hierarchical clustering using principal-component analysis (PCA)-based feature selection (HiLoadG-HC)
+</span></span><span class="line"><span class="cl">BackSPIN
+</span></span><span class="line"><span class="cl">RaceID2
+</span></span><span class="line"><span class="cl">Seurat
+</span></span><span class="line"><span class="cl">three additional methods based on selection of genes with highly variable expression (VarG-HC, VarG-PCAproj-HC and VarG-tSNEproj-HC).
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 adjusted Rand index (ARI) 指标来评价各个聚类算法的优劣。结果发现自己开发的RCA表现超常！！！</p>
+<h4 id="背景知识">背景知识</h4>
+<p>肿瘤异质性很重要，单细胞转录组测序很厉害，以前的研究根据单细胞转录组表达矩阵进行分类的算法不够好，所以他们开发reference component analysis (RCA) ， 而且 Colorectal cancer (CRC) 疾病非常严重，需要探索。</p>
+<h4 id="根据细胞系单细胞表达数据探索算法">根据细胞系单细胞表达数据探索算法</h4>
+<p>630个细胞的表达数据，过滤后剩下561个，这里使用Fragments per kilobase per million reads (FPKM)来进行表达定量。因为其上游处理走的是TOPHAT2+CUFFLINKS流程。</p>
+<h4 id="单细胞过滤策略">单细胞过滤策略</h4>
+<p>rate of exonic reads (ROER) 需要大于5%</p>
+<p>number of detected genes (NODG) 需要大于1000， 基因的FPKM ≥1才能算被检测到了。</p>
+<p>Exonic reads (ER) 要大于0.1Million</p>
+<p>管家基因: TFRC, ACTB, RPLP0, PGK1, GAPDH, LDHA, NONO, B2M, GUSB and PPIH.</p>
+<h4 id="rca算法细节">RCA算法细节</h4>
+<p>首先从 BioGPS数据库里面下载两个数据集： HumanU133A/GNF1H Gene Atlas and the Primary Cell Atlas ，从中挑选 A total of 4,717 genes were selected as features for GNF1H and 5,209 genes were selected for the Primary Cell Atlas. 还使用了 WGCNA 算法。</p>
+<p>还使用了一些其它公共数据：TCGA, GSE14333, the PRECOG database, and GSE33113, GSE37892 and GSE39582 来验证单细胞转录组得到的基因集（The &lsquo;fibroblast-like&rsquo; signature ）是否能显著的区分CRC病人的生存情况。</p>
+<h4 id="需要了解一些细胞类型的-known-markers">需要了解一些细胞类型的 known markers</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">epithelial cells (VIL1, KRT20, CLDN7, CDH1)
+</span></span><span class="line"><span class="cl">endothelial cells (Endo; ENG)
+</span></span><span class="line"><span class="cl">fibroblasts (Fibro; SPARC, COL14A, COL3A1, DCN)
+</span></span><span class="line"><span class="cl">B cells (CD38, MZB1, DERL3)
+</span></span><span class="line"><span class="cl">T cells (TRBC2, CD3D, CD3E, CD3G)
+</span></span><span class="line"><span class="cl">myeloid cells (ITGAX, CD68, CD14, CCL3)
+</span></span><span class="line"><span class="cl">mast cells (KIT, TPSB2)
+</span></span><span class="line"><span class="cl">做成了一个R包供使用：RCA R package, https://github.com/GIS-SP-Group/RCA.
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-50/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-50/" data-title="【bioinfo】-Q&amp;A-50" data-hashtags="AQ100,CRC,sc"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-50/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-50/" data-title="【bioinfo】-Q&amp;A-50"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-50/" data-title="【bioinfo】-Q&amp;A-50"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-50/" data-title="【bioinfo】-Q&amp;A-50"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/crc/">CRC</a>,&nbsp;<a href="/tags/sc/">sc</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-49/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-49"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-49</a>
+            <a href="/bioinfo-q-a-51/" class="next" rel="next" title="【bioinfo】-Q&amp;A-51">【bioinfo】-Q&A-51<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

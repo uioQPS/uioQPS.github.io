@@ -1,0 +1,49 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>GTF - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/gtf/</link>
+        <description>GTF - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Feb 2020 15:32:52 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/gtf/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-27</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-27/</link>
+    <pubDate>Tue, 18 Feb 2020 15:32:52 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-27/</guid>
+    <description><![CDATA[第27题 GENCODE与Ensembl GTF/GFF到底哪里不同？怎么下载？ 1. 基因注释的不同版本问题  RefSeq Gene注释，对gene的不同转录本进行注释，1个转录本对应1个编号成为RefSeq id，例如对于可以翻译成蛋白的转录本，都会以NM_开头如NM_015658；对于不能翻译的转录本，都会以NR_开头如NR_027055； **Ensembl注释；**对gene的不同转录本进行注释，以ENSG开头的表示Ensembl gene_id如ENSG00000227232，以ENST开头的表示Ensembl transcript id如ENST00000438504 **UCSC gene注释；**对gene的不同转录本进行注释，一般是类似uc004cpf这样的名称。  但是，RefSeq有一些注释不够完整，或者说有一些可能存在的，有用的gene转录本，所以有的时候我们会推荐大家使用Ensembl或者GENCODE的注释，那么我们今天的问题来了——Ensembl和GENCODE的GTF/GFF注释有什么不同？
+2. GENCODE上下载GTF/GFF 先说说GENCODE是什么吧，根据GENCODE的官方说明文档，GENCODE的目的是为了建立一个公用可信的gene注释体系，其缩写的对应关系为：
+The GENCODE Project = Encyclopædia of genes and gene variants
+好了，让我们先访问以下GENCODE的官方网站：https://www.gencodegenes.org/
+其实，大家可以发现GENCODE的网站上，只提供了Human和Mouse两个物种的注释信息，但这两个物种也是平时研究的时候最关心最常用的两个物种。每个物种有若干个版本，我们一般下载最新版本就好了。下面以Human的数据下载为例为大家进行讲解。
+大家可以看出来，GENCODE已经对数据做了非常好的整理，不但提供了各种类型数据的下载，而且在下方的Metadata部分，还解释了每一种数据的元数据。也就是不但告诉我们注释的结果，还告诉了我们为什么这么注释，真的很良心！
+在这里，我们就为大家下载了最常用的gene annotation也就是第1个文件Comprehensive gene annotation 的 GTF格式。
+3. GENCODE与Ensembl GTF/GFF有什么不同？ 我们先来看一下这两者的数据内容：
+从Ensembl下载下来的GTF文件；
+1 2 3 4 5 6 7 8 9 10  #!genome-build GRCh37.p13 #!genome-version GRCh37 #!genome-date 2009-02 #!genome-build-accession NCBI:GCA_000001405.14 #!genebuild-last-updated 2013-09 1 ensembl_havana gene 11869 14412 .]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-25</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-25/</link>
+    <pubDate>Tue, 18 Feb 2020 15:32:34 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-25/</guid>
+    <description><![CDATA[第25题 GTF/GFF的注释是怎么来的，应该从哪里下载？ Hello everyone! 我们又见面了！
+我们昨天刚刚回答了GTF/GFF文件到底是什么的问题，那么我们今天尝试回答GTF/GFF文件是怎么来的，从哪里能够下载。
+根据BBQ24问的介绍，我们知道了GTF是GFF的2.0版本。（以后我们把这两者到简称为GTF文件好了！）主要记录的内容是基因组上基因的结构，包括哪里是exon，哪里是intron，哪里是CDS，哪里是start codon，哪里是stop codon. 在提问的环节，我们也设置了问题让大家去吐槽GTF文件糟糕的的文件结构（希望大家能吐得开心！）。
+今天我们来为大家介绍GTF文件是怎么来的。
+1. 什么是参考GTF/GFF文件 针对一些已经通过测序计划，拼装好基因组序列信息的物种，一般会同时提供其转录组的注释信息，也就是我们所说的GTF/GFF文件。常用的模式生物，比如human（人），mouse（小鼠），rat（大鼠），chicken（鸡），lizard（蜥蜴），Arabidopsis thaliana（拟南芥）等等都已经有非常好的 全基因组参考序列（FASTA文件），以及转录组注释信息（GTF或GFF文件）。
+因此，直接到能够提供下载地址的网站上下载就好了。
+图1给大家展示了已经公布参考基因组哺乳动物的系统发生树，大家可以看看人类和哪种动物演化距离最近。
+图1 已经公布参考基因组的哺乳动物系统发生树（http://asia.ensembl.org/info/about/speciestree.html）
+多说一句，这个下载下来的FASTA文件就是我们所谓的参考基因组，需要用这个文件去构建mapping的index；下载下来的GTF文件是转录组注释信息，一般在计算表达量的时候需要提供。
+2. 什么是拼装转录本 在进行转录组分析的过程中，我们经常会听到一句话叫“用XX软件拼装转录本”，这句话是什么意思呢？不都有参考转录组了，还要拼个啥转录组？
+第1个方面，对于无参考基因组，无参考转录组的物种来说，往往需要通过RNA-Seq的数据自己拼出参考转录组，然后再进行下游的数据分析。所以，对于无参分析来说，往往需要自己拼装转录本，生成自己的参考转录组信息，也包括注释信息（GTF文件）。
+第2个方面，对于有非常好注释的基因组，例如human来说。不同的细胞条件可能不同，一些永生化的细胞系往往都具有“癌症”的特征，这些细胞的转录组，基因组或多或少都有结构的变异，以及转录本的差异。
+举个例子，有一个geneA，在参考转录组中注释的是从chr1:1000 ~ 15000进行转录，但是在另外的细胞系中有可能就是从chr1:980 ~ 15050进行转录。这种转录起始和终点的不同是很常见的现象。
+因此，有时候为了比较严谨地进行下游序列分析，是需要根据已知的参考转录组以及测序数据对其进行一个修饰。
+常用的软件是cufflinks，stringtie等等。
+不过，对于有参考转录组的物种，一般情况下，我还是建议不要去自己拼转录本，也不要去做什么所谓的修正，意义不大。除非你研究的体系非常特殊。
+3. 从哪里下载参考转录组GTF/GFF文件呢？ 关于下载GTF/GFF文件的内容，给大家介绍2个最常用的网站：
+ 1个是UCSC genome browser (UCSC Genome Browser-网址链接） 1个是Ensembl（Ensembl 网址链接） 注意：对于植物的Ensembl网站（Ensembl Plants）  3.1 从UCSC genome browser下载human的GTF文件 1 2 3 4 5 6  1. 打开UCSC genome browser网站 2. 在Tools里选择 Table Browser 3. 打开Table Browser以后，设置相关的需要内容（图3.]]></description>
+</item>
+</channel>
+</rss>

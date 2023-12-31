@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>TPM - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/tpm/</link>
+        <description>TPM - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 19 Feb 2020 16:04:19 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/tpm/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-36</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-36/</link>
+    <pubDate>Wed, 19 Feb 2020 16:04:19 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-36/</guid>
+    <description><![CDATA[第36题 RNA-Seq 数据的定量基本假设以及TPM Hello 大家好！
+我们在BBQ35中为大家介绍了RPKM和FPKM的原理以及计算方法，我们也说FPKM/RPKM有一个比较明显的缺点，就是不能够保证不同样本之间FPKM的总和是一个定值。因此才会引出我们今天的介绍内容TPM。
+1. TPM的介绍 TPM = Transcripts Per Million， 简单来说就是为了解决FPKM 总和不一致的情况。具体计算的方法如下：
+1 2 3  1. 先计算每一个gene的FPKM 2. 计算所有gene的FPKM总和sum(FPKM) 3. 最终gene的TPM = gene的FPKM / sum(FPKM) * 10^6   再简单一点说明，gene的TPM就是其FPKM百分数再乘以106，因此一个样本的TPM的总和一定是106. 这样做的好处就是能够把所有样本的TPM总和统一，都变成10^6。目前很多公共数据的数据都是以TPM的方式提供，比如非常著名的GTEx数据库，提供了超过10000个人组织RNA-Seq的测序表达量矩阵，其中的表达量定量方式就选择了TPM。 GTEx项目主页 （https://gtexportal.org/home/）
+2. RPKM/FPKM/TPM什么情况下会定量失败？ 说了半天，其实大家一定要先搞明白一个问题，无论是RPKM还是FPKM，亦或是TPM，本质上都是gene 表达水平的相对定量结果。
+这个结论非常重要！！！这个结论非常重要！！！这个结论非常重要！！！
+也正是因为RNA-Seq的相对定量结果，会有2种情况导致RNA-Seq定量失败；
+2.1 第1种情况：gene表达量发生普遍变化。 我给大家举一个非常简单的例子，比如我有两个样本分别叫做A和B，其中B的每一个gene表达量都只有对应样本A中的gene表达量的一半，那么结果就是如果使用RNA-Seq对这两个样本进行定量，那么定量的结果会是一样的，也就是两者计算的RPKM/FPKM/TPM会是一样的。
+通过上面的例子，我们可以作出一些推论：当两个样品中的绝大多数gene都发生相同方向的倍增或者倍减关系的时候，RNA-Seq会定量失效。这个非常重要！比如在很多癌症样本与正常组织样本的比较中，癌症样本很多时候会出现很多gene的普遍升高或者普遍降低，这个时候就需要其他特殊的办法来解决这样的问题，具体的方法后面我们会介绍。不过这种现象一般比较少见，几种常见需要考虑这个问题的情况：某些特殊表达细胞体系；很多癌症的miRNA-Seq 等。
+2.2 第2种情况，超高表达量的gene表达量发生变化 思考一下这种情况：有两类细胞，分别是cell1和cell2，真实的情况是geneA本身是一个表达量很高的gene，同时在cell2中，geneA的表达量继续升高数倍，同时其他gene的表达量几乎不变。这个时候我们对这两种情况进行RNA-Seq建库测序，结果就会是发现其他gene普遍下调，而不仅仅是geneA的上调。如图3所示，最后建库的时候，会测到非常多的geneA的reads，其他gene的reads就会相对减少，所以会造成其他gene RPKM/FPKM/TPM下降的假象。
+3. 提问与总结 一般在RNA-Seq分析的过程中，我们都必须默认两个基本假设：
+1 2  1是绝大多数的gene表达量不变； 2是高表达量的gene表达量不发生改变；   如果没有这2个基本假设，那么后续的找差异gene基本上是无从谈起，即便找到了所谓的差异表达gene也基本上是个错误的结论。
+那么今天我们的问题是：既然RNA-Seq是相对定量的一个实验，那么有没有办法通过什么办法让其能够变成绝对定量的方法？使其真的遇到绝大多数的gene表达量变化或者是高表达量的gene表达量变化的时候能够继续成功定量？
+ 谢晓亮老师在2012年出来了有一种绝对定量的方法，在文库扩增之前的每一个RNA片段加上一个标签（UID），那么同一个片段扩增出来的都带有同种标签。利用UID过滤数据，将相同的产物进行合并，既可以去掉PCR中的重复，而且也可以达到定量的目的. Digital RNA sequencing minimizes sequence-dependent bias and amplification noise with optimized single-molecule barcodes（PNAS.]]></description>
+</item>
+</channel>
+</rss>

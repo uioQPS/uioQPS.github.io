@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-27 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-27" />
+<meta property="og:description" content="第27题 GENCODE与Ensembl GTF/GFF到底哪里不同？怎么下载？ 1. 基因注释的不同版本问题  RefSeq Gene注释，对gene的不同转录本进行注释，1个转录本对应1个编号成为RefSeq id，例如对于可以翻译成蛋白的转录本，都会以NM_开头如NM_015658；对于不能翻译的转录本，都会以NR_开头如NR_027055； **Ensembl注释；**对gene的不同转录本进行注释，以ENSG开头的表示Ensembl gene_id如ENSG00000227232，以ENST开头的表示Ensembl transcript id如ENST00000438504 **UCSC gene注释；**对gene的不同转录本进行注释，一般是类似uc004cpf这样的名称。  但是，RefSeq有一些注释不够完整，或者说有一些可能存在的，有用的gene转录本，所以有的时候我们会推荐大家使用Ensembl或者GENCODE的注释，那么我们今天的问题来了——Ensembl和GENCODE的GTF/GFF注释有什么不同？
+2. GENCODE上下载GTF/GFF 先说说GENCODE是什么吧，根据GENCODE的官方说明文档，GENCODE的目的是为了建立一个公用可信的gene注释体系，其缩写的对应关系为：
+The GENCODE Project = Encyclopædia of genes and gene variants
+好了，让我们先访问以下GENCODE的官方网站：https://www.gencodegenes.org/
+其实，大家可以发现GENCODE的网站上，只提供了Human和Mouse两个物种的注释信息，但这两个物种也是平时研究的时候最关心最常用的两个物种。每个物种有若干个版本，我们一般下载最新版本就好了。下面以Human的数据下载为例为大家进行讲解。
+大家可以看出来，GENCODE已经对数据做了非常好的整理，不但提供了各种类型数据的下载，而且在下方的Metadata部分，还解释了每一种数据的元数据。也就是不但告诉我们注释的结果，还告诉了我们为什么这么注释，真的很良心！
+在这里，我们就为大家下载了最常用的gene annotation也就是第1个文件Comprehensive gene annotation 的 GTF格式。
+3. GENCODE与Ensembl GTF/GFF有什么不同？ 我们先来看一下这两者的数据内容：
+从Ensembl下载下来的GTF文件；
+1 2 3 4 5 6 7 8 9 10  #!genome-build GRCh37.p13 #!genome-version GRCh37 #!genome-date 2009-02 #!genome-build-accession NCBI:GCA_000001405.14 #!genebuild-last-updated 2013-09 1 ensembl_havana gene 11869 14412 ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-27/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-18T15:32:52+00:00" />
+<meta property="article:modified_time" content="2020-02-18T15:32:52+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-27"/>
+<meta name="twitter:description" content="第27题 GENCODE与Ensembl GTF/GFF到底哪里不同？怎么下载？ 1. 基因注释的不同版本问题  RefSeq Gene注释，对gene的不同转录本进行注释，1个转录本对应1个编号成为RefSeq id，例如对于可以翻译成蛋白的转录本，都会以NM_开头如NM_015658；对于不能翻译的转录本，都会以NR_开头如NR_027055； **Ensembl注释；**对gene的不同转录本进行注释，以ENSG开头的表示Ensembl gene_id如ENSG00000227232，以ENST开头的表示Ensembl transcript id如ENST00000438504 **UCSC gene注释；**对gene的不同转录本进行注释，一般是类似uc004cpf这样的名称。  但是，RefSeq有一些注释不够完整，或者说有一些可能存在的，有用的gene转录本，所以有的时候我们会推荐大家使用Ensembl或者GENCODE的注释，那么我们今天的问题来了——Ensembl和GENCODE的GTF/GFF注释有什么不同？
+2. GENCODE上下载GTF/GFF 先说说GENCODE是什么吧，根据GENCODE的官方说明文档，GENCODE的目的是为了建立一个公用可信的gene注释体系，其缩写的对应关系为：
+The GENCODE Project = Encyclopædia of genes and gene variants
+好了，让我们先访问以下GENCODE的官方网站：https://www.gencodegenes.org/
+其实，大家可以发现GENCODE的网站上，只提供了Human和Mouse两个物种的注释信息，但这两个物种也是平时研究的时候最关心最常用的两个物种。每个物种有若干个版本，我们一般下载最新版本就好了。下面以Human的数据下载为例为大家进行讲解。
+大家可以看出来，GENCODE已经对数据做了非常好的整理，不但提供了各种类型数据的下载，而且在下方的Metadata部分，还解释了每一种数据的元数据。也就是不但告诉我们注释的结果，还告诉了我们为什么这么注释，真的很良心！
+在这里，我们就为大家下载了最常用的gene annotation也就是第1个文件Comprehensive gene annotation 的 GTF格式。
+3. GENCODE与Ensembl GTF/GFF有什么不同？ 我们先来看一下这两者的数据内容：
+从Ensembl下载下来的GTF文件；
+1 2 3 4 5 6 7 8 9 10  #!genome-build GRCh37.p13 #!genome-version GRCh37 #!genome-date 2009-02 #!genome-build-accession NCBI:GCA_000001405.14 #!genebuild-last-updated 2013-09 1 ensembl_havana gene 11869 14412 ."/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-27/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-26/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-28/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-27",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-27\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, RefSeq, GTF","wordcount":  610 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-27\/","datePublished": "2020-02-18T15:32:52+00:00","dateModified": "2020-02-18T15:32:52+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-27</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-18">2020-02-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;610 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/bioinfo-q-a-27/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-27">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第27题-gencode与ensembl-gtfgff到底哪里不同怎么下载">第27题 GENCODE与Ensembl GTF/GFF到底哪里不同？怎么下载？</a>
+      <ul>
+        <li><a href="#1-基因注释的不同版本问题">1. 基因注释的不同版本问题</a></li>
+        <li><a href="#2-gencode上下载gtfgff">2. GENCODE上下载GTF/GFF</a></li>
+        <li><a href="#3-gencode与ensembl-gtfgff有什么不同">3. GENCODE与Ensembl GTF/GFF有什么不同？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="第27题-gencode与ensembl-gtfgff到底哪里不同怎么下载">第27题 GENCODE与Ensembl GTF/GFF到底哪里不同？怎么下载？</h2>
+<h3 id="1-基因注释的不同版本问题">1. 基因注释的不同版本问题</h3>
+<ul>
+<li>RefSeq Gene注释，对gene的不同转录本进行注释，1个转录本对应1个编号成为RefSeq id，例如对于可以翻译成蛋白的转录本，都会以NM_开头如NM_015658；对于不能翻译的转录本，都会以NR_开头如NR_027055；</li>
+<li>**Ensembl注释；**对gene的不同转录本进行注释，以ENSG开头的表示Ensembl gene_id如ENSG00000227232，以ENST开头的表示Ensembl transcript id如ENST00000438504</li>
+<li>**UCSC gene注释；**对gene的不同转录本进行注释，一般是类似uc004cpf这样的名称。</li>
+</ul>
+<p>但是，RefSeq有一些注释不够完整，或者说有一些可能存在的，有用的gene转录本，所以有的时候我们会推荐大家使用Ensembl或者GENCODE的注释，那么我们今天的问题来了——Ensembl和GENCODE的GTF/GFF注释有什么不同？</p>
+<h3 id="2-gencode上下载gtfgff">2. GENCODE上下载GTF/GFF</h3>
+<p>先说说GENCODE是什么吧，根据GENCODE的官方说明文档，GENCODE的目的是为了建立一个公用可信的gene注释体系，其缩写的对应关系为：</p>
+<p><strong>The GENCODE Project = Encyclopædia of genes and gene variants</strong></p>
+<p>好了，让我们先访问以下GENCODE的官方网站：https://www.gencodegenes.org/</p>
+<p>其实，大家可以发现GENCODE的网站上，只提供了Human和Mouse两个物种的注释信息，但这两个物种也是平时研究的时候最关心最常用的两个物种。每个物种有若干个版本，我们一般下载最新版本就好了。下面以Human的数据下载为例为大家进行讲解。</p>
+<p>大家可以看出来，GENCODE已经对数据做了非常好的整理，不但提供了各种类型数据的下载，而且在下方的Metadata部分，还解释了每一种数据的元数据。也就是不但告诉我们注释的结果，还告诉了我们为什么这么注释，真的很良心！</p>
+<p>在这里，我们就为大家下载了最常用的gene annotation也就是第1个文件Comprehensive gene annotation 的 GTF格式。</p>
+<h3 id="3-gencode与ensembl-gtfgff有什么不同">3. GENCODE与Ensembl GTF/GFF有什么不同？</h3>
+<p>我们先来看一下这两者的数据内容：</p>
+<p>从Ensembl下载下来的GTF文件；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#!genome-build GRCh37.p13
+</span></span><span class="line"><span class="cl">#!genome-version GRCh37
+</span></span><span class="line"><span class="cl">#!genome-date 2009-02
+</span></span><span class="line"><span class="cl">#!genome-build-accession NCBI:GCA_000001405.14
+</span></span><span class="line"><span class="cl">#!genebuild-last-updated 2013-09
+</span></span><span class="line"><span class="cl">1       ensembl_havana  gene    11869   14412   .       +       .       gene_id &#34;ENSG00000223972&#34;; gene_version &#34;4&#34;; gene_name &#34;DDX11L1&#34;; gene_source &#34;ensembl_havana&#34;; gene_biotype &#34;pseudogene&#34;;
+</span></span><span class="line"><span class="cl">1       havana  transcript      11869   14409   .       +       .       gene_id &#34;ENSG00000223972&#34;; gene_version &#34;4&#34;; transcript_id &#34;ENST00000456328&#34;; transcript_version &#34;2&#34;; gene_name &#34;DDX11L1&#34;; gene_source &#34;ensembl_havana&#34;; gene_biotype &#34;pseudogene&#34;; transcript_name &#34;DDX11L1-002&#34;; transcript_source &#34;havana&#34;; transcript_biotype &#34;processed_transcript&#34;; havana_transcript &#34;OTTHUMT00000362751&#34;; havana_transcript_version &#34;1&#34;; tag &#34;basic&#34;;
+</span></span><span class="line"><span class="cl">1       havana  exon    11869   12227   .       +       .       gene_id &#34;ENSG00000223972&#34;; gene_version &#34;4&#34;; transcript_id &#34;ENST00000456328&#34;; transcript_version &#34;2&#34;; exon_number &#34;1&#34;; gene_name &#34;DDX11L1&#34;; gene_source &#34;ensembl_havana&#34;; gene_biotype &#34;pseudogene&#34;; transcript_name &#34;DDX11L1-002&#34;; transcript_source &#34;havana&#34;; transcript_biotype &#34;processed_transcript&#34;; havana_transcript &#34;OTTHUMT00000362751&#34;; havana_transcript_version &#34;1&#34;; exon_id &#34;ENSE00002234944&#34;; exon_version &#34;1&#34;; tag &#34;basic&#34;;
+</span></span><span class="line"><span class="cl">1       havana  exon    12613   12721   .       +       .       gene_id &#34;ENSG00000223972&#34;; gene_version &#34;4&#34;; transcript_id &#34;ENST00000456328&#34;; transcript_version &#34;2&#34;; exon_number &#34;2&#34;; gene_name &#34;DDX11L1&#34;; gene_source &#34;ensembl_havana&#34;; gene_biotype &#34;pseudogene&#34;; transcript_name &#34;DDX11L1-002&#34;; transcript_source &#34;havana&#34;; transcript_biotype &#34;processed_transcript&#34;; havana_transcript &#34;OTTHUMT00000362751&#34;; havana_transcript_version &#34;1&#34;; exon_id &#34;ENSE00003582793&#34;; exon_version &#34;1&#34;; tag &#34;basic&#34;;
+</span></span><span class="line"><span class="cl">1       havana  exon    13221   14409   .       +       .       gene_id &#34;ENSG00000223972&#34;; gene_version &#34;4&#34;; transcript_id &#34;ENST00000456328&#34;; transcript_version &#34;2&#34;; exon_number &#34;3&#34;; gene_name &#34;DDX11L1&#34;; gene_source &#34;ensembl_havana&#34;; gene_biotype &#34;pseudogene&#34;; transcript_name &#34;DDX11L1-002&#34;; transcript_source &#34;havana&#34;; transcript_biotype &#34;processed_transcript&#34;; havana_transcript &#34;OTTHUMT00000362751&#34;; havana_transcript_version &#34;1&#34;; exon_id &#34;ENSE00002312635&#34;; exon_version &#34;1&#34;; tag &#34;basic&#34;;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>刚刚下载下来的GENCODE的GTF文件；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##description: evidence-based annotation of the human genome (GRCh38), version 28 (Ensembl 92)
+</span></span><span class="line"><span class="cl">##provider: GENCODE
+</span></span><span class="line"><span class="cl">##contact: gencode-help@ebi.ac.uk
+</span></span><span class="line"><span class="cl">##format: gtf
+</span></span><span class="line"><span class="cl">##date: 2018-03-23
+</span></span><span class="line"><span class="cl">chr1    HAVANA  gene    11869   14409   .       +       .       gene_id &#34;ENSG00000223972.5&#34;; gene_type &#34;transcribed_unprocessed_pseudogene&#34;; gene_name &#34;DDX11L1&#34;; level 2; havana_gene &#34;OTTHUMG00000000961.2&#34;;
+</span></span><span class="line"><span class="cl">chr1    HAVANA  transcript      11869   14409   .       +       .       gene_id &#34;ENSG00000223972.5&#34;; transcript_id &#34;ENST00000456328.2&#34;; gene_type &#34;transcribed_unprocessed_pseudogene&#34;; gene_name &#34;DDX11L1&#34;; transcript_type &#34;processed_transcript&#34;; transcript_name &#34;RP11-34P13.1-002&#34;; level 2; transcript_support_level &#34;1&#34;; tag &#34;basic&#34;; havana_gene &#34;OTTHUMG00000000961.2&#34;; havana_transcript &#34;OTTHUMT00000362751.1&#34;;
+</span></span><span class="line"><span class="cl">chr1    HAVANA  exon    11869   12227   .       +       .       gene_id &#34;ENSG00000223972.5&#34;; transcript_id &#34;ENST00000456328.2&#34;; gene_type &#34;transcribed_unprocessed_pseudogene&#34;; gene_name &#34;DDX11L1&#34;; transcript_type &#34;processed_transcript&#34;; transcript_name &#34;RP11-34P13.1-002&#34;; exon_number 1; exon_id &#34;ENSE00002234944.1&#34;; level 2; transcript_support_level &#34;1&#34;; tag &#34;basic&#34;; havana_gene &#34;OTTHUMG00000000961.2&#34;; havana_transcript &#34;OTTHUMT00000362751.1&#34;;
+</span></span><span class="line"><span class="cl">chr1    HAVANA  exon    12613   12721   .       +       .       gene_id &#34;ENSG00000223972.5&#34;; transcript_id &#34;ENST00000456328.2&#34;; gene_type &#34;transcribed_unprocessed_pseudogene&#34;; gene_name &#34;DDX11L1&#34;; transcript_type &#34;processed_transcript&#34;; transcript_name &#34;RP11-34P13.1-002&#34;; exon_number 2; exon_id &#34;ENSE00003582793.1&#34;; level 2; transcript_support_level &#34;1&#34;; tag &#34;basic&#34;; havana_gene &#34;OTTHUMG00000000961.2&#34;; havana_transcript &#34;OTTHUMT00000362751.1&#34;;
+</span></span><span class="line"><span class="cl">chr1    HAVANA  exon    13221   14409   .       +       .       gene_id &#34;ENSG00000223972.5&#34;; transcript_id &#34;ENST00000456328.2&#34;; gene_type &#34;transcribed_unprocessed_pseudogene&#34;; gene_name &#34;DDX11L1&#34;; transcript_type &#34;processed_transcript&#34;; transcript_name &#34;RP11-34P13.1-002&#34;; exon_number 3; exon_id &#34;ENSE00002312635.1&#34;; level 2; transcript_support_level &#34;1&#34;; tag &#34;basic&#34;; havana_gene &#34;OTTHUMG00000000961.2&#34;; havana_transcript &#34;OTTHUMT00000362751.1&#34;;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>仔细观察一下，我们发现两者貌似没什么不同，除了GTF第9列的可选信息写的顺序不一样，不过这都没有什么影响。我们来看看官方是怎么回答这个问题的：</p>
+<blockquote>
+<p>What is the difference between GENCODE and Ensembl annotation?
+The GENCODE annotation is made by merging the Havana manual gene annotation and the Ensembl automated gene annotation. The GENCODE annotation is the default gene annotation displayed in the Ensembl browser. The GENCODE releases coincide with the Ensembl releases, although we can skip an Ensembl release is there is no update to the annotation with respect to the previous release. In practical terms, the GENCODE annotation is identical to the Ensembl annotation.</p>
+</blockquote>
+<p>简单翻译过来：</p>
+<p>GENCODE的组成包括Havana组织的人工注释，以及Ensembl的程序自动注释，在Ensembl的genome浏览器中，使用的是GENCODE的注释文件。这两个是完全等价的！</p>
+<p>那么GENCODE与Ensembl GTF一点区别也没有吗？肯定不是的！来看看官方文档怎么说：</p>
+<blockquote>
+<p><strong>What is the difference between GENCODE GTF and Ensembl GTF?</strong>
+The gene annotation is the same in both files. The only exception is that the genes which are common to the human chromosome X and Y PAR regions can be found twice in the GENCODE GTF, while they are shown only for chromosome X in the Ensembl file.
+In addition, the GENCODE GTF contains a number of attributes not present in the Ensembl GTF, including annotation remarks, APPRIS tags and other tags highlighting transcripts experimentally validated by the GENCODE project or 3-way-consensus pseudogenes (predicted by Havana, Yale and UCSC). Find here the complete list of tags.</p>
+</blockquote>
+<p>简单翻译一下：</p>
+<p>在X与Y的同源区域，有一些基因是在两条染色体上都有的，Ensembl只在X染色体注释了1次，GENCODE在X与Y染色体各注释了1次。</p>
+<p>同时，<font color="#dd0000">GENCODE的GTF在第9列的可选列里面增加了很多新的tag信息来记录更多的注释内容。</font>这些在Ensembl的注释里面也是没有的。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-27/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-27/" data-title="【bioinfo】-Q&amp;A-27" data-hashtags="AQ100,RefSeq,GTF"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-27/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-27/" data-title="【bioinfo】-Q&amp;A-27"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-27/" data-title="【bioinfo】-Q&amp;A-27"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-27/" data-title="【bioinfo】-Q&amp;A-27"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/refseq/">RefSeq</a>,&nbsp;<a href="/tags/gtf/">GTF</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-26/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-26"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-26</a>
+            <a href="/bioinfo-q-a-28/" class="next" rel="next" title="【bioinfo】-Q&amp;A-28">【bioinfo】-Q&A-28<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

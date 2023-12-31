@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-16 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-16" />
+<meta property="og:description" content="第16题 高通量测序的回贴问题 I Hello大家好！我们又见面了！
+在这之前，我们一直在讨论怎么去做FASTQ文件的质控，怎么trim，怎么cutadapt；还为大家介绍了从双序列比对的最根本的原理及算法；再到后来学习了低通量的找相似序列的办法BLAST以及基因组快速定位的办法BLAT。那么从今天开始以后的若干问都是与高通量测序结果的回贴（mapping）问题有关。
+首先来看一下技术路线图：
+从FASTQ到SAM路线图
+我们的核心任务是从FASTQ文件开始，经过中间的质控，最终找到序列在基因组上的定位。
+那么，我们之前的算法和方法能不能高效完成这个问题呢，答案是不行的！因为这次我们的输入常常是10^7 甚至更多的reads，而且是要在全基因组上寻找定位，比如人的基因组有3Gbp大！所以如果不优化算法，估计mapping这个问题就要等到地老天荒。关于mapping的算法问题，我之前录过1期视频，专门推导了为什么应用BWT算法就可以完成我们这项艰巨的任务。
+踏踏实实做技术：BWA，Bowtie，Bowtie2的比对算法推导
+ 谈完了算法，我们再谈谈比对软件。目前市面上针对DNA测序的结果mapping的比对软件有很多。针对2代测序优化过的，最常用的有Bowtie，Bowtie2，BWA这三款；针对3代测序优化的比对软件有BLASR，LAST，BWA-MEM等等。因为目前二代测序占据了90%以上的市场份额，因此我们前期主要讨论的内容是二代测序的比对问题，也就是Bowtie，Bowtie2，BWA这三款软件。
+其实，看过我上面BWT推导的朋友应该能够知道，这三个软件本质上的算法是没有区别的，有区别的地方都是小修小改。所以上，理解了其中的1个，其他的也都很好理解。我们会发现，这些算法的最基础的要点就是都要有1个index。
+那么什么是index呢？简单来说就是若干个文件，方便我们快速地访问及搜索基因组。上面我说的这些比对软件都需要建立index。
+一般建立index的输入文件为参考基因组序列（FASTA格式）和1个我们指定的index-name；输出为若干个以index-name为开头的index文件。比如我们使用Bowtie2，以human reference genome建立index的命令为：
+1 2 3 4 5 6 7  # build-index by Bowtie2 &gt; bowtie2-build hg19_only_chromosome.fa hg19_only_chromosome &amp; # 解释 #### bowtie2-build为建立index的命令，安装bowtie2以后就可以用； #### hg19_only_chromosome.fa 为human genome的参考基因组，FASTA格式； #### hg19_only_chromosome 为建立index需要指定的名称；   最终建立index输出结果如图2：
+使用bowtie2建立的human genome index
+1. 为什么FASTQ文件的快速比对需要建立index？
+1 2  主要是为了加快比对速度，Index简单来说就是若干个文件，方便程序快速地访问及搜索基因组； 在Index的帮助下，比对软件可以把序列比对的问题的时间复杂度降低   2. 如果我从1个网站上下载的是1个物种的参考转录组的序列，其中包含了A,U,C,G碱基，我的FASTQ为该物种转录组测序的结果，用A,G,T,C，4种碱基来表示。那么需不需要在建立index之前把参考转录组中的U全部都换成T？
+1  需要转化，因为比对程序并不能将U直接识别为T   3. 请在Linux环境下，下载human genome 19参考基因组的1号染色体序列；并使用bowtie 建立index。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-16/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-17T14:37:50+00:00" />
+<meta property="article:modified_time" content="2020-02-17T14:37:50+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-16"/>
+<meta name="twitter:description" content="第16题 高通量测序的回贴问题 I Hello大家好！我们又见面了！
+在这之前，我们一直在讨论怎么去做FASTQ文件的质控，怎么trim，怎么cutadapt；还为大家介绍了从双序列比对的最根本的原理及算法；再到后来学习了低通量的找相似序列的办法BLAST以及基因组快速定位的办法BLAT。那么从今天开始以后的若干问都是与高通量测序结果的回贴（mapping）问题有关。
+首先来看一下技术路线图：
+从FASTQ到SAM路线图
+我们的核心任务是从FASTQ文件开始，经过中间的质控，最终找到序列在基因组上的定位。
+那么，我们之前的算法和方法能不能高效完成这个问题呢，答案是不行的！因为这次我们的输入常常是10^7 甚至更多的reads，而且是要在全基因组上寻找定位，比如人的基因组有3Gbp大！所以如果不优化算法，估计mapping这个问题就要等到地老天荒。关于mapping的算法问题，我之前录过1期视频，专门推导了为什么应用BWT算法就可以完成我们这项艰巨的任务。
+踏踏实实做技术：BWA，Bowtie，Bowtie2的比对算法推导
+ 谈完了算法，我们再谈谈比对软件。目前市面上针对DNA测序的结果mapping的比对软件有很多。针对2代测序优化过的，最常用的有Bowtie，Bowtie2，BWA这三款；针对3代测序优化的比对软件有BLASR，LAST，BWA-MEM等等。因为目前二代测序占据了90%以上的市场份额，因此我们前期主要讨论的内容是二代测序的比对问题，也就是Bowtie，Bowtie2，BWA这三款软件。
+其实，看过我上面BWT推导的朋友应该能够知道，这三个软件本质上的算法是没有区别的，有区别的地方都是小修小改。所以上，理解了其中的1个，其他的也都很好理解。我们会发现，这些算法的最基础的要点就是都要有1个index。
+那么什么是index呢？简单来说就是若干个文件，方便我们快速地访问及搜索基因组。上面我说的这些比对软件都需要建立index。
+一般建立index的输入文件为参考基因组序列（FASTA格式）和1个我们指定的index-name；输出为若干个以index-name为开头的index文件。比如我们使用Bowtie2，以human reference genome建立index的命令为：
+1 2 3 4 5 6 7  # build-index by Bowtie2 &gt; bowtie2-build hg19_only_chromosome.fa hg19_only_chromosome &amp; # 解释 #### bowtie2-build为建立index的命令，安装bowtie2以后就可以用； #### hg19_only_chromosome.fa 为human genome的参考基因组，FASTA格式； #### hg19_only_chromosome 为建立index需要指定的名称；   最终建立index输出结果如图2：
+使用bowtie2建立的human genome index
+1. 为什么FASTQ文件的快速比对需要建立index？
+1 2  主要是为了加快比对速度，Index简单来说就是若干个文件，方便程序快速地访问及搜索基因组； 在Index的帮助下，比对软件可以把序列比对的问题的时间复杂度降低   2. 如果我从1个网站上下载的是1个物种的参考转录组的序列，其中包含了A,U,C,G碱基，我的FASTQ为该物种转录组测序的结果，用A,G,T,C，4种碱基来表示。那么需不需要在建立index之前把参考转录组中的U全部都换成T？
+1  需要转化，因为比对程序并不能将U直接识别为T   3. 请在Linux环境下，下载human genome 19参考基因组的1号染色体序列；并使用bowtie 建立index。"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-16/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-15/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-17/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-16",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-16\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, mapping","wordcount":  102 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-16\/","datePublished": "2020-02-17T14:37:50+00:00","dateModified": "2020-02-17T14:37:50+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-16</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-17">2020-02-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;102 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-16/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-16">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第16题-高通量测序的回贴问题-i">第16题 高通量测序的回贴问题 I</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="第16题-高通量测序的回贴问题-i">第16题 高通量测序的回贴问题 I</h2>
+<p>Hello大家好！我们又见面了！</p>
+<p>在这之前，我们一直在讨论怎么去做FASTQ文件的质控，怎么trim，怎么cutadapt；还为大家介绍了从双序列比对的最根本的原理及算法；再到后来学习了低通量的找相似序列的办法BLAST以及基因组快速定位的办法BLAT。那么从今天开始以后的若干问都是与高通量测序结果的回贴（mapping）问题有关。</p>
+<p>首先来看一下技术路线图：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/1.jpg"
+        data-srcset="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/1.jpg, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/1.jpg 1.5x, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/1.jpg 2x"
+        data-sizes="auto"
+        alt="../../../../../Desktop/md/【bioinfo】-Q-A-16/1.jpg"
+        title="../../../../../Desktop/md/【bioinfo】-Q-A-16/1.jpg" />
+从FASTQ到SAM路线图</p>
+<p>我们的核心任务是从FASTQ文件开始，经过中间的质控，最终找到序列在基因组上的定位。</p>
+<p>那么，我们之前的算法和方法能不能高效完成这个问题呢，答案是不行的！因为这次我们的输入常常是10^7 甚至更多的reads，而且是要在全基因组上寻找定位，比如人的基因组有3Gbp大！所以如果不优化算法，估计mapping这个问题就要等到地老天荒。关于mapping的算法问题，我之前录过1期视频，专门推导了为什么应用BWT算法就可以完成我们这项艰巨的任务。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/30485711" target="_blank" rel="noopener noreffer ">踏踏实实做技术：BWA，Bowtie，Bowtie2的比对算法推导</a></p>
+<hr>
+<p>谈完了算法，我们再谈谈比对软件。目前市面上针对DNA测序的结果mapping的比对软件有很多。针对2代测序优化过的，最常用的有Bowtie，Bowtie2，BWA这三款；针对3代测序优化的比对软件有BLASR，LAST，BWA-MEM等等。因为目前二代测序占据了90%以上的市场份额，因此我们前期主要讨论的内容是二代测序的比对问题，也就是Bowtie，Bowtie2，BWA这三款软件。</p>
+<p>其实，看过我上面BWT推导的朋友应该能够知道，这三个软件本质上的算法是没有区别的，有区别的地方都是小修小改。所以上，理解了其中的1个，其他的也都很好理解。我们会发现，这些算法的最基础的要点就是都要有1个index。</p>
+<p>那么什么是index呢？简单来说就是若干个文件，方便我们快速地访问及搜索基因组。上面我说的这些比对软件都需要建立index。</p>
+<p>一般建立index的输入文件为参考基因组序列（FASTA格式）和1个我们指定的index-name；输出为若干个以index-name为开头的index文件。比如我们使用Bowtie2，以human reference genome建立index的命令为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># build-index by Bowtie2
+</span></span><span class="line"><span class="cl">&gt; bowtie2-build hg19_only_chromosome.fa  hg19_only_chromosome &amp;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 解释
+</span></span><span class="line"><span class="cl">#### bowtie2-build为建立index的命令，安装bowtie2以后就可以用；
+</span></span><span class="line"><span class="cl">#### hg19_only_chromosome.fa 为human genome的参考基因组，FASTA格式；
+</span></span><span class="line"><span class="cl">#### hg19_only_chromosome 为建立index需要指定的名称；
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终建立index输出结果如图2：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/2.jpg"
+        data-srcset="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/2.jpg, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/2.jpg 1.5x, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/2.jpg 2x"
+        data-sizes="auto"
+        alt="../../../../../Desktop/md/【bioinfo】-Q-A-16/2.jpg"
+        title="../../../../../Desktop/md/【bioinfo】-Q-A-16/2.jpg" />
+使用bowtie2建立的human genome index</p>
+<p><strong>1. 为什么FASTQ文件的快速比对需要建立index？</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">主要是为了加快比对速度，Index简单来说就是若干个文件，方便程序快速地访问及搜索基因组；
+</span></span><span class="line"><span class="cl">在Index的帮助下，比对软件可以把序列比对的问题的时间复杂度降低
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>2. 如果我从1个网站上下载的是1个物种的参考转录组的序列，其中包含了A,U,C,G碱基，我的FASTQ为该物种转录组测序的结果，用A,G,T,C，4种碱基来表示。那么需不需要在建立index之前把参考转录组中的U全部都换成T？</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">需要转化，因为比对程序并不能将U直接识别为T
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>3. 请在Linux环境下，下载human genome 19参考基因组的1号染色体序列；并使用bowtie 建立index。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">weget -c -o ./test http://hgdownload.soe.ucsc.edu/goldenPath/hg19/chromosomes/ch r1.fa.gz &amp;
+</span></span><span class="line"><span class="cl"># -o，将⽂文件下载到指定⽬目录中
+</span></span><span class="line"><span class="cl"># -c，断点传续
+</span></span><span class="line"><span class="cl"># &amp;,后台运⾏行行
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下载得到的⽂文件为 chr1.fa.gz，压缩格式，解压⽂文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">gzip -d ./test/chr1.fa.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解压得到chr1.fa，下⼀一步建⽴立Index</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bowtie2-build ./test/chr1.fa ./test/chr1_bowtie2_index &amp;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>得到 chr1_bowtie2_index.bt2 ，注意，调⽤用index时使⽤用的名字为 chr1_bowtie2_index</p>
+<p>我用的是整合在一起的hg19_genome.fa，以下是命令和生成结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bowtie2-build hg19_genome.fa hg19_genome_bowtie2_index &amp;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/3.png"
+        data-srcset="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/3.png, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/3.png 1.5x, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-16/3.png 2x"
+        data-sizes="auto"
+        alt="../../../../../Desktop/md/【bioinfo】-Q-A-16/3.png"
+        title="../../../../../Desktop/md/【bioinfo】-Q-A-16/3.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-17</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-16/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-16/" data-title="【bioinfo】-Q&amp;A-16" data-hashtags="AQ100,mapping"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-16/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-16/" data-title="【bioinfo】-Q&amp;A-16"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-16/" data-title="【bioinfo】-Q&amp;A-16"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-16/" data-title="【bioinfo】-Q&amp;A-16"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/mapping/">mapping</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-15/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-15"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-15</a>
+            <a href="/bioinfo-q-a-17/" class="next" rel="next" title="【bioinfo】-Q&amp;A-17">【bioinfo】-Q&A-17<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

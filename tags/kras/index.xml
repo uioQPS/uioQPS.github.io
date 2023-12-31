@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>KRAS - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/kras/</link>
+        <description>KRAS - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 20 Feb 2020 19:42:47 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/kras/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-49</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-49/</link>
+    <pubDate>Thu, 20 Feb 2020 19:42:47 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-49/</guid>
+    <description><![CDATA[在KRAS-TRP53基因驱动的LADC Ect2-Dependent rRNA Synthesis Is Required for KRAS-TRP53-Driven Lung Adenocarcinoma , 里面太多陌生的名词，如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  nucleolar transcription factor upstream binding factor 1 (UBF1) guanine nucleotide exchange factor (GEF) epithelial cell transforming sequence 2 (Ect2) - oncogene rRNA synthesis rDNA promoters lung adenocarcinoma (LADC) KRAS-TRP53-Driven Lung Adenocarcinoma CD24+/ITGB4+/NOTCH3hi (3+) lung epithelial cells Madin-Darby canine kidney (MDCK) epithelial cells Lentiviral short hairpin RNA (shRNA)-mediated knockdown (KD) mouse-specific Ect2 shRNAs cytoplasmic Rho GTPases Ect2 nuclear localization signal [NLS] H358 and H23 cells anti-rheumatoid agent auranofin (ANF)   太多了，我都懒得继续看了。]]></description>
+</item>
+</channel>
+</rss>

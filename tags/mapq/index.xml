@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>MAPQ - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/mapq/</link>
+        <description>MAPQ - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 17 Feb 2020 14:37:57 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/mapq/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-18</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-18/</link>
+    <pubDate>Mon, 17 Feb 2020 14:37:57 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-18/</guid>
+    <description><![CDATA[第18题 高通量比对的质量MAPQ Hello 大家好！ 我们又见面了！
+今天我们接着昨天的内容，为大家介绍一下比对的质量MAPQ。
+FASTQ格式的第4行记录的是每一个碱基的测序质量信息，也叫phred值。1个FASTQ记录的例子如下：
+1 2 3 4  @HWI-ST1350:124:C1C2TACXX:3:1101:1223:2042 CTTTTCGAGTCAGACACATGACAGCCGGCAGCAACTGGAATGGCAGCAATT + BBCFFFFFGHHHHJJIJJIIJJJJIJJJGIJIIJJIJIGIIJJGIIIJIIG   我们在mapping的时候，会遇到一个问题，比如就用我们上面给大家展示的FASTQ序列举例。
+如果这条序列（readA）最终可以比对到：
+1号染色体的100000这个位置，但其中包含了1个mismatch（错配）；
+或者是2号染色体的200000这个位置，但是有2个错配。
+那readA到底是比对到第1个位置还是第2个位置呢？
+这个时候就需要1个度量值来帮我们做判断，选择1个最好的作为最终的比对结果（当然研究一些比较特殊问题的时候需要把相似的比对结果都输出出来），这个度量值就是MAPQ。
+那么MAPQ是什么意思呢？ 根据SAM文件的官方定义：
+ MAPQ: Mapping Quality. It equals -10 log10 Pr{mapping position is wrong}, rounded to the nearest integer. A value 255 indicates that the mapping quality is not available.
+ 简单翻译一下：MAPQ是mapping的质量值，计算方法与FASTQ的质量值类似，
+1  MAPQ=-10 * log10{mapping出错的概率}   当MAPQ=255的时候，代表MAPQ没有意义，就是一个占位符。
+那么怎么计算MAPQ呢？ 到了这里，可能又会有同学问了，虽然我们知道了MAPQ的含义，但是里面有一个mapping出错的概率，我应该怎么计算呢？这是一个非常容易问到的问题！
+而我的回答是：
+ 根据mapping的情况，然后结合碱基的测序质量值进行评估。
+ 核心思想是，]]></description>
+</item>
+</channel>
+</rss>

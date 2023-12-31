@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>EMT - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/emt/</link>
+        <description>EMT - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Feb 2020 22:02:37 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/emt/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-51</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-51/</link>
+    <pubDate>Fri, 21 Feb 2020 22:02:37 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-51/</guid>
+    <description><![CDATA[探索EMT的中间态 文章是：Identification of the tumour transition states occurring during EMT. Nature ; PMID: 29670281
+整个文章基于两种老鼠模型：
+ a genetic mouse model of skin squamous cell carcinoma (SCC) K8CreER/Pic3caH1047R/p53fl/fl and MMTV-PyMT breast tumours  摘要 在癌症中，上皮-间充质转化（EMT）与肿瘤干细胞的转移和对治疗的抗性有关。最近有人提出，EMT不是一个二元的过程，而是通过不同的中间状态发生。然而这个设想没有直接的体内证据。本次研究中，我们在皮肤和乳腺原发肿瘤中筛选出大量的细胞表面标志物，并鉴定出不同EMT阶段相关的多个肿瘤亚群的存在：从完全上皮化到完全间充质细胞状态以及中间混合状态。虽然所有的EMT亚群呈现相似的肿瘤增殖细胞能力，但它们在细胞可塑性、侵袭性及转移潜能等方面均表现出差异。他们的转录和表观遗传表现识别潜在的基因调控网络、转录因子和信号通路，控制不同的EMT过渡状态。最后，这些肿瘤亚群分布在不同的位置，对EMT过渡状态有不同的调节作用。
+EMT 背景知识  EMT，全称epithelial–mesenchymal transition，又称翻译为上皮间质转换，指的是上皮细胞在一些因素的作用下,失去极性及细胞间紧密连接和黏附连接, 获得了浸润性和游走迁移能力, 变成具备间质细胞形态和特性的细胞的改变。这种行为是可逆的。
+ EMT的概念最早是1982年由Green-berg和Hay提出。然而，长久以来，科学界对于EMT在肿瘤转移过程中的作用一直存在争议，主要是因为无法在体内观察EMT过程 。
+胚胎发育与癌症发展中的细胞可塑性变化有着惊人的相似性，而这种可塑性变化受到上皮间质转化epithelial-mesenchymal transition （EMT）过程的调节。胚胎发育时期，上皮状态和间充质状态的细胞能够自由转化。
+ 上皮间质转化（EMT）使得细胞具备转移和浸润特性。 其反向过程，间质上皮转化mesenchymal-epithelialtransition （MET）赋予了细胞极性变化并失去移动能力。  EMT会促发癌细胞从病灶分离，转移到其它部位，而MET导致癌细胞停留，并在停留处引起新的肿瘤。
+在很长一段时间内，许多科学家都认为EMT过程对于肿瘤转移是一个必须条件，EMT过程能够剥夺细胞与邻近细胞紧密结合的能力，使细胞能够在全身范围内迁移。科学家们认为是EMT给了癌细胞“双腿”让它们能够脱离原位肿瘤，转移到其他部位形成肿瘤转移灶。
+一、 首先介绍下，EMT发生常见的标志分子。 1.表达减少：E- cadherin，Cytokeratin，ZO-1。
+2.表达增多：N- cadherin，Vinmentin，Snail1，Snail2，Twi st，MMP-2，MMP-3，MMP-9。
+3.活性增加：ILK，Rho。
+二．参与EMT过程控制的常见信号通路有： 1.TGF-β信号通路。
+2.Wnt信号通路。
+3.Notch信号通路。
+4.SMAD信号通路。
+5.PI3K-AKT-MTOR信号通路。
+三. EMT过程有着复杂的调节网络： 表观遗传的调节]]></description>
+</item>
+</channel>
+</rss>

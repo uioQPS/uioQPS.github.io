@@ -1,0 +1,33 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>张锋 - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/%E5%BC%A0%E9%94%8B/</link>
+        <description>张锋 - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Aug 2020 20:38:22 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/%E5%BC%A0%E9%94%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>CrisprCas9 active system</title>
+    <link>https://uioqps.github.io/crisprcas9-active-system/</link>
+    <pubDate>Sun, 30 Aug 2020 20:38:22 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/crisprcas9-active-system/</guid>
+    <description><![CDATA[Crispr Cas9  Crisprcas9复合物可以介导内源基因组位点，使用工程改造的cas9激活复合物研究有效转录激活的sgRNA靶向规则，可以证明10个基因的多重激活。合成了一个包含70290个针对所有人类RefSeq编码亚型来筛选在激活后赋予对BRAF抑制剂抗性的基因。并且使用单个sgRNA和互补DNA的过表达验证了新的候选基因，最高筛选命中率的基因表达特征与细胞系和患者来源样品中的BRAF抑制剂抗性标记有关，这些结果共同证明了基于Cas9的激活剂作为强大的基因扰动技术的潜力。
+ Cas9-based activators Genetic perturbations：
+loss-of-function (LOF) ：RNA interference； RNA-guided endonuclease Cas9 from the microbial CRISPR (clustered regularly interspaced short palindromic repeat) adaptive immune system
+gain-of-function (GOF) ：cDNA library over expression systems（ drawback：transcript isoform variance ）
+three-component SAM system]]></description>
+</item>
+<item>
+    <title>SHERLOCK tech</title>
+    <link>https://uioqps.github.io/sherlock-tech/</link>
+    <pubDate>Wed, 26 Feb 2020 20:34:24 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/sherlock-tech/</guid>
+    <description><![CDATA[SHERLOCK技术 什么是SHERLOCK技术 SHERLOCK技术，全称是Specific High Sensitivity Enzymatic Reporter UnLOCKing，由华裔科学家张锋研发的一种新的快速，便宜，高灵敏度的诊断工具，相关文章发表在2017年的Science上[1]。SHERLOCK技术可以用于检测血清、尿液和唾液中低浓度的病毒，灵敏度可达阿摩尔级（aM，10的负18次方摩尔每升），而且可以用于检测病毒载量，区分不同的菌株，甚至可以分辨含有不同耐药突变的菌株和不同的癌症菌株突变，目前已经成功应用到武汉新型肺炎的检测中，具体的操作步骤已经公布在张锋课题组的网站上 (A protocol for detection of COVID-19 using CRISPR diagnostics)。
+SHERLOCK技术原理 SHERLOCK技术的原理由两部分组成，分别是RPA （Recombinase Polymerase Amplification）扩增和CRISPR-Cas13a系统。RPA是一种高灵敏度的等温扩增技术，在常温下即可完成核酸的快速扩增；CRISPR-Cas13a作为检测目的核酸序列的手段。下面将具体介绍这两个技术。
+RPA 核酸扩增，可能大部分人接触到的仅有PCR（polymerase chain reaction），这说明你的知识该更新了。除了PCR，目前已有的核酸扩增技术还有RPA，NASBA（nucleic acid sequence-based amplification），SDA（strand displacement），RCA（rolling circle amplification），LAMP（the loop-mediated isothermal amplification），HAD (helicase-dependent amplification)，HCR (hybridization chain reaction)等技术 Detection，感兴趣的可以看相关的综述[2-4]。 RPA, Recombinase Polymerase Amplification，即重组酶聚合酶扩增技术。这是一种可以媲美PCR的技术，2006年由英国科技公司TwistDx发明。常规的PCR技术对温度控制有着复杂的要求，经历高温变性、低温复性还有中温延伸三个步骤，RPA就不需要这么麻烦，它的反应需要二种在常温下有活性的酶（重组酶，聚合酶），最适温度在25-42℃之间，不需要变性过程，这样就大大加快了扩增的速度，再加上不需要温控设备，这两点共同打造了真正便携式的快速DNA扩增技术。不仅方便快捷，RPA更“迷人”的地方在于扩增量十分高，能够将痕量的核酸（尤其是DNA）模板扩增到能够可以检测到的水平。痕量，顾名思义就是“该物质虽然存在，但只有‘痕迹’，无法用一般方法定量检测，通常含量＜0.1mg”。利用它可以从单分子得到大约1012的扩增产物。而且RPA还不需要复杂的样品处理，可以直接用病人的血清完成检测。 RPA的具体过程如Figure 1所示，涉及三个核心蛋白：recombinase, SSB, and strand-displacing polymerase。 首先，重组酶和引物结合形成复合物，在拥挤环境下利于复合物的形成。然后重组酶-引物复合物在目标DNA上寻找同源区域，找到之后会使得双链DNA解聚并形成D-loop。接下来SSB（单链结合蛋白）会结合到暴露的一条DNA链上，稳定D-loop，防止分支迁移。最后，聚合酶会使得重组酶与引物分离，并启动后续的扩增过程。整个过程中，recombinase, SSB, and strand-displacing polymerase还有引物可以被反复利用，在循环过程中，复制产物以指数形式增长，直到体系中的dNTP消耗完。
+Figure1：RPA cycle
+CRISPR-Cas13a Cas13a蛋白，又称C2C2蛋白，它的发现历程比较有意思。2015年，张锋实验室通过序列比对发现Cas13a与众不同，跟cas9相比，其不具有Ruvc结构域，即没有DNA酶活性，但是具有两个HEPN结构域，即具有RNA酶活性，这一结论在2016年4月的Science杂志上得到了验证，Cas13a是一个RNA介导的RNA酶（figure2a）。然而，过个短短几个月之后，张锋的竞争对手Jennifer Doudna教授更进一步，在nature上发表文章，证实证明Cas13a具有两种RNA酶活性，一种是切割pre-crRNA称为成熟crRNA酶活性，一种是HEPN结构域的RNA酶活性，这个怎么理解呢，简单来说就是Cas13a除了能够切割crRNA之外，还可以切割其遇到的任何RNA，即所谓的**“collateral effect”，当然后一种RNA酶活性需要crRNA识别相应的RNA序列后才能激活**。基于这一点，可以通过猝灭荧光的RNA作为报告基团来检测目的RNA（figure2b），但是当时Doudna教授实验室的检测灵敏度只能够达到nM级别，没有实际应用价值。
+Figure2：Cas13a complex and collateral activity
+SHERLOCK的诞生 前面提到过，CRISPR-Cas13a是不能被称为“SHERLOCK”的，因为Cas13a是达不到许多基础研究和临床应用所需要的灵敏度的。于是，张锋教授找了一个强有力的“外援”——RPA。利用RPA技术，在室温条件下，样品中的DNA或RNA含量可以快速得到提升，然后再将DNA转化成RNA。如此一来，Cas13a就进化成真正意义上的“SHERLOCK”了！ SHERLOCK其实是一个“团队”，张锋给Cas13a“配备”了两个助手：一个是引导它到达应该被切割的特异性RNA的“向导RNA”；另一个叫做“报告RNA”，因为Cas13a在切割完特定RNA后不会失活，所以在Cas13a完成任务开始“作乱”的时候，报告RNA就会被切断，发出荧光信号。这样研究人员们就知道，它已经找到了与其相匹配的RNA序列（Figure 3）。]]></description>
+</item>
+</channel>
+</rss>

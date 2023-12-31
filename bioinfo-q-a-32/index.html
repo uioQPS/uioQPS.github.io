@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-32 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-32" />
+<meta property="og:description" content="第32题 1个RNA-Seq样本到底要测多少序列？ 我们讨论了到底选择哪种策略进行建库，主要就是polyA &#43; 和 rRNA-这两种方式。在选定建库策略以后，我们自然会问一个问题，如果我们去做RNA-Seq每个重复到底要测多少测序量呢？
+先聊聊测序价格 我们这里讨论的问题，都是以Illumina公司的二代测序为准。目前市面上公司能够提供测序服务的，大多数是Illumina的HiSeq平台，HiSeq X平台，NextSeq平台以及通量最高的NovaSeq平台。以上这些平台，在平时实验中我们都是进行双端150bp的测序模式，也就是我们常说的paired-end 150bp，所以一对reads的通量是150bp X 2 = 300bp
+注：下问中提到所有测序仪参数全部来自于Illumina官网！
+1.1 HiSeq系列 HiSeq系列的参数如图1-1所示，最常用的是HiSeq2500与HiSeq4000。HiSeq系列目前已经逐渐被边缘化或者是定制化，主要是用来做定制测序双端 250 bp的测序，或者单端50bp的测序。根据定制的模式不同，价格也不同。平均下来，价格大约是100~ 120 RMB / 1Gbp
+图1-1 HiSeq系列平台参数
+1.2 HiSeq X Ten测序仪 这个型号的测序仪是目前市场上的主力，1个flowcell可以有8条lane，每条lane可以产生100~120Gbp的测序数据，包lane的价格大约在8000RMB ~ 10000RMB左右，平均下来的价格是80 ~ 100RMB / Gbp
+图1-2 Illumina HiSeq X Ten测序仪
+1.3 测序最快的NextSeq系列 NextSeq采用了最新的双色荧光系统，而不是Illumina以前的四色荧光系统，因此运行速度大大提升，大约1天左右的时间就可以完成上机测序（HiSeq大约是3到4天），这个测序仪只有在我们对样本和实验比较着急的时候才会使用。价格也会比HiSeq系列高若干倍。不过，NextSeq的出现，给我们提了个醒，Illumina以后会通过逐渐优化测序仪站稳医院临床快速检测的脚跟。
+1.4 通量最高，最便宜的NovaSeq系列 NovaSeq系列测序仪没有lane的概念，是一个完整的flowcell，运行一次可以产生6Tbp左右的数据。如果你想测个几百个样品，那么NovaSeq绝对是你的首选。现在市场价大约可以压缩到40~50RMB/Gbp
+对于human来说RNA-Seq需要测多深？ 这个问题之前已经有人专门研究过，实验方案就是先把样品测很深比如50M pair（1M = 10^6），然后去随机抽取若干序列，比如每隔10M做一次抽样，再去计算每一次抽样结果的FPKM值，最后看基因的FPKM在多少测序量的时候能够稳定。根据图2-1所示，大约到了30M reads 的时候就可以稳定找出差异表达基因。 图2-1 探索测序量与差异表达基因的关系 （Yuwen Liu et al., 2014, Bioinformatics）
+同时，ENCODE计划里面也公布了RNA-Seq的数据测序标准，在ENCODE的标准中原文如下：
+ \1. Replicate number: Experiments should be performed with two or more biological replicates." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-32/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-19T16:03:36+00:00" />
+<meta property="article:modified_time" content="2020-02-19T16:03:36+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-32"/>
+<meta name="twitter:description" content="第32题 1个RNA-Seq样本到底要测多少序列？ 我们讨论了到底选择哪种策略进行建库，主要就是polyA &#43; 和 rRNA-这两种方式。在选定建库策略以后，我们自然会问一个问题，如果我们去做RNA-Seq每个重复到底要测多少测序量呢？
+先聊聊测序价格 我们这里讨论的问题，都是以Illumina公司的二代测序为准。目前市面上公司能够提供测序服务的，大多数是Illumina的HiSeq平台，HiSeq X平台，NextSeq平台以及通量最高的NovaSeq平台。以上这些平台，在平时实验中我们都是进行双端150bp的测序模式，也就是我们常说的paired-end 150bp，所以一对reads的通量是150bp X 2 = 300bp
+注：下问中提到所有测序仪参数全部来自于Illumina官网！
+1.1 HiSeq系列 HiSeq系列的参数如图1-1所示，最常用的是HiSeq2500与HiSeq4000。HiSeq系列目前已经逐渐被边缘化或者是定制化，主要是用来做定制测序双端 250 bp的测序，或者单端50bp的测序。根据定制的模式不同，价格也不同。平均下来，价格大约是100~ 120 RMB / 1Gbp
+图1-1 HiSeq系列平台参数
+1.2 HiSeq X Ten测序仪 这个型号的测序仪是目前市场上的主力，1个flowcell可以有8条lane，每条lane可以产生100~120Gbp的测序数据，包lane的价格大约在8000RMB ~ 10000RMB左右，平均下来的价格是80 ~ 100RMB / Gbp
+图1-2 Illumina HiSeq X Ten测序仪
+1.3 测序最快的NextSeq系列 NextSeq采用了最新的双色荧光系统，而不是Illumina以前的四色荧光系统，因此运行速度大大提升，大约1天左右的时间就可以完成上机测序（HiSeq大约是3到4天），这个测序仪只有在我们对样本和实验比较着急的时候才会使用。价格也会比HiSeq系列高若干倍。不过，NextSeq的出现，给我们提了个醒，Illumina以后会通过逐渐优化测序仪站稳医院临床快速检测的脚跟。
+1.4 通量最高，最便宜的NovaSeq系列 NovaSeq系列测序仪没有lane的概念，是一个完整的flowcell，运行一次可以产生6Tbp左右的数据。如果你想测个几百个样品，那么NovaSeq绝对是你的首选。现在市场价大约可以压缩到40~50RMB/Gbp
+对于human来说RNA-Seq需要测多深？ 这个问题之前已经有人专门研究过，实验方案就是先把样品测很深比如50M pair（1M = 10^6），然后去随机抽取若干序列，比如每隔10M做一次抽样，再去计算每一次抽样结果的FPKM值，最后看基因的FPKM在多少测序量的时候能够稳定。根据图2-1所示，大约到了30M reads 的时候就可以稳定找出差异表达基因。 图2-1 探索测序量与差异表达基因的关系 （Yuwen Liu et al., 2014, Bioinformatics）
+同时，ENCODE计划里面也公布了RNA-Seq的数据测序标准，在ENCODE的标准中原文如下：
+ \1. Replicate number: Experiments should be performed with two or more biological replicates."/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-32/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-31/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-33/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-32",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-32\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, RNA-Seq","wordcount":  117 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-32\/","datePublished": "2020-02-19T16:03:36+00:00","dateModified": "2020-02-19T16:03:36+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-32</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-19">2020-02-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;117 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-32/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-32">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第32题-1个rna-seq样本到底要测多少序列">第32题 1个RNA-Seq样本到底要测多少序列？</a>
+      <ul>
+        <li><a href="#先聊聊测序价格">先聊聊测序价格</a>
+          <ul>
+            <li><a href="#11-hiseq系列">1.1 HiSeq系列</a></li>
+            <li><a href="#12-hiseq-x-ten测序仪">1.2 HiSeq X Ten测序仪</a></li>
+            <li><a href="#13-测序最快的nextseq系列">1.3 测序最快的NextSeq系列</a></li>
+            <li><a href="#14-通量最高最便宜的novaseq系列">1.4 通量最高，最便宜的NovaSeq系列</a></li>
+          </ul>
+        </li>
+        <li><a href="#对于human来说rna-seq需要测多深">对于human来说RNA-Seq需要测多深？</a></li>
+        <li><a href="#提问环节">提问环节</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="第32题-1个rna-seq样本到底要测多少序列">第32题 1个RNA-Seq样本到底要测多少序列？</h2>
+<p>我们讨论了到底选择哪种策略进行建库，主要就是polyA + 和 rRNA-这两种方式。在选定建库策略以后，我们自然会问一个问题，如果我们去做RNA-Seq每个重复到底要测多少测序量呢？</p>
+<h3 id="先聊聊测序价格">先聊聊测序价格</h3>
+<p>我们这里讨论的问题，都是以Illumina公司的二代测序为准。目前市面上公司能够提供测序服务的，大多数是Illumina的HiSeq平台，HiSeq X平台，NextSeq平台以及通量最高的NovaSeq平台。以上这些平台，在平时实验中我们都是进行双端150bp的测序模式，也就是我们常说的paired-end 150bp，所以一对reads的通量是150bp X 2 = 300bp</p>
+<p>注：下问中提到所有测序仪参数全部来自于Illumina官网！</p>
+<h4 id="11-hiseq系列">1.1 HiSeq系列</h4>
+<p>HiSeq系列的参数如图1-1所示，最常用的是HiSeq2500与HiSeq4000。HiSeq系列目前已经逐渐被边缘化或者是定制化，主要是用来做定制测序双端 250 bp的测序，或者单端50bp的测序。根据定制的模式不同，价格也不同。平均下来，价格大约是100~ 120 RMB / 1Gbp</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="1.jpg"
+        data-srcset="1.jpg, 1.jpg 1.5x, 1.jpg 2x"
+        data-sizes="auto"
+        alt="1.jpg"
+        title="1.jpg" />
+图1-1 HiSeq系列平台参数</p>
+<h4 id="12-hiseq-x-ten测序仪">1.2 HiSeq X Ten测序仪</h4>
+<p>这个型号的测序仪是目前市场上的主力，1个flowcell可以有8条lane，每条lane可以产生100~120Gbp的测序数据，包lane的价格大约在8000RMB ~ 10000RMB左右，平均下来的价格是80 ~ 100RMB / Gbp</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="2.jpg"
+        data-srcset="2.jpg, 2.jpg 1.5x, 2.jpg 2x"
+        data-sizes="auto"
+        alt="2.jpg"
+        title="2.jpg" />
+图1-2 Illumina HiSeq X Ten测序仪</p>
+<h4 id="13-测序最快的nextseq系列">1.3 测序最快的NextSeq系列</h4>
+<p>NextSeq采用了最新的双色荧光系统，而不是Illumina以前的四色荧光系统，因此运行速度大大提升，大约1天左右的时间就可以完成上机测序（HiSeq大约是3到4天），这个测序仪只有在我们对样本和实验比较着急的时候才会使用。价格也会比HiSeq系列高若干倍。不过，NextSeq的出现，给我们提了个醒，Illumina以后会通过逐渐优化测序仪站稳医院临床快速检测的脚跟。</p>
+<h4 id="14-通量最高最便宜的novaseq系列">1.4 通量最高，最便宜的NovaSeq系列</h4>
+<p>NovaSeq系列测序仪没有lane的概念，是一个完整的flowcell，运行一次可以产生6Tbp左右的数据。如果你想测个几百个样品，那么NovaSeq绝对是你的首选。现在市场价大约可以压缩到40~50RMB/Gbp</p>
+<h3 id="对于human来说rna-seq需要测多深">对于human来说RNA-Seq需要测多深？</h3>
+<p>这个问题之前已经有人专门研究过，实验方案就是先把样品测很深比如50M pair（1M = 10^6），然后去随机抽取若干序列，比如每隔10M做一次抽样，再去计算每一次抽样结果的FPKM值，最后看基因的FPKM在多少测序量的时候能够稳定。根据图2-1所示，大约到了30M reads 的时候就可以稳定找出差异表达基因。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="3.jpg"
+        data-srcset="3.jpg, 3.jpg 1.5x, 3.jpg 2x"
+        data-sizes="auto"
+        alt="3.jpg"
+        title="3.jpg" />
+图2-1 探索测序量与差异表达基因的关系 （Yuwen Liu et al., 2014, Bioinformatics）</p>
+<p>同时，ENCODE计划里面也公布了RNA-Seq的数据测序标准，在ENCODE的标准中原文如下：</p>
+<blockquote>
+<p>\1. Replicate number: Experiments should be performed with two or more
+biological replicates.   <br>
+\2. Sequencing depth: 30M pair-end reads of length &gt; 30NT, of which 20-25M are mappable to the genome or known transcriptome.</p>
+</blockquote>
+<p>简单翻译一下，就是要求生物学重复不少于2个，如果是估算表达量的情况下30M paried end reads就差不多了，同时最好能够保证其中的20~25M的paried reads都能回贴到参考转录组中。</p>
+<h3 id="提问环节">提问环节</h3>
+<p><strong>3.1 对于human来说，genome大约为3Gbp，可以转录的区域大约是30%左右的genome，但是gene的exon只有不到whole genome的10%，在这种情况下我们需要测30M paired-end reads才可以比较好的衡量差异表达基因。如果换一个物种，我们又该怎么去判断如何定测序量呢？</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="4.png"
+        data-srcset="4.png, 4.png 1.5x, 4.png 2x"
+        data-sizes="auto"
+        alt="4.png"
+        title="4.png" /></p>
+<p>3.2 算算账吧，如果一个样本测<strong>30M paired-end reads</strong>，那么以目前的市场价格，测序需要花多少钱？还可以算算一个常规的RNA-Seq实验的测序经费是多少？</p>
+<p>但是因为还需要生物学重复。对于临床的样本和普通的细胞样本来说的话是不一样的。 <br>
+如果是普通的细胞系的话3-4个重复，咱们按3个重复计算一个样品的话是540x3=1620RMB 。但是对于临床的肿瘤样品来说的话，是需要6-8个重复（因为肿瘤的差异比较大）。按6个计算，一般要一个肿瘤样本，一个癌旁样本，这样就是540x6x2=6480 RMB</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-32/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-32/" data-title="【bioinfo】-Q&amp;A-32" data-hashtags="AQ100,RNA-Seq"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-32/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-32/" data-title="【bioinfo】-Q&amp;A-32"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-32/" data-title="【bioinfo】-Q&amp;A-32"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-32/" data-title="【bioinfo】-Q&amp;A-32"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/rna-seq/">RNA-seq</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-31/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-31"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-31</a>
+            <a href="/bioinfo-q-a-33/" class="next" rel="next" title="【bioinfo】-Q&amp;A-33">【bioinfo】-Q&A-33<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

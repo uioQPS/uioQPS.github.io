@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>fasta - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/fasta/</link>
+        <description>fasta - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Feb 2020 15:16:37 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/fasta/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-「1」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-1/</link>
+    <pubDate>Sun, 16 Feb 2020 15:16:37 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-1/</guid>
+    <description><![CDATA[FASTA 与 FASTQ格式详解  写在最前面的话：
+为什么第2篇要写fastq和fasta这两种储存sequence的格式呢？主要是因为这两种数据储存格式是我们后续分析主要处理的两种数据格式。无论是后面的双序列比对（pairwise alignment）还是进化树构建（phylogenetic tree）亦或是高通量分析的回贴（mapping）数据的原始输入都是这两种格式。所以，为了后面更复杂的一些算法软件，我们就得先打好基础喽，Let’s go ！
+ FASTA 概述一下，fasta格式是一种非常简单的储存序列的格式，可以储存核酸序列（DNA/RNA）也可以储存蛋白质的氨基酸序列（Amino Acid sequence，简称AA序列），主要分成2个部分。
+ 是以“&gt;”为开始的一行主要储存的是序列的描述信息； 剩下的是序列部分，中间，前后都可以有空格。序列部分按照官方文档的说明应该是小于120就行，一般70到80左右。 其实实际操作中，程序处理的时候都是自动去掉空格和换行符，把序列读成1行再处理，所以，我也干过把整条人类染色体都放到一行的233举动，这么算下来，一行可以有240*10E6这么长！~~~ 举一个栗子！  AA序列 1 2 3 4  &gt;sp|P69905|HBA_HUMAN Hemoglobin subunit alpha OS=Homo sapiens GN=HBA1 MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHG KKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTP AVHASLDKFLASVSTVLTSKYR   这个例子是从UniRef数据库中下载的人类血红蛋白α亚基的序列。我们先看第1行：
+1  &gt;sp|P69905|HBA_HUMAN Hemoglobin subunit alpha OS=Homo sapiens GN=HBA1   这一行中，
+ P69905是这个序列在UniRef中的编号 HBA_HUMAN是这个序列的简称，Hemoglobin subunit alpha是全称 OS=Homo sapiens是物种 GN=HBA1是指基因的名字为HBA1. 后面的内容就是这个HBA1基因对应的蛋白的序列。其实根据官方文档，氨基酸都是用单字母表示，对应表如下：  1 2 3 4 5 6 7 8 9 10 11 12 13  A alanine P proline B aspartate/asparagine Q glutamine C cystine R arginine D aspartate S serine E glutamate T threonine F phenylalanine U selenocysteine G glycine V valine H histidine W tryptophan I isoleucine Y tyrosine K lysine Z glutamate/glutamine L leucine X any M methionine * translation stop N asparagine - gap of indeterminate length   核酸序列 为了方便大家理解，我们继续使用人类血红蛋白a亚基对应的mRNA序列，这个序列是从NCBI RefSeq数据库中下载的。]]></description>
+</item>
+</channel>
+</rss>

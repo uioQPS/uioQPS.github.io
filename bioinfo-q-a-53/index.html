@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-53 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-53" />
+<meta property="og:description" content="多靶点自体免疫细胞技术 过继性T细胞治疗(adoptive T-cell therapy,ACT) 文章是 Immune recognition of somatic mutations leading to complete durable regression in metastatic breast cancer 发表于 Nature Medicine (2018) 重点在实验设计环节，但是现在的大文章或多或少都引入多组学数据，本文也不例外，实验纳入的唯一一个病人既做了全外显子又做了转录组测序，还有单细胞测序。不过数据公开的是 PRJNA342632 for exome data and PRJNA243084 for RNA-seq data
+背景知识 肿瘤免疫疗法 近年来，肿瘤免疫疗法已成为继手术、放疗和化疗之后的第四种肿瘤治疗手段。
+肿瘤免疫治疗，主要包括
+1 2 3 4 5  免疫疫苗 免疫检查点抑制剂治疗 过继性免疫细胞治疗 细胞因子治疗 其中以CTLA4、PD1/PDL1抑制剂为代表的免疫检查点抑制剂，以其显著的临床疗效而备受瞩目。   而本文的研究属于肿瘤免疫治疗的过继性T细胞疗法（ACT）领域，之前以CART为主，最近出现了另外一种疗法——TIL（Tumor Infiltrating T cell，肿瘤浸润淋巴细胞），表现也十分惊艳，Rosenburg博士及其团队就是这一领域的代表。
+肿瘤浸润淋巴细胞(TILs) 肿瘤浸润性淋巴细胞（tumor infiltrating lymphocyte, TIL）指的是从肿瘤组织中分离出的浸润淋巴细胞。
+1986年，Rosenberg研究组首先报道了TIL细胞。TIL细胞表型具有异质性。一般来说，在TIL中，绝大多数细胞是CD3阳性的。在不同肿瘤来源的TIL细胞中，CD4&#43; T细胞、CD8&#43; T细胞的比例有差异，但大多数情况下以CD8&#43;T细胞为主。
+不同患者不同肿瘤类型对免疫疗法的反应不可预测，是因为免疫成分的异质性以及肿瘤浸润淋巴细胞（TILs）在单个肿瘤内和患者之间的多样化表型。
+并不是所有的肿瘤浸润T细胞都是针对肿瘤抗原的，并且发现检测CD39的表达可以简单的量化或分离Bystander 即“旁观者”T细胞。
+技术历史 早在2014年的时候Rosenburg博士的团队就将其一部分研究结果发表在Science期刊（Tran E et al, Science 2014）上，当时他们的做法是：把一名晚期胆管癌女患者的肺转移肿瘤病灶拿来做全基外显子测序，找到了26个非同义突变，并为每一个突变构建了一段短基因，将这些短基因几个一组地串联成短基因串（Tandem Minigene, TMG），然后将这些短基因串转入抗原递呈细胞（指树突状细胞DC）并与肿瘤浸润淋巴细胞（TIL）共同培养，以查看患者的TIL中是否存在可以特异性识别肿瘤突变的T细胞。不出所料，这位患者的TIL可以识别肿瘤的一个突变。研究者将这个有识别功能的T细胞体外大量扩增后再回输给患者，患者肝部的转移灶长期稳定状态达1年以上。Rosenburg博士的团队通过这个研究，证明了晚期癌症患者的肿瘤组织中确实是存在可以对抗肿瘤突变的淋巴细胞的、即便是在晚期胆管癌这样凶险又难治的瘤种。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-53/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-21T22:02:45+00:00" />
+<meta property="article:modified_time" content="2020-02-21T22:02:45+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-53"/>
+<meta name="twitter:description" content="多靶点自体免疫细胞技术 过继性T细胞治疗(adoptive T-cell therapy,ACT) 文章是 Immune recognition of somatic mutations leading to complete durable regression in metastatic breast cancer 发表于 Nature Medicine (2018) 重点在实验设计环节，但是现在的大文章或多或少都引入多组学数据，本文也不例外，实验纳入的唯一一个病人既做了全外显子又做了转录组测序，还有单细胞测序。不过数据公开的是 PRJNA342632 for exome data and PRJNA243084 for RNA-seq data
+背景知识 肿瘤免疫疗法 近年来，肿瘤免疫疗法已成为继手术、放疗和化疗之后的第四种肿瘤治疗手段。
+肿瘤免疫治疗，主要包括
+1 2 3 4 5  免疫疫苗 免疫检查点抑制剂治疗 过继性免疫细胞治疗 细胞因子治疗 其中以CTLA4、PD1/PDL1抑制剂为代表的免疫检查点抑制剂，以其显著的临床疗效而备受瞩目。   而本文的研究属于肿瘤免疫治疗的过继性T细胞疗法（ACT）领域，之前以CART为主，最近出现了另外一种疗法——TIL（Tumor Infiltrating T cell，肿瘤浸润淋巴细胞），表现也十分惊艳，Rosenburg博士及其团队就是这一领域的代表。
+肿瘤浸润淋巴细胞(TILs) 肿瘤浸润性淋巴细胞（tumor infiltrating lymphocyte, TIL）指的是从肿瘤组织中分离出的浸润淋巴细胞。
+1986年，Rosenberg研究组首先报道了TIL细胞。TIL细胞表型具有异质性。一般来说，在TIL中，绝大多数细胞是CD3阳性的。在不同肿瘤来源的TIL细胞中，CD4&#43; T细胞、CD8&#43; T细胞的比例有差异，但大多数情况下以CD8&#43;T细胞为主。
+不同患者不同肿瘤类型对免疫疗法的反应不可预测，是因为免疫成分的异质性以及肿瘤浸润淋巴细胞（TILs）在单个肿瘤内和患者之间的多样化表型。
+并不是所有的肿瘤浸润T细胞都是针对肿瘤抗原的，并且发现检测CD39的表达可以简单的量化或分离Bystander 即“旁观者”T细胞。
+技术历史 早在2014年的时候Rosenburg博士的团队就将其一部分研究结果发表在Science期刊（Tran E et al, Science 2014）上，当时他们的做法是：把一名晚期胆管癌女患者的肺转移肿瘤病灶拿来做全基外显子测序，找到了26个非同义突变，并为每一个突变构建了一段短基因，将这些短基因几个一组地串联成短基因串（Tandem Minigene, TMG），然后将这些短基因串转入抗原递呈细胞（指树突状细胞DC）并与肿瘤浸润淋巴细胞（TIL）共同培养，以查看患者的TIL中是否存在可以特异性识别肿瘤突变的T细胞。不出所料，这位患者的TIL可以识别肿瘤的一个突变。研究者将这个有识别功能的T细胞体外大量扩增后再回输给患者，患者肝部的转移灶长期稳定状态达1年以上。Rosenburg博士的团队通过这个研究，证明了晚期癌症患者的肿瘤组织中确实是存在可以对抗肿瘤突变的淋巴细胞的、即便是在晚期胆管癌这样凶险又难治的瘤种。"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-53/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-52/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-54/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-53",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-53\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, ACT","wordcount":  253 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-53\/","datePublished": "2020-02-21T22:02:45+00:00","dateModified": "2020-02-21T22:02:45+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-53</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/cg/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>cg</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-21">2020-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;253 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/bioinfo-q-a-53/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-53">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#多靶点自体免疫细胞技术">多靶点自体免疫细胞技术</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#过继性t细胞治疗adoptive-t-cell-therapyact">过继性T细胞治疗(adoptive T-cell therapy,ACT)</a></li>
+            <li><a href="#背景知识">背景知识</a></li>
+            <li><a href="#肿瘤免疫疗法">肿瘤免疫疗法</a></li>
+            <li><a href="#肿瘤浸润淋巴细胞tils">肿瘤浸润淋巴细胞(TILs)</a></li>
+            <li><a href="#技术历史">技术历史</a></li>
+            <li><a href="#多组学测序">多组学测序</a></li>
+            <li><a href="#somatic变异">somatic变异</a></li>
+            <li><a href="#til识别的两个基因突变">TIL识别的两个基因突变</a></li>
+            <li><a href="#单细胞测序识别两个基因突变">单细胞测序识别两个基因突变</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="多靶点自体免疫细胞技术">多靶点自体免疫细胞技术</h2>
+<h4 id="过继性t细胞治疗adoptive-t-cell-therapyact">过继性T细胞治疗(adoptive T-cell therapy,ACT)</h4>
+<p>文章是 Immune recognition of somatic mutations leading to complete durable regression in metastatic breast cancer 发表于 Nature Medicine (2018) 重点在实验设计环节，但是现在的大文章或多或少都引入多组学数据，本文也不例外，实验纳入的唯一一个病人既做了全外显子又做了转录组测序，还有单细胞测序。不过数据公开的是 PRJNA342632 for exome data and PRJNA243084 for RNA-seq data</p>
+<h4 id="背景知识">背景知识</h4>
+<h4 id="肿瘤免疫疗法">肿瘤免疫疗法</h4>
+<p>近年来，肿瘤免疫疗法已成为继手术、放疗和化疗之后的第四种肿瘤治疗手段。</p>
+<p><strong>肿瘤免疫治疗</strong>，主要包括</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">免疫疫苗
+</span></span><span class="line"><span class="cl">免疫检查点抑制剂治疗
+</span></span><span class="line"><span class="cl">过继性免疫细胞治疗
+</span></span><span class="line"><span class="cl">细胞因子治疗
+</span></span><span class="line"><span class="cl">其中以CTLA4、PD1/PDL1抑制剂为代表的免疫检查点抑制剂，以其显著的临床疗效而备受瞩目。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而本文的研究属于肿瘤免疫治疗的过继性T细胞疗法（ACT）领域，之前以CART为主，最近出现了另外一种疗法——TIL（Tumor Infiltrating T cell，肿瘤浸润淋巴细胞），表现也十分惊艳，Rosenburg博士及其团队就是这一领域的代表。</p>
+<h4 id="肿瘤浸润淋巴细胞tils">肿瘤浸润淋巴细胞(TILs)</h4>
+<p>肿瘤浸润性淋巴细胞（tumor infiltrating lymphocyte, TIL）指的是从肿瘤组织中分离出的浸润淋巴细胞。</p>
+<p>1986年，Rosenberg研究组首先报道了TIL细胞。TIL细胞表型具有异质性。一般来说，在TIL中，绝大多数细胞是CD3阳性的。在不同肿瘤来源的TIL细胞中，CD4+ T细胞、CD8+ T细胞的比例有差异，但大多数情况下以CD8+T细胞为主。</p>
+<p>不同患者不同肿瘤类型对免疫疗法的反应不可预测，是因为免疫成分的异质性以及肿瘤浸润淋巴细胞（TILs）在单个肿瘤内和患者之间的多样化表型。</p>
+<p>并不是所有的肿瘤浸润T细胞都是针对肿瘤抗原的，并且发现检测CD39的表达可以简单的量化或分离Bystander 即“旁观者”T细胞。</p>
+<h4 id="技术历史">技术历史</h4>
+<p>早在2014年的时候Rosenburg博士的团队就将其一部分研究结果发表在Science期刊（Tran E et al, Science 2014）上，当时他们的做法是：把一名晚期胆管癌女患者的肺转移肿瘤病灶拿来做全基外显子测序，找到了26个非同义突变，<strong>并为每一个突变构建了一段短基因，将这些短基因几个一组地串联成短基因串（Tandem Minigene, TMG）</strong>，然后将这些短基因串转入抗原递呈细胞（指树突状细胞DC）并与肿瘤浸润淋巴细胞（TIL）共同培养，以查看患者的TIL中是否存在可以特异性识别肿瘤突变的T细胞。不出所料，这位患者的TIL可以识别肿瘤的一个突变。研究者将这个有识别功能的T细胞体外大量扩增后再回输给患者，患者肝部的转移灶长期稳定状态达1年以上。Rosenburg博士的团队通过这个研究，证明了晚期癌症患者的肿瘤组织中确实是存在可以对抗肿瘤突变的淋巴细胞的、即便是在晚期胆管癌这样凶险又难治的瘤种。</p>
+<p>但是从实体瘤中收集浸润性T细胞确实比较有挑战性，而与之相比，抽取患者的外周血则容易得多，所以2016年Steve Rosenberg小组发表在《自然-医药》杂志上的文章《Prospective identification of neoantigen-specific lymphocytes in the peripheral blood of melanoma patients》即是从晚期恶性黑色素瘤患者的外周免疫细胞中可根据PD-1受体表达找到针对肿瘤变异新抗原的活性杀伤T细胞。这样找到的T细胞在体外增殖后和肿瘤浸润淋巴细胞（TIL）一样可以识别患者自身肿瘤。</p>
+<p>但是恶性黑色素瘤是一种突变比较多的肿瘤，尽管外周血抗肿瘤细胞比例低，但是仍然能够分离出来；而其他突变较少的肿瘤在外周血中是否同样存在这样的T细胞就存疑了。</p>
+<h4 id="多组学测序">多组学测序</h4>
+<p>虽然作者本文只探索了一个病人，但是它上传了很多数据在，对这个病人测了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FrTu (118×)
+</span></span><span class="line"><span class="cl">OCT (120×)
+</span></span><span class="line"><span class="cl">normal blood (116×)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也是常规的肿瘤外显子数据分析流程，其实就是GATK best-practices 流程加上 varscan2，再使用 ‘allele-specific copy-number analysis of tumors’ (ASCAT) 和Sequenza 来分析肿瘤纯度和倍性，然后得到的somatic 变异过滤如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tumor and normal read counts of 6 or greater,
+</span></span><span class="line"><span class="cl">variant-allele frequency (VAF) ≥ 5%
+</span></span><span class="line"><span class="cl">tumor-variant reads ≥ 3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其RNA-seq测序也是走的STAR比对加上GATK best-practices 流程来找变异。</p>
+<p>最后使用 PyClone 进行克隆进化分析。</p>
+<h4 id="somatic变异">somatic变异</h4>
+<p>这里过滤后剩下 62 nonsynonymous somatic 变异位点</p>
+<h4 id="til识别的两个基因突变">TIL识别的两个基因突变</h4>
+<p>通过与前面文章类似的方法，构建TMG来挑选病人那些可以特异性识别这些突变的TIL细胞。本次使用使用了pulsed peptide pools (PPs 1–6) or transfected mRNAs (tandem minigenes (TMGs) 1–6)</p>
+<p>得到的结果如图：</p>
+<ul>
+<li>The reactive F13 TIL recognized mutant ECM29 proteasome adaptor and scaffold (ECPAS; also known as KIAA0368)</li>
+<li>Individual peptide screens of the TIL fragments showed F8 and F12 recognized the solute carrier family 3 member 2 (SLC3A2) protein</li>
+</ul>
+<h4 id="单细胞测序识别两个基因突变">单细胞测序识别两个基因突变</h4>
+<p>挑选那些高表达T cell receptor (TCR)-β variable (TRBV) region or high expression levels of 4-1BB (CD137, a marker of T cell activation)的T细胞做单细胞测序，找到了跟mutant (mut)-SLC3A2 or mutKIAA0368对接的TRBV</p>
+<p>然后TIL回输之后， FACS-sorted TRBV28+ cells showed specific recognition of PP6 and TMG6，如下图</p>
+<p>又对应到了两个突变：</p>
+<ul>
+<li>calcium-dependent secretion activator 2 (CADPS2; p.Arg1266His)</li>
+<li>cathepsin B (CTSB; p.Asp159His)</li>
+</ul>
+<p>整个实验比较幸运，对这个病人来说，发现了 11 TCR clonotypes recognized the four neoantigens (SLC3A2, KIAA0368, CADPS2 and CTSB)</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-53/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-53/" data-title="【bioinfo】-Q&amp;A-53" data-hashtags="AQ100,ACT"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-53/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-53/" data-title="【bioinfo】-Q&amp;A-53"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-53/" data-title="【bioinfo】-Q&amp;A-53"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-53/" data-title="【bioinfo】-Q&amp;A-53"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/act/">ACT</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-52/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-52"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-52</a>
+            <a href="/bioinfo-q-a-54/" class="next" rel="next" title="【bioinfo】-Q&amp;A-54">【bioinfo】-Q&A-54<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

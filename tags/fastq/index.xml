@@ -1,0 +1,83 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>fastq - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/fastq/</link>
+        <description>fastq - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Feb 2020 15:16:59 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/fastq/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-「7」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-7/</link>
+    <pubDate>Sun, 16 Feb 2020 15:16:59 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-7/</guid>
+    <description><![CDATA[读懂FastQC报告 Part II Hello 大家好！
+今天我们接着昨天的话题来继续进行与FastQC结果有关的提问。
+我们昨天主要是针对FastQC结果中的boxplot进行了相关的探索，boxplot一般是认为FastQC几张必看的质控图之一。一般情况下FastQC的结果会包含下面几个图，而我们主要会看下图圈出来的几个。
+img
+接下来的几天我们就把这些图来一个一个讨论清楚。
+我们昨天讨论了“Per base sequence quality”，今天先来讨论 “Per base sequence content”
+img图1
+img图2
+问题：
+1. 图1与图2中横坐标是什么意思？纵坐标是什么意思？
+横轴代表1到150bp；纵轴代表ATCG在该bp的百分比
+2. 图1是1个正常的DNA 全基因组测序结果，为什么前面的几bp线是波动的？后面的线是平衡的？
+根据Wason-Crick配对原则，A和T应该相等，G和C应该相等
+但是一般测序的时候，刚开始测序仪状态不稳定，很可能出现不平衡的情况
+像这种情况
+如果测序的得分很高，可以不进行trim开始部分的序列信息
+如果测序得分很低，需要进行trim开始部分的序列信息
+3. 图2是1个特殊RNA建库的测序结果，4条线出现波动更可能是什么原因造成的？
+RNA是单链核苷酸，GC或AT的含量并没有直接的关系
+4条线的波动是由于模板中ATCG的量不同导致的（就是所谓GC不平衡）
+4. 在图1中你能不能看出一个恒定的量？（提示，同一物种间相同，不同物种间一般不同）如果能看出来，这个量是什么？数值大约是多少？ GC含量在同一物种中是一个恒定值。
+图1中GC总体比例大约在42%（目测）]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「6」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-6/</link>
+    <pubDate>Sun, 16 Feb 2020 15:16:55 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-6/</guid>
+    <description><![CDATA[读懂FastQC报告 Part I Hello 大家好！
+通过前面的5个问题，我相信大家对Illumina测序，测序的储存文件格式，一些简单的建库原理已经有了一个初步的认识。那么接下来，我们就要用我们学到的知识去解决一些问题啦。
+在实际操作和处理过程中，我们拿到的Illumina测序数据应该是.fastq.gz格式，其中gz表示的是使用gzip进行压缩，fastq表示使用fastq格式进行存储。获得数据的第一步，通常就是使用FastQC软件进行质控。
+FastQC会对每一个输入的fastq.gz文件生成1个html网页和一个zip的压缩包。压缩包里是网页中包含的图片信息，因此我们只需要看网页里面整理好的内容就好。
+今天的问题围绕着FastQC的质控图来展开，请看下面2张图。
+img
+图1 - 1个Illumina测序结果， reads1 的 per-base quality boxplot
+img
+图2 - 1个Illumina测序结果， reads2 的 per-base quality boxplot
+问题如下：
+  图中的横坐标表示什么意思？  横轴是测序序列的第1个碱基到第150个碱基
+图中的纵坐标表示什么意思？  总左边表示每一bp所对应的测序质量值
+前面讲过将该碱基判断错误概率值P取log10之后再乘以-10
+得到的结果再加上Phred值对应ASCII表所得到的的值就是该碱基测序的质量值
+Q = -10*log10(error P)
+即20表示1%的错误率，30表示0.1%的错误率
+ 图中的蓝色线是什么意思？  蓝色的细线是各个位置的质量值的平均值的连线
+图中的box 下面的bar ， 上面的bar，箱体的下沿，箱体的上沿，箱体内部的横线分别代表什么意思？  每1个boxplot，都是该位置的所有序列的测序质量的一个统计
+上面的bar是90%分位数
+下面的bar是10%分位数
+箱子的中间的横线是50%分位数
+箱体上缘是75%分位数
+箱体下缘是25%分位数
+分位数解释：
+​ 如果一组数的25%分位数是a，意味着a超过了这组数中25%数字的大小
+ 图1与图2最主要的区别在哪里？结合我们之前的问题，为什么会出现这种情况？  相比于reads 1的测序结果，reads 2的测序质量均匀性差，准确率低
+主要原因： reads 2 的测序是在 reads 1 150 bp 测序完成后 forward strands再通过1次桥式PCR合成reverse strands 这之后再进行荧光测序 测序质量差的主要原因是因为长时间测序结束后，合成酶的活性降低，导致合成时加不上一些碱基，最终同步性变差，主要属于phasing错误.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「1」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-1/</link>
+    <pubDate>Sun, 16 Feb 2020 15:16:37 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-1/</guid>
+    <description><![CDATA[FASTA 与 FASTQ格式详解  写在最前面的话：
+为什么第2篇要写fastq和fasta这两种储存sequence的格式呢？主要是因为这两种数据储存格式是我们后续分析主要处理的两种数据格式。无论是后面的双序列比对（pairwise alignment）还是进化树构建（phylogenetic tree）亦或是高通量分析的回贴（mapping）数据的原始输入都是这两种格式。所以，为了后面更复杂的一些算法软件，我们就得先打好基础喽，Let’s go ！
+ FASTA 概述一下，fasta格式是一种非常简单的储存序列的格式，可以储存核酸序列（DNA/RNA）也可以储存蛋白质的氨基酸序列（Amino Acid sequence，简称AA序列），主要分成2个部分。
+ 是以“&gt;”为开始的一行主要储存的是序列的描述信息； 剩下的是序列部分，中间，前后都可以有空格。序列部分按照官方文档的说明应该是小于120就行，一般70到80左右。 其实实际操作中，程序处理的时候都是自动去掉空格和换行符，把序列读成1行再处理，所以，我也干过把整条人类染色体都放到一行的233举动，这么算下来，一行可以有240*10E6这么长！~~~ 举一个栗子！  AA序列 1 2 3 4  &gt;sp|P69905|HBA_HUMAN Hemoglobin subunit alpha OS=Homo sapiens GN=HBA1 MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHG KKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTP AVHASLDKFLASVSTVLTSKYR   这个例子是从UniRef数据库中下载的人类血红蛋白α亚基的序列。我们先看第1行：
+1  &gt;sp|P69905|HBA_HUMAN Hemoglobin subunit alpha OS=Homo sapiens GN=HBA1   这一行中，
+ P69905是这个序列在UniRef中的编号 HBA_HUMAN是这个序列的简称，Hemoglobin subunit alpha是全称 OS=Homo sapiens是物种 GN=HBA1是指基因的名字为HBA1. 后面的内容就是这个HBA1基因对应的蛋白的序列。其实根据官方文档，氨基酸都是用单字母表示，对应表如下：  1 2 3 4 5 6 7 8 9 10 11 12 13  A alanine P proline B aspartate/asparagine Q glutamine C cystine R arginine D aspartate S serine E glutamate T threonine F phenylalanine U selenocysteine G glycine V valine H histidine W tryptophan I isoleucine Y tyrosine K lysine Z glutamate/glutamine L leucine X any M methionine * translation stop N asparagine - gap of indeterminate length   核酸序列 为了方便大家理解，我们继续使用人类血红蛋白a亚基对应的mRNA序列，这个序列是从NCBI RefSeq数据库中下载的。]]></description>
+</item>
+</channel>
+</rss>

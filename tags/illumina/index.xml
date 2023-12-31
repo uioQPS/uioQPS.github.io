@@ -1,0 +1,55 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>illumina - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/illumina/</link>
+        <description>illumina - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Feb 2020 21:41:06 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/illumina/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-68</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-68/</link>
+    <pubDate>Sat, 22 Feb 2020 21:41:06 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-68/</guid>
+    <description><![CDATA[illumina nextera Tn5 和ATAC seq adaptor 序列 在准备NGS文库的时候，会有用到转座酶Tn5，Nextera DNA Library Preparation Kit ，比如ATAC-seq就有用到这个Tn5。转座酶携带有特定的序列称为转座子Transposon。
+下面是ATAC-seq的工作原理，想必听说过ATAC-seq的，对这个图都会再熟悉不过了。
+Tn5是kit里面带有的，没什么大不同。ATAC-seq 的barcoded primers （adaptors）会有一些不同，接下来，看下图中的每段序列对应的sequnce都是什么。 下面图例，Nextera tn5用来给基因组DNA加adaptors。 搞懂illumina nextera Tn5 和ATAC seq adaptor 序列 放大tn5: 在tn5二聚体里面的双链的Oligo是Nextera Tn5 binding site，19个碱基，全部都是一样的。伸出来的部分是单链的序列，蓝色：Nextera tn5 read1 (5&rsquo;-TCGTCGGCAGCGTC-3&rsquo;)；红色：Nextera tn5 read2(5’-GTCTCGTGGGCTCGG-3')
+1 2 3 4 5 6 7  Nextera Tn5 binding site (19-bp Mosaic End (ME)): 5&#39;- AGATGTGTATAAGAGACAG -3’ Nextera N/S5xx primer entry point (s5)／Tn5 Read 1: 5&#39;- TCGTCGGCAGCGTC -3&#39; Nextera N7xx primer entry point (s7)／ Tn5 Read 2: 5&#39;- GTCTCGTGGGCTCGG -3&#39; Illumina P5 primer 1: 5&#39;- AATGATACGGCGACCACCGAGATCTACAC -3&#39; Illumina P7 primer 2: 5&#39;- CAAGCAGAAGACGGCATACGAGAT -3’ Tn5 Read 1 （包括ME）sequence: 5&#39;- TCGTCGGCAGCGTC（AGATGTG，TATAAGAGACAG） -3’ （33bp） Tn5 Read 2 （包括ME）sequence: 5&#39;- GTCTCGTGGGCTCGG（AGATGT，GTATAAGAGACAG ）-3’ （34bp）   下面的图片就是准备ATAC-seq时候需要用到的index primer （adaptor），和Nextera DNA library prep kit里的有一点类似，但是也很不同。Ad1_noMX是Forward 引物，没有index （barcode），所以只有一个。Reversed引物有24个Ad2.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「4」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-4/</link>
+    <pubDate>Sun, 16 Feb 2020 15:16:47 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-4/</guid>
+    <description><![CDATA[Illumina测序技术细节探究 II 我们接着第2个问题，第3个问题接着问。既然我们已经知道的Illumina测序的基本概念，基本过程；也知道了Illumina测序的主要特点。那么还是要有个细节的探索。
+  Illumina目前主流的测序仪都有哪几种型号？各自大概的通量是多少？（也就是1个run能跑出多少数据）  目前主流的测序仪及其通量主要是Hiseq2500（50-1000Gb）、Hiseq3000（125-750Gb）、Hiseq4000（125-1500Gb）、Hiseq X Five（900-1800Gb）和Hiseq X Ten（900-1800Gb）
+ Illumina目前的测序技术，最核心的就是边合成边测序，即我们常说的 Sequencing by synthesis （SBS），那么为什么能够实现SBS？  经过桥式PCR之后同一段序列已经成簇，下一段就是开始进行测序，这一步比较简单，就是加入primer，然后添加经过特殊处理的ATCG四种碱基，特殊的地方有两点：一个是碱基部分加入了荧光基团，可以激发出不同的颜色，另一个是脱氧核糖3号位加入了叠氮基团而不是常规的羟基，这个叠氮集团保证了每次只能够在序列上添加1个碱基.
+这样每1轮测序，保证只有1个碱基加入的当前测序链。这时候测序仪会发出激发光，并扫描荧光。因为一个cluster中所有的序列是一样的，所以理论上，这时候cluster中发出的荧光应该颜色一致。随后加入试剂，将脱氧核糖3号位的—N2改变成—OH，然后切掉部分荧光基团，使其在下一轮反应中，不再发出荧光。如此往复，就可以测出序列的内容。  我们在第1问中，问了大家一个问题“Illumina测序技术为什么不能像第1代测序技术一样测500bp以上？”，这里面主要涉及到两种错误，一种叫phasing，一种叫pre-phasing，分别是什么意思？  通俗来讲phasing表示本来同步添加的碱基有一些没加上，而pre-phasing则是加多了，都会导致当前bp的荧光检测出现噪音，造成phasing的主要原因是合成酶的活性降低，而pre-phasing则可能是叠氮基团性质不稳定，转化为羟基在一步检测中添加了不止一个碱基。
+reference: Diagnosing problems with phasing and pre-phasing on Illumina platforms
+ ]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「3」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-3/</link>
+    <pubDate>Sun, 16 Feb 2020 15:16:44 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-3/</guid>
+    <description><![CDATA[Illumina测序技术细节探究 目前我们最常使用的就是Illumina公司的测序技术，Illumina公司的测序技术最明显的几个特点是：价格低，通量高，测序读长短。那么我们今天的问题，就是围绕Illumina测序技术的细节来提问的。
+  什么是Illumina测序adapter？同一批上机的adapter序列一样吗？它的作用是什么？  adapter的中文意思为适配器或者接口，在illumina测序过程中关键一步是将文库片段固定在flowcell上，然后通过桥式PCR将片段扩增，在被打断成300~500bp的长度的片段末端被补平后adaptor将被添加到片段两端，一方面用于将片段固定在flowcell上，同时adaptor中还包含桥式PCR所需要的引物  一个完整的Illumina测序过程是那几步？  完整的测序过程仅包含两步，第一是桥式PCR扩增，第二是以4色荧光可逆终止反应为核心技术的测序；
+ 什么是桥式PCR技术？为什么要进行桥式PCR？ 加上adaptor之后的DNA样品与flowcell上固定的oligo（寡链核苷酸）匹配后就被固定在flowcell上，通过桥式PCR进行扩增成cluster,便于后面的荧光测序，主要步骤为：   进行第一轮扩增，将序列补成双链。加入NaOH强碱性溶液破坏DNA的双链，并洗脱。由于最开始的序列是使用化学键连接的，所以不会被洗。 加入缓冲溶液，这时候序列自由端的部分就会和旁边的oligo进行匹配 进行一轮PCR，在PCR的过程中，序列是弯成桥状，所以叫桥式PCR，一轮桥式PCR可以使得序列扩增1倍 如此循环下去，就会得到一个具有完全相同序列的cluster
+ 我们都说，测序结果会包含index，那么index是什么？有什么作用？  一条lane能测得的数据量在30G左右，而一个样品的测序量一般不会这么大，所以在建库的时候对每一种样品的接头加上不同的标签序列，这个标签就叫做Index，有了index就可以同时在一个lane中测多种数据了，后期可以根据index将数据分开；  我们所说的flowcell，lane，tile都是什么意思？  flowcell 是指Illumina测序时，测序反应发生的位置，1个flowcell含有8条lane lane 每一个flowcell上都有8条泳道，用于测序反应，可以添加试剂，洗脱等等 tile 每一次测序荧光扫描的最小单位  Illumina测序结果质量表示方法采用的是Phred33还是Phred64？ 最新的测序质量结果一般都为Phred33，但是早期的测序数据可能出现Phred64。   ]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-「2」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-2/</link>
+    <pubDate>Sun, 16 Feb 2020 15:16:40 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-2/</guid>
+    <description><![CDATA[测序技术初探 现在我们实验室或者公司常用第1代测序与第2代测序，那么：
+  第1代测序 sanger 测序法的原理是什么？通量比较低的核心原因是什么？  sanger法测序及双脱氧链终止法，它采取DNA复制原理，通过在DNA复制过程中添加双脱氧三磷酸核苷酸（ddNTP）终止DNA链的延伸，在DNA链不同位置的延伸终止判断该位置的碱基类型。但是凝胶电泳的时间较长，导致sanger法测序通量低。
+ 作为2006年正式发布的illumina测序技术，或者称为第2代测序技术的代表性技术，其最大的特点是什么？  高通量，成本低，但测序长度较短。
+ Illumina测序技术的核心是什么？  核心内容有两个，一个是桥式PCR，主要用于扩大信号；另一个是4色荧光可逆终止反应，使illumina测序可以实现边合成边测序的技术。
+ Illumina测序技术为什么不能像第1代测序技术一样测500bp以上？  主要的原因有两个，一方面测序时，经过长时间的PCR，会有不同步的情况。比如一开始1个cluster中是100个完全一样的DNA链，但是经过1轮增加碱基，其中99个都加入了1个碱基，显示了红色，另外1个没有加入碱基，不显示颜色。这时候整体为红色，我们可以顺利得到结果。随后，在第2轮再加入碱基进行合成的时候，之前没有加入的加入了1个碱基显示红色，剩下的99个显示绿色，这个时候就会出现杂信号。当测序长度不断延长，这个杂信号会越来越多，最后很有可能出现50个红，50个绿色，这时信号不足以判断碱基类型；第二就是测序过程中合成酶的活性越来越不稳定，后面碱基添加出现问题。
+ ]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>T-test - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/t-test/</link>
+        <description>T-test - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 22 Feb 2020 21:40:21 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/t-test/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-62</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-62/</link>
+    <pubDate>Sat, 22 Feb 2020 21:40:21 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-62/</guid>
+    <description><![CDATA[T检验靠谱吗？ 对于实验生物学研究者来说，经常遇到的一个场景是，对照组测量3个值，实验组测量3个值，然后用T检验得出均值是否有显著性差异，然后做出结论。如下图所示：
+bio_t
+那么T检验靠谱吗？本文采用模拟抽样的方法来探讨这件事情，由于本人统计学知识有限，还请各位读者批评指正。
+我们通过构建两个随机总体，总体1的均值固定为1（模拟control），总体2的均值我们从依次取0.5到2.0（模拟treatment相对与control的变化），标准差我们取0.01、0.05、0.10（模拟测量误差1%，5%，10%）。总体数量为1000，每次随机抽取3个样本，抽样1000次，考察通过T检验得出正确结论的频率。代码如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32  import numpy as np import pandas as pd import seaborn as sns from scipy import stats import matplotlib.pyplot as plt plt.xkcd() sns.set(style=&#34;white&#34;, context=&#34;talk&#34;) def norm_t(loc1, loc2, scale1, scale2, n): normSpace1 = stats.norm.rvs(loc = loc1, scale = scale1, size = 1000) normSpace2 = stats.]]></description>
+</item>
+</channel>
+</rss>

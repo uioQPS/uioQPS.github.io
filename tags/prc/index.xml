@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>PRC - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/prc/</link>
+        <description>PRC - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 20 Feb 2020 19:42:43 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/prc/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-48</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-48/</link>
+    <pubDate>Thu, 20 Feb 2020 19:42:43 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-48/</guid>
+    <description><![CDATA[PRC复合物抑制/激活的基因干扰了单细胞的基因表达  Flipping between Polycomb repressed and active transcriptional states introduces noise in gene expression
+ 背景知识 Polycomb repressive complexes (PRCs) 是非常著名的组蛋白修饰复合物，一般来说是抑制基因表达的。但是如果某基因同时被PRC复合物和RNA polymerase II (RNAPII)结合，也可以被激活转录。但其中机理不明。
+ PRC1, which monoubiquitinylates histone 2 A lysine 119 (H2Aub1) via the ubiquitin ligase RING1A/B; PRC2, which catalyzes dimethylation and trimethylation of H3K27 (H3K27me2/3) via the histone methyltransferase (HMT) EZH1/2.  Embryonic stem cells (ESCs) 能自我更新并且具有分化成其它细胞类型的潜力，并且认为其干细胞特性由表观调控保持。一般经由干细胞marker挑选，比如Oct4，需要很明确的证明其不表达分化marker，比如Gata4 and Gata6。可以对这两个marker基因集合做热图，如下：
+RNAPII的修饰决定着转录过程，主要是其碳末端的磷酸化修饰。具体已知结论如下：
+1 2 3 4  Phosphorylation of S5 residues (S5p) correlates with initiation, capping, and H3K4 HMT recruitment.]]></description>
+</item>
+</channel>
+</rss>

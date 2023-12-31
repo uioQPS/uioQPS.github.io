@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>crispr_cas9 - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/crispr_cas9/</link>
+        <description>crispr_cas9 - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Aug 2020 20:38:22 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/crispr_cas9/" rel="self" type="application/rss+xml" /><item>
+    <title>CrisprCas9 active system</title>
+    <link>https://uioqps.github.io/crisprcas9-active-system/</link>
+    <pubDate>Sun, 30 Aug 2020 20:38:22 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/crisprcas9-active-system/</guid>
+    <description><![CDATA[Crispr Cas9  Crisprcas9复合物可以介导内源基因组位点，使用工程改造的cas9激活复合物研究有效转录激活的sgRNA靶向规则，可以证明10个基因的多重激活。合成了一个包含70290个针对所有人类RefSeq编码亚型来筛选在激活后赋予对BRAF抑制剂抗性的基因。并且使用单个sgRNA和互补DNA的过表达验证了新的候选基因，最高筛选命中率的基因表达特征与细胞系和患者来源样品中的BRAF抑制剂抗性标记有关，这些结果共同证明了基于Cas9的激活剂作为强大的基因扰动技术的潜力。
+ Cas9-based activators Genetic perturbations：
+loss-of-function (LOF) ：RNA interference； RNA-guided endonuclease Cas9 from the microbial CRISPR (clustered regularly interspaced short palindromic repeat) adaptive immune system
+gain-of-function (GOF) ：cDNA library over expression systems（ drawback：transcript isoform variance ）
+three-component SAM system]]></description>
+</item>
+</channel>
+</rss>

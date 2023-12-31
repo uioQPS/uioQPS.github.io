@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>kmer - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/kmer/</link>
+        <description>kmer - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Feb 2020 15:17:09 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/kmer/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-「10」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-10/</link>
+    <pubDate>Sun, 16 Feb 2020 15:17:09 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-10/</guid>
+    <description><![CDATA[第10题 读懂FastQC报告之adapter与kmer Hello大家好！
+我们又见面了！今天是我们的FastQC中最后1次提问啦！今天，我们要聊得是adapter与kmer的问题。
+我们在第5题 测序建库的adapter 的时候讨论过adapter的问题，我们知道adapter的最主要的作用是为了能够与flowcell连接，方便进行桥式PCR。那么我们的fastq文件中到底含不含adapter呢？FastQC报告就能告诉我们。
+同时呢，我们今天还会讨论kmer的问题，相关的报告FastQC也会输出出来。
+Part I adapter部分
+img
+图 1-1 1个正常的adapter报告
+img
+图 1-2 1个RNA-Seq的adapter报告
+Part II kmer部分
+img
+图 2-1 正常的RNA-Seq建库kmer统计
+img
+图 2-2 加入random barcode的RNA-Seq建库kmer统计
+img
+图 2-3 kmer的统计显著性分析
+关于adapter的问题： 1. Illumina的通用adapter序列是什么？图1-1与图1-2中的各种不同颜色的图例是什么意思？
+1 2 3 4 5 6 7 8 9 10  Illumina Paired End Adapters(cannot be used for multiplexing) Top adapter 5&#39; ACACTCTTTCCCTACACGACGCTCTTCCGATC*T 3&#39; Bottom adapter 5&#39; P-GATCGGAAGAGCGGTTCAGCAGGAATGCCGAG 3&#39; **来源** http://bioinformatics.cvr.ac.uk/blog/illumina-adapter-and-primer-sequences/ 不同颜色的图例代表不同的测序通用的adapter； 如果在当时fastqc分析的时候-a选项没有内容，则默认使用图例中的通用adapter序列进行统计。   2.]]></description>
+</item>
+</channel>
+</rss>

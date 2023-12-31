@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-47 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-47" />
+<meta property="og:description" content="单细胞转录组探索头颈癌症的转移癌和原位癌区别 Single-Cell Transcriptomic Analysis of Primary and Metastatic Tumor Ecosystems in Head and Neck Cancer 测序如下；
+ We profiled transcriptomes of ∼6,000 single cells from 18 head and neck squamous cell carcinoma (HNSCC) patients, including five matched pairs of primary tumors and lymph node metastases.
+ 同时也对这些病人测了whole-exome sequencing (WES) and targeted genotyping (SNaPshot) data，但是这些数据公布在 phs001474.v1.p1 ，不是很方便下载。
+单细胞转录组建库用的Smart-seq2方法，所有的数据公布在 GSE103322 ， 仅仅是表达矩阵都有近100Mb了。
+实验验证用的是细胞系 Oral cavity HNSCC cell lines (Cal-27, SCC9, SCC4, SCC25, and JHU-006; all derived from male patients) 做了RNA-seq 数据。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-47/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-20T19:42:40+00:00" />
+<meta property="article:modified_time" content="2020-02-20T19:42:40+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-47"/>
+<meta name="twitter:description" content="单细胞转录组探索头颈癌症的转移癌和原位癌区别 Single-Cell Transcriptomic Analysis of Primary and Metastatic Tumor Ecosystems in Head and Neck Cancer 测序如下；
+ We profiled transcriptomes of ∼6,000 single cells from 18 head and neck squamous cell carcinoma (HNSCC) patients, including five matched pairs of primary tumors and lymph node metastases.
+ 同时也对这些病人测了whole-exome sequencing (WES) and targeted genotyping (SNaPshot) data，但是这些数据公布在 phs001474.v1.p1 ，不是很方便下载。
+单细胞转录组建库用的Smart-seq2方法，所有的数据公布在 GSE103322 ， 仅仅是表达矩阵都有近100Mb了。
+实验验证用的是细胞系 Oral cavity HNSCC cell lines (Cal-27, SCC9, SCC4, SCC25, and JHU-006; all derived from male patients) 做了RNA-seq 数据。"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-47/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-46/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-48/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-47",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-47\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, sc","wordcount":  203 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-47\/","datePublished": "2020-02-20T19:42:40+00:00","dateModified": "2020-02-20T19:42:40+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-47</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/cg/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>cg</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-20">2020-02-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;203 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-47/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-47">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#单细胞转录组探索头颈癌症的转移癌和原位癌区别">单细胞转录组探索头颈癌症的转移癌和原位癌区别</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#名词介绍">名词介绍</a></li>
+            <li><a href="#背景介绍">背景介绍</a></li>
+            <li><a href="#单细胞转录组数据分析cnv跟wes的对比">单细胞转录组数据分析CNV跟WES的对比</a></li>
+            <li><a href="#病人meei5的cnv情况">病人MEEI5的CNV情况</a></li>
+            <li><a href="#首先区分肿瘤细胞的恶性与否">首先区分肿瘤细胞的恶性与否</a></li>
+            <li><a href="#非恶性细胞的聚类没有个体差异">非恶性细胞的聚类没有个体差异</a></li>
+            <li><a href="#单独查看成纤维细胞caf">单独查看成纤维细胞CAF</a></li>
+            <li><a href="#单独查看t细胞">单独查看T细胞</a></li>
+            <li><a href="#恶性细胞聚类完全取决于患者个体">恶性细胞聚类完全取决于患者个体</a></li>
+            <li><a href="#恶性细胞的基因特征">恶性细胞的基因特征</a></li>
+            <li><a href="#ln转移与原发性肿瘤比较">LN转移与原发性肿瘤比较</a></li>
+            <li><a href="#emt的部分状态或p-emt">EMT的部分状态或p-EMT</a></li>
+            <li><a href="#把tcga的分类应用于scrna-seq数据">把TCGA的分类应用于scRNA-seq数据</a></li>
+            <li><a href="#外显子数据分析somatic突变">外显子数据分析somatic突变</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="单细胞转录组探索头颈癌症的转移癌和原位癌区别">单细胞转录组探索头颈癌症的转移癌和原位癌区别</h2>
+<p>Single-Cell Transcriptomic Analysis of Primary and Metastatic Tumor Ecosystems in Head and Neck Cancer 测序如下；</p>
+<blockquote>
+<p>We profiled transcriptomes of ∼6,000 single cells from 18 head and neck squamous cell carcinoma (HNSCC) patients, including five matched pairs of primary tumors and lymph node metastases.</p>
+</blockquote>
+<p>同时也对这些病人测了whole-exome sequencing (WES) and targeted genotyping (SNaPshot) data，但是这些数据公布在 phs001474.v1.p1 ，不是很方便下载。</p>
+<p>单细胞转录组建库用的Smart-seq2方法，所有的数据公布在 GSE103322 ， 仅仅是表达矩阵都有近100Mb了。</p>
+<p>实验验证用的是细胞系 Oral cavity HNSCC cell lines (Cal-27, SCC9, SCC4, SCC25, and JHU-006; all derived from male patients) 做了RNA-seq 数据。</p>
+<p>肿瘤内异质性是肿瘤学的主要挑战。在新兴的技术中，scRNA-seq有助于确定与肿瘤生物学，诊断和治疗有关的发育等级，抗药性程序和免疫渗透模式。在这里，研究者应用这种方法来表征原发性HNSCC肿瘤和匹配的LN转移瘤。</p>
+<h4 id="名词介绍">名词介绍</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">头颈部鳞状细胞癌（HNSCC）
+</span></span><span class="line"><span class="cl">淋巴结转移（LN）
+</span></span><span class="line"><span class="cl">癌症基因组图谱（TCGA）
+</span></span><span class="line"><span class="cl">癌相关成纤维细胞（CAF）
+</span></span><span class="line"><span class="cl">细胞外基质（ECM）
+</span></span><span class="line"><span class="cl">循环肿瘤细胞（CTC）
+</span></span><span class="line"><span class="cl">单细胞RNA测序（scRNAseq）
+</span></span><span class="line"><span class="cl">肿瘤微环境（TME）
+</span></span><span class="line"><span class="cl">全外显子组测序（WES）和靶向基因分型（SNaPshot）
+</span></span><span class="line"><span class="cl">Epithelial-to-mesenchymal transition (EMT)
+</span></span><span class="line"><span class="cl">PNI = perineural invasion; LVI = lymphovascular invasion; ECE = extracapsular extension
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="背景介绍">背景介绍</h4>
+<p>HNSCC 头颈癌是最常见的十大癌症之一，每年有50万患者深受其害，其中，超过80%的患者为口腔鳞状细胞癌(OSCC)。尽管目前有手术、化疗、放疗等治疗手段，但5年存活率仅有50%，仍是存活率最低的癌症之一，且近30年没有改善。所以探寻新的治疗方式抑制OSCC生长和转移尤为重要。</p>
+<p>头颈部鳞状细胞癌（HNSCC）是一种与酒精和烟草暴露密切相关的具有异质性的上皮肿瘤，患者往往在晚期出现的淋巴结转移（LN)。</p>
+<h4 id="单细胞转录组数据分析cnv跟wes的对比">单细胞转录组数据分析CNV跟WES的对比</h4>
+<p>首先把所有病人的近6000个细胞根据表达模式区分成恶性与否，分成两组进行CNV聚类，可以看到恶性细胞的CNV模式跟从WES数据分析得到的CNV模式比较类似，说明了单细胞转录组数据分析CNV是靠谱的。当然，本身该课题组前面的几篇文章就提到了这个方法以及证实了其可靠性。</p>
+<h4 id="病人meei5的cnv情况">病人MEEI5的CNV情况</h4>
+<p>MEEI5 是一个69岁的女性，对来源于她的所有单细胞的转录组数据分析得到的CNV信息进行聚类可以看到比较清晰的patter，其中恶性与否比较容易区分，而且对于恶性细胞也可以看出原位癌和转移癌的区别。</p>
+<h4 id="首先区分肿瘤细胞的恶性与否">首先区分肿瘤细胞的恶性与否</h4>
+<p>用Smart-seq2建库方法得到的单细胞转录组数据经过QC后，留下了来自18名患者的5,902个细胞，首先可以分成2215个恶性细胞和3363个非恶性细胞。</p>
+<p>首先，研究者根据跨染色体间隔的平均表达谱推断每个单细胞中的大规模染色体拷贝数变异（CNV）。<strong>这些推断的CNVs与WES一致，通过推断的CNVs将恶性细胞从正常核型的非恶性细胞中分离出来。</strong></p>
+<p>其次，研究者通过其上皮来源鉴别恶性细胞，其不同于TME中的基质和免疫细胞。<strong>研究者发现在具有上皮标志物表达的细胞和具有异常核型的细胞之间具有显著的一致性。</strong></p>
+<p>最后，研究者通过它们的全局表达模式将细胞划分到初始类。<strong>基于CNV和上皮标志物分析，绝大多数细胞均被分到具有一致恶性或非恶性分类类中去。</strong></p>
+<h4 id="非恶性细胞的聚类没有个体差异">非恶性细胞的聚类没有个体差异</h4>
+<p>如果只对已经被区分出来的三千多个非恶性肿瘤细胞进行聚类，采取SC3算法，效果如下图，虽然有14个类别，但是根据已知标记基因的表达，可以注释为B细胞，巨噬细胞，树突状细胞，肥大细胞，内皮细胞，成纤维细胞和肌细胞这八个值得探究的类别。</p>
+<p>值得注意的是，每个类含有来自不同患者的细胞，表明TME(这三千多个非恶性细胞就是肿瘤微环境)中的细胞类型和表达状态在HNSCC肿瘤中基本一致，并且没有患者特异性亚群或批处理效应，尽管它们的比例是不同的。</p>
+<p>而且由于研究者的数据集中T细胞和成纤维细胞，即数量相对较多，研究者通过更精确的聚类发现了T细胞和成纤维细胞的多样性。如下：</p>
+<h4 id="单独查看成纤维细胞caf">单独查看成纤维细胞CAF</h4>
+<p>rv1,500成纤维细胞分成两个大类，一个小类别。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">第一个类表达肌成纤维细胞的经典标记，包括α平滑肌肌动蛋白（ACTA2）和肌球蛋白轻链蛋白（MYLK，MYL9）。肌成纤维细胞是TME的成熟组分，并与伤口愈合和挛缩有关。
+</span></span><span class="line"><span class="cl">第二个类表达与癌相关成纤维细胞（CAF）相关的受体，配体和细胞外基质（ECM）基因，包括成纤维细胞活化蛋白（FAP），podoplanin（PDPN）和结缔组织生长因子（CTGF）。
+</span></span><span class="line"><span class="cl">第三个类基本不包括肌成纤维细胞和CAF的标记物，并可能代表处于静止状态的成纤维细胞。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中还可以把CAFs（第二个类）分为具有立即早期应答基因（例如JUN，FOS），间充质标志物（例如VIM，THY1），配体和受体（例如FGF7）差异表达的两种类型（CAF1和CAF2），TGFBR2 / 3）和ECM蛋白质（例如MMP11，CAV1）。这种瘤内CAF异质性与TMF中涉及复杂结构和旁分泌相互作用的观点一致。</p>
+<h4 id="单独查看t细胞">单独查看T细胞</h4>
+<p>主要T细胞类（rv1000个T细胞）可以分为四个亚群，研究者注释为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">调节性T细胞（Treg）
+</span></span><span class="line"><span class="cl">常规CD4 + T辅助细胞（CD4 + Tconv）
+</span></span><span class="line"><span class="cl">两种细胞毒性CD8 + T细胞群（CD8 + T和CD8 + Texhausted）
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>细胞毒素亚型在共抑制性受体（例如PD1，CTLA4）和与T细胞功能障碍和衰竭相关的其他基因的表达方面不同，**并由此定义HNSCC中推定的T细胞耗竭程序。**耗竭CD8 + T细胞的部分在研究者的队列患者中显著变化。这些T细胞表达状态可以为理解和预测检查点免疫疗法的反应提供帮助。</p>
+<h4 id="恶性细胞聚类完全取决于患者个体">恶性细胞聚类完全取决于患者个体</h4>
+<p>与非恶性细胞相比，2215恶性细胞根据其起源的肿瘤聚类。超过2000个基因优先在个体肿瘤中表达。</p>
+<p>差异表达的基因在肿瘤之间不同的CNV内富集。</p>
+<p>最后，其他差异表达的基因与应激（例如JUNB，FOSL1）或免疫激活（例如IDO1，STAT1，TNF）有关，可能对不同的TME有反应。因此，肿瘤间恶性细胞表达异质性反映了研究者队列中肿瘤之间遗传学，亚型和TME的差异。</p>
+<h4 id="恶性细胞的基因特征">恶性细胞的基因特征</h4>
+<p>这里重点分析那些含有恶性细胞转录组最多数量的10对肿瘤样本。比如下面的病人MEEI25，一个76岁的女性：</p>
+<p>研究者使用非负矩阵分解来揭示在<strong>恶性细胞亚群中得到优先共同表达的一系列基因</strong>。例如，对于MEEI25恶性细胞，研究者定义了6个不同的基因特征。对10个肿瘤样本中的每一个都应用该方法，共定义了60个基因特征。</p>
+<p>接下来，<strong>研究者使用层次聚类来将这些60个特征提取成元特征</strong>，这些元特征反映了在多个肿瘤内变化的常见表达程序。来自不同肿瘤的特征之间的高一致性表明它们反映了肿瘤内表达异质性的共同模式。</p>
+<h4 id="ln转移与原发性肿瘤比较">LN转移与原发性肿瘤比较</h4>
+<p>研究者将LN转移与原发性肿瘤（只有5个病人是取了配对样本）进行了比较。尽管WES和推测的CNV显示了原发性和匹配的LN样本之间的存在一些基因组差异，但是可能是由于所研究的个体数量较少，他们没有鉴别出任何一致的区别。</p>
+<p>LN中恶性细胞的表达谱也与相应的原发肿瘤大致匹配。在每个配对样本中，都有较少的差异表达基因是显著差异的，但是它们在整个群体（cohort）中不一致。</p>
+<p>研究者还观察到淋巴结和原发性肿瘤间质和免疫细胞的特征和表现的总体一致性，虽然有一些重要的区别！</p>
+<h4 id="emt的部分状态或p-emt">EMT的部分状态或p-EMT</h4>
+<p>EMT程序被广泛认为是耐药，侵袭和转移的潜在驱动因素，是一个连续和变化的过程。因此，研究者仔细检查了ECM计划中EMT的特征。除ECM基因如基质金属蛋白酶，层粘连蛋白和整联蛋白外，该程序还包括EMT标志物波形蛋白（VIM）和整联蛋白α-5（ITGA5）。此外，该方案中得分最高的基因之一是转化生长因子（TGF）-b诱导（TGFBI），暗示<strong>经典的EMT调节剂TGF-b</strong>。</p>
+<p>虽然该程序具有经典EMT的关键特征，但缺乏其他标志。</p>
+<p>首先，虽然特征伴随着某些上皮基因的表达降低，但是上皮标记物的总体表达还是明显地保持下来。</p>
+<p>其次，研究者没有检测到经典EMT TF，ZEB1 / 2，TWIST1 / 2和SNAIL1的表达。只有SNAIL2被检测到（在70％的HNSCC细胞中），尽管其表达与肿瘤的程序相关，但与肿瘤内个体细胞的程序并不相关。最近的研究表明SNAIL2比其他EMT TFs早。 SNAIL2也涉及伤口愈合中的p-EMT应答。</p>
+<p>因此，研究者建议这里确定的体内程序反映了一个EMT的部分状态或p-EMT。</p>
+<p>上图的分析结果表明，这个p-EMT程序不同于源自细胞系和肿瘤模型的完整EMT程序，以及源自肿瘤的肿瘤谱间充质特征。</p>
+<h4 id="把tcga的分类应用于scrna-seq数据">把TCGA的分类应用于scRNA-seq数据</h4>
+<p>TCGA研究分析了数百个HNSCC肿瘤的表达谱，并将它们分为四个亚型：基础型，间充质型，经典型和非典型型。在TCGA的cohort里面各个类别的样本比例是：atypical(24％),mesenchymal(27％),basal(31％)和classical(18％)。尽管TCGA分型是从大量肿瘤细胞中获取的，但研究者推断单个细胞组分的表达程序可能使研究者能够提取更多的了解。具体而言，研究者从这些批量数据中定义的分子亚型判断是否能够反映恶性程序，恶性细胞组成和/或TME组成的差异。</p>
+<p>研究者首先确定了自己研究计划的十个HNSCC肿瘤病人的TCGA表达亚型。</p>
+<p>研究者评估了每个肿瘤的恶性细胞与其亚型表达特征的对应关系。引人注目的是，每个肿瘤清楚地映射到三个亚型之一：基本型（n = 7），经典型（n = 2），或非典型（n = 1）。没有一个恶性细胞映射到间充质亚型，即使它是口腔肿瘤中第二常见的亚型。然而，当研究者增大分析样本数目，当样本中包括基质和免疫细胞时，发现数百CAFs、肌成纤维细胞和肌细胞映射到间充质亚型。</p>
+<p>这一发现提出了一种可能性，即**TCGA间充质亚型反映大批量样品中的高基质表现而不是独特的恶性细胞程序。**实际上，TCGA样品的分析鉴定到间充质亚型肿瘤高度表达对CAF和肌细胞特异性的基因。此外，当研究者检查TCGA的HNSCC肿瘤的组织学切片时，鉴定到间充质肿瘤的成纤维细胞比基础型肿瘤多大约2.7倍（t检验，p&lt;0.0001）。</p>
+<h4 id="外显子数据分析somatic突变">外显子数据分析somatic突变</h4>
+<p>因为外显子测序数据是无法下载的，这里就不过多介绍了。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-47/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-47/" data-title="【bioinfo】-Q&amp;A-47" data-hashtags="AQ100,sc"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-47/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-47/" data-title="【bioinfo】-Q&amp;A-47"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-47/" data-title="【bioinfo】-Q&amp;A-47"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-47/" data-title="【bioinfo】-Q&amp;A-47"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/sc/">sc</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-46/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-46"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-46</a>
+            <a href="/bioinfo-q-a-48/" class="next" rel="next" title="【bioinfo】-Q&amp;A-48">【bioinfo】-Q&A-48<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

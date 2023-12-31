@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>RPKM - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/rpkm/</link>
+        <description>RPKM - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 19 Feb 2020 16:04:09 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/rpkm/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-35</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-35/</link>
+    <pubDate>Wed, 19 Feb 2020 16:04:09 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-35/</guid>
+    <description><![CDATA[第35题 RNA-Seq 数据的定量之RPKM和FPKM Hello大家好！好久不见了！
+根据之前的规划，我们将用接下来的几期问题来探索一下RNA-Seq定量的问题，也就是要探索一下我们常说的RPKM，FPKM，TPM，raw count 和RSEM，前面4个指标都比较直观，方便理解，最后一个RSEM需要涉及到一些机器学习的知识，我们尽量给大家把比较复杂的问题简单化，方便大家的入门。
+RNA-Seq定量过程中的比较问题 RNA-Seq的基本假设是什么？简单来说就是 细胞/组织/个体 的两种不同状态进行比较，比较的目的就是寻找差异表达gene，然后从差异表达gene来推断造成生理状态不同的原因。
+而我们的RNA-Seq一般情况下是针对mRNA以及带polyA的lncRNA进行建库测序分析的。那么理论上把测序的FASTQ文件mapping到参考基因组上，再结合参考基因组的GTF/GFF文件就可以找到全基因组的每一个gene上mapping到了多少个reads count。
+拿到了reads count以后，我们就会尝试着想要比较gene之间的表达量的关系，但是这时候往往会面临两个问题，举个例子：
+ 问题1: 比如我有gene3，有1000条测序reads，gene4有2000条测序reads，那么我能否说gene4就一定比gene3的表达量高？（图1 gene3 与 gene4） 问题2: 比如我有gene1，有1000条测序reads，我的另一个处理条件下gene2有2000条测序reads，我能否就说geneA在处理条件下表达量降低了？（图1 gene1与gene2）  在面临这些比较问题的时候，我们就需要对mapping到gene的reads count进行矫正，至少根据问题1我们知道应该在矫正的时候考虑过gene长度的问题；根据问题2，我们大概应该能够猜想到，矫正的时候应该需要考虑整体测序量的问题。到此，RPKM和FPKM这两个指标就应运而生了。
+图1 ( Manuel Garber et al., Nature Methods, 2011 )
+什么是RPKM与FPKM？ RPKM = Reads Per Kilobase per Million mapped reads
+假设回贴到geneA 的 reads count为 CountA，geneA的exon总长度为Len(A) Kbp，总的测序量为D兆reads，那么：
+1  geneA RPKM = CountA / Len(A) / D * 10^9   那么什么是FPKM呢？先来看一下FPKM的定义：
+FPKM = Fragments Per Kilobase per Million mapped reads]]></description>
+</item>
+</channel>
+</rss>

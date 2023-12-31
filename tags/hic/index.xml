@@ -1,0 +1,48 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>HiC - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/hic/</link>
+        <description>HiC - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Feb 2020 21:16:22 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/hic/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-79</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-79/</link>
+    <pubDate>Sun, 23 Feb 2020 21:16:22 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-79/</guid>
+    <description><![CDATA[Hi-C III 从 .hic 文件提取数据 此功能由 Juicebox tools 的 dump 命令完成。 https://github.com/aidenlab/juicer/wiki/Data-Extraction
+Arrowhead finding contact domains.
+1 2  arrowhead &lt;HiC file&gt; &lt;output_file&gt; https://github.com/aidenlab/juicer/wiki/Arrowhead   生成一个12列的矩阵，每行包含以下信息
+chromosome1	x1	x2	chromosome2	y1	y2	color	corner_score	Uvar	Lvar	Usign	Lsign
+1 2 3 4 5 6 7 8 9  Explanations of each field are as follows: chromosome = the chromosome that the domain is located on x1,x2/y1,y2 = the interval spanned by the domain (contact domains manifest as squares on the diagonal of a Hi-C matrix and as such: x1=y1, x2=y2) color = the color that the feature will be rendered as if loaded in Juicebox corner_score = the corner score, a score indicating the likelihood that a pixel is at the corner of a contact domain.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-78</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-78/</link>
+    <pubDate>Sun, 23 Feb 2020 21:16:16 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-78/</guid>
+    <description><![CDATA[Hi-C II 上一章我们得到了.hic文件，从上图我们清楚的看出可以利用 juicer tools 对.hic 文件进行feature annotation 和 analysis 或者 data extration。也可以利用 juicebox 进行可视化。可视化文件主要使用的是 .hic 文件和各种 feature annotation 文件，例如 Contact domains 和 Loops 等。
+.hic 文件的 pre 生成方法 https://github.com/aidenlab/juicer/wiki/Pre#file-format pre 命令允许我们从自己的数据转换成 .hic 文件，暂时没有需求先不写。
+juicebox 可视化 下载软件 https://github.com/aidenlab/Juicebox/wiki/Download
+英文官方教程 https://github.com/aidenlab/Juicebox/wiki 还有油管视频
+可视化结果 ]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-77</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-77/</link>
+    <pubDate>Sun, 23 Feb 2020 21:16:11 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-77/</guid>
+    <description><![CDATA[Hi-C I 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  #创建工作目录，其后所有操作都在此目录下进行 mkdir ./opt cd opt #克隆 juicer git clone https://github.com/theaidenlab/juicer.git ln -s juicer/CPU scripts cd scripts/common wget http://hicfiles.tc4ga.com.s3.amazonaws.com/public/juicer/juicer_tools.1.7.6_jcuda.0.8.jar ln -s juicer_tools.1.7.6_jcuda.0.8.jar juicer_tools.jar cd ../.. # 参考基因组建立索引，我用的是 Homo_sapiens_assembly38.fasta mkdir references cd references cp &lt;path&gt;/Homo_sapiens_assembly38.fasta # 或者 ln -s &lt;path&gt;/Homo_sapiens_assembly38.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-76</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-76/</link>
+    <pubDate>Sun, 23 Feb 2020 21:16:06 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-76/</guid>
+    <description><![CDATA[HiC分析pipe  Mammalian genomes are spatially organized into compartments, topologically associating domains (TADs), and loops to facilitate gene regulation and other chromosomal functions. 3D interactions mostly occur within chromosomes (cis) rather than between chromosomes (trans), all methods detected more cis than trans interactions.
+ 鉴定染色体交互 (identify chromatin interactions) Chromatin interactions are contacts between regions far from each other on the linear DNA sequence but close in 3D space；  The total number of interactions called by each method increased with the number of reads retained by the filtering step for all tools at any resolution, although the rate of increase varied from tool to tool.]]></description>
+</item>
+</channel>
+</rss>

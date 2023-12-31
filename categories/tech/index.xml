@@ -1,0 +1,72 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>tech - Category - Milky板板の博客</title>
+        <link>https://uioqps.github.io/categories/tech/</link>
+        <description>tech - Category - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Aug 2020 20:38:22 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/categories/tech/" rel="self" type="application/rss+xml" /><item>
+    <title>CrisprCas9 active system</title>
+    <link>https://uioqps.github.io/crisprcas9-active-system/</link>
+    <pubDate>Sun, 30 Aug 2020 20:38:22 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/crisprcas9-active-system/</guid>
+    <description><![CDATA[Crispr Cas9  Crisprcas9复合物可以介导内源基因组位点，使用工程改造的cas9激活复合物研究有效转录激活的sgRNA靶向规则，可以证明10个基因的多重激活。合成了一个包含70290个针对所有人类RefSeq编码亚型来筛选在激活后赋予对BRAF抑制剂抗性的基因。并且使用单个sgRNA和互补DNA的过表达验证了新的候选基因，最高筛选命中率的基因表达特征与细胞系和患者来源样品中的BRAF抑制剂抗性标记有关，这些结果共同证明了基于Cas9的激活剂作为强大的基因扰动技术的潜力。
+ Cas9-based activators Genetic perturbations：
+loss-of-function (LOF) ：RNA interference； RNA-guided endonuclease Cas9 from the microbial CRISPR (clustered regularly interspaced short palindromic repeat) adaptive immune system
+gain-of-function (GOF) ：cDNA library over expression systems（ drawback：transcript isoform variance ）
+three-component SAM system]]></description>
+</item>
+<item>
+    <title>SHERLOCK tech</title>
+    <link>https://uioqps.github.io/sherlock-tech/</link>
+    <pubDate>Wed, 26 Feb 2020 20:34:24 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/sherlock-tech/</guid>
+    <description><![CDATA[SHERLOCK技术 什么是SHERLOCK技术 SHERLOCK技术，全称是Specific High Sensitivity Enzymatic Reporter UnLOCKing，由华裔科学家张锋研发的一种新的快速，便宜，高灵敏度的诊断工具，相关文章发表在2017年的Science上[1]。SHERLOCK技术可以用于检测血清、尿液和唾液中低浓度的病毒，灵敏度可达阿摩尔级（aM，10的负18次方摩尔每升），而且可以用于检测病毒载量，区分不同的菌株，甚至可以分辨含有不同耐药突变的菌株和不同的癌症菌株突变，目前已经成功应用到武汉新型肺炎的检测中，具体的操作步骤已经公布在张锋课题组的网站上 (A protocol for detection of COVID-19 using CRISPR diagnostics)。
+SHERLOCK技术原理 SHERLOCK技术的原理由两部分组成，分别是RPA （Recombinase Polymerase Amplification）扩增和CRISPR-Cas13a系统。RPA是一种高灵敏度的等温扩增技术，在常温下即可完成核酸的快速扩增；CRISPR-Cas13a作为检测目的核酸序列的手段。下面将具体介绍这两个技术。
+RPA 核酸扩增，可能大部分人接触到的仅有PCR（polymerase chain reaction），这说明你的知识该更新了。除了PCR，目前已有的核酸扩增技术还有RPA，NASBA（nucleic acid sequence-based amplification），SDA（strand displacement），RCA（rolling circle amplification），LAMP（the loop-mediated isothermal amplification），HAD (helicase-dependent amplification)，HCR (hybridization chain reaction)等技术 Detection，感兴趣的可以看相关的综述[2-4]。 RPA, Recombinase Polymerase Amplification，即重组酶聚合酶扩增技术。这是一种可以媲美PCR的技术，2006年由英国科技公司TwistDx发明。常规的PCR技术对温度控制有着复杂的要求，经历高温变性、低温复性还有中温延伸三个步骤，RPA就不需要这么麻烦，它的反应需要二种在常温下有活性的酶（重组酶，聚合酶），最适温度在25-42℃之间，不需要变性过程，这样就大大加快了扩增的速度，再加上不需要温控设备，这两点共同打造了真正便携式的快速DNA扩增技术。不仅方便快捷，RPA更“迷人”的地方在于扩增量十分高，能够将痕量的核酸（尤其是DNA）模板扩增到能够可以检测到的水平。痕量，顾名思义就是“该物质虽然存在，但只有‘痕迹’，无法用一般方法定量检测，通常含量＜0.1mg”。利用它可以从单分子得到大约1012的扩增产物。而且RPA还不需要复杂的样品处理，可以直接用病人的血清完成检测。 RPA的具体过程如Figure 1所示，涉及三个核心蛋白：recombinase, SSB, and strand-displacing polymerase。 首先，重组酶和引物结合形成复合物，在拥挤环境下利于复合物的形成。然后重组酶-引物复合物在目标DNA上寻找同源区域，找到之后会使得双链DNA解聚并形成D-loop。接下来SSB（单链结合蛋白）会结合到暴露的一条DNA链上，稳定D-loop，防止分支迁移。最后，聚合酶会使得重组酶与引物分离，并启动后续的扩增过程。整个过程中，recombinase, SSB, and strand-displacing polymerase还有引物可以被反复利用，在循环过程中，复制产物以指数形式增长，直到体系中的dNTP消耗完。
+Figure1：RPA cycle
+CRISPR-Cas13a Cas13a蛋白，又称C2C2蛋白，它的发现历程比较有意思。2015年，张锋实验室通过序列比对发现Cas13a与众不同，跟cas9相比，其不具有Ruvc结构域，即没有DNA酶活性，但是具有两个HEPN结构域，即具有RNA酶活性，这一结论在2016年4月的Science杂志上得到了验证，Cas13a是一个RNA介导的RNA酶（figure2a）。然而，过个短短几个月之后，张锋的竞争对手Jennifer Doudna教授更进一步，在nature上发表文章，证实证明Cas13a具有两种RNA酶活性，一种是切割pre-crRNA称为成熟crRNA酶活性，一种是HEPN结构域的RNA酶活性，这个怎么理解呢，简单来说就是Cas13a除了能够切割crRNA之外，还可以切割其遇到的任何RNA，即所谓的**“collateral effect”，当然后一种RNA酶活性需要crRNA识别相应的RNA序列后才能激活**。基于这一点，可以通过猝灭荧光的RNA作为报告基团来检测目的RNA（figure2b），但是当时Doudna教授实验室的检测灵敏度只能够达到nM级别，没有实际应用价值。
+Figure2：Cas13a complex and collateral activity
+SHERLOCK的诞生 前面提到过，CRISPR-Cas13a是不能被称为“SHERLOCK”的，因为Cas13a是达不到许多基础研究和临床应用所需要的灵敏度的。于是，张锋教授找了一个强有力的“外援”——RPA。利用RPA技术，在室温条件下，样品中的DNA或RNA含量可以快速得到提升，然后再将DNA转化成RNA。如此一来，Cas13a就进化成真正意义上的“SHERLOCK”了！ SHERLOCK其实是一个“团队”，张锋给Cas13a“配备”了两个助手：一个是引导它到达应该被切割的特异性RNA的“向导RNA”；另一个叫做“报告RNA”，因为Cas13a在切割完特定RNA后不会失活，所以在Cas13a完成任务开始“作乱”的时候，报告RNA就会被切断，发出荧光信号。这样研究人员们就知道，它已经找到了与其相匹配的RNA序列（Figure 3）。]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-82</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-82/</link>
+    <pubDate>Mon, 24 Feb 2020 21:01:37 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-82/</guid>
+    <description><![CDATA[高性能磁标签：溶液与细胞内蛋白质三维结构测定、动态变化与作用研究的生物顺磁共振  Site-specific tagging of proteins with paramagnetic ions for determination of protein structures in solution and in cells
+ 在Acc. Chem. Res.上总结了近10年生物体系的磁标签与蛋白质定点标记方法的发展，及其应用于生物磁共振（核磁共振和电子自旋共振）测定蛋白质三维结构、动态变化与细胞内行为。 如何获取顺磁信息 蛋白质的三维结构、动态变化与相互作用是化学生物学和结构生物学研究中的重要内容，如何在细胞内环境下发展高分辨率方法阐述大分子作用机制与功能关系是迄需解决的重要问题。核磁共振和电子自旋共振分辨从原子核和电子层次上提供大分子的细微结构信息，发展高效的生物磁共振技术是了解细胞内环境下大分子运动机制的重要手段之一。核磁共振中的顺磁效应早期应用于复杂有机分子的谱学分析，随后逐渐应用到结构生物学和化学生物学研究领域中。核磁共振常用的顺磁效应有顺磁弛豫增强（paramagnetic relaxation enhancement, PRE）、赝接触位移（pseudocontact shift, PCS）和残余偶极耦合（residual dipolar coupling, RDC），这些信息都是研究生物大分子的重要结构约束条件。由于大部分生物大分子中不包含顺磁中心，因此获取顺磁信息需要对蛋白质进行定点修饰。核磁共振能提供原子分辨的蛋白质结构与作用信息，应用于生物磁共振研究的蛋白质定点修饰反应需要严格控制修饰的化学反应选择性和特异性并且同时保持蛋白质稳定的三维结构与活性。最近发展的双电子自旋共振（DEER）在测定大分子间作用过程中的距离变化，特别是细胞内行为，为精细大分子作用机制提供了重要研究手段，而DEER测定的关键是依靠高性能的顺磁标记物或顺磁探针；核磁共振中的顺磁效应同样依靠高性能的顺磁标签。因此发展温和、高产率的蛋白质定点顺磁标记方法是目前生物顺磁共振研究的重要内容。
+蛋白质定点顺磁标记中探针质量评价与顺磁效应分析 作者首先讨论了生物体系中通常应用到的顺磁性物质，论述并评价了自由基、过渡金属离子和稀土离子的适用性并提出稀土离子应用到细胞内生物磁共振（包括NMR和EPR）研究中的优越性，这是由于多数稀土三价阳离子的氧化还原稳定性、化学性质的类似性和多样的磁各向异性。随后根据多年的研究经验，作者系统论述了发展高质量顺磁探针应考虑的一些重要因素如金属螯合探针结合顺磁中心的稳定性、刚性、静电荷和疏水性以及探针与蛋白连接的稳定性和刚性，并系统论述了三种PRE、RDC和PCS之间的关系（图2）。由于顺磁效应的高灵敏性，作者特别强调了生物核磁中利用顺磁效应作为结构和动力学判据研究生物大分子体系该注意的一般问题。 通过蛋白质定点顺磁标记测定溶液中不稳定、低含量酶催化中间体的三维结构方法。
+通过PCS测定活细胞内蛋白质三维结构 已建立的位点特异性标记方法和新开发的顺磁探针的基础上，作者从真实的酶催化反应体系、活细胞和细胞内等几个事例说明了顺磁标记蛋白质在生物体系中的具体应用。1）作者通过定点顺磁标记方法以PCS为结构约束条件测定了真实反应体系中低含量（&lt; 30 μM）、不稳定（半衰期 &lt; 3 h） 酶催化中间体的三维结构（图3）。2）作者实现了以PCS为主要结构约束条件测定活细胞内蛋白质三维结构，该工作说明稳定顺磁标记探针在细胞内研究生物大分子结构与作用的实用性并提出PCS是细胞内蛋白质结构与动态分析的重要性结构约束条件（图4）。 由于顺磁核磁和电子自旋共振都借助于顺磁物质的特性，该课题组提出以生物核磁优化顺磁探针并应用到双电子自旋共振（DEER）测定中。作者证实生物核磁优化的刚性顺磁探针可以通过DEER测量获得高分辨的窄距离信息（图5）。该课题组通过发展高性能顺磁探针并成功应用到细胞内蛋白质的DEER测量中。 NMR研究中的刚性顺磁探针应用于EPR DEER测量中的高分辨距离信息
+虽然已有多种顺磁探针报道，但是由于生物体系的复杂性，单一顺磁探针并不能简单适用于众多生物体系，作者建议应用多种顺磁探针并比较顺磁效应。
+作者阐述了顺磁共振包括NMR和EPR在研究生物大分子体系的高度互补性并在原位条件下以原子分辨率水平研究生物大分子中的优势，并提出发展生物相容性定点标记蛋白质的挑战与机遇。]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-81</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-81/</link>
+    <pubDate>Mon, 24 Feb 2020 21:01:31 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-81/</guid>
+    <description><![CDATA[molecular replacement是什么？ 分子置换（MR）是一种定相方法，它使用与晶体中的成分相关或同源的已知结构形式的先验信息。 由于MR不需要其他实验程序或数据，并且可以简化模型的构建，因此，当有合适的搜索模型时，MR通常是确定结构的首选方法。
+Steps in structure solution with molecular replacement Model selection 合适的模型的结构通常是通过同源性搜索找到的（例如对于合理的近亲使用NCBI Blast或对于更远的亲属使用HHpred），并且可以通过与靶序列的序列同一性来表征。
+使用分子替代品的主要限制是需要适当相似的搜索模型。 尽管没有确切的规则，但是序列同一性和MR成功之间的关系大致如下：
+1 2 3 4 5  Better than 40% identity: usually easy, unless large conformational changes are involved. 30-40%: MR usually possible, but sometimes more difficult. 20-30%: MR usually difficult if at all possible, careful model search and preparation required. Less than 20%: MR unlikely to work, but MR-Rosetta can help in marginal cases.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-73</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-73/</link>
+    <pubDate>Sun, 23 Feb 2020 21:15:53 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-73/</guid>
+    <description><![CDATA[qPT-PCR原理是什么 RT-qPCR由普通PCR技术发展而来，它是在传统PCR反应体系中加入荧光化学物质（荧光染料或者荧光探针），根据各自不同的发光机制实时检测PCR退火、延伸过程中荧光信号变化来计算PCR每个循环中产物的变化量，目前最常见的方法为荧光染料法和探针法。
+荧光染料法 一些荧光染料如SYBR Green Ⅰ，PicoGreen，BEBO等，它们本身不发光，但结合于dsDNA的小沟后会发出荧光。所以当PCR反应刚开始时机器并不能检测到荧光信号，当反应进行到退火-延伸（二步法）或者延伸阶段（三步法），此时双链打开，在DNA聚合酶的作用下新链合成，荧光分子就结合于dsDNA的小沟中并发出荧光，随着PCR循环数的增加越来越多的染料与dsDNA结合，荧光信号也不断的增强。以SYBR Green Ⅰ为例。
+探针法 Taqman探针是最为常用的一种水解探针，在探针的5’端存在一个荧光基团，通常为FAM，探针本身则为一段与目的基因互补的序列，在探针的3’端有一个荧光猝灭基团，根据荧光共振能量转移原理(Förster resonance energy transfer， FRET)，当报告荧光基团（供体荧光分子）和猝灭荧光基团（受体荧光分子）激发光谱重叠且距离很近时（7-10nm），供体分子的激发可以诱发受体分子发荧光，而自身荧光减弱。所以PCR反应开始，探针游离于体系中完整存在时，报告荧光基团并不会发出荧光，当退火时，引物和探针结合于模板，在延伸阶段，聚合酶不断的合成新链，由于DNA聚合酶具有5’-3’核酸外切酶活性，到达探针时，DNA聚合酶就会将探针从模板上水解下来，报告荧光基团和猝灭荧光基团分开，释放荧光信号。由于探针和模板存在一对一的关系，所以在试验的精度和灵敏度上，探针法都要优于染料法。
+Fig 1 qRT-PCR原理
+引物设计 原则：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  引物应用核酸系列保守区内设计并具有特异性。最好用cDNA序列，mRNA序列也可，如果没有则找出DNA序列的cds区域设计。 做荧光定量产物长度80-150bp最好，最长是300bp，引物长度一般在17-25碱基之间,上下游引物不能相差太大。 G+C含量在40%~60%之间，45-55％最佳。 TM值在58-62度之间。 尽量避免引物二聚体和自二聚体，（不要出现超过4对连续互补的碱基）发卡结构，如果不可避免，使ΔG&lt;4.5kJ/mol* 如果不能确保反转录过程中gDNA已经除干净，最好设计出夸内含子的引物* 3′端不可修饰，而且要避开AT,GC rich的区域，避开T/C,A/G连续结构（2-3个） 引物与非特异性扩增序列的同源性最好小于70％或者有8个互补碱基同源。   1 2 3 4  数据库： CottonFGD search by keywords 引物设计： IDT-qPCR primer design   lncRNA引物设计 lncRNA： 和mRNA的步骤一致。
+miRNA： 茎环法原理：由于miRNA全部为23nt左右的短序列，无法进行直接PCR检测，所以使用了茎环序列这个工具，茎环序列是一段50nt左右单链DNA，可以自身形成发卡结构，3’末端可以设计成与miRNA部分片段互补的序列，那么在反转录时就可以将目的miRNA连接到茎环序列上，那么总长度就达到70bp，就符合qPCR确定的扩增产物的长度。加尾法miRNA引物设计。
+扩增特异性检测 Online blast database：CottonFGD blast by sequence similarity Local blast：参照用Blast+做本地blast，linux和macos可以直接建立本地数据库，win10系统需要安装ubuntu bash后也可以做。本地blast数据库建立及本地blast；win10开启ubuntu bash。 Notice：陆地棉海岛棉为四倍体作物，所以blast结果往往会是两个或多个匹配，以往经验以NAU的cds作为database进行blast很可能找到两个只有几个SNP差异的同源基因，通常通过引物设计是分不开这两个同源基因的，所以就将他们当做同一个来做，如果有明显的indel，通常把引物设计在indel上，但这样就可能导致引物的二级结构的自由能变高，导致扩增效率的下降，但这是不可避免的。]]></description>
+</item>
+</channel>
+</rss>

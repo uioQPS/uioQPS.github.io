@@ -1,0 +1,165 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>RNA-seq - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/rna-seq/</link>
+        <description>RNA-seq - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 19 Feb 2020 16:04:34 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/rna-seq/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-38</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-38/</link>
+    <pubDate>Wed, 19 Feb 2020 16:04:34 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-38/</guid>
+    <description><![CDATA[第38题 当转录组普遍变化时RNA-Seq怎么进行分析(2)？ Hello 大家好！ 我们又见面了！
+当出现这种所谓特殊情况的时候，可以使用Housekeeping gene的办法来进行相对定量，这种办法在一定程度上能够解决我们遇到的问题。但其实这种办法有一个非常强的先验假设：housekeeping gene的表达量不怎么发生变化。其实housekeeping gene list有几千个，这几千个基因有一定程度上的变化是有可能的。
+有什么办法能够在RNA-Seq中对gene的定量起到“一锤定音”的作用呢？答案就是我们今天为大家介绍的spike-in方法，即在RNA-Seq建库的过程中掺入一些预先知道序列信息以及序列绝对数量的内参。这样在进行RNA-Seq测序的时候就可以通过不同样本之间内参（spike-in）的量来做一条标准曲线，就可以非常准确地对不同样本之间的表达量进行矫正。在这种操作下，可以一定程度上认为是一种绝对定量。
+那么，有没有比较常用的spike-in类型呢？嘿嘿嘿～这是当然的啦！这个就是大名鼎鼎的ERCC Control RNA.
+1. 什么是ERCC ? ERCC = External RNA Controls Consortium
+ERCC就是一个专门为了定制一套spike-in RNA而成立的组织，这个组织早在2003年的时候就已经宣告成立。主要的工作就是设计了一套非常好用的spike-in RNA，方便microarray，以及RNA-Seq进行内参定量。
+ERCC 官方网站 https://www.nist.gov/programs-projects/external-rna-controls-consortium
+2. ERCC control RNA具体是什么？ 目前常用的ERCC版本内包含了176条RNA序列，这些RNA序列是从一些物种的DNA转录得到的，编号从ERCC-00001到ERCC-00176，所有对应的编号的序列全部可以从网上直接搜索下载。
+目前，已经有非常成熟的商业化的ERCC序列，其中的176条RNA组成的一个库（pool）也是经过特殊设计的。不是简单的等量混合，而是不同的pool会对176条序列分成很多小库（subpool），然后通过不同的比例对这些subpool进行混合，然后形成不同的配比比例。在购买商业化的ERCC序列时，一定要注意下载对应版本的绝对定量信息。当然，有些商业化的ERCC里面也不是包含全部176条标准序列。
+3. ERCC control在不同样本之间的表现是否良好？ 目前的实验数据表明，ERCC spike-in的掺入效果还是非常不错的。这里引用了Thermo商品中的一张数据图。
+图3 ERCC绝对量与RPKM的关系 (https://www.thermofisher.com/order/catalog/product/4456740)
+图3表明，在RNA-Seq中增加ERCC的绝对量是可以获得FPKM的绝对量的增加，并且两者成非常好的线性关系。这也是我们能够对RNA-Seq样本进行掺入内参的一个基本前提。
+4. R里面可以使用哪个包来进行相关的操作？ 说了这么多，那么如果真的有一套带有ERCC spike-in的RNA-Seq数据，我们应该怎么分析呢？其实在2014年的时候Nature Biotech上面发表了一篇文章，专门描述了怎么对数据进行分析，还顺手publish了一个R包，并且我认真阅读并实战过这个R包，从文档到结果都很靠谱。
+这个R包的名称是 RUVSeq，链接为：
+https://bioconductor.org/packages/release/bioc/html/RUVSeq.html
+如果大家真的有需求，就直接follow这篇文章来进行学习就可以了。图5就是给大家展示一下使用ERCC spike-in矫正以后的结果。
+图5 矫正与不矫正基因表达量的boxplot]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-37</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-37/</link>
+    <pubDate>Wed, 19 Feb 2020 16:04:27 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-37/</guid>
+    <description><![CDATA[第37题 当样本转录组普遍变化时RNA-Seq怎么进行分析(1)？ Hello 大家好！我们又见面了！
+RNA-Seq使用RPKM/FPKM/TPM指标定量时的2个基本假设：
+ 1是绝大多数的gene表达量不变； 2是高表达量的gene表达量不发生改变；  可是在一些比较特殊的样本体系下，这两个基本假设有可能不能同时符合。比如针对很多癌症样本，经常会出现一些很重要的高表达gene发生普遍的上调或者下调，从而导致整个样本不符合RNA-Seq正常定量的基本假设。那么这个时候，如果继续使用常规的寻找差异表达的方法来对基因进行定量以及分析，就可能会出现偏差，而出现偏差的具体原因已经在之前的第36题为大家详细解释过了。我们今天主要讨论的是怎么矫正的问题。
+1. 当样本转录本不符合常规假设时，RNA-Seq定量矫正的常用方法 其实，矫正的思路很简单，就是在变化的样本中寻找不变的量。那么在不同的样本中，什么可以认为是不变的量呢？在RNA-Seq中一般是2种操作办法，第1种是认为持家基因（Housekeeping gene）的表达量在样本中是基本不变的；第2种是需要在RNA-Seq建库的过程中就掺入一些预先知道浓度和具体分子量的spike-in作为内参，然后使用内参进行矫正。我们今天来为大家介绍第1种办法。
+2. 什么是持家基因（Housekeeping gene）？ 持家基因，也有人翻译成管家基因，对应的英文就是Housekeeping gene，是指在生物体内所有细胞中都表达，并且为维持细胞基本生命活动所需而时刻都在表达的高度保守的基因。一般在不同的细胞中，我们都认为Housekeeping gene一般情况下表达量不发生很大的改变。比如在做qPCR的时候，经常选用GAPDH或者是TUBB这两个gene作为内参就是非常经典的Housekeeping gene。关于Housekeeping gene更详细的说明，可以参考Wiki百科的资料：Wiki: Housekeeping gene
+3. Human常用的Housekeeping gene 怎么确定？ 因为我做的课题主要都是以人为研究对象，因此我在这里为大家介绍一下human中常用housekeeping gene是怎么确定的。目前大家用的比较多的一个human housekeeping gene list 来源于下面这篇文章，是2013年发表在 Cell系列的 Trends in Genetics 部分的一篇文章。
+文章链接： https://www.cell.com/trends/genetics/fulltext/S0168-9525(13)00089-9
+这篇文章中主要搜集了非常多的RNA-Seq数据，以及microarray数据，并把这些数据进行统一的分析与整理，最终得到了一个作者认为比较可靠的housekeeping gene的list。目前这个list中大约包含了3000多个gene。这个gene list的下载地址我也给分享给大家
+在我们得到了这样1个housekeeping gene list以后，就可以在分析的过程中认为这些gene的表达量是不怎么发生变化的，即使发生了一定的变化，也只是个别的发生了一定程度的改变，而不是这3000多个gene整体大幅度发生改变。在这个假设的基础上，我们就可以用这3000多个gene做1根标准曲线，然后就可以根据线性回归的结果对不同样本之间原来的RPKM/FPKM/TPM进行矫正，从而得到一个通过housekeeping gene矫正过后的定量结果，通常情况下，这个定量的结果会更加稳定和准确，即能够完成我们的定量任务。
+4. 问题和提问 那么今天的问题是，请下载Housekeeping gene list，并查看文件内容，请思考使用housekeeping gene矫正有什么缺陷？
+1 2 3 4 5 6 7 8 9 10  (1)存在假基因(pseudogene)，会引发基因组 DNA 的扩增； (2)表达值太高或太低； (3)不稳定表达于不同类型的细胞和组织(如正常细胞和癌细胞)中，而且其表达量存在显著性差异； (4)表达水平与细胞周期及细胞是否活化有关； (5)其稳定的表达水平与目标基因存异； (6)受内源性或外源性因素的影响。 内参基因的选取过程也是利用 qPCR 定义持家基因的过程。通常选取几个到十几个候选内参基因，通过扩增得到它们在不同组织中的 qPCR 表达数据后，主要利用 geNorm[37]和 NormFinder[38] 两种软件来检测候选基因表达水平的稳定性，选取稳定表达 的基因作为持家基因，即内参基因。   ]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-36</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-36/</link>
+    <pubDate>Wed, 19 Feb 2020 16:04:19 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-36/</guid>
+    <description><![CDATA[第36题 RNA-Seq 数据的定量基本假设以及TPM Hello 大家好！
+我们在BBQ35中为大家介绍了RPKM和FPKM的原理以及计算方法，我们也说FPKM/RPKM有一个比较明显的缺点，就是不能够保证不同样本之间FPKM的总和是一个定值。因此才会引出我们今天的介绍内容TPM。
+1. TPM的介绍 TPM = Transcripts Per Million， 简单来说就是为了解决FPKM 总和不一致的情况。具体计算的方法如下：
+1 2 3  1. 先计算每一个gene的FPKM 2. 计算所有gene的FPKM总和sum(FPKM) 3. 最终gene的TPM = gene的FPKM / sum(FPKM) * 10^6   再简单一点说明，gene的TPM就是其FPKM百分数再乘以106，因此一个样本的TPM的总和一定是106. 这样做的好处就是能够把所有样本的TPM总和统一，都变成10^6。目前很多公共数据的数据都是以TPM的方式提供，比如非常著名的GTEx数据库，提供了超过10000个人组织RNA-Seq的测序表达量矩阵，其中的表达量定量方式就选择了TPM。 GTEx项目主页 （https://gtexportal.org/home/）
+2. RPKM/FPKM/TPM什么情况下会定量失败？ 说了半天，其实大家一定要先搞明白一个问题，无论是RPKM还是FPKM，亦或是TPM，本质上都是gene 表达水平的相对定量结果。
+这个结论非常重要！！！这个结论非常重要！！！这个结论非常重要！！！
+也正是因为RNA-Seq的相对定量结果，会有2种情况导致RNA-Seq定量失败；
+2.1 第1种情况：gene表达量发生普遍变化。 我给大家举一个非常简单的例子，比如我有两个样本分别叫做A和B，其中B的每一个gene表达量都只有对应样本A中的gene表达量的一半，那么结果就是如果使用RNA-Seq对这两个样本进行定量，那么定量的结果会是一样的，也就是两者计算的RPKM/FPKM/TPM会是一样的。
+通过上面的例子，我们可以作出一些推论：当两个样品中的绝大多数gene都发生相同方向的倍增或者倍减关系的时候，RNA-Seq会定量失效。这个非常重要！比如在很多癌症样本与正常组织样本的比较中，癌症样本很多时候会出现很多gene的普遍升高或者普遍降低，这个时候就需要其他特殊的办法来解决这样的问题，具体的方法后面我们会介绍。不过这种现象一般比较少见，几种常见需要考虑这个问题的情况：某些特殊表达细胞体系；很多癌症的miRNA-Seq 等。
+2.2 第2种情况，超高表达量的gene表达量发生变化 思考一下这种情况：有两类细胞，分别是cell1和cell2，真实的情况是geneA本身是一个表达量很高的gene，同时在cell2中，geneA的表达量继续升高数倍，同时其他gene的表达量几乎不变。这个时候我们对这两种情况进行RNA-Seq建库测序，结果就会是发现其他gene普遍下调，而不仅仅是geneA的上调。如图3所示，最后建库的时候，会测到非常多的geneA的reads，其他gene的reads就会相对减少，所以会造成其他gene RPKM/FPKM/TPM下降的假象。
+3. 提问与总结 一般在RNA-Seq分析的过程中，我们都必须默认两个基本假设：
+1 2  1是绝大多数的gene表达量不变； 2是高表达量的gene表达量不发生改变；   如果没有这2个基本假设，那么后续的找差异gene基本上是无从谈起，即便找到了所谓的差异表达gene也基本上是个错误的结论。
+那么今天我们的问题是：既然RNA-Seq是相对定量的一个实验，那么有没有办法通过什么办法让其能够变成绝对定量的方法？使其真的遇到绝大多数的gene表达量变化或者是高表达量的gene表达量变化的时候能够继续成功定量？
+ 谢晓亮老师在2012年出来了有一种绝对定量的方法，在文库扩增之前的每一个RNA片段加上一个标签（UID），那么同一个片段扩增出来的都带有同种标签。利用UID过滤数据，将相同的产物进行合并，既可以去掉PCR中的重复，而且也可以达到定量的目的. Digital RNA sequencing minimizes sequence-dependent bias and amplification noise with optimized single-molecule barcodes（PNAS.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-35</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-35/</link>
+    <pubDate>Wed, 19 Feb 2020 16:04:09 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-35/</guid>
+    <description><![CDATA[第35题 RNA-Seq 数据的定量之RPKM和FPKM Hello大家好！好久不见了！
+根据之前的规划，我们将用接下来的几期问题来探索一下RNA-Seq定量的问题，也就是要探索一下我们常说的RPKM，FPKM，TPM，raw count 和RSEM，前面4个指标都比较直观，方便理解，最后一个RSEM需要涉及到一些机器学习的知识，我们尽量给大家把比较复杂的问题简单化，方便大家的入门。
+RNA-Seq定量过程中的比较问题 RNA-Seq的基本假设是什么？简单来说就是 细胞/组织/个体 的两种不同状态进行比较，比较的目的就是寻找差异表达gene，然后从差异表达gene来推断造成生理状态不同的原因。
+而我们的RNA-Seq一般情况下是针对mRNA以及带polyA的lncRNA进行建库测序分析的。那么理论上把测序的FASTQ文件mapping到参考基因组上，再结合参考基因组的GTF/GFF文件就可以找到全基因组的每一个gene上mapping到了多少个reads count。
+拿到了reads count以后，我们就会尝试着想要比较gene之间的表达量的关系，但是这时候往往会面临两个问题，举个例子：
+ 问题1: 比如我有gene3，有1000条测序reads，gene4有2000条测序reads，那么我能否说gene4就一定比gene3的表达量高？（图1 gene3 与 gene4） 问题2: 比如我有gene1，有1000条测序reads，我的另一个处理条件下gene2有2000条测序reads，我能否就说geneA在处理条件下表达量降低了？（图1 gene1与gene2）  在面临这些比较问题的时候，我们就需要对mapping到gene的reads count进行矫正，至少根据问题1我们知道应该在矫正的时候考虑过gene长度的问题；根据问题2，我们大概应该能够猜想到，矫正的时候应该需要考虑整体测序量的问题。到此，RPKM和FPKM这两个指标就应运而生了。
+图1 ( Manuel Garber et al., Nature Methods, 2011 )
+什么是RPKM与FPKM？ RPKM = Reads Per Kilobase per Million mapped reads
+假设回贴到geneA 的 reads count为 CountA，geneA的exon总长度为Len(A) Kbp，总的测序量为D兆reads，那么：
+1  geneA RPKM = CountA / Len(A) / D * 10^9   那么什么是FPKM呢？先来看一下FPKM的定义：
+FPKM = Fragments Per Kilobase per Million mapped reads]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-34</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-34/</link>
+    <pubDate>Wed, 19 Feb 2020 16:03:57 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-34/</guid>
+    <description><![CDATA[第34题 做RNA-Seq的数据分析逻辑是怎样的？ Hello 大家好！我们又见面了！
+为什么要做RNA-Seq？ 先来谈谈为什么要做RNA-Seq。假设我们没有RNA-Seq技术，当我们看到经过某1个条件/刺激/处理以后，我们的研究对象，细胞，植株，亦或是可爱的小白鼠有了一些变化。这个时候我们通过观察和实验得到了1个判断：
+1  当对A进行B刺激的时候会出现表型C。   当有了这个判断以后，正常的推理思路是，表型的出现很大可能是由于研究对象的蛋白含量的变化引起的。而蛋白的含量最直接的控制就来自于gene表达的变化。如果我们能够有办法测量A在进行B刺激以后全部的gene表达变化的gene list D，理应能够得到下一个判断：
+1  当对A进行B刺激的时候会出现表型C，而这个表型C造成的原因很有可能是来自于D这些基因的变化。   但是这里有个问题，这个刺激需要是一种比较稳定的条件，比如对细胞系进行稳定敲除（knock out）一个gene；再比对用药物持续对植株进行喷洒等等。而不能是，我向细胞盘吐了口唾液，然后立即建库去测RNA-Seq。这是因此，我们在推断表型C造成的原因的时候，认为是gene的表达造成的，而从信号响应，到最终的gene表达的变化是需要时间的。因此，刺激以后，过一段时间以后才会出现变化，一般这个时间间隔是以小时为单位计算的。
+因此，当我们认为表型C和刺激B之间是由于gene list D影响的，那么我们就要做RNA-Seq。
+为什么能做RNA-Seq？ 那么，我们为什么能做RNA-Seq？貌似是一个很简单的问题，其实不然，这是几十年技术的积累。让RNA-Seq能够走进“寻常百姓家“的原因有很多，能轻而易举想到的：测序费用的降低；基因组的公布/相关物种基因组的公布；分子生物学技术的成熟等等。
+想象一下，如果有一天我们突然不能做RNA-Seq了，那么我们再去想做我们判断的检验就可要1个gene挨着1个gene的去做qRT-PCR了！或者是做价格和准确不不如测序的micro array检测。
+拿到数据以后我们应该做点什么？ 还是回到我们之前的判断：
+ 当对A进行B刺激的时候会出现表型C，而这个表型C造成的原因很有可能是来自于D这些基因的变化  核心问题是找到这个gene list D，而这个问题的本质就是去寻找对A进行B刺激前后的差异。那么差异又可以分成几个方向去寻找：
+1 2 3 4  方向1. 表达量的差异； 方向2. 可变剪切的差异； 方向3. 修饰的差异； 方向4. 其他可能存在调控机制的差异；   针对不同的方向去寻找差异，方法也是不同的，比如方向1,2,3的分析方法就有非常大的不同。而选定方向以后，寻找差异的思路又可以扩展开：
+1 2 3 4  1. 差异与whole genome相比是否有一定的分布倾向性？ 2. 差异是个例还是具有普遍性？（更换细胞系是否能重复？） 3. 差异与表型是否有统计学相关性？ ... ...   当我们确定了方向与寻找差异思路以后，最后一步就是去展示分析结果，说直白些就是数据可视化。好的图表可以让人一眼就看出差异所在，不用文字就知道作者要表达的意思。数据可视化这方面，有非常多的工具可以使用比如R就非常方便。]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-33</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-33/</link>
+    <pubDate>Wed, 19 Feb 2020 16:03:46 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-33/</guid>
+    <description><![CDATA[第33题 什么是链特异性的RNA-Seq？ Hello 大家好！我们又见面了。
+最近，我们一直在围绕着RNA-Seq的相关技术在进行讨论，我们聊过了polyA+与rRNA-的建库策略问题，我们也聊过了测序深度与测序仪通量的问题，那么今天我们来聊一下链特异性RNA-Seq的建库问题。
+1.什么是链特异性建库与链非特异性建库RNA-Seq 图1-1 链特异性建库与非特异性建库示意图 （Zhao et al., BMC Genomics，2015）
+在RNA-Seq建库的时候，第一步都是进行RNA到cDNA的反转录，在反转录以后，普通的RNA-Seq就直接使用random primer进行第2条链合成，随后加adapter。这样构建出来的RNA-Seq库进行测序以后是分不清这个序列是来自于genome的那条链的，因为被测序的有可能是gene的foward strand 也有可能是reverse strand。
+而链特异性的RNA-Seq建库是通过一定的建库策略，让RNA在反转录和加adapter的过程以后还能够保存链的信息的建库策略。如图1-2所示，红色的reads表示mapping到了genome的foward strand，蓝色的reads表示mapping到了genome的reverse strand。对于这个gene来说，它本身存在于foward strand，链特意建库的F图就完全能够说明这个现象；但是G图是普通的RNA-Seq建库，也就是不区分链的信息，因此在这个foward strand gene附近的reads有mapping到foward strand的，也有mapping到reverse strand的情况。
+图1-2 F为链特异性建库，G为非特异性建库（Dmitri Parkhomchuk et al., NAR, 2009）
+2.链特异性建库的优势与劣势 那么链特异性RNA-Seq的优势在于哪里呢？是在于它能够处理一些gene overlap比较复杂的情况。我们都知道，几乎所有高等生物的gene在genome中的分布都是非均匀的，而且一般都是没有链的偏好性。换句话说，两个gene重叠，一个在foward strand，一个在reverse strand是很常见的显现，如图2-1所示。
+图2-1 genome两条链都存在gene的情况（Joshua Z Levin et al., Nature Methods, 2010）
+如果是普通的RNA-Seq，是分不清这些overlap区域的reads到底来自于哪一个gene，这就给定表达量带来了非常大的麻烦。但是链特异性的RNA-Seq就不会，如果只是foward strand的gene表达那么reads就只会mapping到对应的链上。
+所以，用链特异性的建库方法，是能够更加准确进行gene定量的。
+至于链特异性建库的劣势，大概有2点吧：1个是贵，1个是操作复杂对于珍贵样品（比如人体组织样品）一旦建库不成功就game over了。
+3.链特异性建库的方法有几种，最常用的是哪种? 至于链特异性的建库方法，现在有若干种，但是最常用的其实是2种，1种是RNA ligation methods；1种是dUTP method。
+3.1 RNA ligation method 图3-1 RNA ligation methods（Joshua Z Levin et al., Nature Methods, 2010）]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-32</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-32/</link>
+    <pubDate>Wed, 19 Feb 2020 16:03:36 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-32/</guid>
+    <description><![CDATA[第32题 1个RNA-Seq样本到底要测多少序列？ 我们讨论了到底选择哪种策略进行建库，主要就是polyA + 和 rRNA-这两种方式。在选定建库策略以后，我们自然会问一个问题，如果我们去做RNA-Seq每个重复到底要测多少测序量呢？
+先聊聊测序价格 我们这里讨论的问题，都是以Illumina公司的二代测序为准。目前市面上公司能够提供测序服务的，大多数是Illumina的HiSeq平台，HiSeq X平台，NextSeq平台以及通量最高的NovaSeq平台。以上这些平台，在平时实验中我们都是进行双端150bp的测序模式，也就是我们常说的paired-end 150bp，所以一对reads的通量是150bp X 2 = 300bp
+注：下问中提到所有测序仪参数全部来自于Illumina官网！
+1.1 HiSeq系列 HiSeq系列的参数如图1-1所示，最常用的是HiSeq2500与HiSeq4000。HiSeq系列目前已经逐渐被边缘化或者是定制化，主要是用来做定制测序双端 250 bp的测序，或者单端50bp的测序。根据定制的模式不同，价格也不同。平均下来，价格大约是100~ 120 RMB / 1Gbp
+图1-1 HiSeq系列平台参数
+1.2 HiSeq X Ten测序仪 这个型号的测序仪是目前市场上的主力，1个flowcell可以有8条lane，每条lane可以产生100~120Gbp的测序数据，包lane的价格大约在8000RMB ~ 10000RMB左右，平均下来的价格是80 ~ 100RMB / Gbp
+图1-2 Illumina HiSeq X Ten测序仪
+1.3 测序最快的NextSeq系列 NextSeq采用了最新的双色荧光系统，而不是Illumina以前的四色荧光系统，因此运行速度大大提升，大约1天左右的时间就可以完成上机测序（HiSeq大约是3到4天），这个测序仪只有在我们对样本和实验比较着急的时候才会使用。价格也会比HiSeq系列高若干倍。不过，NextSeq的出现，给我们提了个醒，Illumina以后会通过逐渐优化测序仪站稳医院临床快速检测的脚跟。
+1.4 通量最高，最便宜的NovaSeq系列 NovaSeq系列测序仪没有lane的概念，是一个完整的flowcell，运行一次可以产生6Tbp左右的数据。如果你想测个几百个样品，那么NovaSeq绝对是你的首选。现在市场价大约可以压缩到40~50RMB/Gbp
+对于human来说RNA-Seq需要测多深？ 这个问题之前已经有人专门研究过，实验方案就是先把样品测很深比如50M pair（1M = 10^6），然后去随机抽取若干序列，比如每隔10M做一次抽样，再去计算每一次抽样结果的FPKM值，最后看基因的FPKM在多少测序量的时候能够稳定。根据图2-1所示，大约到了30M reads 的时候就可以稳定找出差异表达基因。 图2-1 探索测序量与差异表达基因的关系 （Yuwen Liu et al., 2014, Bioinformatics）
+同时，ENCODE计划里面也公布了RNA-Seq的数据测序标准，在ENCODE的标准中原文如下：
+ \1. Replicate number: Experiments should be performed with two or more biological replicates.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-31</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-31/</link>
+    <pubDate>Wed, 19 Feb 2020 16:03:25 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-31/</guid>
+    <description><![CDATA[第31题 RNA-Seq建库用哪种策略？ Hello 大家好！ 我们又见面了！
+我们将与大家一同讨论与转录组建库，基因的差异表达分析等相关的内容。
+今天我们讨论的是RNA-Seq建库策略问题。
+什么是RNA-Seq建库 RNA-Seq建库简单来说，就是把我们想要进行转录组测序的样品（一盘细胞，若干片叶子等）提取RNA，并给RNA（主要是mRNA）序列加上adapter（接头）的过程。最终的目的是为了让转录组的片段两边都连上已知的adapter序列，方便之后的测序。结构如图1-1所示，图中所示的文库片段就是我们这里说的转录组片段。
+在整个实验过程中，有几个关键的问题值得思考。
+  第1方面，最终拿去测序仪进行测序的一定都是DNA片段，因此我们需要对实验提取到的RNA序列进行反转录成cDNA，然后再进行连接adapter。不过这个问题不算难，因为只要有RNA的序列，就可以使用random primer进行随机反转录，获得对应的cDNA片段。而在cDNA片段上链接adapter就是标准的DNA连接反应，非常简单。
+  第2方面，细胞中含量最多的是rRNA，其次是tRNA，mRNA与lncRNA只占大约5%左右甚至更低，而我们真正关心的往往就是mRNA与lncRNA代表的基因表达量。那么怎么对mRNA或者是lncRNA进行富集呢？这就是我们今天要跟大家强调的富集策略问题。
+  PolyA + 与 rRNA -两种富集策略 一般来说，我们做RNA-Seq的假设是基于：
+1 2 3 4 5  某一个条件影响了表型 --&gt; 假设，表型是由蛋白的变化引起的 --&gt; 假设，蛋白的变化大概率是由对应gene表达量的改变引起的 --&gt; 因此，需要对gene进行定量 --&gt; 最终，进行RNA-Seq   1 polyA + 建库策略 也正是因为上述的推理过程，我们才需要去做RNA-Seq对全转录组进行gene的定量分析。在绝大多数情况下，我们关心的gene都是protein coding gene或者是与其结构非常详细的lncRNA（long non-coding RNA）这些gene在形成成熟的mRNA以后，往往都会在3’末端带有polyA 尾巴，如图2-1所示。同时，成熟的tRNA，rRNA，miRNA等等都不带有经典的polyA尾巴。
+因此，如果我们使用一段 带有能与A配对的T的磁珠就可以与对应的带有polyA尾巴的RNA结合，随后再经过随机打断，反转录，加adapter就可以完成建库，这样的建库策略叫做polyA + 或者 polyA positive。核心是对带有polyA尾巴的RNA进行富集。
+2 rRNA -建库策略 那么polyA positive策略有个比较大的问题就是，会丢掉很多不带有polyA尾巴的RNA序列，比如tRNA，比如有些lncRNA以及一些特殊的mRNA。同时，我们知道细胞中含量占绝大多数的是序列重复的rRNA，如果我们把rRNA去除之后也就可以顺利进行建库测序。这个过程是对rRNA进行若干次的消化，使得rRNA都被降解而其他类型的RNA不受影响。随后再进行随机打断，反转录，加adapter。这种RNA-Seq的建库策略为rRNA - 或称为 rRNA minus。这种策略的核心是尽可能多的去除rRNA。
+提问环节 今天的提问，偏生物细节，不过也都是我们必须要掌握的内容。
+问题1：请查阅资料，给出正常人类细胞中rRNA，tRNA，mRNA的大致比例；]]></description>
+</item>
+</channel>
+</rss>

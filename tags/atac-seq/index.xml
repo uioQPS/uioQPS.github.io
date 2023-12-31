@@ -1,0 +1,42 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>atac-seq - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/atac-seq/</link>
+        <description>atac-seq - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Feb 2020 21:16:29 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/atac-seq/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-80</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-80/</link>
+    <pubDate>Sun, 23 Feb 2020 21:16:29 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-80/</guid>
+    <description><![CDATA[methy-ATAC-seq同时测甲基化和染色质的可及性 伴随着10X genomics最近推出的sc-ATACseq的protocol，ATAC-seq技术将会掀起一股新的研究热潮。尤其是ATAC-seq与其他技术的结合，再搭上单细胞的快车，很多科学问题借助这个新的研究方法也许会有新的发现，至少会涌现出一批paper。 恰好看到群友推荐这篇methy-ATAC-seq的文章，可以同时检测甲基化与accessible chromatin，虽然目前还不是单细胞水平，不过还是值得一看。
+ doi: http://dx.doi.org/10.1101/445486
+ 问题的提出 分开检测染色质的可及性和甲基化然后再整合分析，不能准确保证数据的一致性。将两种方法整合在一起，一次性检测染色质的可及性以及该区域的甲基化。
+mATAC-seq方法  甲基化寡核苷酸被加载到Tn5上产生新的转座子 片段化 甲基脱氧胞嘧啶三磷酸（5-MdCTP）在转位后的末端修复反应中取代DCTP  这种修饰在mATAC-seq文库制备的最后步骤中保护Nextera adapter序列，这些序列是经过Tn5处理的染色质。
+验证mATAC-seq与Omni-ATAC-seq和WGBS的一致性  DNA methylation detected by mATAC-seq replicates was highly reproducible at CpG Islands (r 2 =0.95) and peaks (r 2 =0.83) methylation levels reported by mATAC-seq correlated well with levels reported by WGBS at CpG Islands (r 2 =0.86) and peaks (r 2 =0.68)  peak处的可及性和甲基化  显著性peak区域的RPKM和甲基化变化，以及相关的motif promotor区域的甲基化变化和可及性的比较 mRNA的变化与promotor区域的可及性变化   可及性和甲基化的整合分析  聚类 模块内启动子处的基因表达变化 RPKM,methylation,H2A.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-68</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-68/</link>
+    <pubDate>Sat, 22 Feb 2020 21:41:06 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-68/</guid>
+    <description><![CDATA[illumina nextera Tn5 和ATAC seq adaptor 序列 在准备NGS文库的时候，会有用到转座酶Tn5，Nextera DNA Library Preparation Kit ，比如ATAC-seq就有用到这个Tn5。转座酶携带有特定的序列称为转座子Transposon。
+下面是ATAC-seq的工作原理，想必听说过ATAC-seq的，对这个图都会再熟悉不过了。
+Tn5是kit里面带有的，没什么大不同。ATAC-seq 的barcoded primers （adaptors）会有一些不同，接下来，看下图中的每段序列对应的sequnce都是什么。 下面图例，Nextera tn5用来给基因组DNA加adaptors。 搞懂illumina nextera Tn5 和ATAC seq adaptor 序列 放大tn5: 在tn5二聚体里面的双链的Oligo是Nextera Tn5 binding site，19个碱基，全部都是一样的。伸出来的部分是单链的序列，蓝色：Nextera tn5 read1 (5&rsquo;-TCGTCGGCAGCGTC-3&rsquo;)；红色：Nextera tn5 read2(5’-GTCTCGTGGGCTCGG-3')
+1 2 3 4 5 6 7  Nextera Tn5 binding site (19-bp Mosaic End (ME)): 5&#39;- AGATGTGTATAAGAGACAG -3’ Nextera N/S5xx primer entry point (s5)／Tn5 Read 1: 5&#39;- TCGTCGGCAGCGTC -3&#39; Nextera N7xx primer entry point (s7)／ Tn5 Read 2: 5&#39;- GTCTCGTGGGCTCGG -3&#39; Illumina P5 primer 1: 5&#39;- AATGATACGGCGACCACCGAGATCTACAC -3&#39; Illumina P7 primer 2: 5&#39;- CAAGCAGAAGACGGCATACGAGAT -3’ Tn5 Read 1 （包括ME）sequence: 5&#39;- TCGTCGGCAGCGTC（AGATGTG，TATAAGAGACAG） -3’ （33bp） Tn5 Read 2 （包括ME）sequence: 5&#39;- GTCTCGTGGGCTCGG（AGATGT，GTATAAGAGACAG ）-3’ （34bp）   下面的图片就是准备ATAC-seq时候需要用到的index primer （adaptor），和Nextera DNA library prep kit里的有一点类似，但是也很不同。Ad1_noMX是Forward 引物，没有index （barcode），所以只有一个。Reversed引物有24个Ad2.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-67</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-67/</link>
+    <pubDate>Sat, 22 Feb 2020 21:40:59 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-67/</guid>
+    <description><![CDATA[鉴定可重复的Peaks ATAC-Seq/ChIP-Seq通常需要2个会更多的生物学重复（十分珍贵或者稀有样本除外，但必须做至少2次技术重复）。理论上重复样本的peaks应该有高度的一致性，实际情况并不完全与预期一致。如何评价重复样本的重复性的好坏？如何得到一致性的peaks?这里介绍两种方法：
+ 用Bedtools进行简单的overlap合并重复样本 IDR（Irreproducibility Discovery Rate）的方法获得高重复性的peaks  1. Overlapping peaks using bedtools 如何得到两个重复样本间一致性的peaks? 一种简单粗暴的方法就是用bedtools计算peaks的overlaps。
+用法：
+1 2 3 4 5  bedtools intersect [OPTIONS] -a &lt;bed/gff/vcf/bam&gt; -b &lt;bed/gff/vcf/bam&gt; -a: 参数后加重复样本1（A） -b：参数后加重复样本2（B），也可以加多个样本   其他常用参数解释和图解如下：
+1 2 3 4 5  -wo：Write the original A and B entries plus the number of base pairs of overlap between the two features. -wa：Write the original entry in A for each overlap. -v：Only report those entries in A that have no overlaps with B   如果只有-a和-b参数，返回的是相对于A的overlaps。加上参数-wo返回A和B原始的记录加上overlap的记录。参数-wa返回每个overlap中A的原始记录。]]></description>
+</item>
+</channel>
+</rss>

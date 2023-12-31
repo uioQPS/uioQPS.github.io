@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>AAV - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/aav/</link>
+        <description>AAV - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Feb 2020 21:15:58 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/aav/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-74</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-74/</link>
+    <pubDate>Sun, 23 Feb 2020 21:15:58 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-74/</guid>
+    <description><![CDATA[病毒载体的构建什么区别 目的基因不能直接整合到大多数真核细胞，常用的手段是将目的基因包装成病毒来感染细胞，从而得到表达满足实验需求。
+病毒的种类 病毒有很多种，常见的有慢病毒和腺病毒
+慢病毒 原理 慢病毒（Lentivirus）是逆转录病毒的一种。构建的siRNA / miRNA慢病毒载体，与化学合成的siRNA 和基于瞬时表达载体构建的普通 siRNA 载体相比，一方面可以扩增替代瞬时表达载体使用，另一方面，Lentivirus-siRNA克隆经过慢病毒包装系统包装后，可用于感染依靠传统转染试剂难于转染的细胞系如原代细胞、悬浮细胞和处于非分裂状态的细胞，并且在感染后可以整合到受感染细胞的基因组，进行长时间的稳定表达。
+特点 1 2 3 4 5  1）直接包装成为假病毒颗粒，对分裂和非分裂细胞均有感染作用，适合 RNAi 研究和体内实验中难于转染的细胞 (比如神经元细胞、干细胞或其它原代细胞)。 2）可以通过简单方式，在短时间内获得稳定表达特定基因的多种细胞株。 3）可用于基因敲除、基因治疗和转基因动物研究。 4）无需任何转染试剂，操作简便。 5）可以根据客户需要制备多种标记。   慢病毒包装简要流程： 1 2 3 4 5 6  1）含有目的基因的慢病毒 RNAi 干扰载体的构建和质粒纯化提取。 2）慢病毒载体，包装系统共转染病毒包装细胞293T等。 3）培养 48hrs - 72hrs 左右，收集含有病毒的上清培养液。 4）病毒的纯化和浓缩。 5）分装、- 80 ℃保存。 6）滴度测定目的基因检定，并出具检测报告。   腺病毒 原理 腺病毒(Adenovirus，Ad)是一种无包膜的线状双链DNA病毒，其复制不依赖于宿主细胞的分裂。有近50个血清型，大多数Ad载体都是基于血清型2和5，通过转基因的方式取代E1和E3基因，降低病毒的复制能力。这些重组病毒仅在高水平表达E1和E3基因的细胞中复制，因此是一种适用于治疗的高效控制系统。
+特点 1 2 3 4 5  1）几乎可以感染所有类型的细胞 2）可以获得复制缺陷型 (E1 和 E3 缺失) 的腺病毒 3）病毒滴度高，产生病毒经过浓缩后可以达到 1012 PFU/mL，能有效的进行增殖。 4）腺病毒载体感染宿主的范围比较广，制备容易，操作简单.]]></description>
+</item>
+</channel>
+</rss>

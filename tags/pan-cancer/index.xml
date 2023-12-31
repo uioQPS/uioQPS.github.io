@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>pan-cancer - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/pan-cancer/</link>
+        <description>pan-cancer - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 21 Feb 2020 22:02:52 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/pan-cancer/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-55</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-55/</link>
+    <pubDate>Fri, 21 Feb 2020 22:02:52 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-55/</guid>
+    <description><![CDATA[pan-cancer 泛癌研究之拷贝数变异 发表于 September 2013 Pan-cancer patterns of somatic copy number alteration
+对拷贝数的分类整理 We identified a total of 202,244 SCNAs, a median of 39 per cancer sample, comprising 6 categories:
+ focal SCNAs that were shorter than the chromosome arm (median of 11 amplifications and 12 deletions per sample); arm-level SCNAs that were chromosome-arm length or longer (median of 3 amplifications and 5 deletions per sample); copy-neutral loss-of-heterozygosity (LOH) events in which one allele was deleted and the other was amplified coextensively (median of 1 per sample); whole-genome duplications (WGDs; in 37% of cancers).]]></description>
+</item>
+</channel>
+</rss>

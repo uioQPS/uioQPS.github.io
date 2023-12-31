@@ -1,0 +1,107 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>SAM - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/sam/</link>
+        <description>SAM - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Feb 2020 15:32:08 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/sam/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-22</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-22/</link>
+    <pubDate>Tue, 18 Feb 2020 15:32:08 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-22/</guid>
+    <description><![CDATA[第22题 都有了SAM文件，为什么还需要BAM文件？ Hello 大家好！
+前面的若干问题，我们一直在围绕着SAM文件的记录格式做了详细地讨论，我相信大家通过我们的问题，跟随我们学习的思路已经掌握了SAM文件作为标准的比对格式的合理性以及相关特点。
+1. 背景介绍和数据下载 SAM文件不但记录了reads详细的mapping信息，还记录了reads的原始信息，内容很是全面。这样很好，但也存在很多问题：
+ 比如我的原始FASTQ文件是100G，那么我的SAM文件一定是大于100G的，也就是占用了更多空间； mapping的结果是没有排序，无论是按reads 的 name排序还是按在基因组上的位置排序，都没有。所以默认的SAM输出文件是乱序的，处理很不方便； mapping的结果不能进行随机访问，什么是随机访问呢？举个例子就是说对于一个SAM文件我不能快速地访问比如chr1 10000 - 200000 这个区域的所有reads 的mapping情况。  基于以上这3个问题，BAM文件就出现了，并且完美解决了上面3个问题。为了方便我们今天的展示和说明，我为大家准备了1个很小的SAM文件，大约只有4MB，请大家下载下来并完成我们的相关问题。
+1 2  # SAM测试文件的baidu盘下载地址 链接：https://pan.baidu.com/s/15gVVYPRu3VbF_uKbJUUGrA 密码：2drn   同时，我们今天要使用的工具是Linux下的samtools，请没有Linux的老铁去安装Linux（我们马上就会有教程出来）；请没有安装samtools软件的老铁使用conda安装需要软件，教程可以移步(用Anaconda快速搭建生物信息学分析平台)
+2. 思路讲解 BAM文件是SAM文件的一种压缩格式，也是最常用的一种比对结果的压缩格式。它一般可以将SAM文件压缩到只有原来的20~30%大小，并且使用非常方便。
+同时，对于BAM文件，我们一般还会进行排序，根据不同的需要，我们排序的方法一般有2种：第1种是按照mapping到的参考基因组的坐标上下游顺序来排序，是samtools的默认排序方法；第2种是按照reads name进行排序，需要增加一个-n参数。
+对于一个已经排序好的BAM文件，我们通常会建立索引文件，后缀名一般是在BAM文件名的后面多个“.bai“。有了BAM以及索引文件的出现，我们就可以随机访问任意一段染色体区域的BAM文件。
+3. 提出问题 那么我们今天的问题也很简单，就是使用samtools工具对我们的测试数据test.sam文件进行操作。具体要求如下：
+1. 使用samtools view 命令查看test.sam的header，请记录各条染色体的长度；同时告知这个test.sam文件是使用哪种mapping软件进行mapping的？
+1  看header中的@PG ID，显示使用的mapping软件是bowtie2，header中显示各条染⾊体的长度如下图:   2. 使用samtools view命令将test.sam文件转换成test.bam文件，并保留header区域，写出命令并记录test.sam，test.bam的文件大小。
+1 2 3 4  使用的命令如下:( -b:输出文件为bam格式; -h,输出中包含header信息) samtools view -b -h test.sam &gt; test.bam 结果显示test.sam⽂件大小是3.9M，而test.bam文件则是660K，bam⽂文件会小很多;   3.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-21</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-21/</link>
+    <pubDate>Tue, 18 Feb 2020 15:32:01 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-21/</guid>
+    <description><![CDATA[第21题 SAM/BAM中的附加标记信息 Hello大家好！我们今天又见面了！
+今天是第21题，我们接着之前的题目，继续学习与SAM/BAM有关的内容。今天要学习的内容是SAM/BAM文件的附加信息。
+1. 基础导引部分 我们先给大家举个例子，这是一个human 的全基因组测序比对的SAM文件的11列以后的信息。第11列之前学习过了是reads的质量值，那么后面的若干标记比如MD:Z:145等等这些符号是什么意思呢？ 图1 SAM文件的11列以后的信息截图
+我把上面图中的部分行的信息放到这里，供大家查阅（11列以后的内容要一直向右拖拽）。
+1 2 3 4 5  ST-E00126:128:HJFLHCCXX:2:1206:8105:9730	99	chr1	11670	1	145M	=	11898	315	AGGTGAAGCCCTGGAGATTCTTATTAGTGATTTGGGCTGGGGCCTGGCCATGTGTATTTTTTTAAATTTCCACTGATGATTTTGCTGCATGGCCGGTGTTGAGAATGACTGCGCAAATTTGCCGGATTTCCTTTGCTGTTCCTGC	KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKFKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKFKKFKKKKKKKKKKKKKKKKKKKFFKKKKKKKKKKFKKKKKKKKKKKKKKKFAK	MD:Z:145	PG:Z:MarkDuplicates	XG:i:0	NM:i:0	XM:i:0	XN:i:0	XO:i:0	AS:i:0	XS:i:0	YS:i:0	YT:Z:CP ST-E00126:128:HJFLHCCXX:2:2107:22820:18520	99	chr1	11682	1	145M	=	11920	325	GGAGATTCTTATTAGTGATTTCGGCTGGTGCCTGGCCATGTGTATTTTTTTAAATTTCCACTGATGATTTTGCTGCATGGCCGGTGTTGAGAATGACTGCGCAAATTTGCCGGATTTCCTTTGCTGTTCCTGCATGTAGTTTAAA	KKKKAAKKAFFKKKKKKFKFKKKFKKKKKKKKKKFKFKKKKKKKKKKKKKKFKFFKKKKKKFAAKAKKKKKKKKKKKKFFKKKFFFKKFKFFKKKKKKKKFFFFFKKKKKKK7&lt;FFKKKKKKAFK&lt;F&lt;&lt;7&lt;AA,,7AA&lt;7F7AA&lt;	MD:Z:21G6G116	PG:Z:MarkDuplicates	XG:i:0	NM:i:2	XM:i:2	XN:i:0	XO:i:0	AS:i:-12	XS:i:-12	YS:i:-6	YT:Z:CP ST-E00126:128:HJFLHCCXX:2:1210:9110:60026	163	chr1	11703	1	87M	=	11840	282	GGGCTGGGGCCTGGCCATGTGTATTTTTTTAAATTTCCACTGATGATTTTGCTGCATGGCCGGTGTTGAGAATGACTGTGCAAATTT	7FKAFKFKFFFKKF&lt;FKKKFKKKFKK7F&lt;KFFKFKKKKKKKFFFF,FKKKKKKKFFKKKKK(7&lt;,AAK&lt;F7AAFKKFKFKFF&lt;A&lt;7&lt;	MD:Z:78C8	PG:Z:MarkDuplicates	XG:i:0	NM:i:1	XM:i:1	XN:i:0	XO:i:0	AS:i:-5	XS:i:-5	YS:i:-33	YT:Z:CP ST-E00126:128:HJFLHCCXX:2:2101:7425:68324	99	chr1	11708	1	145M	=	11923	302	GGGGCCTGGCCATGTGTATTTTTTTAAATTTCCACTGATGATTTTGCTGCATGGCCGGTGTTGAGAATGACTGCGCAAATTTGCCGGATTTCCTTTGCTGTTCCTGCATGTAGTTTAAACGAGATTGCCAGCACCGGGTATCATT	KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK&lt;FKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKAKKKKK&lt;FKKKKFKKKKKKKKK7&lt;AKFFAFKFF&lt;KKKKKFKK&lt;FK&lt;7F,AFKFFA	MD:Z:145	PG:Z:MarkDuplicates	XG:i:0	NM:i:0	XM:i:0	XN:i:0	XO:i:0	AS:i:0	XS:i:0	YS:i:0	YT:Z:CP ST-E00126:128:HJFLHCCXX:2:2210:15382:54752	163	chr1	11714	1	87M	=	11866	297	TGGCCATGTGTATTTTTTTAAATTTCCACTGATGATTTTGCTGCATGGCCGGTGTTGAGAATGACTGCGCAAATTTGCCGGATTTCC	KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKFKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK	MD:Z:87	PG:Z:MarkDuplicates	XG:i:0	NM:i:0	XM:i:0	XN:i:0	XO:i:0	AS:i:0	XS:i:0	YS:i:-5	YT:Z:CP   一般呢，我们都把11列以后的内容称为可选择区域（optional fields），这个区域所有的格式都必须是TAG:TYPE:VALUE的形式，比如MD:Z:145就是一个符合规范的可选区域的值。]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-20</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-20/</link>
+    <pubDate>Mon, 17 Feb 2020 14:38:15 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-20/</guid>
+    <description><![CDATA[第20题 SAM/BAM中的其它重要信息列 Hello大家好！今天我们又见面了！
+今天我们来继续探索SAM/BAM文件的信息列。
+我们之前已经说过，1个标准的SAM文件包含前面的11列标准信息列和若干标识符信息列（如表1所示），其中前面的6列我们已经为大家解释清楚。那么今天我们来继续探索剩下的7到11列。
+表1 SAM格式的标准11列信息介绍
+第7列，一般情况下是指Pair read的另一半的比对的参考基因组；
+第8列，一般情况下是指Pair read的另一半的比对的参考基因组的坐标；
+第9列，可以简单理解为这1对read比对到基因组上以后，上游第1个碱基到下游最后1个碱基的距离。如果用负号表示是下游的序列；如果是正数表示为上游的序列；如果是0表示只是单端比对上；
+第10列，进行比对read的序列信息；
+第11列，进行比对read的质量信息；
+对于我们今天的简单讲解，其实还涉及到很多概念，就比如在SAM官方文档中，对template，segment，read的各自定义就很让人挠头，我也是用了很长的时间才弄懂学会的。大家有兴趣的可以看一下图2我的截图，看看里面的定义。
+那么我们今天的问题如下：
+1. 图1中第20行，第9列记录了TLEN值，请你根据今天的文章与图1中的信息，列出算式计算TLEN值。
+TLEN是Template的观测长度length
+第二十行关键内容如下：
+1 2 3 4 5  第四列：11123 # mapping的位置开端 第六列：145M # CIGAR 第八列：10946 # pair reads中与该序列配对的read所mapping到参考序列的具体位置 第九列：-322 # 通过分析pair reads mapping到同一条参考序列上位置的推断得到fragment的长度 image-20200215120747953   -(11123-10946+145) = -322 2. 如果使用FASTA文件作为input，第11列的质量值是否还有意义？为什么？
+没有意义，因为fasta⽂文件信息不不包含read的质量量值，11列列的质量量值本身是测序质量量值，所以没有参考意义。
+3. 有没有可能通过SAM文件，提取里面的序列信息并转换成FASTQ格式的文件？如果可能，请你写出程序思路。
+1 2 3  samtools view -b -h -S filter_MAPQ20.sam &gt; filter_MAPQ20.bam samtools bam2fq filter_MAPQ20.bam &gt; filter_MAPQ20.fastq # [M::bam2fq_mainloop] processed 629 reads   该问题参考资料-bam to fq]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-19</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-19/</link>
+    <pubDate>Mon, 17 Feb 2020 14:38:10 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-19/</guid>
+    <description><![CDATA[第19题 SAM/BAM中的CIGAR值 Hello大家好！我们又见面了！
+今天我们来和大家一起继续学习SAM/BAM文件的文件结构与特性。
+我们之前学习到了从SAM文件是用来存储序列mapping结果的标准格式，BAM文件是SAM文件的压缩格式，二者在信息层面是等价的。
+SAM/BAM文件的前面5列，分别记录了，各位可以对照下图1中的内容对应一下。
+1 2 3 4 5  1. 序列的名称； 2. FLAG值； 3. 比对到的染色体； 4. 比对到的染色体的具体位置； 5. 比对的质量值， 也叫MAPQ；   图1 全基因组测序的比对数据
+那么第6列信息到底是什么呢？它其实是比对的一个简单描述，有一个很好听的名字叫CIGAR值（对滴，就是雪茄烟的那个单词）。
+ CIGAR = Concise Idiosyncratic Gapped Alignment Report
+ 我们先来简单理解一下CIGAR值。
+1 2 3 4 5 6 7 8  例子1：如图1第37行，CIGAR = 56M1I30M； 它的含义就是：这条序列与参考基因组相比； 前56bp能够match上； 中间有1bp的insertion（相比于参考基因组有1bp的插入）； 最后是30bp的match 例子2：如图1第50行，CIGAR=145M， 含义就是：这条序列与参考基因组比对的结果是145bp完全match上。   那么常用的CIGAR标记符号都有哪些呢？根据SAM格式的官方文档如图2所示。
+表1 常用的CIGAR符号
+目前，我们只需要了解到前面7个，后面的=，X已经很不常用了，大家可以先忽略一下。
+我们今天就是让大家去理解CIGAR值到底是什么，因此我们今天的问题就是：
+1. M,I,D,N分别是什么意思？如果1条序列的CIGAR=150M， 那么是不是可以说这150bp的区域中没有mismatch（错配）的现象？
+1 2 3 4  M:序列列匹配或错配 I:参考序列上的插入 D:参考序列上的缺失 N:参考序列上的跳跃区 150M不能说150bp区域区域中没有错配，因为M表示完全匹配; 但是⽆论reads与序列的正确匹配或是错误匹配该位置都显示为M 。   2.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-17</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-17/</link>
+    <pubDate>Mon, 17 Feb 2020 14:37:54 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-17/</guid>
+    <description><![CDATA[第17题 高通量测序的回贴问题 II (SAM文件与BAM文件) Hello大家好！ 我们今天又见面了！
+我们从第16题开始，正式接触了高通量测序mapping的内容，可能有的朋友又忘记了mapping的定义，我们再来回顾一下这个概念。
+ ***“比对“对应的单词是alignment，***往往特指低通量的序列之间的比较。比如10条序列，进行多序列比对就是我们常说的 multiple alignment问题；如果是2条序列的比对，我们经常称其为pairwise alignment. ***“回贴”通常对应的单词应该是mapping，***一般指高通量的数据去寻找基因组的位置。比如我们进行测序以后，有10^6对read pair，要去寻找他们在基因组上的位置，这个时候就是一个典型的mapping问题。
+ 我们再把思路理清楚，在进行mapping的时候，
+输入文件应该包含：
+  测序结果（通常是FASTQ或者是FASTQ的压缩文件）
+  之前建立好的参考基因组的index文件（不同的mapping软件建立的方法大同小异，但一般都是提前构建） 输出文件应该包括：
+  比对的结果文件（一般是SAM文件格式或者是BAM文件格式）
+  比对的情况报告 今天我们就要谈一谈SAM/BAM文件格式。
+  首先先说二者之间的关系，BAM文件是SAM文件的压缩格式，压缩以后可以节省空间，排好序的BAM文件还可以提供随机访问功能，性能优良。但是BAM文件和SAM文件储存的内容是完全一样的。我们以后还要单独再说BAM文件的操作方法，今天我们把重点放在文件中的内容上。
+SAM文件的全称是：**Sequence Alignment Map，**它设计之初就是为了存储mapping结果的。
+一个标准的SAM文件由2部分组成：
+第1部分是以“@”开头的头部，在文件的最前面； 第2部分就是紧跟在头部后面的比对结果文件。 我们先来看一个例子（图1）。
+图1 SAM文件的内容
+在Linux中，访问sam文件最好用的工具是samtools，常用的操作如下：
+1 2 3 4 5 6 7 8 9  # 假设SAM文件的文件名是 test.sam # 1.只查看头部 samtools view -H test.sam # 2.只查看内容，不查看头部 samtools view test.sam # 3.查看头部内容 samtools view -h test.]]></description>
+</item>
+</channel>
+</rss>

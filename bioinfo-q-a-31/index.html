@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-31 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-31" />
+<meta property="og:description" content="第31题 RNA-Seq建库用哪种策略？ Hello 大家好！ 我们又见面了！
+我们将与大家一同讨论与转录组建库，基因的差异表达分析等相关的内容。
+今天我们讨论的是RNA-Seq建库策略问题。
+什么是RNA-Seq建库 RNA-Seq建库简单来说，就是把我们想要进行转录组测序的样品（一盘细胞，若干片叶子等）提取RNA，并给RNA（主要是mRNA）序列加上adapter（接头）的过程。最终的目的是为了让转录组的片段两边都连上已知的adapter序列，方便之后的测序。结构如图1-1所示，图中所示的文库片段就是我们这里说的转录组片段。
+在整个实验过程中，有几个关键的问题值得思考。
+  第1方面，最终拿去测序仪进行测序的一定都是DNA片段，因此我们需要对实验提取到的RNA序列进行反转录成cDNA，然后再进行连接adapter。不过这个问题不算难，因为只要有RNA的序列，就可以使用random primer进行随机反转录，获得对应的cDNA片段。而在cDNA片段上链接adapter就是标准的DNA连接反应，非常简单。
+  第2方面，细胞中含量最多的是rRNA，其次是tRNA，mRNA与lncRNA只占大约5%左右甚至更低，而我们真正关心的往往就是mRNA与lncRNA代表的基因表达量。那么怎么对mRNA或者是lncRNA进行富集呢？这就是我们今天要跟大家强调的富集策略问题。
+  PolyA &#43; 与 rRNA -两种富集策略 一般来说，我们做RNA-Seq的假设是基于：
+1 2 3 4 5  某一个条件影响了表型 --&gt; 假设，表型是由蛋白的变化引起的 --&gt; 假设，蛋白的变化大概率是由对应gene表达量的改变引起的 --&gt; 因此，需要对gene进行定量 --&gt; 最终，进行RNA-Seq   1 polyA &#43; 建库策略 也正是因为上述的推理过程，我们才需要去做RNA-Seq对全转录组进行gene的定量分析。在绝大多数情况下，我们关心的gene都是protein coding gene或者是与其结构非常详细的lncRNA（long non-coding RNA）这些gene在形成成熟的mRNA以后，往往都会在3’末端带有polyA 尾巴，如图2-1所示。同时，成熟的tRNA，rRNA，miRNA等等都不带有经典的polyA尾巴。
+因此，如果我们使用一段 带有能与A配对的T的磁珠就可以与对应的带有polyA尾巴的RNA结合，随后再经过随机打断，反转录，加adapter就可以完成建库，这样的建库策略叫做polyA &#43; 或者 polyA positive。核心是对带有polyA尾巴的RNA进行富集。
+2 rRNA -建库策略 那么polyA positive策略有个比较大的问题就是，会丢掉很多不带有polyA尾巴的RNA序列，比如tRNA，比如有些lncRNA以及一些特殊的mRNA。同时，我们知道细胞中含量占绝大多数的是序列重复的rRNA，如果我们把rRNA去除之后也就可以顺利进行建库测序。这个过程是对rRNA进行若干次的消化，使得rRNA都被降解而其他类型的RNA不受影响。随后再进行随机打断，反转录，加adapter。这种RNA-Seq的建库策略为rRNA - 或称为 rRNA minus。这种策略的核心是尽可能多的去除rRNA。
+提问环节 今天的提问，偏生物细节，不过也都是我们必须要掌握的内容。
+问题1：请查阅资料，给出正常人类细胞中rRNA，tRNA，mRNA的大致比例；" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-31/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-19T16:03:25+00:00" />
+<meta property="article:modified_time" content="2020-02-19T16:03:25+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-31"/>
+<meta name="twitter:description" content="第31题 RNA-Seq建库用哪种策略？ Hello 大家好！ 我们又见面了！
+我们将与大家一同讨论与转录组建库，基因的差异表达分析等相关的内容。
+今天我们讨论的是RNA-Seq建库策略问题。
+什么是RNA-Seq建库 RNA-Seq建库简单来说，就是把我们想要进行转录组测序的样品（一盘细胞，若干片叶子等）提取RNA，并给RNA（主要是mRNA）序列加上adapter（接头）的过程。最终的目的是为了让转录组的片段两边都连上已知的adapter序列，方便之后的测序。结构如图1-1所示，图中所示的文库片段就是我们这里说的转录组片段。
+在整个实验过程中，有几个关键的问题值得思考。
+  第1方面，最终拿去测序仪进行测序的一定都是DNA片段，因此我们需要对实验提取到的RNA序列进行反转录成cDNA，然后再进行连接adapter。不过这个问题不算难，因为只要有RNA的序列，就可以使用random primer进行随机反转录，获得对应的cDNA片段。而在cDNA片段上链接adapter就是标准的DNA连接反应，非常简单。
+  第2方面，细胞中含量最多的是rRNA，其次是tRNA，mRNA与lncRNA只占大约5%左右甚至更低，而我们真正关心的往往就是mRNA与lncRNA代表的基因表达量。那么怎么对mRNA或者是lncRNA进行富集呢？这就是我们今天要跟大家强调的富集策略问题。
+  PolyA &#43; 与 rRNA -两种富集策略 一般来说，我们做RNA-Seq的假设是基于：
+1 2 3 4 5  某一个条件影响了表型 --&gt; 假设，表型是由蛋白的变化引起的 --&gt; 假设，蛋白的变化大概率是由对应gene表达量的改变引起的 --&gt; 因此，需要对gene进行定量 --&gt; 最终，进行RNA-Seq   1 polyA &#43; 建库策略 也正是因为上述的推理过程，我们才需要去做RNA-Seq对全转录组进行gene的定量分析。在绝大多数情况下，我们关心的gene都是protein coding gene或者是与其结构非常详细的lncRNA（long non-coding RNA）这些gene在形成成熟的mRNA以后，往往都会在3’末端带有polyA 尾巴，如图2-1所示。同时，成熟的tRNA，rRNA，miRNA等等都不带有经典的polyA尾巴。
+因此，如果我们使用一段 带有能与A配对的T的磁珠就可以与对应的带有polyA尾巴的RNA结合，随后再经过随机打断，反转录，加adapter就可以完成建库，这样的建库策略叫做polyA &#43; 或者 polyA positive。核心是对带有polyA尾巴的RNA进行富集。
+2 rRNA -建库策略 那么polyA positive策略有个比较大的问题就是，会丢掉很多不带有polyA尾巴的RNA序列，比如tRNA，比如有些lncRNA以及一些特殊的mRNA。同时，我们知道细胞中含量占绝大多数的是序列重复的rRNA，如果我们把rRNA去除之后也就可以顺利进行建库测序。这个过程是对rRNA进行若干次的消化，使得rRNA都被降解而其他类型的RNA不受影响。随后再进行随机打断，反转录，加adapter。这种RNA-Seq的建库策略为rRNA - 或称为 rRNA minus。这种策略的核心是尽可能多的去除rRNA。
+提问环节 今天的提问，偏生物细节，不过也都是我们必须要掌握的内容。
+问题1：请查阅资料，给出正常人类细胞中rRNA，tRNA，mRNA的大致比例；"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-31/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-30/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-32/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-31",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-31\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, RNA-seq","wordcount":  79 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-31\/","datePublished": "2020-02-19T16:03:25+00:00","dateModified": "2020-02-19T16:03:25+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-31</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-19">2020-02-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;79 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-31/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-31">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第31题-rna-seq建库用哪种策略">第31题 RNA-Seq建库用哪种策略？</a>
+      <ul>
+        <li><a href="#什么是rna-seq建库">什么是RNA-Seq建库</a></li>
+        <li><a href="#polya--与-rrna--两种富集策略">PolyA + 与 rRNA -两种富集策略</a>
+          <ul>
+            <li><a href="#1-polya--建库策略">1 polyA + 建库策略</a></li>
+            <li><a href="#2-rrna--建库策略">2 rRNA -建库策略</a></li>
+          </ul>
+        </li>
+        <li><a href="#提问环节">提问环节</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="第31题-rna-seq建库用哪种策略">第31题 RNA-Seq建库用哪种策略？</h2>
+<p>Hello 大家好！ 我们又见面了！</p>
+<p>我们将与大家一同讨论与转录组建库，基因的差异表达分析等相关的内容。</p>
+<p>今天我们讨论的是RNA-Seq建库策略问题。</p>
+<h3 id="什么是rna-seq建库">什么是RNA-Seq建库</h3>
+<p>RNA-Seq建库简单来说，就是把我们想要进行转录组测序的样品（一盘细胞，若干片叶子等）提取RNA，并给RNA（主要是mRNA）序列加上adapter（接头）的过程。最终的目的是为了让转录组的片段两边都连上已知的adapter序列，方便之后的测序。结构如图1-1所示，图中所示的文库片段就是我们这里说的转录组片段。</p>
+<p>在整个实验过程中，有几个关键的问题值得思考。</p>
+<ul>
+<li>
+<p>第1方面，最终拿去测序仪进行测序的一定都是DNA片段，因此我们需要对实验提取到的RNA序列进行反转录成cDNA，然后再进行连接adapter。不过这个问题不算难，因为只要有RNA的序列，就可以使用random primer进行随机反转录，获得对应的cDNA片段。而在cDNA片段上链接adapter就是标准的DNA连接反应，非常简单。</p>
+</li>
+<li>
+<p>第2方面，细胞中含量最多的是rRNA，其次是tRNA，mRNA与lncRNA只占大约5%左右甚至更低，而我们真正关心的往往就是mRNA与lncRNA代表的基因表达量。那么怎么对mRNA或者是lncRNA进行富集呢？这就是我们今天要跟大家强调的富集策略问题。</p>
+</li>
+</ul>
+<h3 id="polya--与-rrna--两种富集策略">PolyA + 与 rRNA -两种富集策略</h3>
+<p>一般来说，我们做RNA-Seq的假设是基于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">某一个条件影响了表型 --&gt;
+</span></span><span class="line"><span class="cl">假设，表型是由蛋白的变化引起的 --&gt;
+</span></span><span class="line"><span class="cl">假设，蛋白的变化大概率是由对应gene表达量的改变引起的 --&gt;
+</span></span><span class="line"><span class="cl">因此，需要对gene进行定量 --&gt;
+</span></span><span class="line"><span class="cl">最终，进行RNA-Seq
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="1-polya--建库策略">1 polyA + 建库策略</h4>
+<p>也正是因为上述的推理过程，我们才需要去做RNA-Seq对全转录组进行gene的定量分析。在绝大多数情况下，我们关心的gene都是protein coding gene或者是与其结构非常详细的lncRNA（long non-coding RNA）这些gene在形成成熟的mRNA以后，往往都会在3’末端带有polyA 尾巴，如图2-1所示。同时，成熟的tRNA，rRNA，miRNA等等都不带有经典的polyA尾巴。</p>
+<p>因此，如果我们使用一段 带有能与A配对的T的磁珠就可以与对应的带有polyA尾巴的RNA结合，随后再经过<strong>随机打断，反转录，加adapter</strong>就可以完成建库，这样的建库策略叫做polyA + 或者 polyA positive。核心是对带有polyA尾巴的RNA进行富集。</p>
+<h4 id="2-rrna--建库策略">2 rRNA -建库策略</h4>
+<p>那么polyA positive策略有个比较大的问题就是，会丢掉很多不带有polyA尾巴的RNA序列，比如tRNA，比如有些lncRNA以及一些特殊的mRNA。同时，我们知道细胞中含量占绝大多数的是序列重复的rRNA，如果我们把rRNA去除之后也就可以顺利进行建库测序。这个过程是对rRNA进行若干次的消化，使得rRNA都被降解而其他类型的RNA不受影响。随后再进行随机打断，反转录，加adapter。这种RNA-Seq的建库策略为rRNA - 或称为 rRNA minus。这种策略的核心是尽可能多的去除rRNA。</p>
+<h3 id="提问环节">提问环节</h3>
+<p>今天的提问，偏生物细节，不过也都是我们必须要掌握的内容。</p>
+<p><font color="#00fff">问题1：请查阅资料，给出正常人类细胞中rRNA，tRNA，mRNA的大致比例；</font></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="1.png"
+        data-srcset="1.png, 1.png 1.5x, 1.png 2x"
+        data-sizes="auto"
+        alt="1.png"
+        title="1.png" />
+一个典型人类细胞的RNA含量</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="2.png"
+        data-srcset="2.png, 2.png 1.5x, 2.png 2x"
+        data-sizes="auto"
+        alt="2.png"
+        title="2.png" />
+一个典型哺乳动物细胞中RNA的分布</p>
+<p><font color="#00fff">问题2：是不是所有人类的protein coding gene的mRNA都带有polyA尾巴？如果不是请举例；</font></p>
+<p>并不是，组蛋白的mRNA就没有polyA尾巴。polyA对mRNA起到稳定作用 即使其不被降解.组蛋白mRNA3&rsquo;端是一茎环结构 所以组蛋白mRNA降解机制也与其他mRNA不同.</p>
+<p><font color="#00fff">问题3：如果一个实验想要探索与可变剪切相关的内容，应该选择polyA +的建库策略还是选择rRNA - 的建库策略？为什么？</font></p>
+<p>采取第一个polyA+建库策略。因为研究可变剪接的话，最后得到的都是成熟的mRNA.那么它都具有polyA,在这种情况下利用带T的磁珠进行特异性富集，将mRNA进行富集。然后建库就可以。</p>
+<p><font color="#00fff">问题4：rRNA minus与polyA positive这两种建库策略，哪种最终比对到参考基因组的比例会高一些？为什么？（提示，可以从建库组成，已知参考基因组的组成等方面思考）</font></p>
+<p>rRNA minus只是去掉了rRNA,其他的RNA没有去掉，比如说mRNA,lncRNA等等。在mapping回基因组的时候，reads的数量会多。从已知的参考基因组上来看，虽然hg38和hg19差别不大，hg38的mapping结果估计会比hg19高一些。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-31/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-31/" data-title="【bioinfo】-Q&amp;A-31" data-hashtags="AQ100,RNA-seq"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-31/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-31/" data-title="【bioinfo】-Q&amp;A-31"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-31/" data-title="【bioinfo】-Q&amp;A-31"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-31/" data-title="【bioinfo】-Q&amp;A-31"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/rna-seq/">RNA-seq</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-30/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-30"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-30</a>
+            <a href="/bioinfo-q-a-32/" class="next" rel="next" title="【bioinfo】-Q&amp;A-32">【bioinfo】-Q&A-32<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

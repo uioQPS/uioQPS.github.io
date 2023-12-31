@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>cutadapt - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/cutadapt/</link>
+        <description>cutadapt - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 16 Feb 2020 15:17:13 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/cutadapt/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-「11」</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-11/</link>
+    <pubDate>Sun, 16 Feb 2020 15:17:13 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-11/</guid>
+    <description><![CDATA[第11题 使用cutadapt去除adapter Hello大家好！我们又见面了！
+通过前面的生物信息学10个基础问题，我相信大家对测序的基本原理，FASTA与FASTQ格式以及FastQC的质控报告都有了一个清楚的认识。那么接下来，我们就要进一步学习，学习如何把原始的FASTQ测序结果一步一步的准备成可以用来比对（mapping）的质控过后的FASTQ。
+我们知道，测序结果中可能会有若干条序列存在adapter的信息，而adapter的信息一般是不在基因组上存在的。所以，在比对之前如果不把adapter去干净，我相信你会得到1个非常非常低的mapping rate。
+img
+图1 RNA-Seq建库的结果，如果不去adapter接下来根本比对不上！
+通常情况下，**我们都是使用cutadapt这个软件进行adapter（接头）序列的去除。cutadapt这个软件不但支持单端序列，还支持双端序列的切除，同时还支持gz格式的自动压缩与解压缩。**1个常用的切除命令类似：
+1 2 3 4 5 6 7 8  # 在linux 命令行模式下 cutadapt -a ADAPTER_FWD -A ADAPTER_REV -o out.1.fastq -p out.2.fastq reads.1.fastq reads.2.fastq # -a是第1个文件的adapter序列 # -A是第2个文件的adapter序列 # -o是第1个输出文件 # -p是第2个输出文件 # reads.1.fastq 是第1个输入文件，也就是双端测序中的read-1 # reads.2.fastq 是第2个输入文件，也就是双端测序中的read-2   那么我们今天需要思考的问题，与切除adapter的具体内容有关。
+1. cutadapt中-a/-A 参数与-g/-G参数分别代表什么意思？Illumina测序过程中，一般不会用到哪个参数？
+1 2 3 4 5 6 7  -a 后⾯面跟⼀一段核苷酸序列列，代表单端测序中3&#39;端需要去掉的adapter; -A 代表双端测序中，read2的3&#39;端需要去掉的adapter; 注意:如果是双端测序数据，-a针对read1起作⽤用; -g 后⾯面也分别是⼀一段核苷酸序列列，代表单端测序中5&#39;端adapter序列列; -G 的⽤用法可以类⽐比-a/-A，是针对reads2的5&#39;端的adapter; 通常情况下，Illumina测序过程中5&#39;端不不会测出adapter序列列，所以-G/-g⼀一般不不会被⽤用到。   2.]]></description>
+</item>
+</channel>
+</rss>

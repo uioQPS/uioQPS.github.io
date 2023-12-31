@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>IGV - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/igv/</link>
+        <description>IGV - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Feb 2020 15:33:08 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/igv/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-29</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-29/</link>
+    <pubDate>Tue, 18 Feb 2020 15:33:08 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-29/</guid>
+    <description><![CDATA[第29题 如何使用IGVTools对mapping结果进行可视化？ Hello 大家好，我们又见面了！
+1 2 3 4 5  目录 1. 前言 2. IGV Tools的简介； 3. IGV Tools的下载与安装； 4. IGV Tools的可视化初探（indel, mutation, etc）   1. 前言 我们为大家介绍了如何使用samtools tview对BAM文件在命令行中进行可视化的操作。但是有的时候我们需要在论文里对回贴（mapping）数据进行可视化. 这篇文章我们先来教大家下载安装并使用IGVTools对测序数据进行可视化；下一篇我们会教大家怎么用IGVTools来进行RNA-Seq数据的可视化。
+2. IGV Tools的简介 IGV Tools =Integrative Genomics Viewer Tools
+简单翻译一下就是基因组数据可视化工具，主要的功能就是对高通量测序数据的mapping结果进行可视化。IGV Tools是基于Java开发的，开发者是Broad Institute（伯德研究所），这个研究所可以算是当前生物医学领域最为牛的研究所之一，在他们的带动下推出了一系列的生物信息学工具，IGVTools，GATK都是他们搞出来的。
+在IGV Tools中，可以对sorted BAM，BED，GTF/GFF，bigwig/wig，bedgraph等数据进行可视化，基本上是我们平时最常用可视化工具。无论是全基因组测序，RNA-Seq，ChIP-Seq等等都可以进行可视化。
+IGV Tools的官方主页：
+https://software.broadinstitute.org/software/igv/home
+3. IGV Tools的下载与安装 IGV Tools是基于Java环境运行的，因此没有装Java的同学可能第一次安装这个软件之前需要先安装一遍，不过需要注意的是，根据IGV的安装说明，需要使用Java8，最新版的Java9还不能支持。
+3.1 Java 8 的下载与安装 下载地址https://java.com/zh_CN/download/
+在这个页面里下载Java并安装就算是搞定了Java环境。
+3.2 下载IGV Tools IGV Tools也有不同的版本我们一般选择最新版即可，目前的最新版是2.4版本。
+下载地址 https://software.broadinstitute.org/software/igv/download
+如果是Mac就选择下载1.Mac App，如果是Windows系统就选择2.Windows Zip，我们这里的演示环境为Windows就直接下载 对应版本即可。]]></description>
+</item>
+</channel>
+</rss>

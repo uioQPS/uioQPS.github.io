@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-38 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-38" />
+<meta property="og:description" content="第38题 当转录组普遍变化时RNA-Seq怎么进行分析(2)？ Hello 大家好！ 我们又见面了！
+当出现这种所谓特殊情况的时候，可以使用Housekeeping gene的办法来进行相对定量，这种办法在一定程度上能够解决我们遇到的问题。但其实这种办法有一个非常强的先验假设：housekeeping gene的表达量不怎么发生变化。其实housekeeping gene list有几千个，这几千个基因有一定程度上的变化是有可能的。
+有什么办法能够在RNA-Seq中对gene的定量起到“一锤定音”的作用呢？答案就是我们今天为大家介绍的spike-in方法，即在RNA-Seq建库的过程中掺入一些预先知道序列信息以及序列绝对数量的内参。这样在进行RNA-Seq测序的时候就可以通过不同样本之间内参（spike-in）的量来做一条标准曲线，就可以非常准确地对不同样本之间的表达量进行矫正。在这种操作下，可以一定程度上认为是一种绝对定量。
+那么，有没有比较常用的spike-in类型呢？嘿嘿嘿～这是当然的啦！这个就是大名鼎鼎的ERCC Control RNA.
+1. 什么是ERCC ? ERCC = External RNA Controls Consortium
+ERCC就是一个专门为了定制一套spike-in RNA而成立的组织，这个组织早在2003年的时候就已经宣告成立。主要的工作就是设计了一套非常好用的spike-in RNA，方便microarray，以及RNA-Seq进行内参定量。
+ERCC 官方网站 https://www.nist.gov/programs-projects/external-rna-controls-consortium
+2. ERCC control RNA具体是什么？ 目前常用的ERCC版本内包含了176条RNA序列，这些RNA序列是从一些物种的DNA转录得到的，编号从ERCC-00001到ERCC-00176，所有对应的编号的序列全部可以从网上直接搜索下载。
+目前，已经有非常成熟的商业化的ERCC序列，其中的176条RNA组成的一个库（pool）也是经过特殊设计的。不是简单的等量混合，而是不同的pool会对176条序列分成很多小库（subpool），然后通过不同的比例对这些subpool进行混合，然后形成不同的配比比例。在购买商业化的ERCC序列时，一定要注意下载对应版本的绝对定量信息。当然，有些商业化的ERCC里面也不是包含全部176条标准序列。
+3. ERCC control在不同样本之间的表现是否良好？ 目前的实验数据表明，ERCC spike-in的掺入效果还是非常不错的。这里引用了Thermo商品中的一张数据图。
+图3 ERCC绝对量与RPKM的关系 (https://www.thermofisher.com/order/catalog/product/4456740)
+图3表明，在RNA-Seq中增加ERCC的绝对量是可以获得FPKM的绝对量的增加，并且两者成非常好的线性关系。这也是我们能够对RNA-Seq样本进行掺入内参的一个基本前提。
+4. R里面可以使用哪个包来进行相关的操作？ 说了这么多，那么如果真的有一套带有ERCC spike-in的RNA-Seq数据，我们应该怎么分析呢？其实在2014年的时候Nature Biotech上面发表了一篇文章，专门描述了怎么对数据进行分析，还顺手publish了一个R包，并且我认真阅读并实战过这个R包，从文档到结果都很靠谱。
+这个R包的名称是 RUVSeq，链接为：
+https://bioconductor.org/packages/release/bioc/html/RUVSeq.html
+如果大家真的有需求，就直接follow这篇文章来进行学习就可以了。图5就是给大家展示一下使用ERCC spike-in矫正以后的结果。
+图5 矫正与不矫正基因表达量的boxplot" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-38/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-19T16:04:34+00:00" />
+<meta property="article:modified_time" content="2020-02-19T16:04:34+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-38"/>
+<meta name="twitter:description" content="第38题 当转录组普遍变化时RNA-Seq怎么进行分析(2)？ Hello 大家好！ 我们又见面了！
+当出现这种所谓特殊情况的时候，可以使用Housekeeping gene的办法来进行相对定量，这种办法在一定程度上能够解决我们遇到的问题。但其实这种办法有一个非常强的先验假设：housekeeping gene的表达量不怎么发生变化。其实housekeeping gene list有几千个，这几千个基因有一定程度上的变化是有可能的。
+有什么办法能够在RNA-Seq中对gene的定量起到“一锤定音”的作用呢？答案就是我们今天为大家介绍的spike-in方法，即在RNA-Seq建库的过程中掺入一些预先知道序列信息以及序列绝对数量的内参。这样在进行RNA-Seq测序的时候就可以通过不同样本之间内参（spike-in）的量来做一条标准曲线，就可以非常准确地对不同样本之间的表达量进行矫正。在这种操作下，可以一定程度上认为是一种绝对定量。
+那么，有没有比较常用的spike-in类型呢？嘿嘿嘿～这是当然的啦！这个就是大名鼎鼎的ERCC Control RNA.
+1. 什么是ERCC ? ERCC = External RNA Controls Consortium
+ERCC就是一个专门为了定制一套spike-in RNA而成立的组织，这个组织早在2003年的时候就已经宣告成立。主要的工作就是设计了一套非常好用的spike-in RNA，方便microarray，以及RNA-Seq进行内参定量。
+ERCC 官方网站 https://www.nist.gov/programs-projects/external-rna-controls-consortium
+2. ERCC control RNA具体是什么？ 目前常用的ERCC版本内包含了176条RNA序列，这些RNA序列是从一些物种的DNA转录得到的，编号从ERCC-00001到ERCC-00176，所有对应的编号的序列全部可以从网上直接搜索下载。
+目前，已经有非常成熟的商业化的ERCC序列，其中的176条RNA组成的一个库（pool）也是经过特殊设计的。不是简单的等量混合，而是不同的pool会对176条序列分成很多小库（subpool），然后通过不同的比例对这些subpool进行混合，然后形成不同的配比比例。在购买商业化的ERCC序列时，一定要注意下载对应版本的绝对定量信息。当然，有些商业化的ERCC里面也不是包含全部176条标准序列。
+3. ERCC control在不同样本之间的表现是否良好？ 目前的实验数据表明，ERCC spike-in的掺入效果还是非常不错的。这里引用了Thermo商品中的一张数据图。
+图3 ERCC绝对量与RPKM的关系 (https://www.thermofisher.com/order/catalog/product/4456740)
+图3表明，在RNA-Seq中增加ERCC的绝对量是可以获得FPKM的绝对量的增加，并且两者成非常好的线性关系。这也是我们能够对RNA-Seq样本进行掺入内参的一个基本前提。
+4. R里面可以使用哪个包来进行相关的操作？ 说了这么多，那么如果真的有一套带有ERCC spike-in的RNA-Seq数据，我们应该怎么分析呢？其实在2014年的时候Nature Biotech上面发表了一篇文章，专门描述了怎么对数据进行分析，还顺手publish了一个R包，并且我认真阅读并实战过这个R包，从文档到结果都很靠谱。
+这个R包的名称是 RUVSeq，链接为：
+https://bioconductor.org/packages/release/bioc/html/RUVSeq.html
+如果大家真的有需求，就直接follow这篇文章来进行学习就可以了。图5就是给大家展示一下使用ERCC spike-in矫正以后的结果。
+图5 矫正与不矫正基因表达量的boxplot"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-38/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-37/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-39/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-38",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-38\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, RNA-Seq","wordcount":  56 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-38\/","datePublished": "2020-02-19T16:04:34+00:00","dateModified": "2020-02-19T16:04:34+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-38</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-19">2020-02-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;56 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-38/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-38">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第38题-当转录组普遍变化时rna-seq怎么进行分析2">第38题 当转录组普遍变化时RNA-Seq怎么进行分析(2)？</a>
+      <ul>
+        <li><a href="#1-什么是ercc-">1. 什么是ERCC ?</a></li>
+        <li><a href="#2-ercc-control-rna具体是什么">2. ERCC control RNA具体是什么？</a></li>
+        <li><a href="#3-ercc-control在不同样本之间的表现是否良好">3. ERCC control在不同样本之间的表现是否良好？</a></li>
+        <li><a href="#4-r里面可以使用哪个包来进行相关的操作">4. R里面可以使用哪个包来进行相关的操作？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="第38题-当转录组普遍变化时rna-seq怎么进行分析2">第38题 当转录组普遍变化时RNA-Seq怎么进行分析(2)？</h2>
+<p>Hello 大家好！ 我们又见面了！</p>
+<p>当出现这种所谓特殊情况的时候，可以使用Housekeeping gene的办法来进行相对定量，这种办法在一定程度上能够解决我们遇到的问题。但其实这种办法有一个非常强的先验假设：housekeeping gene的表达量不怎么发生变化。其实housekeeping gene list有几千个，这几千个基因有一定程度上的变化是有可能的。</p>
+<p>有什么办法能够在RNA-Seq中对gene的定量起到“一锤定音”的作用呢？答案就是我们今天为大家介绍的spike-in方法，即在RNA-Seq建库的过程中掺入一些预先知道序列信息以及序列绝对数量的内参。这样在进行RNA-Seq测序的时候就可以通过不同样本之间内参（spike-in）的量来做一条标准曲线，就可以非常准确地对不同样本之间的表达量进行矫正。在这种操作下，可以一定程度上认为是一种绝对定量。</p>
+<p>那么，有没有比较常用的spike-in类型呢？嘿嘿嘿～这是当然的啦！这个就是大名鼎鼎的ERCC Control RNA.</p>
+<h3 id="1-什么是ercc-">1. 什么是ERCC ?</h3>
+<p>ERCC = External RNA Controls Consortium</p>
+<p>ERCC就是一个专门为了定制一套spike-in RNA而成立的组织，这个组织早在2003年的时候就已经宣告成立。主要的工作就是设计了一套非常好用的spike-in RNA，方便microarray，以及RNA-Seq进行内参定量。</p>
+<p>ERCC 官方网站 <a href="https://www.nist.gov/programs-projects/external-rna-controls-consortium" target="_blank" rel="noopener noreffer ">https://www.nist.gov/programs-projects/external-rna-controls-consortium</a></p>
+<h3 id="2-ercc-control-rna具体是什么">2. ERCC control RNA具体是什么？</h3>
+<p>目前常用的ERCC版本内包含了176条RNA序列，这些RNA序列是从一些物种的DNA转录得到的，编号从ERCC-00001到ERCC-00176，所有对应的编号的序列全部可以从网上直接搜索下载。</p>
+<p>目前，已经有非常成熟的商业化的ERCC序列，其中的176条RNA组成的一个库（pool）也是经过特殊设计的。不是简单的等量混合，而是不同的pool会对176条序列分成很多小库（subpool），然后通过不同的比例对这些subpool进行混合，然后形成不同的配比比例。在购买商业化的ERCC序列时，一定要注意下载对应版本的绝对定量信息。当然，有些商业化的ERCC里面也不是包含全部176条标准序列。</p>
+<h3 id="3-ercc-control在不同样本之间的表现是否良好">3. ERCC control在不同样本之间的表现是否良好？</h3>
+<p>目前的实验数据表明，ERCC spike-in的掺入效果还是非常不错的。这里引用了Thermo商品中的一张数据图。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="1.jpg"
+        data-srcset="1.jpg, 1.jpg 1.5x, 1.jpg 2x"
+        data-sizes="auto"
+        alt="1.jpg"
+        title="1.jpg" />
+图3 ERCC绝对量与RPKM的关系 (<a href="https://www.thermofisher.com/order/catalog/product/4456740" target="_blank" rel="noopener noreffer ">https://www.thermofisher.com/order/catalog/product/4456740</a>)</p>
+<p>图3表明，在RNA-Seq中增加ERCC的绝对量是可以获得FPKM的绝对量的增加，并且两者成非常好的线性关系。这也是我们能够对RNA-Seq样本进行掺入内参的一个基本前提。</p>
+<h3 id="4-r里面可以使用哪个包来进行相关的操作">4. R里面可以使用哪个包来进行相关的操作？</h3>
+<p>说了这么多，那么如果真的有一套带有ERCC spike-in的RNA-Seq数据，我们应该怎么分析呢？其实在2014年的时候Nature Biotech上面发表了一篇文章，专门描述了怎么对数据进行分析，还顺手publish了一个R包，并且我认真阅读并实战过这个R包，从文档到结果都很靠谱。</p>
+<p>这个R包的名称是 RUVSeq，链接为：</p>
+<p><a href="https://bioconductor.org/packages/release/bioc/html/RUVSeq.html" target="_blank" rel="noopener noreffer ">https://bioconductor.org/packages/release/bioc/html/RUVSeq.html</a></p>
+<p>如果大家真的有需求，就直接follow这篇文章来进行学习就可以了。图5就是给大家展示一下使用ERCC spike-in矫正以后的结果。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="2.jpg"
+        data-srcset="2.jpg, 2.jpg 1.5x, 2.jpg 2x"
+        data-sizes="auto"
+        alt="2.jpg"
+        title="2.jpg" />
+图5 矫正与不矫正基因表达量的boxplot</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-38/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-38/" data-title="【bioinfo】-Q&amp;A-38" data-hashtags="AQ100,RNA-Seq"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-38/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-38/" data-title="【bioinfo】-Q&amp;A-38"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-38/" data-title="【bioinfo】-Q&amp;A-38"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-38/" data-title="【bioinfo】-Q&amp;A-38"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/rna-seq/">RNA-seq</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-37/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-37"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-37</a>
+            <a href="/bioinfo-q-a-39/" class="next" rel="next" title="【bioinfo】-Q&amp;A-39">【bioinfo】-Q&A-39<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

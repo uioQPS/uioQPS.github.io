@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-81 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-81" />
+<meta property="og:description" content="molecular replacement是什么？ 分子置换（MR）是一种定相方法，它使用与晶体中的成分相关或同源的已知结构形式的先验信息。 由于MR不需要其他实验程序或数据，并且可以简化模型的构建，因此，当有合适的搜索模型时，MR通常是确定结构的首选方法。
+Steps in structure solution with molecular replacement Model selection 合适的模型的结构通常是通过同源性搜索找到的（例如对于合理的近亲使用NCBI Blast或对于更远的亲属使用HHpred），并且可以通过与靶序列的序列同一性来表征。
+使用分子替代品的主要限制是需要适当相似的搜索模型。 尽管没有确切的规则，但是序列同一性和MR成功之间的关系大致如下：
+1 2 3 4 5  Better than 40% identity: usually easy, unless large conformational changes are involved. 30-40%: MR usually possible, but sometimes more difficult. 20-30%: MR usually difficult if at all possible, careful model search and preparation required. Less than 20%: MR unlikely to work, but MR-Rosetta can help in marginal cases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-81/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-24T21:01:31+00:00" />
+<meta property="article:modified_time" content="2020-02-24T21:01:31+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-81"/>
+<meta name="twitter:description" content="molecular replacement是什么？ 分子置换（MR）是一种定相方法，它使用与晶体中的成分相关或同源的已知结构形式的先验信息。 由于MR不需要其他实验程序或数据，并且可以简化模型的构建，因此，当有合适的搜索模型时，MR通常是确定结构的首选方法。
+Steps in structure solution with molecular replacement Model selection 合适的模型的结构通常是通过同源性搜索找到的（例如对于合理的近亲使用NCBI Blast或对于更远的亲属使用HHpred），并且可以通过与靶序列的序列同一性来表征。
+使用分子替代品的主要限制是需要适当相似的搜索模型。 尽管没有确切的规则，但是序列同一性和MR成功之间的关系大致如下：
+1 2 3 4 5  Better than 40% identity: usually easy, unless large conformational changes are involved. 30-40%: MR usually possible, but sometimes more difficult. 20-30%: MR usually difficult if at all possible, careful model search and preparation required. Less than 20%: MR unlikely to work, but MR-Rosetta can help in marginal cases."/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-81/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-80/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-82/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-81",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-81\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, Molecular replacement, structure","wordcount":  167 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-81\/","datePublished": "2020-02-24T21:01:31+00:00","dateModified": "2020-02-24T21:01:31+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-81</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/tech/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>tech</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-24">2020-02-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;167 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-81/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-81">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#molecular-replacement是什么">molecular replacement是什么？</a>
+      <ul>
+        <li><a href="#steps-in-structure-solution-with-molecular-replacement">Steps in structure solution with molecular replacement</a>
+          <ul>
+            <li><a href="#model-selection">Model selection</a></li>
+            <li><a href="#molecular-replacement">Molecular replacement</a>
+              <ul>
+                <li><a href="#input-files-and-mandatory-parameters">Input files and mandatory parameters</a></li>
+                <li><a href="#outline-of-mr-procedure">Outline of MR procedure</a></li>
+                <li><a href="#limitations">Limitations</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#automated-molecular-replacement">Automated Molecular replacement</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="molecular-replacement是什么">molecular replacement是什么？</h2>
+<p>分子置换（MR）是一种定相方法，它使用与晶体中的成分相关或同源的已知结构形式的先验信息。 由于MR不需要其他实验程序或数据，并且可以简化模型的构建，因此，当有合适的搜索模型时，MR通常是确定结构的首选方法。</p>
+<h3 id="steps-in-structure-solution-with-molecular-replacement">Steps in structure solution with molecular replacement</h3>
+<h4 id="model-selection">Model selection</h4>
+<p>合适的模型的结构通常是通过同源性搜索找到的（例如对于合理的近亲使用NCBI Blast或对于更远的亲属使用HHpred），并且可以通过与靶序列的序列同一性来表征。</p>
+<p>使用分子替代品的主要限制是需要适当相似的搜索模型。 尽管没有确切的规则，但是序列同一性和MR成功之间的关系大致如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Better than 40% identity: usually easy, unless large conformational changes are involved.
+</span></span><span class="line"><span class="cl">30-40%: MR usually possible, but sometimes more difficult.
+</span></span><span class="line"><span class="cl">20-30%: MR usually difficult if at all possible, careful model search and preparation required.
+</span></span><span class="line"><span class="cl">Less than 20%: MR unlikely to work, but MR-Rosetta can help in marginal cases.
+</span></span><span class="line"><span class="cl">In terms of RMSD, above 2.5A is very unlikely to work, while 1.5A or less is preferable.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>经历大的构象变化的结构可能需要分成单独的域以进行搜索，而与序列同一性无关。 如果有多个类似的搜索模型可用，将它们组合到一个集成中通常会提高成功的可能性，尤其是如果使用Ensembler中的修整选项将该集成修整到其保守的核心时。</p>
+<p>在Phenix中，可以使用Sculptor和Ensembler实用程序来准备搜索模型。 Sculptor可根据模型结构与目标序列之间的比对，通过修剪残基和侧链来改善模型，也可将B因子权重应用于模型，以减少不可靠的零件。 Ensembler可用于自动叠加同源模型。 推荐的顺序是先运行Sculptor，然后运行Ensembler，这是MR FAQ中解释的原因。</p>
+<h4 id="molecular-replacement">Molecular replacement</h4>
+<p>放置搜索模型的过程大致分为两个步骤，一个旋转函数(RF)确定其方向，一个平移函数(TF)确定其在单元格中的绝对位置。可以将多个组件按顺序放置以解决在非对称单元中包含多个副本的复杂晶体或晶体的结构。</p>
+<h5 id="input-files-and-mandatory-parameters">Input files and mandatory parameters</h5>
+<p>Phenix中的所有MR程序都需要一个包含实验数据（带有sigma）的单个反射文件。 Phaser-MR GUI将接受任何文件格式或数据类型，包括强度。 传统上，该过程使用所有反射，因此不需要R-free标志。 （与精化不同，这不会对最终的无R值产生明显的偏差，因为自由度非常低：每个分子旋转和平移六个自由度，而总B因子和估计的RMS误差则每个自由度。）</p>
+<p>至少需要一个搜索模型； 在Phaser的上下文中，搜索模型通常称为“整体”。 在许多情况下，这将是包含一个结构的单个PDB文件。 对于更远的模型，可以改为使用实际的集成模型-具有多个MODEL记录的PDB文件或多个类似的PDB文件。 当使用多模型合奏时，所有模型都必须以相同的方向叠加。 Ensembler实用程序用于此目的。 搜索模型的大小，复杂性或数量没有限制。 对于复合物或多聚体，如果各个亚基的相对位置不变，则可以将整个组件（例如核糖体亚基）用作搜索模型，而不是分别放置每个组件。</p>
+<p>另一种选择是使用电子密度（或者更确切地说，是包含预加权映射系数的MTZ文件）进行搜索，该密度通常以低分辨率求解或从cryoEM图像重建中获得。 这需要有关要搜索的地图部分的中心和范围的其他信息。 最好使用phenix.cut_out_density工具准备此MTZ文件，并确保将密度放置在至少是密度的x，y和z范围的2.5倍的单位单元中。</p>
+<p>Phaser中使用的最大似然定相方法需要事先了解搜索模型与实际结构的偏差（或方差），以及预期的ASU含量或晶体的散射质量。 为了指定模型方差，可以使用RMSD值或百分比序列同一性（将使用从测试计算数据库确定的关系在内部进行转换）。 重要的是要尽可能减小方差（请参阅“模型选择”以获取指南），这通常需要消除原子或修改B因子。 给定PDB文件和序列比对，Sculptor实用程序将执行此步骤。 （这对于与目标分子具有高度序列同一性的搜索模型通常是不必要的，但是，特别是在较低序列同一性的情况下，强烈建议使用Sculptor实用程序处理模型。）此外，Ensembler实用程序可以修剪在成员之间有偏差的环。 合奏，仅保留保守的核心。</p>
+<p>对于ASU内容物，您可以提供序列文件（蛋白质或核酸），或直接输入分子量。 如果知道，Phaser的独立版本还接受每个搜索集合的分数ASU内容。 请注意，ASU内容数据不一定与搜索集合具有1：1的对应关系（有关详细信息，请参阅MR FAQ）。 如果您希望在搜索多个亚基时仅指定复合物的分子量，则可以将复合物的质量作为单个组分输入。 （您也可以使用多记录FASTA格式的序列文件。）即使您仅从多个（例如，蛋白质-DNA复合物中的蛋白质）中搜索单个集合，您仍必须提供预期的ASU内容。 因为Phaser需要知道每个搜索模型包含不对称单元的哪一部分，所以整个晶体都是如此。</p>
+<h5 id="outline-of-mr-procedure">Outline of MR procedure</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">各向异性校正：按比例缩放反射以克服各向异性（特定方向上的弱数据）。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">平移非晶体对称性（tNCS）校正：检查是否存在tNCS。 如果存在，确定描述副本之间平移和小的取向差异的参数，并将其用于计算校正因子。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">旋转功能：识别模型的可能方向。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">平移功能：给定来自RF的方向，找到晶胞中的绝对位置。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">堆积分析：给定截止值，根据原子之间的碰撞数过滤TF结果。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">精炼和定相：对放置的分子进行简单的刚体精炼，并根据最终溶液计算相。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">对数似然增益计算：确定最终的LLG，可用于评估MR的成功性。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="limitations">Limitations</h5>
+<p>由于模型偏差和/或多余的残渣而导致的包装冲突会导致抛出其他有效的解决方案。 相位器将尝试通过修剪精简到低占用率的链段来解决冲突。 如果这没有成功，则手动清除有害的残留物或降低填料的临界值可以解决该问题。</p>
+<h3 id="automated-molecular-replacement">Automated Molecular replacement</h3>
+<p>MRage框架将模型处理步骤和分子替换集成到一个应用程序中。 它提供了具有并行化选项的高度可定制的界面，并能够连接到NCBI Blast和wwPDB网站以执行同源性搜索并获取潜在模型。 Phaser主页上提供了单独的MRage教程。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-81/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-81/" data-title="【bioinfo】-Q&amp;A-81" data-hashtags="AQ100,Molecular replacement,structure"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-81/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-81/" data-title="【bioinfo】-Q&amp;A-81"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-81/" data-title="【bioinfo】-Q&amp;A-81"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-81/" data-title="【bioinfo】-Q&amp;A-81"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/molecular-replacement/">Molecular replacement</a>,&nbsp;<a href="/tags/structure/">structure</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-80/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-80"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-80</a>
+            <a href="/bioinfo-q-a-82/" class="next" rel="next" title="【bioinfo】-Q&amp;A-82">【bioinfo】-Q&A-82<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

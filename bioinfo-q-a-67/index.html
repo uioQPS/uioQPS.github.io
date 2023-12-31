@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-67 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-67" />
+<meta property="og:description" content="鉴定可重复的Peaks ATAC-Seq/ChIP-Seq通常需要2个会更多的生物学重复（十分珍贵或者稀有样本除外，但必须做至少2次技术重复）。理论上重复样本的peaks应该有高度的一致性，实际情况并不完全与预期一致。如何评价重复样本的重复性的好坏？如何得到一致性的peaks?这里介绍两种方法：
+ 用Bedtools进行简单的overlap合并重复样本 IDR（Irreproducibility Discovery Rate）的方法获得高重复性的peaks  1. Overlapping peaks using bedtools 如何得到两个重复样本间一致性的peaks? 一种简单粗暴的方法就是用bedtools计算peaks的overlaps。
+用法：
+1 2 3 4 5  bedtools intersect [OPTIONS] -a &lt;bed/gff/vcf/bam&gt; -b &lt;bed/gff/vcf/bam&gt; -a: 参数后加重复样本1（A） -b：参数后加重复样本2（B），也可以加多个样本   其他常用参数解释和图解如下：
+1 2 3 4 5  -wo：Write the original A and B entries plus the number of base pairs of overlap between the two features. -wa：Write the original entry in A for each overlap. -v：Only report those entries in A that have no overlaps with B   如果只有-a和-b参数，返回的是相对于A的overlaps。加上参数-wo返回A和B原始的记录加上overlap的记录。参数-wa返回每个overlap中A的原始记录。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-67/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-22T21:40:59+00:00" />
+<meta property="article:modified_time" content="2020-02-22T21:40:59+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-67"/>
+<meta name="twitter:description" content="鉴定可重复的Peaks ATAC-Seq/ChIP-Seq通常需要2个会更多的生物学重复（十分珍贵或者稀有样本除外，但必须做至少2次技术重复）。理论上重复样本的peaks应该有高度的一致性，实际情况并不完全与预期一致。如何评价重复样本的重复性的好坏？如何得到一致性的peaks?这里介绍两种方法：
+ 用Bedtools进行简单的overlap合并重复样本 IDR（Irreproducibility Discovery Rate）的方法获得高重复性的peaks  1. Overlapping peaks using bedtools 如何得到两个重复样本间一致性的peaks? 一种简单粗暴的方法就是用bedtools计算peaks的overlaps。
+用法：
+1 2 3 4 5  bedtools intersect [OPTIONS] -a &lt;bed/gff/vcf/bam&gt; -b &lt;bed/gff/vcf/bam&gt; -a: 参数后加重复样本1（A） -b：参数后加重复样本2（B），也可以加多个样本   其他常用参数解释和图解如下：
+1 2 3 4 5  -wo：Write the original A and B entries plus the number of base pairs of overlap between the two features. -wa：Write the original entry in A for each overlap. -v：Only report those entries in A that have no overlaps with B   如果只有-a和-b参数，返回的是相对于A的overlaps。加上参数-wo返回A和B原始的记录加上overlap的记录。参数-wa返回每个overlap中A的原始记录。"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-67/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-66/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-68/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-67",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-67\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, peaks, atac-seq, chip-seq","wordcount":  345 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-67\/","datePublished": "2020-02-22T21:40:59+00:00","dateModified": "2020-02-22T21:40:59+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-67</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-22">2020-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;345 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/bioinfo-q-a-67/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-67">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#鉴定可重复的peaks">鉴定可重复的Peaks</a>
+      <ul>
+        <li><a href="#1-overlapping-peaks-using-bedtools">1. Overlapping peaks using bedtools</a></li>
+        <li><a href="#2-irreproducibility-discovery-rate-idr">2. Irreproducibility Discovery Rate (IDR)</a>
+          <ul>
+            <li><a href="#1sample-idr">（1）sample-idr</a></li>
+            <li><a href="#2sample-idrlog">（2）sample-idr.log</a></li>
+            <li><a href="#3sample-idrpng">3）sample-idr.png</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="鉴定可重复的peaks">鉴定可重复的Peaks</h2>
+<p>ATAC-Seq/ChIP-Seq通常需要2个会更多的生物学重复（十分珍贵或者稀有样本除外，但必须做至少2次技术重复）。理论上重复样本的peaks应该有高度的一致性，实际情况并不完全与预期一致。如何评价重复样本的重复性的好坏？如何得到一致性的peaks?这里介绍两种方法：</p>
+<ol>
+<li>用Bedtools进行简单的<strong>overlap</strong>合并重复样本</li>
+<li>IDR（Irreproducibility Discovery Rate）的方法获得高重复性的peaks</li>
+</ol>
+<h3 id="1-overlapping-peaks-using-bedtools">1. Overlapping peaks using bedtools</h3>
+<p>如何得到两个重复样本间一致性的peaks? 一种简单粗暴的方法就是用bedtools计算peaks的overlaps。</p>
+<p>用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bedtools intersect [OPTIONS] -a &lt;bed/gff/vcf/bam&gt; -b &lt;bed/gff/vcf/bam&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-a: 参数后加重复样本1（A）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-b：参数后加重复样本2（B），也可以加多个样本
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其他常用参数解释和图解如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-wo：Write the original A and B entries plus the number of base pairs of overlap between the two features.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-wa：Write the original entry in A for each overlap.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-v：Only report those entries in A that have no overlaps with B
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果只有-a和-b参数，返回的是相对于A的overlaps。加上参数-wo返回A和B原始的记录加上overlap的记录。参数-wa返回每个overlap中A的原始记录。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="1.png"
+        data-srcset="1.png, 1.png 1.5x, 1.png 2x"
+        data-sizes="auto"
+        alt="1.png"
+        title="1.png" />
+鉴定可重复的Peaks</p>
+<p>使用代码示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bedtools intersect \
+</span></span><span class="line"><span class="cl">-a macs2/Nanog-rep1_peaks.narrowPeak \
+</span></span><span class="line"><span class="cl">-b macs2/Nanog-rep2_peaks.narrowPeak \
+</span></span><span class="line"><span class="cl">-wo &gt; bedtools/Nanog-overlaps.bed
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-irreproducibility-discovery-rate-idr">2. Irreproducibility Discovery Rate (IDR)</h3>
+<p>评估重复样本间peaks一致性的另一种方法是IDR。IDR是通过比较一对经过排序的regions/peaks 的列表，然后计算反映其重复性的值。
+IDR在ENCODE和modENCODE项目中被广泛使用，也是ChIP-seq指南和标准中的一部分。ENCODE_ATAC_pipeline</p>
+<p>IDR的 优点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">避免了初始阈值的选择，解决了不同callers的不可比较性
+</span></span><span class="line"><span class="cl">IDR不依赖于阈值的选择，所有regions/peaks都被考虑在内。
+</span></span><span class="line"><span class="cl">它是依赖regions/peaks的排序，不要求对输入信号进行校准或标准化
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IDR的详细说明参考:
+</span></span><span class="line"><span class="cl">https://github.com/nboley/idr
+</span></span><span class="line"><span class="cl">https://github.com/hbctraining/In-depth-NGS-Data-Analysis-Course/blob/master/sessionV/lessons/06_handling-replicates.md#irreproducibility-discovery-rate-idr
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>使用IDR的注意事项：</strong></p>
+<ul>
+<li>建议使用IDR时，MACS2 call peaks的步骤参数设置不要过于严格，以便鉴定出更多的peaks。</li>
+<li>使用IDR需要先对MACS2的结果文件narrowPeak根据-log10(p-value)进行排序。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Call peaks
+</span></span><span class="line"><span class="cl">macs2 callpeak -t  sample.final.bam -n sample --shift -100 --extsize 200 --nomodel -B --SPMR -g hs --outdir Macs2_out 2&gt; sample.macs2.log
+</span></span><span class="line"><span class="cl">#Sort peak by -log10(p-value)
+</span></span><span class="line"><span class="cl">sort -k8,8nr NAME_OF_INPUT_peaks.narrowPeak &gt; macs/NAME_FOR_OUPUT_peaks.narrowPeak
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>使用IDR示例</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">idr --samples sample_Rep1_sorted_peaks.narrowPeak sample_Rep2_sorted_peaks.narrowPeak \
+</span></span><span class="line"><span class="cl">--input-file-type narrowPeak \
+</span></span><span class="line"><span class="cl">--rank p.value \
+</span></span><span class="line"><span class="cl">--output-file sample-idr \
+</span></span><span class="line"><span class="cl">--plot \
+</span></span><span class="line"><span class="cl">--log-output-file sample.idr.log
+</span></span><span class="line"><span class="cl">--samples:narrowPeak的输入文件（重复样本）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--input-file-type：输入文件格式包括narrowPeak,broadPeak,bed
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--rank p.value：以p-value排序
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--output-file: 输出文件路径
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--plot：输出IDR度量值的结果
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>输出文件解读：</li>
+</ul>
+<p>详细内容可参考：https://github.com/nboley/idr#output-file-format</p>
+<p>输出文件包括：</p>
+<p>sample-idr
+sample-idr.log
+sample-idr.png</p>
+<h4 id="1sample-idr">（1）sample-idr</h4>
+<p>sample-idr是common peaks的结果输出文件，格式与输入文件格式类似，只是多了几列信息。前10列是标准的narrowPeak格式文件，包含重复样本整合后的peaks信息。</p>
+<p>第5列：包含缩放的 IDR 值
+score int
+如min(int(log2(-125IDR), 1000)，那么IDR=0，缩放的IDR就是1000；IDR=0.05, int(-125log2(0.05)) = 540；IDR=1.0, int(-125log2(1.0) = 0。</p>
+<p>第11列和第12列：分别是local和global IDR值
+col11: localIDR float -log10(Local IDR value)
+col12: globalIDR float -log10(Global IDR value)
+global IDR值是第5列中用于计算缩放的IDR值，类似于对p值进行多个假设校正以计算FDR；local IDR类似于属于不可重复噪声部分的峰值的后验概率。详细内容可阅读Measuring reproducibility of high-throughput experiments。</p>
+<p>第13、14、15、16列：是重复样本1相关的信息。
+col13: rep1_chromStart int
+col14: rep1_chromEnd int
+col15: rep1_signalValue float
+col16: rep1_summit int</p>
+<p>第17-20列：是重复样本2相关的信息，和13-16四列信息类似。
+其他列信息如下：</p>
+<p>col1: chrom string
+col2: chromStart int
+col3: chromEnd int
+col4: name string
+col6: strand [+-.] Use &lsquo;.&rsquo; if no strand is assigned.
+col7: signalValue float
+col8: p-value float
+col9: q-value float
+col10: summit int</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wc -l *-idr 计算下common peaks的个数，接着可再计算下与总peaks的比率。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">如果想看IDR&lt;0.05的，可以通过第5列信息过滤：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">awk &#39;{if($5 &gt;= 540) print $0}&#39; sample-idr | wc -l
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2sample-idrlog">（2）sample-idr.log</h4>
+<p>log文件会给出peaks通过IDR &lt; 0.05的比率，如下图所示</p>
+<p>鉴定可重复的Peaks</p>
+<h4 id="3sample-idrpng">3）sample-idr.png</h4>
+<p>png文件包括4个图</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Rep1 peak ranks vs Rep2 peak ranks, 没有通过特定IDR阈值的peaks显示为红色。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Rep1 log10 peak scores vs Rep2 log10 peak scores，没有通过特定IDR阈值的peaks显示为红色。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Peak rank vs IDR scores，箱线图展示了IDR值的分布，默认情况下，IDR值的阈值为-1E-6。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-22</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-67/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-67/" data-title="【bioinfo】-Q&amp;A-67" data-hashtags="AQ100,peaks,atac-seq,chip-seq"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-67/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-67/" data-title="【bioinfo】-Q&amp;A-67"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-67/" data-title="【bioinfo】-Q&amp;A-67"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-67/" data-title="【bioinfo】-Q&amp;A-67"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/peaks/">peaks</a>,&nbsp;<a href="/tags/atac-seq/">atac-seq</a>,&nbsp;<a href="/tags/chip-seq/">chip-seq</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-66/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-66"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-66</a>
+            <a href="/bioinfo-q-a-68/" class="next" rel="next" title="【bioinfo】-Q&amp;A-68">【bioinfo】-Q&A-68<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

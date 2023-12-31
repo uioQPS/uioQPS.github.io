@@ -1,0 +1,101 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mapping - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/mapping/</link>
+        <description>mapping - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Feb 2020 15:33:08 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/mapping/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-29</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-29/</link>
+    <pubDate>Tue, 18 Feb 2020 15:33:08 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-29/</guid>
+    <description><![CDATA[第29题 如何使用IGVTools对mapping结果进行可视化？ Hello 大家好，我们又见面了！
+1 2 3 4 5  目录 1. 前言 2. IGV Tools的简介； 3. IGV Tools的下载与安装； 4. IGV Tools的可视化初探（indel, mutation, etc）   1. 前言 我们为大家介绍了如何使用samtools tview对BAM文件在命令行中进行可视化的操作。但是有的时候我们需要在论文里对回贴（mapping）数据进行可视化. 这篇文章我们先来教大家下载安装并使用IGVTools对测序数据进行可视化；下一篇我们会教大家怎么用IGVTools来进行RNA-Seq数据的可视化。
+2. IGV Tools的简介 IGV Tools =Integrative Genomics Viewer Tools
+简单翻译一下就是基因组数据可视化工具，主要的功能就是对高通量测序数据的mapping结果进行可视化。IGV Tools是基于Java开发的，开发者是Broad Institute（伯德研究所），这个研究所可以算是当前生物医学领域最为牛的研究所之一，在他们的带动下推出了一系列的生物信息学工具，IGVTools，GATK都是他们搞出来的。
+在IGV Tools中，可以对sorted BAM，BED，GTF/GFF，bigwig/wig，bedgraph等数据进行可视化，基本上是我们平时最常用可视化工具。无论是全基因组测序，RNA-Seq，ChIP-Seq等等都可以进行可视化。
+IGV Tools的官方主页：
+https://software.broadinstitute.org/software/igv/home
+3. IGV Tools的下载与安装 IGV Tools是基于Java环境运行的，因此没有装Java的同学可能第一次安装这个软件之前需要先安装一遍，不过需要注意的是，根据IGV的安装说明，需要使用Java8，最新版的Java9还不能支持。
+3.1 Java 8 的下载与安装 下载地址https://java.com/zh_CN/download/
+在这个页面里下载Java并安装就算是搞定了Java环境。
+3.2 下载IGV Tools IGV Tools也有不同的版本我们一般选择最新版即可，目前的最新版是2.4版本。
+下载地址 https://software.broadinstitute.org/software/igv/download
+如果是Mac就选择下载1.Mac App，如果是Windows系统就选择2.Windows Zip，我们这里的演示环境为Windows就直接下载 对应版本即可。]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-23</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-23/</link>
+    <pubDate>Tue, 18 Feb 2020 15:32:16 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-23/</guid>
+    <description><![CDATA[第23题 转录组的比对与基因组的比对有何不同？ Hello大家好！我们今天又见面了！
+我们通过前期的22个问题，从数据的简单质控，到测序数据的mapping，再到mapping后的SAM文件都有了一个比较清楚的认识。那么说了半天的mapping问题，一直都是在以DNA进行举例，RNA的比对我们都还没有谈。那么今天我们就来简单谈谈RNA序列的mapping，尤其是真核生物的RNA序列比对。
+1. RNA与DNA结构的不同 一般来说，DNA的mapping比较容易，因为DNA在基因上是连续的，直接回贴到基因组就可以找到相应的定位。
+就比如我们常用的Whole Genome Sequence（WGS）即全基因组测序；
+或者是我们所说的ChIP-Seq即染色体免疫共沉淀测序都是直接对DNA进行建库测序，其测序结果都是FASTQ文件，直接用bowtie2，bwa比对到基因组就可以拿到标准的SAM文件。
+但是RNA就不一样了，真核生物的RNA需要经过复杂的加工过程。在细胞中RNA层面的调控至少可以分成2个大的阶段
+  co-transcription（转录的同时）
+  post-transcription（转录以后）
+  其中的调控机制也有很多。
+对我们mapping影响最大的因素是：真核生物转录出来的初步的mRNA都是带有intron（内含子）的，随后都需要在co-transcription（转录的同时） 或post-transcription（转录以后）阶段通过：
+  alternative splicing（可变剪切）剪切掉intron；
+  polyA尾巴；
+  加5’的帽子结构。
+  这3个步骤，将不成熟的mRNA变为最终成熟的mRNA再转运出核，行使功能。
+图1 通过可变剪切同1个基因可以形成多种蛋白（https://en.wikipedia.org/wiki/Alternative_splicing）
+而我们在进行RNA-Seq建库的时候，一般情况下都是使用oligo dT针对带polyA尾巴的成熟mRNA进行富集，然后再进行反转录获得cDNA，之后再使用cDNA进行建库测序。所以，我们最终得到的测序结果是与成熟mRNA序列保持一致的，只包含了exon的序列。
+而exon在基因中间是有intron分割的，因此在回贴回基因组的时候，回遇到跨越intron的reads回贴。所以这个问题不能使用原来针对DNA的mapping策略进行mapping。
+2. RNA比对的常用软件 目前大家最常用的转录组比对软件有下面几个：
+ tophat2，应用最广泛的比对软件，但是速度很慢，已经基本被淘汰了，大约需要4~5G内存就能运行； hisat2，tophat2的原班人马搞得新一代转录组比对软件，比对速度大大提高，我强烈推荐，大约需要4~5G内存就能运行； STAR，非常适合于大量数据的并行计算，速度非常快，对于同时有参考基因组和参考转录组的物种，比对的准确率很高，不过index很大，至少需要30G以上内存才能运行。  3. 提出问题 问题1： 如果你有一套标准的polyA捕获得到的RNA-Seq测序数据，对reads进行了前处理工作与质量控制工作，但是你的比对策略为：先尝试mapping，把能mapping到基因组上的reads都先mapping；然后把不能进行mapping的reads进行一定规则的拆分，再进行第二轮mapping，从而解决跨intron区域的问题（以上为tophat的mapping策略）。请问，这样mapping的最大问题是什么？（提示，需要知道一些假基因的概念！）
+1 2 3  先解释一下假基因，假基因（Pseudogenes）是指一类染色体上的基因片段。假基因的序列通常与对应的基因相似，但至少是丧失了一部分功能，基因不能表达或其编码的蛋白质没有功能； 这种基因在基因组上的分布非常普遍，那么在假基因普遍存在的情况下上述比对策略就会受到假基因的干扰，会有很多基因比对到假基因上   问题2： 在human中，是不是所有的蛋白基因（protein coding gene）都含有intron？
+1  并不是，SRY基因是人体Y染色体上的一段基因，该基因是决定男性睾丸发育的主要基因，存在于Y染色体的短臂末端上，该基因只有一个exon   问题3： 在human中，是不是所有的蛋白基因的成熟mRNA都有polyA尾巴？]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-17</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-17/</link>
+    <pubDate>Mon, 17 Feb 2020 14:37:54 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-17/</guid>
+    <description><![CDATA[第17题 高通量测序的回贴问题 II (SAM文件与BAM文件) Hello大家好！ 我们今天又见面了！
+我们从第16题开始，正式接触了高通量测序mapping的内容，可能有的朋友又忘记了mapping的定义，我们再来回顾一下这个概念。
+ ***“比对“对应的单词是alignment，***往往特指低通量的序列之间的比较。比如10条序列，进行多序列比对就是我们常说的 multiple alignment问题；如果是2条序列的比对，我们经常称其为pairwise alignment. ***“回贴”通常对应的单词应该是mapping，***一般指高通量的数据去寻找基因组的位置。比如我们进行测序以后，有10^6对read pair，要去寻找他们在基因组上的位置，这个时候就是一个典型的mapping问题。
+ 我们再把思路理清楚，在进行mapping的时候，
+输入文件应该包含：
+  测序结果（通常是FASTQ或者是FASTQ的压缩文件）
+  之前建立好的参考基因组的index文件（不同的mapping软件建立的方法大同小异，但一般都是提前构建） 输出文件应该包括：
+  比对的结果文件（一般是SAM文件格式或者是BAM文件格式）
+  比对的情况报告 今天我们就要谈一谈SAM/BAM文件格式。
+  首先先说二者之间的关系，BAM文件是SAM文件的压缩格式，压缩以后可以节省空间，排好序的BAM文件还可以提供随机访问功能，性能优良。但是BAM文件和SAM文件储存的内容是完全一样的。我们以后还要单独再说BAM文件的操作方法，今天我们把重点放在文件中的内容上。
+SAM文件的全称是：**Sequence Alignment Map，**它设计之初就是为了存储mapping结果的。
+一个标准的SAM文件由2部分组成：
+第1部分是以“@”开头的头部，在文件的最前面； 第2部分就是紧跟在头部后面的比对结果文件。 我们先来看一个例子（图1）。
+图1 SAM文件的内容
+在Linux中，访问sam文件最好用的工具是samtools，常用的操作如下：
+1 2 3 4 5 6 7 8 9  # 假设SAM文件的文件名是 test.sam # 1.只查看头部 samtools view -H test.sam # 2.只查看内容，不查看头部 samtools view test.sam # 3.查看头部内容 samtools view -h test.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-16</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-16/</link>
+    <pubDate>Mon, 17 Feb 2020 14:37:50 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-16/</guid>
+    <description><![CDATA[第16题 高通量测序的回贴问题 I Hello大家好！我们又见面了！
+在这之前，我们一直在讨论怎么去做FASTQ文件的质控，怎么trim，怎么cutadapt；还为大家介绍了从双序列比对的最根本的原理及算法；再到后来学习了低通量的找相似序列的办法BLAST以及基因组快速定位的办法BLAT。那么从今天开始以后的若干问都是与高通量测序结果的回贴（mapping）问题有关。
+首先来看一下技术路线图：
+从FASTQ到SAM路线图
+我们的核心任务是从FASTQ文件开始，经过中间的质控，最终找到序列在基因组上的定位。
+那么，我们之前的算法和方法能不能高效完成这个问题呢，答案是不行的！因为这次我们的输入常常是10^7 甚至更多的reads，而且是要在全基因组上寻找定位，比如人的基因组有3Gbp大！所以如果不优化算法，估计mapping这个问题就要等到地老天荒。关于mapping的算法问题，我之前录过1期视频，专门推导了为什么应用BWT算法就可以完成我们这项艰巨的任务。
+踏踏实实做技术：BWA，Bowtie，Bowtie2的比对算法推导
+ 谈完了算法，我们再谈谈比对软件。目前市面上针对DNA测序的结果mapping的比对软件有很多。针对2代测序优化过的，最常用的有Bowtie，Bowtie2，BWA这三款；针对3代测序优化的比对软件有BLASR，LAST，BWA-MEM等等。因为目前二代测序占据了90%以上的市场份额，因此我们前期主要讨论的内容是二代测序的比对问题，也就是Bowtie，Bowtie2，BWA这三款软件。
+其实，看过我上面BWT推导的朋友应该能够知道，这三个软件本质上的算法是没有区别的，有区别的地方都是小修小改。所以上，理解了其中的1个，其他的也都很好理解。我们会发现，这些算法的最基础的要点就是都要有1个index。
+那么什么是index呢？简单来说就是若干个文件，方便我们快速地访问及搜索基因组。上面我说的这些比对软件都需要建立index。
+一般建立index的输入文件为参考基因组序列（FASTA格式）和1个我们指定的index-name；输出为若干个以index-name为开头的index文件。比如我们使用Bowtie2，以human reference genome建立index的命令为：
+1 2 3 4 5 6 7  # build-index by Bowtie2 &gt; bowtie2-build hg19_only_chromosome.fa hg19_only_chromosome &amp; # 解释 #### bowtie2-build为建立index的命令，安装bowtie2以后就可以用； #### hg19_only_chromosome.fa 为human genome的参考基因组，FASTA格式； #### hg19_only_chromosome 为建立index需要指定的名称；   最终建立index输出结果如图2：
+使用bowtie2建立的human genome index
+1. 为什么FASTQ文件的快速比对需要建立index？
+1 2  主要是为了加快比对速度，Index简单来说就是若干个文件，方便程序快速地访问及搜索基因组； 在Index的帮助下，比对软件可以把序列比对的问题的时间复杂度降低   2. 如果我从1个网站上下载的是1个物种的参考转录组的序列，其中包含了A,U,C,G碱基，我的FASTQ为该物种转录组测序的结果，用A,G,T,C，4种碱基来表示。那么需不需要在建立index之前把参考转录组中的U全部都换成T？
+1  需要转化，因为比对程序并不能将U直接识别为T   3. 请在Linux环境下，下载human genome 19参考基因组的1号染色体序列；并使用bowtie 建立index。]]></description>
+</item>
+</channel>
+</rss>

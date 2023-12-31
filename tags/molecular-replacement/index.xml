@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Molecular replacement - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/molecular-replacement/</link>
+        <description>Molecular replacement - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 24 Feb 2020 21:01:31 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/molecular-replacement/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-81</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-81/</link>
+    <pubDate>Mon, 24 Feb 2020 21:01:31 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-81/</guid>
+    <description><![CDATA[molecular replacement是什么？ 分子置换（MR）是一种定相方法，它使用与晶体中的成分相关或同源的已知结构形式的先验信息。 由于MR不需要其他实验程序或数据，并且可以简化模型的构建，因此，当有合适的搜索模型时，MR通常是确定结构的首选方法。
+Steps in structure solution with molecular replacement Model selection 合适的模型的结构通常是通过同源性搜索找到的（例如对于合理的近亲使用NCBI Blast或对于更远的亲属使用HHpred），并且可以通过与靶序列的序列同一性来表征。
+使用分子替代品的主要限制是需要适当相似的搜索模型。 尽管没有确切的规则，但是序列同一性和MR成功之间的关系大致如下：
+1 2 3 4 5  Better than 40% identity: usually easy, unless large conformational changes are involved. 30-40%: MR usually possible, but sometimes more difficult. 20-30%: MR usually difficult if at all possible, careful model search and preparation required. Less than 20%: MR unlikely to work, but MR-Rosetta can help in marginal cases.]]></description>
+</item>
+</channel>
+</rss>

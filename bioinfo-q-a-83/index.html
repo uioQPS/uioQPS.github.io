@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-83 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-83" />
+<meta property="og:description" content="如何利用同源建模预测蛋白质三级结构 已知蛋白质的一级序列，如何能够获得其三级结构呢？结构生物学领域的科学家们能够利用扫描电镜，核磁共振以及X衍射等手段获得绝大多数蛋白质的结构。但解析蛋白质结构毕竟是一个专门的领域，对于“门外汉”，同时又没有资金委托他人来解析结构的研究者来说，就只能自己预测了。
+预测分为从头预测和同源建模。同源建模预测的准确度高于从头预测，尽管依然没有真实测定来的准确。通过对预测结构的分析, 是可以获得很多信息的，比如解释酶的催化机理或者预测蛋白质的突变位点, 推断蛋白质结构与功能的关系等等。那么如何利用同源建模来预测蛋白质的三级结构呢？
+同源建模的原理 首先我们要了解同源建模的原理。同源建模具体指的是以与未知结构蛋白具有同源性的已知结构的蛋白作为模版，用生物信息学的方法通过计算机模拟和计算，根据一级序列预测其三维空间结构。
+同源建模基于两个原理。第一，一个蛋白质的结构由其氨基酸序列唯一决定，知道其一级序列，在理论上就可以获取其二级结构以及三级结构。第二，蛋白质的三级结构在进化中更稳定或者说更保守。如果两个蛋白质的氨基酸序列有50%相同，那么约有90%的a-碳原子的位置偏差不超过3 Å，这是同源模型化方法在结构预测方面成功的保证。同源建模通常要求模板蛋白与目标蛋白的序列一致性高于30%。
+同源建模的步骤 同源建模可以通过以下7个步骤进行[1]：
+1、搜索结构模型的模板(T)。 同源建模方法假设两个同源的蛋白质具有相同的骨架。为待预测的蛋白质建立模型时，首先按照同源蛋白质的结构建立模板T。所谓模板是一个已知结构的蛋白质，该蛋白质与目标蛋白质U的序列非常相似。如果找不到这样的模板，则无法运用同源模型法。
+2、序列比对。 将目标蛋白质U的序列与模板蛋白质T的序列进行比对，使U的氨基酸残基与模板蛋白质的残基匹配。比对中允许插入和删除操作。
+3、建立骨架。 将模板结构的坐标拷贝到目标U，仅拷贝匹配残基的坐标。在一般情况下，通过这一步建立目标蛋白质U的骨架。
+4、构建目标蛋白质的侧链。 可以将模板相同残基的坐标直接作为目标蛋白质的残基坐标，但是对于不完全匹配的残基，其侧链构象是不同的，需要进一步预测。侧链坐标的预测通常采用已知结构的经验数据，如ROTAMERS 数据库中的经验结构数据。
+5、构建目标蛋白质的环区(loop)。 在第2步的序列比对中，可能加入空位，这些区域常常对应于二级结构元素之间的loop，对于环区需要另外建立模型。一般也是采用经验性方法，从已知结构的蛋白质中寻找一个最优的环区，拷贝其结构数据。如果找不到相应的环区，则需要用其它方法。
+6、优化模型。 通过上述过程为目标蛋白质U建立了一个初步的结构模型，在这个模型中可能存在一些不相容的空间坐标，因此需要进行改进和优化，如利用分子动力学、模拟退火等方法进行结构优化。
+7、模型验证 蛋白质结构预测结果需要进行验证。下面是一个常用的结构检测服务器：来源于UCLA-DOE的SAVES服务器，http://services.mbi.ucla.edu/SAVES/
+这个服务器内包括6个用于预测结构准确性的工具，分别是PROCHECK、WHAT_CHECK、ERRAT、VERIFY_3D、PROVE、CRYST1 record matches、Ramachandran Plot、WedMol Viewer。这些软件可以分为两类：一类是检查结构的立体化学信息，比如PROCHECK。立体化学信息包括键长，键角，对称性，结构包埋率等等。另一类是检查序列与结构的匹配度，比如VERIFY_3D。用户可以同时运行所有的软件，也可以单独选择某一个进行运行。
+PROCHECK生成的拉氏图（Ramachandran plot）。拉氏图就是蛋白质中残基的两个二面角ϕ 和 ψ 的相互关系图，将所有氨基酸的ϕ 和 ψ值相互对应，就可以做出这样的图了。在一个氨基酸中，ϕ指的是Ca与N之间的二面角， ψ指的是Cα与羧基C之间的二面角（详见下图）。 拉氏图分为四个区域: most favoured (red), additional allowed (yellow), generously allowed (light yellow) 以及disallowed (white)，红色表示的是最合适的区域，白色表示最不适合的区域。一个高质量的蛋白质结构的分辨率通常小于2 Å， R-factor小于20%。统计分析118个这样的蛋白质结构表明，对于一个高质量的模型结构来说，其90%的ϕ and ψ 值都应该在红色的区域内[2]。
+下面对几个常用的软件进行简单介绍：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  Swiss-Model 这是非专业人士使用最广泛的一个工具，其特点是简单，自动化并且对学术团队免费。 网址：https://swissmodel." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-83/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-24T21:01:41+00:00" />
+<meta property="article:modified_time" content="2020-02-24T21:01:41+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-83"/>
+<meta name="twitter:description" content="如何利用同源建模预测蛋白质三级结构 已知蛋白质的一级序列，如何能够获得其三级结构呢？结构生物学领域的科学家们能够利用扫描电镜，核磁共振以及X衍射等手段获得绝大多数蛋白质的结构。但解析蛋白质结构毕竟是一个专门的领域，对于“门外汉”，同时又没有资金委托他人来解析结构的研究者来说，就只能自己预测了。
+预测分为从头预测和同源建模。同源建模预测的准确度高于从头预测，尽管依然没有真实测定来的准确。通过对预测结构的分析, 是可以获得很多信息的，比如解释酶的催化机理或者预测蛋白质的突变位点, 推断蛋白质结构与功能的关系等等。那么如何利用同源建模来预测蛋白质的三级结构呢？
+同源建模的原理 首先我们要了解同源建模的原理。同源建模具体指的是以与未知结构蛋白具有同源性的已知结构的蛋白作为模版，用生物信息学的方法通过计算机模拟和计算，根据一级序列预测其三维空间结构。
+同源建模基于两个原理。第一，一个蛋白质的结构由其氨基酸序列唯一决定，知道其一级序列，在理论上就可以获取其二级结构以及三级结构。第二，蛋白质的三级结构在进化中更稳定或者说更保守。如果两个蛋白质的氨基酸序列有50%相同，那么约有90%的a-碳原子的位置偏差不超过3 Å，这是同源模型化方法在结构预测方面成功的保证。同源建模通常要求模板蛋白与目标蛋白的序列一致性高于30%。
+同源建模的步骤 同源建模可以通过以下7个步骤进行[1]：
+1、搜索结构模型的模板(T)。 同源建模方法假设两个同源的蛋白质具有相同的骨架。为待预测的蛋白质建立模型时，首先按照同源蛋白质的结构建立模板T。所谓模板是一个已知结构的蛋白质，该蛋白质与目标蛋白质U的序列非常相似。如果找不到这样的模板，则无法运用同源模型法。
+2、序列比对。 将目标蛋白质U的序列与模板蛋白质T的序列进行比对，使U的氨基酸残基与模板蛋白质的残基匹配。比对中允许插入和删除操作。
+3、建立骨架。 将模板结构的坐标拷贝到目标U，仅拷贝匹配残基的坐标。在一般情况下，通过这一步建立目标蛋白质U的骨架。
+4、构建目标蛋白质的侧链。 可以将模板相同残基的坐标直接作为目标蛋白质的残基坐标，但是对于不完全匹配的残基，其侧链构象是不同的，需要进一步预测。侧链坐标的预测通常采用已知结构的经验数据，如ROTAMERS 数据库中的经验结构数据。
+5、构建目标蛋白质的环区(loop)。 在第2步的序列比对中，可能加入空位，这些区域常常对应于二级结构元素之间的loop，对于环区需要另外建立模型。一般也是采用经验性方法，从已知结构的蛋白质中寻找一个最优的环区，拷贝其结构数据。如果找不到相应的环区，则需要用其它方法。
+6、优化模型。 通过上述过程为目标蛋白质U建立了一个初步的结构模型，在这个模型中可能存在一些不相容的空间坐标，因此需要进行改进和优化，如利用分子动力学、模拟退火等方法进行结构优化。
+7、模型验证 蛋白质结构预测结果需要进行验证。下面是一个常用的结构检测服务器：来源于UCLA-DOE的SAVES服务器，http://services.mbi.ucla.edu/SAVES/
+这个服务器内包括6个用于预测结构准确性的工具，分别是PROCHECK、WHAT_CHECK、ERRAT、VERIFY_3D、PROVE、CRYST1 record matches、Ramachandran Plot、WedMol Viewer。这些软件可以分为两类：一类是检查结构的立体化学信息，比如PROCHECK。立体化学信息包括键长，键角，对称性，结构包埋率等等。另一类是检查序列与结构的匹配度，比如VERIFY_3D。用户可以同时运行所有的软件，也可以单独选择某一个进行运行。
+PROCHECK生成的拉氏图（Ramachandran plot）。拉氏图就是蛋白质中残基的两个二面角ϕ 和 ψ 的相互关系图，将所有氨基酸的ϕ 和 ψ值相互对应，就可以做出这样的图了。在一个氨基酸中，ϕ指的是Ca与N之间的二面角， ψ指的是Cα与羧基C之间的二面角（详见下图）。 拉氏图分为四个区域: most favoured (red), additional allowed (yellow), generously allowed (light yellow) 以及disallowed (white)，红色表示的是最合适的区域，白色表示最不适合的区域。一个高质量的蛋白质结构的分辨率通常小于2 Å， R-factor小于20%。统计分析118个这样的蛋白质结构表明，对于一个高质量的模型结构来说，其90%的ϕ and ψ 值都应该在红色的区域内[2]。
+下面对几个常用的软件进行简单介绍：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  Swiss-Model 这是非专业人士使用最广泛的一个工具，其特点是简单，自动化并且对学术团队免费。 网址：https://swissmodel."/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-83/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-82/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-84/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-83",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-83\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, 三级结构, 同源建模","wordcount":  95 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-83\/","datePublished": "2020-02-24T21:01:41+00:00","dateModified": "2020-02-24T21:01:41+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-83</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/structure/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>structure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-24">2020-02-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;95 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-83/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-83">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#如何利用同源建模预测蛋白质三级结构">如何利用同源建模预测蛋白质三级结构</a>
+      <ul>
+        <li><a href="#同源建模的原理">同源建模的原理</a></li>
+        <li><a href="#同源建模的步骤">同源建模的步骤</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="如何利用同源建模预测蛋白质三级结构">如何利用同源建模预测蛋白质三级结构</h2>
+<p>已知蛋白质的一级序列，如何能够获得其三级结构呢？结构生物学领域的科学家们能够利用扫描电镜，核磁共振以及X衍射等手段获得绝大多数蛋白质的结构。但解析蛋白质结构毕竟是一个专门的领域，对于“门外汉”，同时又没有资金委托他人来解析结构的研究者来说，就只能自己预测了。</p>
+<p>预测分为从头预测和同源建模。同源建模预测的准确度高于从头预测，尽管依然没有真实测定来的准确。通过对预测结构的分析, 是可以获得很多信息的，比如解释酶的催化机理或者预测蛋白质的突变位点, 推断蛋白质结构与功能的关系等等。那么如何利用同源建模来预测蛋白质的三级结构呢？</p>
+<h3 id="同源建模的原理">同源建模的原理</h3>
+<p>首先我们要了解同源建模的原理。同源建模具体指的是以与未知结构蛋白具有同源性的已知结构的蛋白作为模版，用生物信息学的方法通过计算机模拟和计算，根据一级序列预测其三维空间结构。</p>
+<p>同源建模基于两个原理。第一，一个蛋白质的结构由其氨基酸序列唯一决定，知道其一级序列，在理论上就可以获取其二级结构以及三级结构。第二，蛋白质的三级结构在进化中更稳定或者说更保守。如果两个蛋白质的氨基酸序列有50%相同，那么约有90%的a-碳原子的位置偏差不超过3 Å，这是同源模型化方法在结构预测方面成功的保证。同源建模通常要求模板蛋白与目标蛋白的序列一致性高于30%。</p>
+<h3 id="同源建模的步骤">同源建模的步骤</h3>
+<p>同源建模可以通过以下7个步骤进行[1]：</p>
+<p>1、搜索结构模型的模板(T)。
+同源建模方法假设两个同源的蛋白质具有相同的骨架。为待预测的蛋白质建立模型时，首先按照同源蛋白质的结构建立模板T。所谓模板是一个已知结构的蛋白质，该蛋白质与目标蛋白质U的序列非常相似。如果找不到这样的模板，则无法运用同源模型法。</p>
+<p>2、序列比对。
+将目标蛋白质U的序列与模板蛋白质T的序列进行比对，使U的氨基酸残基与模板蛋白质的残基匹配。比对中允许插入和删除操作。</p>
+<p>3、建立骨架。
+将模板结构的坐标拷贝到目标U，仅拷贝匹配残基的坐标。在一般情况下，通过这一步建立目标蛋白质U的骨架。</p>
+<p>4、构建目标蛋白质的侧链。
+可以将模板相同残基的坐标直接作为目标蛋白质的残基坐标，但是对于不完全匹配的残基，其侧链构象是不同的，需要进一步预测。侧链坐标的预测通常采用已知结构的经验数据，如ROTAMERS 数据库中的经验结构数据。</p>
+<p>5、构建目标蛋白质的环区(loop)。
+在第2步的序列比对中，可能加入空位，这些区域常常对应于二级结构元素之间的loop，对于环区需要另外建立模型。一般也是采用经验性方法，从已知结构的蛋白质中寻找一个最优的环区，拷贝其结构数据。如果找不到相应的环区，则需要用其它方法。</p>
+<p>6、优化模型。
+通过上述过程为目标蛋白质U建立了一个初步的结构模型，在这个模型中可能存在一些不相容的空间坐标，因此需要进行改进和优化，如利用分子动力学、模拟退火等方法进行结构优化。</p>
+<p>7、模型验证
+蛋白质结构预测结果需要进行验证。下面是一个常用的结构检测服务器：来源于UCLA-DOE的SAVES服务器，http://services.mbi.ucla.edu/SAVES/</p>
+<p>这个服务器内包括6个用于预测结构准确性的工具，分别是PROCHECK、WHAT_CHECK、ERRAT、VERIFY_3D、PROVE、CRYST1 record matches、Ramachandran Plot、WedMol Viewer。这些软件可以分为两类：一类是检查结构的立体化学信息，比如PROCHECK。立体化学信息包括键长，键角，对称性，结构包埋率等等。另一类是检查序列与结构的匹配度，比如VERIFY_3D。用户可以同时运行所有的软件，也可以单独选择某一个进行运行。</p>
+<p>PROCHECK生成的拉氏图（Ramachandran plot）。拉氏图就是蛋白质中残基的两个二面角ϕ 和 ψ 的相互关系图，将所有氨基酸的ϕ 和 ψ值相互对应，就可以做出这样的图了。在一个氨基酸中，ϕ指的是Ca与N之间的二面角， ψ指的是Cα与羧基C之间的二面角（详见下图）。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="1.png"
+        data-srcset="1.png, 1.png 1.5x, 1.png 2x"
+        data-sizes="auto"
+        alt="1.png"
+        title="1.png" /></p>
+<p>拉氏图分为四个区域: most favoured (red), additional allowed (yellow), generously allowed (light yellow) 以及disallowed (white)，红色表示的是最合适的区域，白色表示最不适合的区域。一个高质量的蛋白质结构的分辨率通常小于2 Å， R-factor小于20%。统计分析118个这样的蛋白质结构表明，对于一个高质量的模型结构来说，其90%的ϕ and ψ 值都应该在红色的区域内[2]。</p>
+<p>下面对几个常用的软件进行简单介绍：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Swiss-Model
+</span></span><span class="line"><span class="cl">这是非专业人士使用最广泛的一个工具，其特点是简单，自动化并且对学术团队免费。
+</span></span><span class="line"><span class="cl">网址：https://swissmodel.expasy.org
+</span></span><span class="line"><span class="cl">Modeller
+</span></span><span class="line"><span class="cl">该软件由Sali lab开发，是非常常用的一个同源建模工具，目前最新版本是9.19，可在window和linux操作系统下运行。可以进行多聚体建模，二硫键建模，杂原子建模等。自带一套结构评价体系。该工具完全通过命令行控制，操作略复杂。
+</span></span><span class="line"><span class="cl">网址：https://salilab.org/modeller/
+</span></span><span class="line"><span class="cl">zhang服务器
+</span></span><span class="line"><span class="cl">Zhang服务器是使用I-TASSER算法用于蛋白质结构和功能预测的在线平台。
+</span></span><span class="line"><span class="cl">网址：https://zhanglab.ccmb.med.umich.edu/I-TASSER/
+</span></span><span class="line"><span class="cl">Yasara
+</span></span><span class="line"><span class="cl">一款商业化的多功能软件，内部包括同源建模模块。
+</span></span><span class="line"><span class="cl">网址：http://www.yasara.org/homologymodeling.htm
+</span></span><span class="line"><span class="cl">nest
+</span></span><span class="line"><span class="cl">nest由美国Columbia University 的Barry Honig教授及其同事开发，能够在SGI and Intel Linux平台下运行。
+</span></span><span class="line"><span class="cl">网址：http://honig.c2b2.columbia.edu/nest/
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-83/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-83/" data-title="【bioinfo】-Q&amp;A-83" data-hashtags="AQ100,三级结构,同源建模"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-83/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-83/" data-title="【bioinfo】-Q&amp;A-83"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-83/" data-title="【bioinfo】-Q&amp;A-83"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-83/" data-title="【bioinfo】-Q&amp;A-83"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/%E4%B8%89%E7%BA%A7%E7%BB%93%E6%9E%84/">三级结构</a>,&nbsp;<a href="/tags/%E5%90%8C%E6%BA%90%E5%BB%BA%E6%A8%A1/">同源建模</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-82/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-82"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-82</a>
+            <a href="/bioinfo-q-a-84/" class="next" rel="next" title="【bioinfo】-Q&amp;A-84">【bioinfo】-Q&A-84<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

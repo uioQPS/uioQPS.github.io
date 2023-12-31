@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>【bioinfo】-Q&amp;A-13 - Milky板板の博客</title><meta name="Description" content="Milky板板"><meta property="og:title" content="【bioinfo】-Q&amp;A-13" />
+<meta property="og:description" content="第13题 从双序列比对开始学起 Hello 大家好！
+经过我们之前的12个问题，我们对Illumina 测序的原理，测序的储存模式，测序数据的质控已经有了一个比较清楚的认识。那么我们今天就开始用接下来的若干次提问来学习与比对有关的知识。
+比对其实应该对应的单词是alignment，但往往特指低通量的序列之间的比较。
+比如10条序列，进行多序列比对就是我们常说的 multiple alignment问题；
+如果是2条序列的比对，我们经常称其为pairwise alignment.
+回贴通常对应的单词应该是mapping， 一般指高通量的数据去寻找基因组的位置。
+比如我们进行测序以后，有10M对read pair，要去寻找他们在基因组上的位置，这个时候就是一个典型的mapping问题。
+alignment与mapping其实是密切相关的概念，所有的mapping软件其实都是从低通量的办法逐步改进而得到的。
+今天我们的问题是，请各位学习一下北京大学高歌老师的《生物信息学：导论与方法》中的双序列比对（pairwise alignment）的相关算法。主要是Needleman-Wunsch算法（全局比对）和Smith-Waterman算法（局部比对）相关的内容，然后回答下面的问题。
+每个视频长度都不长，希望大家认真看完！今天的内容是以后的基础，如果学不好，以后的高楼盖得再高，也有轰然倒塌的那一天！
+课程视频的链接如下：
+生物信息学：导论与方法(北京大学)-序列比对中的基本概念
+生物信息学：导论与方法(北京大学)-利用动态规划进行全局序列比对
+生物信息学：导论与方法(北京大学)-从全局比对到局部比对
+今天的问题：
+如果我们假设比对的 scoring matrix 如下图1所示，同时gap的罚分d= -5
+图1 序列比对的scoring matrix
+假设我们的 seq1 = AAGT，seq2=AGCT；那么我们进行双序列比对，需要填写下面的表格。
+ 1. 使用Needleman-Wunsch算法（全局比对），那么表1应该怎么填写？最终的比对结果是什么？
+​ 最终比对结果为：
+2. 使用Smith-Waterman算法（局部比对），那么表1应该怎么填写？最终的比对结果是什么？
+1 2 3 4 5 6 7 8 9 10  注意:在进⾏行行局部⽐比对回溯的时候，需要从第1个⾮非零的碱基开始，沿对⻆角线⽅方向到第1个遇到0的结果为⽌止。因 此本题中，局部⽐比对的结果有3个: 第1个结果是(浅蓝⾊色): A A 第2个结果是(⻩黄⾊色): AAG A-G 第3个结果是(深蓝⾊色): T T   3. 请思考，为什么有的时候需要全局比对，有的时候需要局部比对？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uioqps.github.io/bioinfo-q-a-13/" /><meta property="og:image" content="https://uioqps.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-17T14:37:40+00:00" />
+<meta property="article:modified_time" content="2020-02-17T14:37:40+00:00" /><meta property="og:site_name" content="Milky板板の博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://uioqps.github.io/logo.png"/>
+
+<meta name="twitter:title" content="【bioinfo】-Q&amp;A-13"/>
+<meta name="twitter:description" content="第13题 从双序列比对开始学起 Hello 大家好！
+经过我们之前的12个问题，我们对Illumina 测序的原理，测序的储存模式，测序数据的质控已经有了一个比较清楚的认识。那么我们今天就开始用接下来的若干次提问来学习与比对有关的知识。
+比对其实应该对应的单词是alignment，但往往特指低通量的序列之间的比较。
+比如10条序列，进行多序列比对就是我们常说的 multiple alignment问题；
+如果是2条序列的比对，我们经常称其为pairwise alignment.
+回贴通常对应的单词应该是mapping， 一般指高通量的数据去寻找基因组的位置。
+比如我们进行测序以后，有10M对read pair，要去寻找他们在基因组上的位置，这个时候就是一个典型的mapping问题。
+alignment与mapping其实是密切相关的概念，所有的mapping软件其实都是从低通量的办法逐步改进而得到的。
+今天我们的问题是，请各位学习一下北京大学高歌老师的《生物信息学：导论与方法》中的双序列比对（pairwise alignment）的相关算法。主要是Needleman-Wunsch算法（全局比对）和Smith-Waterman算法（局部比对）相关的内容，然后回答下面的问题。
+每个视频长度都不长，希望大家认真看完！今天的内容是以后的基础，如果学不好，以后的高楼盖得再高，也有轰然倒塌的那一天！
+课程视频的链接如下：
+生物信息学：导论与方法(北京大学)-序列比对中的基本概念
+生物信息学：导论与方法(北京大学)-利用动态规划进行全局序列比对
+生物信息学：导论与方法(北京大学)-从全局比对到局部比对
+今天的问题：
+如果我们假设比对的 scoring matrix 如下图1所示，同时gap的罚分d= -5
+图1 序列比对的scoring matrix
+假设我们的 seq1 = AAGT，seq2=AGCT；那么我们进行双序列比对，需要填写下面的表格。
+ 1. 使用Needleman-Wunsch算法（全局比对），那么表1应该怎么填写？最终的比对结果是什么？
+​ 最终比对结果为：
+2. 使用Smith-Waterman算法（局部比对），那么表1应该怎么填写？最终的比对结果是什么？
+1 2 3 4 5 6 7 8 9 10  注意:在进⾏行行局部⽐比对回溯的时候，需要从第1个⾮非零的碱基开始，沿对⻆角线⽅方向到第1个遇到0的结果为⽌止。因 此本题中，局部⽐比对的结果有3个: 第1个结果是(浅蓝⾊色): A A 第2个结果是(⻩黄⾊色): AAG A-G 第3个结果是(深蓝⾊色): T T   3. 请思考，为什么有的时候需要全局比对，有的时候需要局部比对？"/>
+<meta name="application-name" content="Milky板板の博客">
+<meta name="apple-mobile-web-app-title" content="Milky板板の博客"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://uioqps.github.io/bioinfo-q-a-13/" /><link rel="prev" href="https://uioqps.github.io/bioinfo-q-a-12/" /><link rel="next" href="https://uioqps.github.io/bioinfo-q-a-14/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "【bioinfo】-Q\u0026A-13",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/uioqps.github.io\/bioinfo-q-a-13\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/uioqps.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "AQ100, alignment","wordcount":  82 ,
+        "url": "https:\/\/uioqps.github.io\/bioinfo-q-a-13\/","datePublished": "2020-02-17T14:37:40+00:00","dateModified": "2020-02-17T14:37:40+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/uioqps.github.io\/images\/avatar.png",
+                    "width":  588 ,
+                    "height":  614 
+                }},"author": {
+                "@type": "Person",
+                "name": "Milky"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/categories/documentation/"> Docs </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Milky板板の博客"><span class="header-title-pre"><i class='fa-sharp fa-light fa-dolphin' aria-hidden='true'></i></span>Milky板板の博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/categories/documentation/" title="">Docs</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/uioQPS/" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">【bioinfo】-Q&A-13</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/uioQPS/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Milky</a></span>&nbsp;<span class="post-category">included in <a href="/categories/bioinfo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>bioinfo</a>&nbsp;<a href="/categories/ngs/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>ngs</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-02-17">2020-02-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;82 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;<span id="/bioinfo-q-a-13/" class="leancloud_visitors" data-flag-title="【bioinfo】-Q&amp;A-13">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#第13题-从双序列比对开始学起">第13题 从双序列比对开始学起</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="第13题-从双序列比对开始学起">第13题 从双序列比对开始学起</h2>
+<p>Hello 大家好！</p>
+<p>经过我们之前的12个问题，我们对Illumina 测序的原理，测序的储存模式，测序数据的质控已经有了一个比较清楚的认识。那么我们今天就开始用接下来的若干次提问来学习与比对有关的知识。</p>
+<p>比对其实应该对应的单词是alignment，但往往特指低通量的序列之间的比较。</p>
+<p>比如10条序列，进行多序列比对就是我们常说的 multiple alignment问题；</p>
+<p>如果是2条序列的比对，我们经常称其为pairwise alignment.</p>
+<p><strong>回贴通常对应的单词应该是mapping，</strong> 一般指高通量的数据去寻找基因组的位置。</p>
+<p>比如我们进行测序以后，有10M对read pair，要去寻找他们在基因组上的位置，这个时候就是一个典型的mapping问题。</p>
+<p>alignment与mapping其实是密切相关的概念，所有的mapping软件其实都是从低通量的办法逐步改进而得到的。</p>
+<p>今天我们的问题是，请各位学习一下北京大学高歌老师的《生物信息学：导论与方法》中的双序列比对（pairwise alignment）的相关算法。主要是Needleman-Wunsch算法（全局比对）和Smith-Waterman算法（局部比对）相关的内容，然后回答下面的问题。</p>
+<p>每个视频长度都不长，希望大家认真看完！今天的内容是以后的基础，如果学不好，以后的高楼盖得再高，也有轰然倒塌的那一天！</p>
+<p>课程视频的链接如下：</p>
+<p><a href="https://www.bilibili.com/video/av10042290/?p=5" target="_blank" rel="noopener noreffer ">生物信息学：导论与方法(北京大学)-序列比对中的基本概念</a></p>
+<p><a href="https://www.bilibili.com/video/av10042290/?p=6" target="_blank" rel="noopener noreffer ">生物信息学：导论与方法(北京大学)-利用动态规划进行全局序列比对</a></p>
+<p><a href="https://www.bilibili.com/video/av10042290/?p=7" target="_blank" rel="noopener noreffer ">生物信息学：导论与方法(北京大学)-从全局比对到局部比对</a></p>
+<p>今天的问题：</p>
+<p>如果我们假设比对的 scoring matrix 如下图1所示，同时gap的罚分d= -5</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/1.jpg"
+        data-srcset="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/1.jpg, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/1.jpg 1.5x, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/1.jpg 2x"
+        data-sizes="auto"
+        alt="../../../../../Desktop/md/【bioinfo】-Q-A-13/1.jpg"
+        title="../../../../../Desktop/md/【bioinfo】-Q-A-13/1.jpg" />
+图1 序列比对的scoring matrix</p>
+<p>假设我们的 seq1 = AAGT，seq2=AGCT；那么我们进行双序列比对，需要填写下面的表格。</p>
+<hr>
+<p><strong>1. 使用Needleman-Wunsch算法（全局比对），那么表1应该怎么填写？最终的比对结果是什么？</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/2.png"
+        data-srcset="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/2.png, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/2.png 1.5x, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/2.png 2x"
+        data-sizes="auto"
+        alt="../../../../../Desktop/md/【bioinfo】-Q-A-13/2.png"
+        title="../../../../../Desktop/md/【bioinfo】-Q-A-13/2.png" /></p>
+<p>​ 最终比对结果为：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/3.png"
+        data-srcset="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/3.png, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/3.png 1.5x, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/3.png 2x"
+        data-sizes="auto"
+        alt="../../../../../Desktop/md/【bioinfo】-Q-A-13/3.png"
+        title="../../../../../Desktop/md/【bioinfo】-Q-A-13/3.png" /></p>
+<p><strong>2. 使用Smith-Waterman算法（局部比对），那么表1应该怎么填写？最终的比对结果是什么？</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/4.png"
+        data-srcset="../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/4.png, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/4.png 1.5x, ../../../../../Desktop/md/%e3%80%90bioinfo%e3%80%91-Q-A-13/4.png 2x"
+        data-sizes="auto"
+        alt="../../../../../Desktop/md/【bioinfo】-Q-A-13/4.png"
+        title="../../../../../Desktop/md/【bioinfo】-Q-A-13/4.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">注意:在进⾏行行局部⽐比对回溯的时候，需要从第1个⾮非零的碱基开始，沿对⻆角线⽅方向到第1个遇到0的结果为⽌止。因 此本题中，局部⽐比对的结果有3个:
+</span></span><span class="line"><span class="cl">第1个结果是(浅蓝⾊色):
+</span></span><span class="line"><span class="cl">A
+</span></span><span class="line"><span class="cl">A
+</span></span><span class="line"><span class="cl">第2个结果是(⻩黄⾊色):
+</span></span><span class="line"><span class="cl">AAG
+</span></span><span class="line"><span class="cl">A-G
+</span></span><span class="line"><span class="cl">第3个结果是(深蓝⾊色):
+</span></span><span class="line"><span class="cl">T
+</span></span><span class="line"><span class="cl">T
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>3. 请思考，为什么有的时候需要全局比对，有的时候需要局部比对？</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">全局⽐比对，是从头到尾对序列列的每⼀一个碱基都进⾏行行⽐比对，找到最优解;
+</span></span><span class="line"><span class="cl">局部⽐比对，是为了了找到两条序列列中最相似的部分，可以有多个结果;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">全局⽐比对能找到2条序列列⽐比对的最优解，⽤用处很⼤自不不必说，单独说说局部⽐比对的相关意义与必要性。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">随着越来越多的序列列信息的产⽣生，⼈人们发现对于:
+</span></span><span class="line"><span class="cl">1.某些蛋⽩白序列列虽然整体相差很⼤大，但是对于某些特殊的功能域却有着极⾼高的相似性;
+</span></span><span class="line"><span class="cl">2.⽽且在不不同物种中序列列和功能都相当保守，这在全局⽐比对中是很难发现的;
+</span></span><span class="line"><span class="cl">3.另一⽅面随着70年年代内含⼦子的发现⽐比对算法必须要能够处理理由于内含⼦导致的⼤大⽚片段的差异
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-02-17</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/bioinfo-q-a-13/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://uioqps.github.io/bioinfo-q-a-13/" data-title="【bioinfo】-Q&amp;A-13" data-hashtags="AQ100,alignment"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://uioqps.github.io/bioinfo-q-a-13/" data-hashtag="AQ100"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://uioqps.github.io/bioinfo-q-a-13/" data-title="【bioinfo】-Q&amp;A-13"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://uioqps.github.io/bioinfo-q-a-13/" data-title="【bioinfo】-Q&amp;A-13"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://uioqps.github.io/bioinfo-q-a-13/" data-title="【bioinfo】-Q&amp;A-13"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aq100/">AQ100</a>,&nbsp;<a href="/tags/alignment/">alignment</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bioinfo-q-a-12/" class="prev" rel="prev" title="【bioinfo】-Q&amp;A-12"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>【bioinfo】-Q&A-12</a>
+            <a href="/bioinfo-q-a-14/" class="next" rel="next" title="【bioinfo】-Q&amp;A-14">【bioinfo】-Q&A-14<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/uioQPS/" target="_blank">Milky</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

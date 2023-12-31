@@ -1,0 +1,47 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>methylation - Tag - Milky板板の博客</title>
+        <link>https://uioqps.github.io/tags/methylation/</link>
+        <description>methylation - Tag - Milky板板の博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Feb 2020 21:16:29 &#43;0000</lastBuildDate><atom:link href="https://uioqps.github.io/tags/methylation/" rel="self" type="application/rss+xml" /><item>
+    <title>【bioinfo】-Q&amp;A-80</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-80/</link>
+    <pubDate>Sun, 23 Feb 2020 21:16:29 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-80/</guid>
+    <description><![CDATA[methy-ATAC-seq同时测甲基化和染色质的可及性 伴随着10X genomics最近推出的sc-ATACseq的protocol，ATAC-seq技术将会掀起一股新的研究热潮。尤其是ATAC-seq与其他技术的结合，再搭上单细胞的快车，很多科学问题借助这个新的研究方法也许会有新的发现，至少会涌现出一批paper。 恰好看到群友推荐这篇methy-ATAC-seq的文章，可以同时检测甲基化与accessible chromatin，虽然目前还不是单细胞水平，不过还是值得一看。
+ doi: http://dx.doi.org/10.1101/445486
+ 问题的提出 分开检测染色质的可及性和甲基化然后再整合分析，不能准确保证数据的一致性。将两种方法整合在一起，一次性检测染色质的可及性以及该区域的甲基化。
+mATAC-seq方法  甲基化寡核苷酸被加载到Tn5上产生新的转座子 片段化 甲基脱氧胞嘧啶三磷酸（5-MdCTP）在转位后的末端修复反应中取代DCTP  这种修饰在mATAC-seq文库制备的最后步骤中保护Nextera adapter序列，这些序列是经过Tn5处理的染色质。
+验证mATAC-seq与Omni-ATAC-seq和WGBS的一致性  DNA methylation detected by mATAC-seq replicates was highly reproducible at CpG Islands (r 2 =0.95) and peaks (r 2 =0.83) methylation levels reported by mATAC-seq correlated well with levels reported by WGBS at CpG Islands (r 2 =0.86) and peaks (r 2 =0.68)  peak处的可及性和甲基化  显著性peak区域的RPKM和甲基化变化，以及相关的motif promotor区域的甲基化变化和可及性的比较 mRNA的变化与promotor区域的可及性变化   可及性和甲基化的整合分析  聚类 模块内启动子处的基因表达变化 RPKM,methylation,H2A.]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-66</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-66/</link>
+    <pubDate>Sat, 22 Feb 2020 21:40:50 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-66/</guid>
+    <description><![CDATA[bismark 识别甲基化位点-比对篇 bismark 软件根据序列的比对情况就可以识别甲基化位点，首先需要对基因组建立索引，建好索引之后，就可以开始比对了。
+我用的软件自带的单端测序的数据集进行测试， 命令如下
+1  bismark hg19_bismark_db/ test_data.fastq -o test   第一个参数为bismark_genome_preparation命令构建的基因组索引所在的目录，第二个参数为需要比对的序列， -o参数指定输出的目录
+bismark的参数很多，通常情况下，采用默认参数就好。其他参数全部默认的情况下：bismark 比对的过程分为以下几步：
+1 . 将输入序列进行C-&gt;T的转换 软件在运行过程中的log信息如下：
+1 2 3 4  Input file is in FastQ format Writing a C -&gt; T converted version of the input file test_data.fastq to test_data.fastq_C_to_T.fastq Created C -&gt; T converted version of the FastQ file test_data.fastq (10000 sequences in total) Input file is test_data.fastq_C_to_T.fastq (FastQ)   2 .]]></description>
+</item>
+<item>
+    <title>【bioinfo】-Q&amp;A-43</title>
+    <link>https://uioqps.github.io/bioinfo-q-a-43/</link>
+    <pubDate>Thu, 20 Feb 2020 19:42:25 &#43;0000</pubDate>
+    <author>Milky</author>
+    <guid>https://uioqps.github.io/bioinfo-q-a-43/</guid>
+    <description><![CDATA[TET2突变是如何引起超甲基化 癌症病人体内会检测到不正常的甲基化现象。
+TET2可以氧化5mC成为5hmC，进而通过其它机制形成5fC和5caC。
+很多血液肿瘤病人的TET2基因突变了，同时会显示出全局的5hmC水平下降。
+有趣的是，全局的5hmC水平下降同样发生在很多实体肿瘤病人身上，但是那些病人很少有TET2突变发生。
+那么，TET2突变，或者全局的5hmC水平下降，是如何导致启动子区域的CG岛的甲基化水平上升的呢？
+有其它文献报道 hypermethylation和**oxidative stress (OS)**有关系
+作者认为 oxidative stress (OS) 在其中起了关键的作用。
+关键结论  We now demonstrate TET2 forms ‘‘Yin-Yang’’ complexes with DNMTs and is targeted to chromatin during OS. TET2 actively removes abnormal DNAm induced by OS in promoter CGIs as well as enhancers by converting unwanted 5mC to 5hmC. Long-term reduction of TET2 caused even more DNA hypermethylation on these gene promoters and enhancers.  数据 作者用了 Agilent-026652 Whole Human Genome Microarray 4x44K v2 和 Illumina HumanMethylation450 BeadChip 来联合表达量和甲基化进行分析。]]></description>
+</item>
+</channel>
+</rss>
